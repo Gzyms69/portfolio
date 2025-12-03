@@ -38,6 +38,38 @@
     --radius: 0.5rem;
   }
 
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 5%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 5%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 5%;
+
+    --primary: 142.1 76.2% 36.3%;
+    --primary-foreground: 355.7 100% 97.3%;
+
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 222.2 84% 5%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 98%;
+    --accent-foreground: 222.2 84% 5%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142.1 70% 45%;
+
+    --radius: 0.5rem;
+  }
+
   .dark {
     --background: 222.2 84% 5%;
     --foreground: 210 40% 98%;
@@ -92,9 +124,9 @@
   }
 }
 
-/* BookShop Dark Theme Styles */
+/* BookShop Theme Styles */
 .bg-dots-pattern {
-  @apply bg-gray-900;
+  @apply bg-background;
   background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0);
   background-size: 20px 20px;
 }
@@ -105,15 +137,15 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-800;
+  @apply bg-muted;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-600 rounded;
+  @apply bg-muted-foreground/50 rounded;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500;
+  @apply bg-muted-foreground/70;
 }
 
 /* Line clamping utilities */
@@ -146,16 +178,20 @@ select:focus-visible {
 }
 
 @layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-glass;
+  }
+
   .text-strong {
-    @apply text-gray-50;
+    @apply text-foreground;
   }
 
   .text-medium {
-    @apply text-gray-300;
+    @apply text-muted-foreground;
   }
 
   .text-weak {
-    @apply text-gray-400;
+    @apply text-muted-foreground/70;
   }
 
   /* Type-dependent color badges for project cards */

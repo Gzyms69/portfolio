@@ -1,8 +1,8 @@
 # Portfolio Website - Development Guide
 
-A modern, professional portfolio website built on the Fusion starter template. This is a fully-developed portfolio showcasing work in design, photography, and digital art with a dark glassmorphism design aesthetic.
+A modern, professional portfolio website built on the Fusion starter template. This is a fully-developed developer portfolio showcasing software engineering projects with a dark glassmorphism design aesthetic and smooth animations.
 
-**Current Development Status**: Actively enhanced - recently added navigation routing, button standardization, and improved design consistency.
+**Current Development Status**: Actively enhanced - interactive project cards with expandable details, consistent glassmorphism styling, smooth animations throughout, and light/dark theme switching.
 
 While the project includes an Express server, only create endpoints when strictly necessary for server-side logic like private key handling, contact form processing, or database operations.
 
@@ -66,6 +66,20 @@ portfolio-website/        # Dawid Czerwiński - Portfolio Project
 - Improved text contrast using `text-medium` class
 - Consistent color palette throughout navigation
 - Professional styling for contact forms and UI elements
+
+**Interactive Animations**
+- Smooth hover/click animations on all interactive elements
+- Consistent 200ms transitions with ease-in-out timing
+- Scale effects (hover: 1.1x, active: 0.95x) for tactile feedback
+- Smooth scrolling with 500ms duration for section navigation
+- Glass-card styling with backdrop-blur and hover shadows
+
+**Consistent Styling Guidelines**
+- ALL cards and interactive elements must use `glass-card` class
+- Hover effects: `hover:scale-[1.02] hover:shadow-2xl` for consistent scaling
+- Transition timing: `duration-200` for buttons, `duration-500` for cards
+- Maintain glassmorphism aesthetic throughout (backdrop-blur, white/5 bg, white/10 borders)
+- Use theme-aware colors (text-strong, text-medium, text-weak, foreground, etc.)
 
 ### Functional Pages
 
