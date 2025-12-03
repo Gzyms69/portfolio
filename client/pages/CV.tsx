@@ -27,7 +27,7 @@ export default function CV() {
       period: "2024.02 - Obecnie",
       responsibilities: [
         "Nauczanie uczniów liceum do egzaminu maturalnego z informatyki",
-        "Programowanie gier w Unity, C++, C#, Python dla uczniów w wieku 12-18 lat",
+        "Programowanie gier w Unity, poziom podstawowy i zaawansowany C++, C# oraz Python dla uczniów w wieku 12-18 lat",
         "Wsparcie uczniów na Discord po zajęciach",
       ],
     },

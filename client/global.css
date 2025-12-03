@@ -39,7 +39,7 @@
   }
 
   .light {
-    --background: 0 0% 100%;
+    --background: 0 0% 92%;
     --foreground: 222.2 84% 5%;
 
     --card: 0 0% 100%;
@@ -51,20 +51,20 @@
     --primary: 142.1 76.2% 36.3%;
     --primary-foreground: 355.7 100% 97.3%;
 
-    --secondary: 210 40% 98%;
-    --secondary-foreground: 222.2 84% 5%;
+    --secondary: 210 40% 15%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 85%;
+    --muted-foreground: 0 0% 30%;
 
-    --accent: 210 40% 98%;
-    --accent-foreground: 222.2 84% 5%;
+    --accent: 210 40% 20%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 0 0% 75%;
+    --input: 0 0% 95%;
     --ring: 142.1 70% 45%;
 
     --radius: 0.5rem;
@@ -182,12 +182,20 @@ select:focus-visible {
     @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-glass;
   }
 
+  .light .glass-card {
+    @apply bg-white/80 border border-gray-200/80 shadow-lg;
+  }
+
   .text-strong {
     @apply text-foreground;
   }
 
   .text-medium {
     @apply text-muted-foreground;
+  }
+
+  .light .text-medium {
+    @apply text-gray-700;
   }
 
   .text-weak {
@@ -213,5 +221,22 @@ select:focus-visible {
 
   .badge-gray {
     @apply text-gray-400 bg-gray-500/10 border-gray-500/20;
+  }
+
+  .animated-title {
+    color: transparent;
+    background: linear-gradient(90deg, #fde047, #67e8f9, #93c5fd, #6ee7b7, #4ade80, #67e8f9, #fb923c, #fde047);
+    background-clip: text;
+    background-size: 400% 100%;
+    animation: waveFlow 8s linear infinite;
+  }
+}
+
+@keyframes waveFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 400% 50%;
   }
 }

@@ -1,6 +1,7 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, useRef, useEffect } from "react";
 import { ExternalLink } from "lucide-react";
 import { GradientBackground, GradientVariant } from "./GradientBackground";
+import { getTechColor } from "@/lib/utils";
 
 interface ProjectCardProps {
   title: string;
@@ -24,6 +25,19 @@ export const ProjectCard = ({
   className = "",
 }: ProjectCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isExpanded && cardRef.current) {
+      // Use a small timeout to ensure DOM has updated
+      setTimeout(() => {
+        cardRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      }, 50);
+    }
+  }, [isExpanded]);
 
   const handleCardClick = () => {
     setIsExpanded(!isExpanded);
@@ -36,21 +50,28 @@ export const ProjectCard = ({
 
   return (
     <div
+      ref={cardRef}
       className={`glass-card flex flex-col gap-2 overflow-hidden p-2 cursor-pointer transition-all duration-500 ease-in-out hover:scale-[1.02] hover:shadow-2xl ${className}`}
       onClick={handleCardClick}
     >
       {/* Gradient Background Section */}
-      <div className={`transition-all duration-500 ease-in-out rounded-[2rem] ${isExpanded ? 'h-[600px]' : 'flex-1'}`}>
+      <div className={`relative transition-all duration-500 ease-in-out rounded-[2rem] ${isExpanded ? 'h-[300px]' : 'flex-1'}`}>
         <GradientBackground variant={variant} className="flex-1 rounded-[2rem] h-full">
-          <div className="flex h-full flex-col items-center justify-center gap-2 px-4 py-8 text-center sm:px-6 sm:py-12">
-            <h3 className="font-900 text-white leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-8xl">
+          <div className="flex h-full flex-col items-center justify-center px-4 py-8 text-center sm:px-6 sm:py-12">
+            <h3 className="font-900 text-white leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl break-words hyphens-auto max-w-full">
               {title}
             </h3>
-            <p className="text-weak text-sm sm:text-base md:text-lg lg:text-xl opacity-70">
-              {isExpanded ? "Details" : "Click to expand"}
-            </p>
           </div>
         </GradientBackground>
+        
+        {/* Click to expand indicator - positioned at bottom of gradient */}
+        {!isExpanded && (
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center">
+            <p className="text-white/70 text-xs sm:text-sm font-medium">
+              Click to expand
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Content Section */}
@@ -66,15 +87,18 @@ export const ProjectCard = ({
                   {title}
                 </h4>
                 <div className="flex flex-wrap gap-1 mt-2">
-                  {techStack.map((tech, index) => (
-                    <span
-                      key={index}
-                      className="px-2 py-1 text-xs bg-white/10 rounded-full text-weak border border-white/20"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                   {techStack.map((tech, index) => {
+                     const colors = getTechColor(tech);
+                     return (
+                       <span
+                         key={index}
+                         className={`px-2 py-1 text-xs rounded-full border transition-all duration-200 ${colors.bg} ${colors.text} ${colors.border} ${colors.hover}`}
+                       >
+                         {tech}
+                       </span>
+                     );
+                   })}
+                 </div>
               </div>
             </div>
 

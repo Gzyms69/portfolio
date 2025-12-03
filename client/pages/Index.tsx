@@ -1,7 +1,8 @@
-import { BookOpen, Bot } from "lucide-react";
+import { BookOpen, Bot, Zap } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Footer } from "@/components/Footer";
+import { getTechColor } from "@/lib/utils";
 
 // Project data
 const projects = [
@@ -20,8 +21,17 @@ const projects = [
     fullDescription: "AI-powered automation extension for VS Code using Kimi K2 model. Execute tasks through natural language, manage files and run terminal commands, getting AI-formatted results. Features include: natural language task execution, advanced file operations, terminal integration with intelligent output formatting, chat interface for code questions, error recovery with comprehensive debugging, and support for multiple AI models (Kimi K2, Claude, GPT-4o, Gemini) via OpenRouter API.",
     githubUrl: "https://github.com/Gzyms69/kimi-k2-agent",
     techStack: ["TypeScript", "VS Code API", "OpenRouter", "Kimi K2", "Node.js"],
-    variant: "photography" as const,
+    variant: "design" as const,
     icon: <Bot className="h-8 w-8 text-gray-600 flex-shrink-0" />
+  },
+  {
+    title: "Portfolio Website",
+    description: "Modern, professional portfolio showcasing projects with glassmorphism design, smooth animations, and theme switching",
+    fullDescription: "A modern, professional portfolio website built on the Fusion starter template featuring interactive project cards with expandable details. Built with React 18, TypeScript, and Vite for optimal performance. Includes a fully-developed backend with Express for server-side logic, comprehensive dark mode with glassmorphism styling, smooth animations throughout, light/dark theme switching, and responsive design. Features include: interactive project showcase, smooth scroll navigation, type-safe full-stack development, Tailwind CSS 3 styling system with custom design tokens, Radix UI component library, and seamless theme persistence.",
+    githubUrl: "https://github.com/Gzyms69/portfolio",
+    techStack: ["React", "TypeScript", "Vite", "TailwindCSS", "Express", "Node.js", "Radix UI"],
+    variant: "design" as const,
+    icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />
   }
 ];
 
@@ -37,20 +47,29 @@ export default function Index() {
           {/* Hero/About Section */}
           <section className="mb-20 sm:mb-32 md:mb-40 flex flex-col gap-8 sm:gap-10">
             <div className="glass-card flex max-w-2xl flex-col gap-8 sm:gap-10 p-8 sm:p-10 md:p-14 cursor-pointer transition-all duration-500 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
-              <h1 className="text-3xl font-semibold text-strong sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
+              <h1 className="text-3xl font-semibold animated-title sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
                 Dawid Czerwiński
               </h1>
               <p className="text-weak text-base leading-relaxed sm:text-lg md:text-xl">
-                Welcome to my digital universe as a{" "}
-                <span className="text-strong">full-stack developer</span> specializing in
-                modern web technologies and AI integration. I craft{" "}
-                <span className="text-strong">innovative software solutions</span>,{" "}
-                <span className="text-strong">scalable architectures</span>, and{" "}
-                <span className="text-strong">intelligent automation systems</span> that push
-                the boundaries of what's possible. With expertise in Python, React, and cloud
-                technologies, I transform complex problems into elegant, performant applications
-                that deliver real value to users and businesses.
+                Full-stack developer building web applications and automation tools. This portfolio 
+                showcases my projects, from a library management system to VS Code extensions. 
+                I enjoy working with Python, React, and TypeScript to create functional applications.
               </p>
+              
+              {/* Tech Stack Tags */}
+              <div className="flex flex-wrap gap-2">
+                {["Python", "React", "TypeScript", "FastAPI", "Node.js", "Docker", "Tailwind CSS", "SQL"].map((tech, index) => {
+                  const colors = getTechColor(tech);
+                  return (
+                    <span
+                      key={index}
+                      className={`px-3 py-1.5 text-sm rounded-full border transition-all duration-200 ${colors.bg} ${colors.text} ${colors.border} ${colors.hover}`}
+                    >
+                      {tech}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
           </section>
 
