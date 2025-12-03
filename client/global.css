@@ -1,0 +1,153 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * Portfolio design color scheme for dark theme
+  */
+  :root {
+    --background: 221 41% 9%;
+    --foreground: 0 0% 100%;
+
+    --card: 221 41% 9%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 221 41% 9%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 221 41% 9%;
+
+    --secondary: 220 13% 91%;
+    --secondary-foreground: 221 41% 9%;
+
+    --muted: 224 11% 53%;
+    --muted-foreground: 0 0% 100%;
+
+    --accent: 0 0% 100%;
+    --accent-foreground: 221 41% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 8% 40%;
+    --input: 220 8% 40%;
+    --ring: 0 0% 100%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 221 41% 9%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 221 41% 9%;
+    --sidebar-accent: 224 11% 53%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 8% 40%;
+    --sidebar-ring: 0 0% 100%;
+
+    /* Portfolio design tokens */
+    --portfolio-bg: 221 41% 9%;
+    --portfolio-text-strong: 0 0% 100%;
+    --portfolio-text-medium: 0 0% 100%; /* 80% opacity */
+    --portfolio-text-weak: 0 0% 100%; /* 60% opacity */
+    --portfolio-icon-color: 224 11% 53%;
+    --portfolio-border: 0 0% 100%; /* 10% opacity */
+    --portfolio-design-gradient-1: #01071A;
+    --portfolio-design-gradient-2: #98FFCE;
+    --portfolio-design-gradient-3: #5F9FFF;
+    --portfolio-art-gradient-1: #8504EA;
+    --portfolio-art-gradient-2: #CA6821;
+    --portfolio-art-gradient-3: #1C00A4;
+    --portfolio-photography-gradient-1: #4D2E65;
+    --portfolio-photography-gradient-2: #EB731C;
+  }
+
+  .dark {
+    --background: 221 41% 9%;
+    --foreground: 0 0% 100%;
+    --card: 221 41% 9%;
+    --card-foreground: 0 0% 100%;
+    --popover: 221 41% 9%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 221 41% 9%;
+    --secondary: 220 13% 91%;
+    --secondary-foreground: 221 41% 9%;
+    --muted: 224 11% 53%;
+    --muted-foreground: 0 0% 100%;
+    --accent: 0 0% 100%;
+    --accent-foreground: 221 41% 9%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 8% 40%;
+    --input: 220 8% 40%;
+    --ring: 0 0% 100%;
+    --sidebar-background: 221 41% 9%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 221 41% 9%;
+    --sidebar-accent: 224 11% 53%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 8% 40%;
+    --sidebar-ring: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply relative border border-white/10 rounded-[2.5rem] bg-gradient-to-b from-white/20 to-transparent shadow-glass backdrop-blur-xl;
+  }
+
+  .text-strong {
+    @apply text-white;
+  }
+
+  .text-medium {
+    @apply text-white/80;
+  }
+
+  .text-weak {
+    @apply text-white/60;
+  }
+
+  .project-gradient-design {
+    @apply relative bg-[#01071A] overflow-hidden;
+  }
+
+  .project-gradient-art {
+    @apply relative overflow-hidden;
+    background: radial-gradient(96.82% 94.3% at 51.76% 0%, #8504EA 0%, rgba(66, 0, 255, 0) 100%), radial-gradient(291.48% 109.31% at 96.64% 90.57%, #CA6821 0%, rgba(186, 5, 202, 0) 100%), radial-gradient(252.75% 87.46% at 12.6% 84.38%, #1C00A4 0%, rgba(83, 51, 237, 0) 100%), #000588;
+  }
+
+  .project-gradient-photography {
+    @apply relative overflow-hidden;
+    background: radial-gradient(96.82% 94.3% at 51.76% 0%, #4D2E65 0%, rgba(38, 34, 51, 0) 100%), radial-gradient(291.48% 109.31% at 96.64% 90.57%, #EB731C 0%, rgba(123, 28, 132, 0) 100%), radial-gradient(252.75% 87.46% at 12.6% 84.38%, #0F0C1D 0%, rgba(67, 60, 101, 0) 100%), #000;
+  }
+}
