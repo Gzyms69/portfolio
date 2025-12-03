@@ -191,8 +191,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Developer
 
 **Dawid Czerwiński**
-- Website: [Portfolio](https://your-site.com)
-- LinkedIn: [Profile](https://linkedin.com/in/your-profile)
 - GitHub: [Profile](https://github.com/Gzyms69)
 
 ---
