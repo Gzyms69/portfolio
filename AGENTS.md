@@ -1,35 +1,78 @@
-# Fusion Starter
+# Portfolio Website - Development Guide
 
-A production-ready full-stack React application template with integrated Express server, featuring React Router 6 SPA mode, TypeScript, Vitest, Zod and modern tooling.
+A modern, professional portfolio website built on the Fusion starter template. This is a fully-developed portfolio showcasing work in design, photography, and digital art with a dark glassmorphism design aesthetic.
 
-While the starter comes with a express server, only create endpoint when strictly neccesary, for example to encapsulate logic that must leave in the server, such as private keys handling, or certain DB operations, db...
+**Current Development Status**: Actively enhanced - recently added navigation routing, button standardization, and improved design consistency.
+
+While the project includes an Express server, only create endpoints when strictly necessary for server-side logic like private key handling, contact form processing, or database operations.
 
 ## Tech Stack
 
-- **PNPM**: Prefer pnpm
-- **Frontend**: React 18 + React Router 6 (spa) + TypeScript + Vite + TailwindCSS 3
+- **PNPM**: Package management
+- **Frontend**: React 18 + React Router 6 (SPA) + TypeScript + Vite + TailwindCSS 3
 - **Backend**: Express server integrated with Vite dev server
 - **Testing**: Vitest
-- **UI**: Radix UI + TailwindCSS 3 + Lucide React icons
+- **UI**: Radix UI component library + TailwindCSS 3 + Lucide React icons
 
 ## Project Structure
 
 ```
-client/                   # React SPA frontend
-├── pages/                # Route components (Index.tsx = home)
-├── components/ui/        # Pre-built UI component library
-├── App.tsx                # App entry point and with SPA routing setup
-└── global.css            # TailwindCSS 3 theming and global styles
-
-server/                   # Express API backend
-├── index.ts              # Main server setup (express config + routes)
-└── routes/               # API handlers
-
-shared/                   # Types used by both client & server
-└── api.ts                # Example of how to share api interfaces
+portfolio-website/        # Dawid Czerwiński - Portfolio Project
+├── client/                   # React SPA frontend
+│   ├── components/
+│   │   ├── ui/              # Full Radix UI component library
+│   │   ├── Navigation.tsx    # Enhanced navigation with active states
+│   │   ├── ProjectCard.tsx   # Project showcase cards
+│   │   ├── Footer.tsx        # Footer component
+│   │   └── GradientBackground.tsx # Animated gradient backgrounds
+│   ├── pages/
+│   │   ├── Index.tsx         # Home with hero & project grid
+│   │   ├── Contact.tsx       # Functional contact form
+│   │   ├── CV.tsx           # Resume download page
+│   │   └── NotFound.tsx      # 404 error page
+│   ├── hooks/                # Custom React hooks
+│   ├── lib/                  # Utilities (cn function, etc.)
+│   ├── App.tsx               # Main app with full routing
+│   └── global.css            # Dark theme & glassmorphism styles
+├── server/                   # Express API backend
+│   ├── routes/
+│   │   ├── contact.ts        # Contact form API endpoint
+│   │   └── demo.ts          # Demo/test API endpoint
+│   └── index.ts              # Server setup with CORS, etc.
+├── shared/                   # Shared TypeScript types
+│   └── api.ts                # API response interfaces
+└── public/                   # Static assets (favicon, etc.)
 ```
 
 ## Key Features
+
+### Completed Enhancements
+
+**Navigation Improvements**
+- Active state indicators for current page
+- Functional routing to Home (/), Contact (/contact), CV (/cv) pages
+- External links to LinkedIn and GitHub profiles
+- Smooth scroll to projects section
+- Responsive design (desktop sidebar + mobile top navigation)
+
+**Button Standardization**
+- Unified button variants (glass, glassPrimary, nav, navActive)
+- Consistent styling across Contact form and CV download
+- Improved contrast with design system color usage
+- Type-safe button component with proper TypeScript types
+
+**Design System Polish**
+- Enhanced glassmorphism effects
+- Improved text contrast using `text-medium` class
+- Consistent color palette throughout navigation
+- Professional styling for contact forms and UI elements
+
+### Functional Pages
+
+- **Home Page**: Hero section, project showcase grid, responsive cards
+- **Contact Page**: Functional contact form with server validation
+- **CV Page**: Structured resume with download functionality
+- **Navigation**: Active states, external links, smooth scrolling
 
 ## SPA Routing System
 

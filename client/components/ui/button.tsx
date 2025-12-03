@@ -18,12 +18,19 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // Portfolio-specific variants
+        glass: "glass-card border-0 bg-white/5 hover:bg-white/10 text-strong hover:text-white",
+        glassPrimary: "glass-card border border-white/20 bg-white/10 hover:bg-white/20 text-strong",
+        nav: "rounded-3xl transition-all hover:bg-white/10",
+        navActive: "rounded-3xl bg-white/10 transition-all hover:bg-white/20",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
+        nav: "h-12 w-12",
+        navDesktop: "h-14 w-12",
       },
     },
     defaultVariants: {

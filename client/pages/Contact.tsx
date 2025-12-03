@@ -2,6 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Mail } from "lucide-react";
 import { useState, FormEvent } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -64,7 +65,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-[#15161A]">
+    <div className="min-h-screen bg-dots-pattern">
       <Navigation />
 
       <main className="flex w-full justify-center px-4 sm:px-8 md:px-16 lg:px-20">
@@ -83,7 +84,7 @@ export default function Contact() {
           </section>
 
           {/* Form */}
-          <div className="glass-card flex flex-col gap-8 p-8 sm:p-10 md:p-12">
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 flex flex-col gap-8 p-8 sm:p-10 md:p-12">
             <div className="flex flex-col gap-1">
               <h2 className="text-xl font-semibold text-strong">
                 Dane do kontaktu
@@ -129,7 +130,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   placeholder="Twoje imię"
-                  className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-strong placeholder:text-weak/50 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/10 transition-all"
+                  className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-3 text-gray-100 placeholder:text-gray-400 focus:border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all"
                 />
               </div>
 
@@ -149,7 +150,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   placeholder="twój.email@example.com"
-                  className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-strong placeholder:text-weak/50 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/10 transition-all"
+                  className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-3 text-gray-100 placeholder:text-gray-400 focus:border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all"
                 />
               </div>
 
@@ -175,18 +176,19 @@ export default function Contact() {
                   rows={6}
                   maxLength={3000}
                   placeholder="Twoja wiadomość..."
-                  className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-strong placeholder:text-weak/50 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/10 transition-all resize-none"
+                  className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-3 text-gray-100 placeholder:text-gray-400 focus:border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all resize-none"
                 />
               </div>
 
               {/* Submit Button */}
-              <button
+              <Button
                 type="submit"
                 disabled={loading}
-                className="mt-4 w-full rounded-lg bg-gradient-to-r from-white/20 to-white/10 py-3 font-medium text-strong border border-white/20 transition-all hover:from-white/30 hover:to-white/20 hover:border-white/40 disabled:opacity-50 disabled:cursor-not-allowed"
+                variant="glassPrimary"
+                className="mt-4 w-full"
               >
                 {loading ? "Wysyłanie..." : "Wyślij"}
-              </button>
+              </Button>
             </form>
           </div>
 

@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface ExperienceEntry {
   title: string;
@@ -128,7 +129,7 @@ Programowanie: C++, Python, C, JavaScript
   };
 
   return (
-    <div className="min-h-screen bg-[#15161A]">
+    <div className="min-h-screen bg-dots-pattern">
       <Navigation />
 
       <main className="flex w-full justify-center px-4 sm:px-8 md:px-16 lg:px-20">
@@ -143,13 +144,14 @@ Programowanie: C++, Python, C, JavaScript
                 Instruktor Programowania | Specjalista Operacji
               </p>
             </div>
-            <button
+            <Button
               onClick={handleDownloadCV}
-              className="glass-card flex items-center justify-center gap-3 w-fit px-6 py-3 transition-all hover:bg-white/30"
+              variant="glassPrimary"
+              className="gap-3 w-fit px-6"
             >
-              <Download className="h-5 w-5 text-strong" />
-              <span className="text-strong font-medium">Pobierz CV</span>
-            </button>
+              <Download className="h-5 w-5" />
+              <span className="font-medium">Pobierz CV</span>
+            </Button>
           </section>
 
           {/* Experience Section */}
