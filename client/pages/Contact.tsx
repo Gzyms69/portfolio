@@ -3,6 +3,8 @@ import { Footer } from "@/components/Footer";
 import { Mail } from "lucide-react";
 import { useState, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
+import { AnimatedText, AnimatedCharacters } from "@/components/AnimatedText";
+import { Reveal } from "@/components/Reveal";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -72,19 +74,24 @@ export default function Contact() {
         <div className="w-full max-w-2xl py-8 sm:py-16 md:py-24 lg:py-32">
           {/* Header */}
           <section className="mb-12 flex flex-col gap-4 text-center">
-            <div className="flex justify-center mb-4">
-              <Mail className="h-12 w-12 text-strong" strokeWidth={1.5} />
-            </div>
-            <h1 className="text-4xl font-semibold text-strong sm:text-5xl md:text-6xl leading-tight">
-              Skontaktuj się ze mną
-            </h1>
-            <p className="text-weak text-base sm:text-lg">
-              Wypełnij formularz
-            </p>
+            <Reveal delay={0.1}>
+              <div className="flex justify-center mb-4">
+                <Mail className="h-12 w-12 text-strong" strokeWidth={1.5} />
+              </div>
+            </Reveal>
+            <AnimatedCharacters
+              text="Skontaktuj się ze mną"
+              className="text-4xl font-semibold text-strong sm:text-5xl md:text-6xl leading-tight justify-center"
+            />
+            <AnimatedText
+              text="Wypełnij formularz"
+              className="text-weak text-base sm:text-lg justify-center"
+            />
           </section>
 
           {/* Form */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 flex flex-col gap-8 p-8 sm:p-10 md:p-12">
+          <Reveal delay={0.4} width="100%">
+            <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 flex flex-col gap-8 p-8 sm:p-10 md:p-12">
             <div className="flex flex-col gap-1">
               <h2 className="text-xl font-semibold text-strong">
                 Dane do kontaktu
@@ -191,6 +198,7 @@ export default function Contact() {
               </Button>
             </form>
           </div>
+          </Reveal>
 
           <Footer />
         </div>

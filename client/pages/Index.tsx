@@ -3,6 +3,8 @@ import { Navigation } from "@/components/Navigation";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Footer } from "@/components/Footer";
 import { getTechColor } from "@/lib/utils";
+import { AnimatedText, AnimatedCharacters } from "@/components/AnimatedText";
+import { StaggerContainer, StaggerItem } from "@/components/Reveal";
 
 // Project data
 const projects = [
@@ -47,14 +49,14 @@ export default function Index() {
           {/* Hero/About Section */}
           <section className="mb-20 sm:mb-32 md:mb-40 flex flex-col gap-8 sm:gap-10">
             <div className="glass-card flex max-w-2xl flex-col gap-8 sm:gap-10 p-8 sm:p-10 md:p-14 cursor-pointer transition-all duration-500 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
-              <h1 className="text-3xl font-semibold animated-title sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
-                Dawid Czerwiński
-              </h1>
-              <p className="text-weak text-base leading-relaxed sm:text-lg md:text-xl">
-                Full-stack developer building web applications and automation tools. This portfolio 
-                showcases my projects, from a library management system to VS Code extensions. 
-                I enjoy working with Python, React, and TypeScript to create functional applications.
-              </p>
+              <AnimatedCharacters
+                text="Dawid Czerwiński"
+                className="text-3xl font-semibold animated-title sm:text-4xl md:text-5xl lg:text-6xl leading-tight"
+              />
+              <AnimatedText
+                text="Full-stack developer building web applications and automation tools. This portfolio showcases my projects, from a library management system to VS Code extensions. I enjoy working with Python, React, and TypeScript to create functional applications."
+                className="text-weak text-base leading-relaxed sm:text-lg md:text-xl"
+              />
               
               {/* Tech Stack Tags */}
               <div className="flex flex-wrap gap-2">
@@ -74,27 +76,35 @@ export default function Index() {
           </section>
 
           {/* Projects Section */}
-          <section id="projects" className="flex flex-col gap-10 sm:gap-12">
+          <section id="projects" className="flex flex-col gap-10 sm:gap-12 relative">
             {/* Section Title */}
-            <div className="px-8 sm:px-10 md:px-14">
-              <h2 className="text-3xl font-semibold text-strong sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
-                Projects
-              </h2>
+            <div className="px-8 sm:px-10 md:px-14 sticky top-24 z-20 backdrop-blur-sm py-4 rounded-2xl bg-background/50">
+              <AnimatedCharacters
+                text="Projects"
+                className="text-3xl font-semibold text-strong sm:text-4xl md:text-5xl lg:text-6xl leading-tight"
+              />
             </div>
 
             {/* Project Cards Grid */}
-            <div className="flex flex-col gap-8 sm:gap-10 xl:grid xl:grid-cols-3">
+            <div className="flex flex-col gap-20 sm:gap-32">
               {projects.map((project, index) => (
-                <ProjectCard
-                  key={index}
-                  title={project.title}
-                  description={project.description}
-                  fullDescription={project.fullDescription}
-                  githubUrl={project.githubUrl}
-                  techStack={project.techStack}
-                  variant={project.variant}
-                  icon={project.icon}
-                />
+                <div 
+                  key={index} 
+                  className="sticky top-40 sm:top-48 md:top-56"
+                  style={{ paddingTop: `${index * 20}px` }}
+                >
+                  <StaggerItem>
+                    <ProjectCard
+                      title={project.title}
+                      description={project.description}
+                      fullDescription={project.fullDescription}
+                      githubUrl={project.githubUrl}
+                      techStack={project.techStack}
+                      variant={project.variant}
+                      icon={project.icon}
+                    />
+                  </StaggerItem>
+                </div>
               ))}
             </div>
           </section>

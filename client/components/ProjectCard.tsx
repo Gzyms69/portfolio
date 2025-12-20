@@ -1,5 +1,6 @@
 import { ReactNode, useState, useRef, useEffect } from "react";
 import { ExternalLink } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { GradientBackground, GradientVariant } from "./GradientBackground";
 import { getTechColor } from "@/lib/utils";
 
@@ -26,6 +27,14 @@ export const ProjectCard = ({
 }: ProjectCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   useEffect(() => {
     if (isExpanded && cardRef.current) {
@@ -50,23 +59,25 @@ export const ProjectCard = ({
 
   return (
     <div
-      ref={cardRef}
+      ref={containerRef}
       className={`glass-card flex flex-col gap-2 overflow-hidden p-2 cursor-pointer transition-all duration-500 ease-in-out hover:scale-[1.02] hover:shadow-2xl ${className}`}
       onClick={handleCardClick}
     >
       {/* Gradient Background Section */}
-      <div className={`relative transition-all duration-500 ease-in-out rounded-[2rem] ${isExpanded ? 'h-[300px]' : 'flex-1'}`}>
-        <GradientBackground variant={variant} className="flex-1 rounded-[2rem] h-full">
-          <div className="flex h-full flex-col items-center justify-center px-4 py-8 text-center sm:px-6 sm:py-12">
-            <h3 className="font-900 text-white leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl break-words hyphens-auto max-w-full">
-              {title}
-            </h3>
-          </div>
-        </GradientBackground>
+      <div className={`relative transition-all duration-500 ease-in-out rounded-[2rem] overflow-hidden ${isExpanded ? 'h-[300px]' : 'flex-1'}`}>
+        <motion.div style={{ y, height: "120%", position: "absolute", top: "-10%", left: 0, right: 0 }}>
+          <GradientBackground variant={variant} className="flex-1 rounded-[2rem] h-full">
+            <div className="flex h-full flex-col items-center justify-center px-4 py-8 text-center sm:px-6 sm:py-12">
+              <h3 className="font-900 text-white leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl break-words hyphens-auto max-w-full">
+                {title}
+              </h3>
+            </div>
+          </GradientBackground>
+        </motion.div>
         
         {/* Click to expand indicator - positioned at bottom of gradient */}
         {!isExpanded && (
-          <div className="absolute bottom-4 left-0 right-0 flex justify-center">
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center z-10">
             <p className="text-white/70 text-xs sm:text-sm font-medium">
               Click to expand
             </p>
