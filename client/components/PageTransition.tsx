@@ -39,7 +39,7 @@ const perspective = {
 
 export const PageTransition = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="bg-black overflow-hidden">
+    <div className="bg-transparent overflow-hidden">
       <motion.div {...anim(slide)} className="fixed top-0 left-0 w-full h-full bg-primary z-[100] pointer-events-none" />
       <motion.div {...anim(perspective)}>
         <motion.div {...anim(opacity)}>

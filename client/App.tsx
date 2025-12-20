@@ -7,9 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ScrollProgress } from "@/components/ScrollProgress";
-import { CustomCursor } from "@/components/CustomCursor";
 import { InteractiveBackground } from "@/components/InteractiveBackground";
-import { CursorProvider } from "@/hooks/use-cursor";
 import { AnimatePresence } from "framer-motion";
 import Index from "./pages/Index";
 import Contact from "./pages/Contact";
@@ -32,18 +30,15 @@ const AnimatedRoutes = () => {
 
 const App = () => (
   <TooltipProvider>
-    <CursorProvider>
-      <Toaster />
-      <Sonner />
-      <ScrollProgress />
-      <InteractiveBackground />
-      <CustomCursor />
-      <SmoothScroll>
-        <BrowserRouter>
-          <AnimatedRoutes />
-        </BrowserRouter>
-      </SmoothScroll>
-    </CursorProvider>
+    <Toaster />
+    <Sonner />
+    <ScrollProgress />
+    <InteractiveBackground />
+    <SmoothScroll>
+      <BrowserRouter>
+        <AnimatedRoutes />
+      </BrowserRouter>
+    </SmoothScroll>
   </TooltipProvider>
 );
 
