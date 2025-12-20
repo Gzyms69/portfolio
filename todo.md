@@ -1,6 +1,6 @@
 # Portfolio Animation Overhaul TODO
 
-Implementing techniques from Olivier Larose's "Top 5 Techniques for Web Animation".
+Implementing techniques from Olivier Larose's "Top 5 Techniques for Web Animation" and advanced interactive features.
 
 ## 1. Foundational Smooth Scroll
 - [x] Install and configure **Lenis Scroll** for smooth, non-jerky momentum scrolling.
@@ -26,3 +26,9 @@ Implementing techniques from Olivier Larose's "Top 5 Techniques for Web Animatio
 ## 6. Polishing & Easing
 - [x] Replace standard easings with custom `cubic-bezier` curves or spring physics for a more "organic" feel.
 - [x] Implement a custom LERP-based cursor (optional/bonus).
+
+## 7. Phase 2: High-End Interactive Features
+- [x] **Page Transitions**: Implement "curtain" or cross-fade transitions using `AnimatePresence`.
+- [x] **Magnetic Interactions**: Add "pull" effect to navigation icons and primary buttons.
+- [x] **Advanced Content Reveal**: Use clip-paths/masks for unrolling project card content.
+- [x] **Shader Background**: Enhance the interactive background with a liquid/grainy shader effect (using Three.js or high-end CSS/SVG).

@@ -124,13 +124,6 @@
   }
 }
 
-/* BookShop Theme Styles */
-.bg-dots-pattern {
-  @apply bg-background;
-  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0);
-  background-size: 20px 20px;
-}
-
 /* Custom scrollbar for webkit browsers */
 ::-webkit-scrollbar {
   width: 8px;
