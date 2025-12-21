@@ -1,6 +1,7 @@
-import { Home, Palette, Github, Eye, Menu, X } from "lucide-react";
+import { Home, Palette, Github, Eye, Menu, X, Boxes, Sparkles, Terminal } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTheme } from "@/hooks/use-theme";
+import { useBackground } from "@/hooks/use-background";
 import { useState, useRef, useEffect } from "react";
 import { portfolioConfig } from "@/lib/data";
 
@@ -8,7 +9,18 @@ export const Navigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { toggleTheme } = useTheme();
+  const { type: bgType, toggleBackground } = useBackground();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const getBackgroundIcon = () => {
+    if (bgType === 'ascii') return <Terminal className="h-6 w-6 transition-colors text-medium" strokeWidth={1} />;
+    return <Boxes className="h-6 w-6 transition-colors text-primary" strokeWidth={1} />;
+  };
+
+  const getBackgroundTitle = () => {
+    if (bgType === 'ascii') return "Switch to 3D Sticks";
+    return "Switch to ASCII Rain";
+  };
   const [isHoverOpened, setIsHoverOpened] = useState(false);
   const hoverTimeoutRef = useRef<NodeJS.Timeout>();
   const closeTimeoutRef = useRef<NodeJS.Timeout>();
@@ -146,6 +158,18 @@ export const Navigation = () => {
           <Palette className="h-6 w-6 text-medium" strokeWidth={1} />
         </button>
 
+        {/* Background Toggle */}
+        <button
+          onClick={toggleBackground}
+          className="flex h-12 w-12 items-center justify-center rounded-3xl transition-all duration-200 hover:bg-white/10 light:hover:bg-gray-300/40 light:border light:border-gray-400/40 hover:scale-110 active:scale-95 transform relative"
+          title={getBackgroundTitle()}
+        >
+          {getBackgroundIcon()}
+          {bgType === 'sticks' && (
+            <div className="absolute top-2 right-2 h-1.5 w-1.5 rounded-full bg-primary shadow-sm" />
+          )}
+        </button>
+
         {/* Separator */}
         <div className="mx-auto my-2 h-px w-8 bg-medium light:bg-gray-400 opacity-60"></div>
 
@@ -179,6 +203,12 @@ export const Navigation = () => {
            className="flex items-center justify-center rounded-2xl p-2 transition-all duration-200 hover:bg-white/10 light:hover:bg-gray-300/40 light:border light:border-gray-400/30 hover:scale-110 active:scale-95"
          >
            <Palette className="h-6 w-6 text-medium" strokeWidth={1} />
+         </button>
+         <button
+           onClick={toggleBackground}
+           className="flex items-center justify-center rounded-2xl p-2 transition-all duration-200 hover:bg-white/10 light:hover:bg-gray-300/40 light:border light:border-gray-400/30 hover:scale-110 active:scale-95"
+         >
+           {getBackgroundIcon()}
          </button>
          <div className="flex-1"></div>
          <button

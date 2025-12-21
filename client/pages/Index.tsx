@@ -16,8 +16,8 @@ export default function Index() {
         <Navigation />
 
         {/* Main Content */}
-        <main className="flex w-full justify-center px-4 sm:px-8 md:px-16 lg:px-20">
-          <div className="w-full max-w-7xl py-8 sm:py-16 md:py-24 lg:py-32">
+        <main className="flex w-full justify-center px-4 sm:px-6 md:px-8">
+          <div className="w-full max-w-[90rem] py-8 sm:py-16 md:py-24 lg:py-32">
             {/* Hero/About Section */}
             <section className="mb-20 sm:mb-32 md:mb-40 flex flex-col gap-8 sm:gap-10">
               <div className="glass-card flex max-w-2xl flex-col gap-8 sm:gap-10 p-8 sm:p-10 md:p-14 cursor-pointer transition-all duration-500 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
@@ -42,7 +42,7 @@ export default function Index() {
             {/* Projects Section */}
             <section id="projects" className="flex flex-col gap-10 sm:gap-12 relative">
               {/* Section Title */}
-              <div className="px-8 sm:px-10 md:px-14 sticky top-24 z-20 backdrop-blur-sm py-4 rounded-2xl bg-background/50">
+              <div className="px-4 sm:px-6 md:px-8 sticky top-24 z-20 backdrop-blur-sm py-4 rounded-2xl bg-background/50">
                 <AnimatedCharacters
                   text="Projects"
                   className="text-3xl font-semibold text-strong sm:text-4xl md:text-5xl lg:text-6xl leading-tight"
@@ -66,6 +66,7 @@ export default function Index() {
                         techStack={project.techStack}
                         variant={project.variant}
                         icon={project.icon}
+                        imageUrl={project.imageUrl}
                       />
                     </StaggerItem>
                   </div>

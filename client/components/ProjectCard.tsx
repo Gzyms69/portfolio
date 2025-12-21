@@ -1,9 +1,10 @@
 import { ReactNode, useState, useRef, useEffect } from "react";
 import { ExternalLink } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { GradientBackground, GradientVariant } from "./GradientBackground";
 import { getTechColor } from "@/lib/utils";
 import { TechTag } from "./ui/TechTag";
+import { GlitchImage } from "./ui/GlitchImage";
 
 interface ProjectCardProps {
   title: string;
@@ -13,6 +14,7 @@ interface ProjectCardProps {
   techStack: string[];
   icon: ReactNode;
   variant: GradientVariant;
+  imageUrl?: string;
   className?: string;
 }
 
@@ -24,18 +26,29 @@ export const ProjectCard = ({
   techStack,
   icon,
   variant,
+  imageUrl,
   className = "",
 }: ProjectCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // 3D Tilt Logic
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const translateY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   useEffect(() => {
     if (isExpanded && cardRef.current) {
@@ -58,15 +71,49 @@ export const ProjectCard = ({
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+
+    const rect = containerRef.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
-    <div
-      ref={containerRef}
-      className={`glass-card flex flex-col gap-2 overflow-hidden p-2 cursor-pointer transition-all duration-500 ease-in-out hover:scale-[1.02] hover:shadow-2xl ${className}`}
-      onClick={handleCardClick}
-    >
+    <div style={{ perspective: "1000px" }} className={isExpanded ? "z-50 relative" : "z-10"}>
+      <motion.div
+        ref={containerRef}
+        style={{
+          rotateX: rotateX,
+          rotateY: rotateY,
+          transformStyle: "preserve-3d",
+        }}
+        transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+        whileHover={{ scale: isExpanded ? 1 : 1.01 }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className={`glass-card flex flex-col gap-2 overflow-hidden p-2 cursor-pointer transition-shadow duration-500 ease-in-out hover:shadow-2xl ${className}`}
+        onClick={handleCardClick}
+      >
       {/* Gradient Background Section */}
-      <div className={`relative transition-all duration-500 ease-in-out rounded-[2rem] overflow-hidden ${isExpanded ? 'h-[300px]' : 'flex-1'}`}>
-        <motion.div style={{ y, height: "120%", position: "absolute", top: "-10%", left: 0, right: 0 }}>
+      <div 
+        style={{ transform: "translateZ(50px)" }}
+        className={`relative transition-all duration-500 ease-in-out rounded-[2rem] overflow-hidden ${isExpanded ? 'h-[300px]' : 'flex-1'}`}
+      >
+        <motion.div style={{ y: translateY, height: "120%", position: "absolute", top: "-10%", left: 0, right: 0 }}>
           <GradientBackground variant={variant} className="flex-1 rounded-[2rem] h-full">
             <div className="flex h-full flex-col items-center justify-center px-4 py-8 text-center sm:px-6 sm:py-12">
               <h3 className="font-900 text-white leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl break-words hyphens-auto max-w-full">
@@ -90,7 +137,10 @@ export const ProjectCard = ({
       <div className={`flex flex-col gap-4 px-6 py-3 sm:gap-6 sm:px-8 transition-all duration-500 ease-in-out ${isExpanded ? 'opacity-100' : 'opacity-70'}`}>
         {isExpanded ? (
           // Expanded Content
-          <div className="flex flex-col gap-4 animate-in fade-in duration-300">
+          <div className="flex flex-col gap-6 animate-in fade-in duration-500">
+            {/* Image Preview with Fragmented Glitch Reveal */}
+            {imageUrl && <GlitchImage src={imageUrl} alt={title} isExpanded={isExpanded} />}
+
             {/* Header with Icon */}
             <div className="flex items-center gap-4">
               <div className="flex shrink-0 items-center justify-center">{icon}</div>
@@ -100,7 +150,7 @@ export const ProjectCard = ({
                 </h4>
                 <div className="flex flex-wrap gap-1 mt-2">
                    {techStack.map((tech, index) => (
-                     <TechTag key={index} tech={tech} size="xs" />
+                     <TechTag key={index} tech={tech} size="sm" />
                    ))}
                  </div>
               </div>
@@ -133,6 +183,7 @@ export const ProjectCard = ({
           </div>
         )}
       </div>
+    </motion.div>
     </div>
   );
 };

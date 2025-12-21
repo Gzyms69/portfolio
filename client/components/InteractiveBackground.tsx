@@ -1,32 +1,43 @@
 import { motion, useScroll, useSpring, useMotionValue } from 'framer-motion';
 import { useEffect, useRef } from 'react';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { FontLoader } from 'three/addons/loaders/FontLoader.js';
+import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
+import { useBackground } from '@/hooks/use-background';
 
 export const InteractiveBackground = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { type } = useBackground();
   const { scrollY } = useScroll();
+  
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springX = useSpring(mouseX, { stiffness: 150, damping: 30 });
   const springY = useSpring(mouseY, { stiffness: 150, damping: 30 });
+  const mouseRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
+      mouseRef.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+      mouseRef.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [mouseX, mouseY]);
 
+  // --- 1. Canvas ASCII Implementation ---
   useEffect(() => {
+    if (type !== 'ascii') return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     let animationFrameId: number;
-    
-    // Config: Finding the "Goldilocks Zone"
     const GLITCH_CHARS = "!<>-_/[]{}—=+*^?#________";
     const characters = GLITCH_CHARS.split("");
     const layers = [
@@ -76,25 +87,19 @@ export const InteractiveBackground = () => {
         }
 
         item.morphTimer++;
-        const morphThreshold = item.isGlitching ? 2 : (60 + Math.random() * 400);
-        if (item.morphTimer > morphThreshold) {
+        if (item.morphTimer > (item.isGlitching ? 2 : 100)) {
           item.char = characters[Math.floor(Math.random() * characters.length)];
           item.morphTimer = 0;
         }
 
         ctx.font = `${layer.size}px monospace`;
-        
         if (item.isGlitching) {
-          const jitterX = (Math.random() - 0.5) * 3;
-          const jitterY = (Math.random() - 0.5) * 1.5;
-          ctx.shadowBlur = 5;
-          ctx.shadowColor = layer.glitchColor;
-          ctx.fillStyle = 'rgba(255, 0, 0, 0.15)';
-          ctx.fillText(item.char, item.x + jitterX + 1, renderY + jitterY);
-          ctx.fillStyle = 'rgba(0, 255, 255, 0.15)';
-          ctx.fillText(item.char, item.x + jitterX - 1, renderY + jitterY);
+          ctx.fillStyle = 'rgba(255, 0, 0, 0.2)';
+          ctx.fillText(item.char, item.x + 2, renderY);
+          ctx.fillStyle = 'rgba(0, 255, 255, 0.2)';
+          ctx.fillText(item.char, item.x - 2, renderY);
           ctx.fillStyle = layer.glitchColor; 
-          ctx.fillText(item.char, item.x + jitterX, renderY + jitterY);
+          ctx.fillText(item.char, item.x, renderY);
         } else {
           if (item.hasGlow) {
             ctx.shadowBlur = item.glowIntensity;
@@ -106,27 +111,100 @@ export const InteractiveBackground = () => {
           ctx.fillText(item.char, item.x, renderY);
         }
       });
-
-      ctx.shadowBlur = 0;
       animationFrameId = requestAnimationFrame(render);
     };
-
     render();
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', resize);
     };
-  }, [scrollY]);
+  }, [type, scrollY]);
+
+  // --- 2. Three.js - 3D Sticks Environment ---
+  useEffect(() => {
+    if (type !== 'sticks' || !containerRef.current) return;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 4000);
+    camera.position.z = 1500;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Capped at 1.5 for performance
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    // Disabled shadows for significant performance boost
+    renderer.shadowMap.enabled = false; 
+    containerRef.current.appendChild(renderer.domElement);
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.1));
+    // High-intensity HemiLight provides "fake" depth without shadow calculations
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x000000, 1.0)); 
+    
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    dirLight.position.set(500, 1000, 1000);
+    scene.add(dirLight);
+    
+    const mouseLight = new THREE.PointLight(0x00ffff, 4, 1000);
+    scene.add(mouseLight);
+
+    const stickGeometry = new THREE.BoxGeometry(2, 30, 2); 
+    const colors = [0x00ff41, 0xffaa00, 0xffff00]; 
+    const count = 600;
+    const mesh = new THREE.InstancedMesh(stickGeometry, new THREE.MeshLambertMaterial({ color: 0xffffff }), count);
+    
+    const data = Array.from({ length: count }, () => ({
+      position: new THREE.Vector3((Math.random() - 0.5) * 3000, (Math.random() - 0.5) * 4000, (Math.random() - 0.5) * 1500),
+      rotation: new THREE.Euler(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI),
+      rotationSpeed: new THREE.Euler(Math.random() * 0.02, Math.random() * 0.02, Math.random() * 0.02),
+      speed: 0.5 + Math.random() * 1.5,
+      color: new THREE.Color(colors[Math.floor(Math.random() * colors.length)])
+    }));
+
+    data.forEach((item, i) => mesh.setColorAt(i, item.color));
+    scene.add(mesh);
+
+    let animationFrameId: number;
+    const animate = () => {
+      const scrollValue = scrollY.get();
+      mouseLight.position.x = mouseRef.current.x * 1500;
+      mouseLight.position.y = mouseRef.current.y * 1000;
+      mouseLight.position.z = 600;
+
+      const matrix = new THREE.Matrix4();
+      data.forEach((item, i) => {
+        item.position.y -= item.speed;
+        const visualY = ((item.position.y + (scrollValue * 0.7) + 2000) % 4000 + 4000) % 4000 - 2000;
+        matrix.makeRotationFromEuler(item.rotation);
+        matrix.setPosition(item.position.x, visualY, item.position.z);
+        mesh.setMatrixAt(i, matrix);
+      });
+      mesh.instanceMatrix.needsUpdate = true;
+      renderer.render(scene, camera);
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    animate();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      renderer.dispose();
+      if (containerRef.current && renderer.domElement.parentElement) {
+        containerRef.current.removeChild(renderer.domElement);
+      }
+    };
+  }, [type, scrollY]);
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-[#030712] pointer-events-none">
-      <canvas ref={canvasRef} className="absolute inset-0" />
+      {type === 'ascii' && <canvas ref={canvasRef} className="absolute inset-0" />}
+      {type === 'sticks' && <div ref={containerRef} className="absolute inset-0" />}
+      
       <motion.div
         animate={{ scale: [1, 1.1, 0.9, 1], opacity: [0.03, 0.05, 0.04, 0.03] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         className="absolute h-[800px] w-[800px] rounded-full bg-primary/5 blur-[120px]"
         style={{ x: springX, y: springY, translateX: "-50%", translateY: "-50%" }}
       />
+
       <div className="absolute inset-0 opacity-[0.1] mix-blend-overlay">
         <svg viewBox="0 0 200 200" className="w-full h-full">
           <filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch" /></filter>

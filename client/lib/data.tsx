@@ -20,16 +20,18 @@ export const projects = [
     githubUrl: "https://github.com/Gzyms69/bookshop-library",
     techStack: ["Python", "FastAPI", "React", "TypeScript", "MS SQL Server", "Docker", "Tailwind CSS"],
     variant: "design" as const,
-    icon: <BookOpen className="h-8 w-8 text-gray-600 flex-shrink-0" />
+    icon: <BookOpen className="h-8 w-8 text-gray-600 flex-shrink-0" />,
+    imageUrl: "/bookshop.png"
   },
   {
-    title: "Kimi K2 Agent",
-    description: "AI-powered VS Code extension for automation - execute tasks through natural language and manage files",
-    fullDescription: "AI-powered automation extension for VS Code using Kimi K2 model. Execute tasks through natural language, manage files and run terminal commands, getting AI-formatted results. Features include: natural language task execution, advanced file operations, terminal integration with intelligent output formatting, chat interface for code questions, error recovery with comprehensive debugging, and support for multiple AI models (Kimi K2, Claude, GPT-4o, Gemini) via OpenRouter API.",
-    githubUrl: "https://github.com/Gzyms69/kimi-k2-agent",
-    techStack: ["TypeScript", "VS Code API", "OpenRouter", "Kimi K2", "Node.js"],
+    title: "Rust Polyglot Creator",
+    description: "Memory-safe CLI tool for generating files valid in multiple formats (PNG+ZIP, PNG+WAV)",
+    fullDescription: "A sophisticated command-line tool developed in Rust for generating 'polyglot files'—single files that are simultaneously valid in multiple file formats. This project demonstrates advanced bit-level file manipulation and deep understanding of binary structures. Features include: seamless creation of PNG+ZIP and PNG+WAV polyglots, robust extraction and validation engines, multiple embedding strategies (Metadata chunks vs Container-based), and a highly modular, memory-safe architecture characteristic of Rust systems programming.",
+    githubUrl: "https://github.com/Gzyms69/rust-polyglot",
+    techStack: ["Rust", "CLI", "Systems Programming", "Binary Manipulation"],
     variant: "design" as const,
-    icon: <Bot className="h-8 w-8 text-gray-600 flex-shrink-0" />
+    icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
+    imageUrl: "/polyglot.png"
   },
   {
     title: "Portfolio Website",
@@ -38,7 +40,8 @@ export const projects = [
     githubUrl: "https://github.com/Gzyms69/portfolio",
     techStack: ["React", "TypeScript", "Vite", "TailwindCSS", "Express", "Node.js", "Radix UI"],
     variant: "design" as const,
-    icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />
+    icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
+    imageUrl: "/portfolio.png"
   }
 ];
 
