@@ -1,5 +1,5 @@
 import { ReactNode, useState, useRef, useEffect } from "react";
-import { ExternalLink, Terminal as TerminalIcon, ShieldCheck } from "lucide-react";
+import { ExternalLink, Terminal as TerminalIcon } from "lucide-react";
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { GradientBackground, GradientVariant } from "./GradientBackground";
 import { TechTag } from "./ui/TechTag";
@@ -31,7 +31,6 @@ export const ProjectCard = ({
 }: ProjectCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { t } = useLanguage();
-  const cardRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0);

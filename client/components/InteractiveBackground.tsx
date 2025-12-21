@@ -1,9 +1,6 @@
 import { motion, useScroll, useSpring, useMotionValue } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { FontLoader } from 'three/addons/loaders/FontLoader.js';
-import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { useBackground } from '@/hooks/use-background';
 
 export const InteractiveBackground = () => {

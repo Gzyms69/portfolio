@@ -32,3 +32,9 @@ Implementing techniques from Olivier Larose's "Top 5 Techniques for Web Animatio
 - [x] **Magnetic Interactions**: Add "pull" effect to navigation icons and primary buttons.
 - [x] **Advanced Content Reveal**: Use clip-paths/masks for unrolling project card content.
 - [x] **Shader Background**: Enhance the interactive background with a liquid/grainy shader effect (using Three.js or high-end CSS/SVG).
+
+## 8. Technical Debt & Quality Improvements
+- [ ] **TypeScript Rigor**: Enable `strict: true` in `tsconfig.json` to fix potential type errors and improve code safety.
+- [ ] **Linting Standard**: Configure ESLint with `typescript-eslint` to enforce code quality beyond simple formatting.
+- [ ] **Test Coverage**: Expand `vitest` suite to cover core components and server routes. Currently only minimal utility tests exist.
+- [ ] **Shared Code**: Populate `shared/` directory with meaningful types shared between Client and Server to ensure end-to-end type safety.

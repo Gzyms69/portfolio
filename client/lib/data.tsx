@@ -1,4 +1,4 @@
-import { BookOpen, Zap, Github, Linkedin, Terminal } from "lucide-react";
+import { BookOpen, Zap } from "lucide-react";
 
 export type Language = 'pl' | 'en';
 

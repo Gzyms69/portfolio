@@ -1,10 +1,5 @@
 import { RequestHandler } from "express";
-
-interface ContactRequest {
-  name: string;
-  email: string;
-  message: string;
-}
+import { ContactRequest } from "@shared/api";
 
 // Basic sanitization function to prevent script injection
 function sanitizeInput(input: string): string {

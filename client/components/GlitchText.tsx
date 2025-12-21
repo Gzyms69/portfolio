@@ -17,7 +17,7 @@ export const GlitchText = ({ text, className = "" }: GlitchTextProps) => {
       setDisplayText(() =>
         text
           .split("")
-          .map((char, index) => {
+          .map((_char, index) => {
             if (index < iteration) return text[index];
             return GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
           })

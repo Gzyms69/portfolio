@@ -1,7 +1,6 @@
 import { Navigation } from "@/components/Navigation";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Footer } from "@/components/Footer";
-import { AnimatedText, AnimatedCharacters } from "@/components/AnimatedText";
 import { StaggerItem } from "@/components/Reveal";
 import { PageTransition } from "@/components/PageTransition";
 import { TechTag } from "@/components/ui/TechTag";

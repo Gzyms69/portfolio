@@ -58,8 +58,7 @@ portfolio-website/
 │   └── global.css            # Global styles and design tokens
 ├── server/                   # Express API backend
 │   ├── routes/
-│   │   ├── contact.ts        # Contact form API endpoint
-│   │   └── demo.ts          # Demo API endpoint
+│   │   └── contact.ts        # Contact form API endpoint
 │   └── index.ts              # Server setup and middleware
 ├── shared/                   # Shared types and interfaces
 │   └── api.ts                # API response types

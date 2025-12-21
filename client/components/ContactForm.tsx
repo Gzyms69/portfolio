@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Terminal } from 'lucide-react';
 import { useLanguage } from '@/hooks/use-language';
+import type { ContactRequest } from '@shared/api';
 
 export const ContactForm = () => {
-  const { t, language } = useLanguage();
-  const [formData, setFormData] = useState({
+  const { t } = useLanguage();
+  const [formData, setFormData] = useState<ContactRequest>({
     name: '',
     email: '',
     subject: '',

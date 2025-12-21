@@ -12,7 +12,7 @@ const BackgroundContext = createContext<BackgroundContextType | undefined>(undef
 export const BackgroundProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [type, setType] = useState<BackgroundType>(() => {
     const storedType = localStorage.getItem("portfolio-bg-type");
-    return (storedType as BackgroundType) || "sticks"; 
+    return (storedType as BackgroundType) || "ascii"; 
   });
 
   useEffect(() => {
@@ -20,11 +20,8 @@ export const BackgroundProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   }, [type]);
 
   const toggleBackground = () => {
-    setType((prev) => {
-      const newType = (prev === "ascii" ? "sticks" : "ascii");
-      return newType;
-    });
-  }
+    setType((prev) => (prev === "ascii" ? "sticks" : "ascii"));
+  };
 
   return (
     <BackgroundContext.Provider value={{ type, toggleBackground }}>

@@ -2,7 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AnimatedText, AnimatedCharacters } from "@/components/AnimatedText";
+import { AnimatedCharacters } from "@/components/AnimatedText";
 import { Reveal, StaggerContainer, StaggerItem } from "@/components/Reveal";
 import { PageTransition } from "@/components/PageTransition";
 import { cvData, portfolioConfig } from "@/lib/data";

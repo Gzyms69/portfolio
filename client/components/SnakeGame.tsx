@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useLanguage } from "@/hooks/use-language";
-import { Terminal, Trophy, RefreshCcw, LogOut } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Terminal, RefreshCcw, LogOut } from "lucide-react";
+import { motion } from "framer-motion";
 
 type Point = { x: number; y: number };
 
@@ -11,7 +10,6 @@ interface SnakeGameProps {
 }
 
 export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
-  const { t, language } = useLanguage();
   const gridSize = 20;
   const [snake, setSnake] = useState<Point[]>([{ x: 10, y: 10 }]);
   const [food, setFood] = useState<Point>({ x: 5, y: 5 });

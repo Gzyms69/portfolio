@@ -1,19 +1,17 @@
-import { Home, Palette, Github, Eye, Menu, X, Boxes, Terminal, Activity, Languages, Worm } from "lucide-react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Home, Github, Eye, Boxes, Terminal, Activity, Worm } from "lucide-react";
+import { useLocation } from "react-router-dom";
 import { useBackground } from "@/hooks/use-background";
 import { useLanguage } from "@/hooks/use-language";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { portfolioConfig } from "@/lib/data";
 import { motion, AnimatePresence } from "framer-motion";
 import { TerminalDialog } from "@/components/ui/TerminalDialog";
 import { SnakeGame } from "@/components/SnakeGame"; // Import the new SnakeGame component
 
 export const Navigation = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const { language, setLanguage, t } = useLanguage();
   const { type: bgType, toggleBackground } = useBackground();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSnakeConfirmOpen, setIsSnakeConfirmOpen] = useState(false);
   const [isSnakeGameOpen, setIsSnakeGameOpen] = useState(false); // State for SnakeGame modal
 
