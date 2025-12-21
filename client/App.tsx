@@ -14,6 +14,7 @@ import { AnimatePresence } from "framer-motion";
 import Index from "./pages/Index";
 import Contact from "./pages/Contact";
 import CV from "./pages/CV";
+import Snake from "./pages/Snake";
 import NotFound from "./pages/NotFound";
 
 const AnimatedRoutes = () => {
@@ -24,6 +25,7 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<Index />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cv" element={<CV />} />
+        <Route path="/snake" element={<Snake />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>

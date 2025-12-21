@@ -22,6 +22,8 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         mode: "MOTYW / TLO",
         repo: "KOD",
         lang: "JEZYK",
+        snake: "WAZ",
+        confirm_snake: "CZY NA PEWNO?",
         view_github: "Zobacz na GitHub",
         execute: "Uruchom link repozytorium"
       },
@@ -32,6 +34,8 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         mode: "THEME / BACKGROUND",
         repo: "REPO",
         lang: "LANG",
+        snake: "SNAKE",
+        confirm_snake: "ARE YOU SURE?",
         view_github: "View on GitHub",
         execute: "Execute Repository Link"
       }

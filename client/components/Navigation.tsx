@@ -1,4 +1,4 @@
-import { Home, Palette, Github, Eye, Menu, X, Boxes, Terminal, Activity, Languages } from "lucide-react";
+import { Home, Palette, Github, Eye, Menu, X, Boxes, Terminal, Activity, Languages, Worm } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useBackground } from "@/hooks/use-background";
 import { useLanguage } from "@/hooks/use-language";
@@ -15,6 +15,12 @@ export const Navigation = () => {
 
   const toggleLanguage = () => {
     setLanguage(language === 'pl' ? 'en' : 'pl');
+  };
+
+  const handleSnakeClick = () => {
+    if (window.confirm(t('confirm_snake'))) {
+      navigate('/snake');
+    }
   };
 
   const getBackgroundIcon = () => {
@@ -43,7 +49,7 @@ export const Navigation = () => {
     <>
       {/* Desktop Sidebar - Terminal Style */}
       <nav 
-        className={`fixed left-8 top-1/2 -translate-y-1/2 hidden flex-col gap-6 z-50 sm:flex`}
+        className={`fixed left-8 top-1/2 -translate-y-1/2 hidden flex-col gap-6 z-[100] sm:flex`}
       >
         <div className="relative bg-[#0a0f0a] border-2 border-primary/30 p-2 rounded-xl shadow-[0_0_20px_rgba(0,255,65,0.1)] flex flex-col gap-4 group hover:border-primary/60 transition-all duration-500">
           
@@ -87,13 +93,25 @@ export const Navigation = () => {
             <div className="h-px bg-primary/20 mx-2" />
 
             {/* GitHub */}
+            {/* GitHub */}
             <NavButton 
               onClick={() => handleExternalLink(portfolioConfig.socials.github)} 
+              label={t('repo')} 
               icon={<Github className="h-6 w-6" />} 
-              label="REPO" 
+            />
+
+            <div className="h-px bg-primary/20 mx-2" />
+
+            {/* Snake Game */}
+            <NavButton 
+              onClick={handleSnakeClick} 
+              label={t('snake')} 
+              icon={<Worm className="h-6 w-6" />} 
+              active={isActive('/snake')}
             />
           </div>
         </div>
+
         
         {/* Terminal Status Tag */}
         <div className="bg-primary/10 border border-primary/20 rounded-md px-2 py-1 flex items-center gap-2 self-center">
@@ -103,7 +121,7 @@ export const Navigation = () => {
       </nav>
 
       {/* Mobile Terminal Header */}
-      <nav className="fixed inset-x-5 top-5 flex items-center justify-between gap-3 rounded-xl border-2 border-primary/30 bg-[#0a0f0a] p-2 sm:hidden z-50 overflow-hidden shadow-[0_0_15px_rgba(0,255,65,0.1)]">
+      <nav className="fixed inset-x-5 top-5 flex items-center justify-between gap-3 rounded-xl border-2 border-primary/30 bg-[#0a0f0a] p-2 sm:hidden z-[100] overflow-hidden shadow-[0_0_15px_rgba(0,255,65,0.1)]">
          <div className="absolute inset-0 opacity-30 pointer-events-none">
             <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.05)_50%)] bg-[length:100%_4px]" />
          </div>
