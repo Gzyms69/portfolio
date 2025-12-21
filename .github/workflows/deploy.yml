@@ -25,7 +25,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build project
         run: npm run build # This creates the 'dist' folder
@@ -36,7 +36,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Uploads the built Vite folder
+          path: './dist/spa' # Uploads the built Vite folder
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
