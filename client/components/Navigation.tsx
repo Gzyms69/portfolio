@@ -2,6 +2,7 @@ import { Home, Palette, Github, Eye, Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTheme } from "@/hooks/use-theme";
 import { useState, useRef, useEffect } from "react";
+import { portfolioConfig } from "@/lib/data";
 
 export const Navigation = () => {
   const navigate = useNavigate();
@@ -150,7 +151,7 @@ export const Navigation = () => {
 
         {/* GitHub */}
         <button
-          onClick={() => handleExternalLink('https://github.com/Gzyms69')}
+          onClick={() => handleExternalLink(portfolioConfig.socials.github)}
           className="flex h-12 w-12 items-center justify-center rounded-3xl transition-all duration-200 hover:bg-white/10 light:hover:bg-gray-300/40 light:border light:border-gray-400/40 hover:scale-110 active:scale-95 transform group"
         >
           <Github className="h-6 w-6 text-medium transition-transform group-hover:rotate-12" strokeWidth={1} />
@@ -181,7 +182,7 @@ export const Navigation = () => {
          </button>
          <div className="flex-1"></div>
          <button
-           onClick={() => handleExternalLink('https://github.com/Gzyms69')}
+           onClick={() => handleExternalLink(portfolioConfig.socials.github)}
            className="flex items-center justify-center rounded-2xl p-2 transition-all duration-200 hover:bg-white/10 light:hover:bg-gray-300/40 light:border light:border-gray-400/30 hover:scale-110 active:scale-95"
          >
            <Github className="h-6 w-6 text-medium" strokeWidth={1} />

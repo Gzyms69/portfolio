@@ -5,84 +5,15 @@ import { Button } from "@/components/ui/button";
 import { AnimatedText, AnimatedCharacters } from "@/components/AnimatedText";
 import { Reveal, StaggerContainer, StaggerItem } from "@/components/Reveal";
 import { PageTransition } from "@/components/PageTransition";
-
-interface ExperienceEntry {
-  title: string;
-  company: string;
-  location: string;
-  period: string;
-  responsibilities: string[];
-}
-
-interface EducationEntry {
-  school: string;
-  degree: string;
-  field: string;
-  years: string;
-}
+import { cvData, portfolioConfig } from "@/lib/data";
 
 export default function CV() {
-  const experiences: ExperienceEntry[] = [
-    {
-      title: "Instruktor Programowania",
-      company: "Giganci Programowania",
-      location: "Kielce",
-      period: "2024.02 - Obecnie",
-      responsibilities: [
-        "Nauczanie uczniów liceum do egzaminu maturalnego z informatyki",
-        "Programowanie gier w Unity, poziom podstawowy i zaawansowany C++, C# oraz Python dla uczniów w wieku 12-18 lat",
-        "Wsparcie uczniów na Discord po zajęciach",
-      ],
-    },
-    {
-      title: "Specjalista ds. Operacji w Dziale Akcji Korporacyjnych",
-      company: "Brown Brothers Harriman",
-      location: "Kraków",
-      period: "2023.09 - 2023.12",
-      responsibilities: [
-        "Przetwarzanie akcji korporacyjnych i płatności dywidend",
-        "Komunikacja z klientami i eskalacja wewnętrzna",
-        "Sporządzanie raportów dziennych",
-      ],
-    },
-    {
-      title: "Specjalista ds. Odprawy Celnej",
-      company: "FedEx Express Europe",
-      location: "Kraków",
-      period: "2022.04 - 2023.07",
-      responsibilities: [
-        "Komunikacja e-mail i telefoniczna z klientami",
-        "Dokumentacja celna, faktury, listy przewozowe",
-        "Sporządzanie raportów statusu dziennego",
-      ],
-    },
-  ];
-
-  const education: EducationEntry[] = [
-    {
-      school: "AGH Kraków",
-      degree: "Inżynier",
-      field: "Elektronika i Telekomunikacja",
-      years: "2019-2020",
-    },
-    {
-      school: "Politechnika Krakowska",
-      degree: "Inżynier",
-      field: "Matematyka Stosowana",
-      years: "2020-2022",
-    },
-  ];
-
-  const skills = {
-    general: ["Marketing", "Analiza danych", "Projektowanie stron internetowych"],
-    tools: ["Microsoft Office", "Adobe Tools", "Język angielski C1/C2"],
-    programming: ["C++", "Python", "C", "JavaScript"],
-  };
+  const { experiences, education, skills } = cvData;
 
   const handleDownloadCV = () => {
     // Create a simple PDF or text file
     const cvContent = `
-DAWID CZERWIŃSKI
+${portfolioConfig.name.toUpperCase()}
 
 DOŚWIADCZENIE
 
@@ -138,18 +69,19 @@ Programowanie: C++, Python, C, JavaScript
 
         <main className="flex w-full justify-center px-4 sm:px-8 md:px-16 lg:px-20">
           <div className="w-full max-w-4xl py-8 sm:py-16 md:py-24 lg:py-32">
-            {/* Header */}
-            <section className="mb-12 flex flex-col gap-6 sm:gap-8">
-              <div className="flex flex-col gap-2">
-                <AnimatedCharacters
-                  text="Dawid Czerwiński"
-                  className="text-4xl font-semibold text-strong sm:text-5xl md:text-6xl leading-tight"
-                />
-                <AnimatedText
-                  text="Instruktor Programowania | Specjalista Operacji"
-                  className="text-weak text-base sm:text-lg"
-                />
-              </div>
+                      {/* Header */}
+                      <section className="mb-12 flex flex-col gap-6 sm:gap-8">
+                        <div className="flex flex-col gap-2">
+                          <AnimatedCharacters
+                            text={portfolioConfig.name}
+                            className="text-4xl font-semibold text-strong sm:text-5xl md:text-6xl leading-tight"
+                          />
+                          <AnimatedText
+                            text="Instruktor Programowania | Specjalista Operacji"
+                            className="text-weak text-base sm:text-lg"
+                          />
+                        </div>
+            
               <Reveal delay={0.3}>
                 <Button
                   onClick={handleDownloadCV}
