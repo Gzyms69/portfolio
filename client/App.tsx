@@ -40,7 +40,7 @@ const App = () => {
           <ScrollProgress />
           <InteractiveBackground />
           <SmoothScroll>
-            <BrowserRouter>
+            <BrowserRouter basename="/portfolio"> {/* Added basename for GitHub Pages */}
               <AnimatedRoutes />
             </BrowserRouter>
           </SmoothScroll>
