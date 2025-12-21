@@ -35,7 +35,7 @@ export const GlitchText = ({ text, className = "" }: GlitchTextProps) => {
 
   return (
     <span 
-      className={`relative inline-block cursor-default group ${className}`}
+      className={`relative inline-block cursor-default group font-['Major_Mono_Display'] ${className}`}
       onMouseEnter={() => {
         setIsHovered(true);
         scramble();
@@ -49,11 +49,11 @@ export const GlitchText = ({ text, className = "" }: GlitchTextProps) => {
       
       {isHovered && (
         <>
-          {/* 3. RGB Split Layers - More transparent and smaller offsets */}
-          <span className={`absolute left-0 top-0 -z-10 w-full text-red-500/20 animate-glitch-1 ${className}`}>
+          {/* 3. Terminal Palette Split Layers (Green/Amber instead of RGB) */}
+          <span className={`absolute left-0 top-0 -z-10 w-full text-primary/30 animate-glitch-1 ${className}`}>
             {displayText}
           </span>
-          <span className={`absolute left-0 top-0 -z-20 w-full text-cyan-500/20 animate-glitch-2 ${className}`}>
+          <span className={`absolute left-0 top-0 -z-20 w-full text-[#ffaa00]/30 animate-glitch-2 ${className}`}>
             {displayText}
           </span>
 

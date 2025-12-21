@@ -9,9 +9,6 @@ interface GlitchImageProps {
 
 export const GlitchImage = ({ src, alt, isExpanded }: GlitchImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const rows = 10;
-  const cols = 12;
-  const totalCells = rows * cols;
 
   useEffect(() => {
     const img = new Image();
@@ -21,119 +18,46 @@ export const GlitchImage = ({ src, alt, isExpanded }: GlitchImageProps) => {
 
   if (!isExpanded) return null;
 
-  const GLITCH_CHARS = "01!@#$%^&*()_+-=[]{}|;:,.<>?/";
-
   return (
-    <div className="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden group/img">
-      {/* 1. Background "Data Stream" layer - replaces the black hole */}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-md flex flex-wrap gap-1 p-2 overflow-hidden opacity-40">
-        {Array.from({ length: 400 }).map((_, i) => (
-          <motion.span
-            key={i}
-            initial={{ opacity: 0.2 }}
-            animate={{ 
-              opacity: [0.1, 0.5, 0.1],
-              color: ["#00ff41", "#ffffff", "#00ff41"] 
-            }}
-            transition={{ 
-              duration: Math.random() * 2 + 1, 
-              repeat: Infinity, 
-              delay: Math.random() * 2 
-            }}
-            className="text-[8px] font-mono select-none"
-          >
-            {GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)]}
-          </motion.span>
-        ))}
-      </div>
-
-      {/* 2. Glitchy Border - Animates in with the reconstruction */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="absolute inset-0 z-30 border border-primary/20 rounded-2xl pointer-events-none"
-      />
-
+    <div className="relative w-full h-64 sm:h-96 rounded-xl overflow-hidden bg-[#0a0a0c] border border-white/5 shadow-2xl group/glitch">
       {isLoaded ? (
-        <div 
-          className="absolute inset-0 grid h-full w-full z-20"
-          style={{ 
-            gridTemplateColumns: `repeat(${cols}, 1fr)`,
-            gridTemplateRows: `repeat(${rows}, 1fr)`
-          }}
-        >
-          {Array.from({ length: totalCells }).map((_, i) => {
-            const r = Math.floor(i / cols);
-            const c = i % cols;
-            
-            const randomX = (Math.random() - 0.5) * 600; 
-            const randomY = (Math.random() - 0.5) * 600;
-            const randomDelay = Math.random() * 0.5;
-            const randomDuration = 0.3 + Math.random() * 0.5;
+        <div className="absolute inset-0 w-full h-full">
+          {/* Elegant smooth reveal of the stock photo */}
+          <motion.img 
+            initial={{ opacity: 0, scale: 1.05, filter: "grayscale(1) brightness(0.5)" }}
+            animate={{ opacity: 1, scale: 1, filter: "grayscale(0) brightness(1)" }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            src={src}
+            alt={alt}
+            className="w-full h-full object-cover"
+          />
 
-            return (
-              <div key={i} className="relative h-full w-full overflow-hidden">
-                {/* Main Fragment with Snap-in logic */}
-                <motion.div
-                  initial={{ 
-                    opacity: 0, 
-                    x: randomX, 
-                    y: randomY, 
-                    scale: 3,
-                    filter: "brightness(5) contrast(5) blur(10px)"
-                  }}
-                  animate={{ 
-                    opacity: 1, 
-                    x: 0, 
-                    y: 0, 
-                    scale: 1,
-                    filter: "brightness(1) contrast(1) blur(0px)"
-                  }}
-                  transition={{ 
-                    duration: randomDuration, 
-                    delay: randomDelay,
-                    ease: [0.76, 0, 0.24, 1] // Snappy cubic-bezier
-                  }}
-                  className="relative h-full w-full"
-                  style={{
-                    backgroundImage: `url(${src})`,
-                    backgroundSize: `${cols * 100}% ${rows * 100}%`,
-                    backgroundPosition: `${(c / (cols - 1)) * 100}% ${(r / (rows - 1)) * 100}%`,
-                  }}
-                />
-              </div>
-            );
-          })}
-          
-          {/* 3. Fast RGB chromatic aberration flicker on expansion */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 1, 0] }}
-            transition={{ duration: 0.2, times: [0, 0.5, 1], delay: 0.1 }}
-            className="absolute inset-0 bg-white/20 z-40 mix-blend-overlay pointer-events-none"
+          {/* Minimalist technical overlays */}
+          <div className="absolute inset-0 z-10 pointer-events-none">
+            {/* Soft scanlines */}
+            <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px]" />
+            
+            {/* Subtle Vignette */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            
+            {/* Corner Accents */}
+            <div className="absolute top-4 left-4 w-4 h-4 border-l border-t border-primary/30" />
+            <div className="absolute bottom-4 right-4 w-4 h-4 border-r border-b border-primary/30" />
+          </div>
+
+          {/* Single fast-scanning data line */}
+          <motion.div 
+            initial={{ top: "-10%" }}
+            animate={{ top: "110%" }}
+            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            className="absolute left-0 right-0 h-px z-20 bg-primary/20 shadow-[0_0_10px_rgba(var(--primary-rgb),0.3)]"
           />
         </div>
       ) : (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/40 z-50">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="h-6 w-6 animate-spin rounded-full border border-primary/20 border-t-primary" />
         </div>
       )}
-      
-      {/* 4. Constant Digital Noise Overlay - Replaced Giphy with SVG Filter */}
-      <div className="absolute inset-0 opacity-[0.15] pointer-events-none z-40 mix-blend-overlay">
-        <svg viewBox="0 0 200 200" className="w-full h-full">
-          <filter id="noiseFilter">
-            <feTurbulence 
-              type="fractalNoise" 
-              baseFrequency="0.85" 
-              numOctaves="3" 
-              stitchTiles="stitch" 
-            />
-          </filter>
-          <rect width="100%" height="100%" filter="url(#noiseFilter)" />
-        </svg>
-      </div>
     </div>
   );
 };

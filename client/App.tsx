@@ -9,6 +9,7 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { InteractiveBackground } from "@/components/InteractiveBackground";
 import { BackgroundProvider } from "@/hooks/use-background";
+import { LanguageProvider } from "@/hooks/use-language";
 import { AnimatePresence } from "framer-motion";
 import Index from "./pages/Index";
 import Contact from "./pages/Contact";
@@ -30,19 +31,21 @@ const AnimatedRoutes = () => {
 };
 
 const App = () => (
-  <TooltipProvider>
-    <BackgroundProvider>
-      <Toaster />
-      <Sonner />
-      <ScrollProgress />
-      <InteractiveBackground />
-      <SmoothScroll>
-        <BrowserRouter>
-          <AnimatedRoutes />
-        </BrowserRouter>
-      </SmoothScroll>
-    </BackgroundProvider>
-  </TooltipProvider>
+  <LanguageProvider>
+    <TooltipProvider>
+      <BackgroundProvider>
+        <Toaster />
+        <Sonner />
+        <ScrollProgress />
+        <InteractiveBackground />
+        <SmoothScroll>
+          <BrowserRouter>
+            <AnimatedRoutes />
+          </BrowserRouter>
+        </SmoothScroll>
+      </BackgroundProvider>
+    </TooltipProvider>
+  </LanguageProvider>
 );
 
 createRoot(document.getElementById("root")!).render(<App />);

@@ -6,14 +6,17 @@ import { AnimatedText, AnimatedCharacters } from "@/components/AnimatedText";
 import { Reveal, StaggerContainer, StaggerItem } from "@/components/Reveal";
 import { PageTransition } from "@/components/PageTransition";
 import { cvData, portfolioConfig } from "@/lib/data";
+import { useLanguage } from "@/hooks/use-language";
 
 export default function CV() {
   const { experiences, education, skills } = cvData;
+  const { language } = useLanguage();
+  const content = portfolioConfig[language];
 
   const handleDownloadCV = () => {
     // Create a simple PDF or text file
     const cvContent = `
-${portfolioConfig.name.toUpperCase()}
+${content.name.toUpperCase()}
 
 DOŚWIADCZENIE
 
@@ -72,14 +75,12 @@ Programowanie: C++, Python, C, JavaScript
                       {/* Header */}
                       <section className="mb-12 flex flex-col gap-6 sm:gap-8">
                         <div className="flex flex-col gap-2">
-                          <AnimatedCharacters
-                            text={portfolioConfig.name}
-                            className="text-4xl font-semibold text-strong sm:text-5xl md:text-6xl leading-tight"
-                          />
-                          <AnimatedText
-                            text="Instruktor Programowania | Specjalista Operacji"
-                            className="text-weak text-base sm:text-lg"
-                          />
+                          <h1 className="text-4xl font-bold font-['Major_Mono_Display'] text-primary sm:text-5xl md:text-6xl lg:text-7xl leading-none">
+                            {content.name}
+                          </h1>
+                          <p className="font-['Major_Mono_Display'] text-lg sm:text-xl text-primary/80 lowercase">
+                            {content.title}
+                          </p>
                         </div>
             
               <Reveal delay={0.3}>

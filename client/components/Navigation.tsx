@@ -1,30 +1,26 @@
-import { Home, Palette, Github, Eye, Menu, X, Boxes, Sparkles, Terminal } from "lucide-react";
+import { Home, Palette, Github, Eye, Menu, X, Boxes, Terminal, Activity, Languages } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useTheme } from "@/hooks/use-theme";
 import { useBackground } from "@/hooks/use-background";
+import { useLanguage } from "@/hooks/use-language";
 import { useState, useRef, useEffect } from "react";
 import { portfolioConfig } from "@/lib/data";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const Navigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { toggleTheme } = useTheme();
+  const { language, setLanguage, t } = useLanguage();
   const { type: bgType, toggleBackground } = useBackground();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const getBackgroundIcon = () => {
-    if (bgType === 'ascii') return <Terminal className="h-6 w-6 transition-colors text-medium" strokeWidth={1} />;
-    return <Boxes className="h-6 w-6 transition-colors text-primary" strokeWidth={1} />;
+  const toggleLanguage = () => {
+    setLanguage(language === 'pl' ? 'en' : 'pl');
   };
 
-  const getBackgroundTitle = () => {
-    if (bgType === 'ascii') return "Switch to 3D Sticks";
-    return "Switch to ASCII Rain";
+  const getBackgroundIcon = () => {
+    if (bgType === 'ascii') return <Terminal className="h-6 w-6 text-primary" strokeWidth={1.5} />;
+    return <Boxes className="h-6 w-6 text-primary" strokeWidth={1.5} />;
   };
-  const [isHoverOpened, setIsHoverOpened] = useState(false);
-  const hoverTimeoutRef = useRef<NodeJS.Timeout>();
-  const closeTimeoutRef = useRef<NodeJS.Timeout>();
-  const hoverZoneRef = useRef<HTMLDivElement>(null);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -43,181 +39,122 @@ export const Navigation = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleHoverEnter = () => {
-   // Clear any pending close timeout to prevent closing
-   if (closeTimeoutRef.current) {
-     clearTimeout(closeTimeoutRef.current);
-     closeTimeoutRef.current = undefined;
-   }
-
-   // Clear any pending open timeout
-   if (hoverTimeoutRef.current) {
-     clearTimeout(hoverTimeoutRef.current);
-   }
-
-   // Only trigger hover opening if sidebar is closed and not manually toggled
-   if (!isSidebarOpen && !isHoverOpened) {
-     hoverTimeoutRef.current = setTimeout(() => {
-       setIsSidebarOpen(true);
-       setIsHoverOpened(true);
-     }, 700);
-   }
-  };
-
-  const handleHoverLeave = (e: React.MouseEvent) => {
-   // Clear any pending open timeout
-   if (hoverTimeoutRef.current) {
-     clearTimeout(hoverTimeoutRef.current);
-     hoverTimeoutRef.current = undefined;
-   }
-   
-   // Only close if sidebar was opened via hover (not manual click)
-   if (isHoverOpened) {
-     // Check if mouse is still in the left region (within 150px)
-     const isStillInLeftRegion = e.clientX < 150;
-     
-     if (!isStillInLeftRegion) {
-       // Add delay before closing to prevent flickering
-       closeTimeoutRef.current = setTimeout(() => {
-         setIsSidebarOpen(false);
-         setIsHoverOpened(false);
-       }, 300);
-     }
-   }
-  };
-
-  const handleToggleClick = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-    setIsHoverOpened(false);
-  };
-
-  useEffect(() => {
-    return () => {
-      if (hoverTimeoutRef.current) {
-        clearTimeout(hoverTimeoutRef.current);
-      }
-      if (closeTimeoutRef.current) {
-        clearTimeout(closeTimeoutRef.current);
-      }
-    };
-  }, []);
-
   return (
     <>
-      {/* Hover Zone for Left Side - covers entire left region including open sidebar */}
-      <div
-        ref={hoverZoneRef}
-        className="fixed left-0 top-0 hidden h-screen w-40 sm:block z-30"
-        onMouseEnter={handleHoverEnter}
-        onMouseLeave={handleHoverLeave}
-      />
-
-      {/* Toggle Button */}
-      <button
-        onClick={handleToggleClick}
-        className="fixed left-5 top-5 hidden z-50 h-12 w-12 items-center justify-center rounded-3xl border border-white/10 bg-white/5 backdrop-blur-[20px] transition-all duration-200 hover:bg-white/10 light:border-gray-300 light:bg-white light:shadow-md sm:flex"
-      >
-        {isSidebarOpen ? (
-          <X className="h-6 w-6 text-medium" strokeWidth={1} />
-        ) : (
-          <Menu className="h-6 w-6 text-medium" strokeWidth={1} />
-        )}
-      </button>
-
-      {/* Desktop Sidebar */}
+      {/* Desktop Sidebar - Terminal Style */}
       <nav 
-        className={`fixed top-1/2 hidden -translate-y-1/2 flex-col gap-3 rounded-[5rem] border border-white/10 bg-gradient-to-b from-white/5 via-white/2 to-white/0 p-1 backdrop-blur-[20px] transition-all duration-300 sm:flex light:border-gray-200 light:bg-gradient-to-b light:from-white light:via-gray-50 light:to-gray-100 light:shadow-lg z-50 ${
-        isSidebarOpen ? 'left-5' : 'left-0 -translate-x-24'
-      }`}
+        className={`fixed left-8 top-1/2 -translate-y-1/2 hidden flex-col gap-6 z-50 sm:flex`}
       >
-        {/* Home */}
-        <div className="relative flex h-14 w-12 items-center justify-center">
-           {isActive('/') && <div className="absolute inset-0 rounded-3xl bg-white/10 light:bg-gray-300/40"></div>}
-           <button
-             onClick={handleHomeScroll}
-             className="relative z-10 flex h-14 w-12 items-center justify-center rounded-3xl transition-all duration-200 hover:bg-white/20 light:hover:bg-gray-300/50 light:border light:border-gray-400/40 hover:scale-110 active:scale-95"
-           >
-             <Home className={`h-8 w-8 transition-colors ${isActive('/') ? 'text-white light:text-gray-900' : 'text-medium'}`} strokeWidth={1} />
-           </button>
-           {isActive('/') && <div className="absolute -bottom-2 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-white light:bg-gray-900"></div>}
-         </div>
+        <div className="relative bg-[#0a0f0a] border-2 border-primary/30 p-2 rounded-xl shadow-[0_0_20px_rgba(0,255,65,0.1)] flex flex-col gap-4 group hover:border-primary/60 transition-all duration-500">
+          
+          {/* CRT Overlay for Nav - Now absolute to allow overflow content */}
+          <div className="absolute inset-0 z-0 pointer-events-none opacity-40 rounded-xl overflow-hidden">
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.05)_50%)] bg-[length:100%_4px]" />
+          </div>
 
-        {/* Projects */}
-        <button
-          onClick={handleProjectsScroll}
-          className="flex h-12 w-12 items-center justify-center rounded-3xl transition-all duration-200 hover:bg-white/10 light:hover:bg-gray-300/40 light:border light:border-gray-400/40 hover:scale-110 active:scale-95 transform"
-        >
-          <Eye className="h-6 w-6 text-medium" strokeWidth={1} />
-        </button>
+          <div className="relative z-10 flex flex-col gap-4">
+            {/* Home Link */}
+            <NavButton 
+              onClick={handleHomeScroll} 
+              icon={<Home className="h-6 w-6" />} 
+              label="HOME" 
+              active={isActive('/')}
+            />
 
-        {/* Theme Toggle */}
-        <button
-          onClick={toggleTheme}
-          className="flex h-12 w-12 items-center justify-center rounded-3xl transition-all duration-200 hover:bg-white/10 light:hover:bg-gray-300/40 light:border light:border-gray-400/40 hover:scale-110 active:scale-95 transform"
-        >
-          <Palette className="h-6 w-6 text-medium" strokeWidth={1} />
-        </button>
+            {/* Projects Link */}
+            <NavButton 
+              onClick={handleProjectsScroll} 
+              icon={<Eye className="h-6 w-6" />} 
+              label="DATA" 
+            />
 
-        {/* Background Toggle */}
-        <button
-          onClick={toggleBackground}
-          className="flex h-12 w-12 items-center justify-center rounded-3xl transition-all duration-200 hover:bg-white/10 light:hover:bg-gray-300/40 light:border light:border-gray-400/40 hover:scale-110 active:scale-95 transform relative"
-          title={getBackgroundTitle()}
-        >
-          {getBackgroundIcon()}
-          {bgType === 'sticks' && (
-            <div className="absolute top-2 right-2 h-1.5 w-1.5 rounded-full bg-primary shadow-sm" />
-          )}
-        </button>
+            <div className="h-px bg-primary/20 mx-2" />
 
-        {/* Separator */}
-        <div className="mx-auto my-2 h-px w-8 bg-medium light:bg-gray-400 opacity-60"></div>
+            {/* Background Toggle */}
+            <NavButton 
+              onClick={toggleBackground} 
+              icon={getBackgroundIcon()} 
+              label={t('mode')} 
+            />
 
-        {/* GitHub */}
-        <button
-          onClick={() => handleExternalLink(portfolioConfig.socials.github)}
-          className="flex h-12 w-12 items-center justify-center rounded-3xl transition-all duration-200 hover:bg-white/10 light:hover:bg-gray-300/40 light:border light:border-gray-400/40 hover:scale-110 active:scale-95 transform group"
-        >
-          <Github className="h-6 w-6 text-medium transition-transform group-hover:rotate-12" strokeWidth={1} />
-        </button>
+            {/* Language Toggle */}
+            <NavButton 
+              onClick={toggleLanguage} 
+              icon={<div className="font-['Major_Mono_Display'] text-xs font-bold">{language.toUpperCase()}</div>} 
+              label={t('lang')} 
+            />
+
+            <div className="h-px bg-primary/20 mx-2" />
+
+            {/* GitHub */}
+            <NavButton 
+              onClick={() => handleExternalLink(portfolioConfig.socials.github)} 
+              icon={<Github className="h-6 w-6" />} 
+              label="REPO" 
+            />
+          </div>
+        </div>
+        
+        {/* Terminal Status Tag */}
+        <div className="bg-primary/10 border border-primary/20 rounded-md px-2 py-1 flex items-center gap-2 self-center">
+          <Activity className="h-3 w-3 text-primary animate-pulse" />
+          <span className="text-[8px] font-mono text-primary/60 tracking-widest">NAV_READY</span>
+        </div>
       </nav>
 
-      {/* Mobile Top Navigation Bar */}
-      <nav className="fixed inset-x-5 top-5 flex items-center gap-3 rounded-3xl border border-white/10 bg-gradient-to-r from-white/5 to-white/0 p-2 backdrop-blur-[20px] sm:hidden light:border-gray-200 light:bg-gradient-to-r light:from-white light:to-gray-50 light:shadow-lg">
-         <button
-           onClick={handleHomeScroll}
-           className={`flex items-center justify-center rounded-2xl p-2 transition-all duration-200 ${
-             isActive('/') ? 'bg-white/20 light:bg-gray-300/50 light:border light:border-gray-400/40' : 'bg-white/10 light:bg-gray-300/30 light:border light:border-gray-400/30'
-           } hover:bg-white/20 light:hover:bg-gray-300/50 light:hover:border-gray-400/40 hover:scale-110 active:scale-95`}
-         >
-           <Home className={`h-6 w-6 transition-colors ${isActive('/') ? 'text-white light:text-gray-900' : 'text-medium'}`} strokeWidth={1} />
-         </button>
-         <button
-           onClick={handleProjectsScroll}
-           className="flex items-center justify-center rounded-2xl p-2 transition-all duration-200 hover:bg-white/10 light:hover:bg-gray-300/40 light:border light:border-gray-400/30 hover:scale-110 active:scale-95"
-         >
-           <Eye className="h-6 w-6 text-medium" strokeWidth={1} />
-         </button>
-         <button
-           onClick={toggleTheme}
-           className="flex items-center justify-center rounded-2xl p-2 transition-all duration-200 hover:bg-white/10 light:hover:bg-gray-300/40 light:border light:border-gray-400/30 hover:scale-110 active:scale-95"
-         >
-           <Palette className="h-6 w-6 text-medium" strokeWidth={1} />
-         </button>
-         <button
-           onClick={toggleBackground}
-           className="flex items-center justify-center rounded-2xl p-2 transition-all duration-200 hover:bg-white/10 light:hover:bg-gray-300/40 light:border light:border-gray-400/30 hover:scale-110 active:scale-95"
-         >
-           {getBackgroundIcon()}
-         </button>
-         <div className="flex-1"></div>
-         <button
-           onClick={() => handleExternalLink(portfolioConfig.socials.github)}
-           className="flex items-center justify-center rounded-2xl p-2 transition-all duration-200 hover:bg-white/10 light:hover:bg-gray-300/40 light:border light:border-gray-400/30 hover:scale-110 active:scale-95"
-         >
-           <Github className="h-6 w-6 text-medium" strokeWidth={1} />
-         </button>
-       </nav>
+      {/* Mobile Terminal Header */}
+      <nav className="fixed inset-x-5 top-5 flex items-center justify-between gap-3 rounded-xl border-2 border-primary/30 bg-[#0a0f0a] p-2 sm:hidden z-50 overflow-hidden shadow-[0_0_15px_rgba(0,255,65,0.1)]">
+         <div className="absolute inset-0 opacity-30 pointer-events-none">
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.05)_50%)] bg-[length:100%_4px]" />
+         </div>
+         
+         <div className="relative z-10 flex gap-2">
+           <button onClick={handleHomeScroll} className="p-2 border border-primary/20 rounded text-primary hover:bg-primary/10">
+             <Home className="h-5 w-5" />
+           </button>
+           <button onClick={handleProjectsScroll} className="p-2 border border-primary/20 rounded text-primary hover:bg-primary/10">
+             <Eye className="h-5 w-5" />
+           </button>
+         </div>
+
+         <div className="relative z-10 font-['VT323'] text-primary text-lg tracking-widest">
+           MENU_SYSTEM
+         </div>
+
+         <div className="relative z-10 flex gap-2">
+            <button onClick={toggleLanguage} className="p-2 border border-primary/20 rounded text-primary hover:bg-primary/10 font-['Major_Mono_Display'] text-xs">
+              {language.toUpperCase()}
+            </button>
+            <button onClick={() => handleExternalLink(portfolioConfig.socials.github)} className="p-2 border border-primary/20 rounded text-primary hover:bg-primary/10">
+              <Github className="h-5 w-5" />
+            </button>
+         </div>
+      </nav>
     </>
   );
 };
+
+interface NavButtonProps {
+  onClick: () => void;
+  icon: React.ReactNode;
+  label: string;
+  active?: boolean;
+}
+
+const NavButton = ({ onClick, icon, label, active }: NavButtonProps) => (
+  <button
+    onClick={onClick}
+    className={`group relative flex h-12 w-12 flex-col items-center justify-center rounded-lg border transition-all duration-300 ${
+      active 
+      ? 'bg-primary/20 border-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' 
+      : 'bg-primary/5 border-primary/20 hover:bg-primary/15 hover:border-primary/40'
+    }`}
+  >
+    <div className={`transition-colors ${active ? 'text-primary shadow-[0_0_5px_rgba(0,255,65,0.5)]' : 'text-primary/60 group-hover:text-primary'}`}>
+      {icon}
+    </div>
+    <span className="absolute left-16 opacity-0 group-hover:opacity-100 transition-all duration-300 font-['VT323'] text-2xl text-primary bg-[#0a0f0a] border border-primary/30 px-3 py-1 rounded-sm pointer-events-none whitespace-nowrap shadow-[0_0_15px_rgba(0,255,65,0.2)] z-[100] translate-x-[-10px] group-hover:translate-x-0 uppercase">
+      [ {label} ]
+    </span>
+  </button>
+);
