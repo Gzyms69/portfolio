@@ -3,6 +3,7 @@ import { ExternalLink } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { GradientBackground, GradientVariant } from "./GradientBackground";
 import { getTechColor } from "@/lib/utils";
+import { TechTag } from "./ui/TechTag";
 
 interface ProjectCardProps {
   title: string;
@@ -98,17 +99,9 @@ export const ProjectCard = ({
                   {title}
                 </h4>
                 <div className="flex flex-wrap gap-1 mt-2">
-                   {techStack.map((tech, index) => {
-                     const colors = getTechColor(tech);
-                     return (
-                       <span
-                         key={index}
-                         className={`px-2 py-1 text-xs rounded-full border transition-all duration-200 ${colors.bg} ${colors.text} ${colors.border} ${colors.hover}`}
-                       >
-                         {tech}
-                       </span>
-                     );
-                   })}
+                   {techStack.map((tech, index) => (
+                     <TechTag key={index} tech={tech} size="xs" />
+                   ))}
                  </div>
               </div>
             </div>

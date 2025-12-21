@@ -6,6 +6,7 @@ import { getTechColor } from "@/lib/utils";
 import { AnimatedText, AnimatedCharacters } from "@/components/AnimatedText";
 import { StaggerContainer, StaggerItem } from "@/components/Reveal";
 import { PageTransition } from "@/components/PageTransition";
+import { TechTag } from "@/components/ui/TechTag";
 
 // Project data
 const projects = [
@@ -62,17 +63,9 @@ export default function Index() {
                 
                 {/* Tech Stack Tags */}
                 <div className="flex flex-wrap gap-2">
-                  {["Python", "React", "TypeScript", "FastAPI", "Node.js", "Docker", "Tailwind CSS", "SQL"].map((tech, index) => {
-                    const colors = getTechColor(tech);
-                    return (
-                      <span
-                        key={index}
-                        className={`px-3 py-1.5 text-sm rounded-full border transition-all duration-200 ${colors.bg} ${colors.text} ${colors.border} ${colors.hover}`}
-                      >
-                        {tech}
-                      </span>
-                    );
-                  })}
+                  {["Python", "React", "TypeScript", "FastAPI", "Node.js", "Docker", "Tailwind CSS", "SQL"].map((tech, index) => (
+                    <TechTag key={index} tech={tech} />
+                  ))}
                 </div>
               </div>
             </section>
