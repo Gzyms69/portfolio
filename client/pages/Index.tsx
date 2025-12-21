@@ -10,6 +10,7 @@ import { projects, portfolioConfig } from "@/lib/data";
 import { Terminal as TerminalIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/hooks/use-language";
+import { ContactForm } from "@/components/ContactForm"; // Added ContactForm import
 
 export default function Index() {
   const { language, t } = useLanguage();
@@ -24,10 +25,12 @@ export default function Index() {
         {/* Main Content */}
         <main className="flex w-full justify-center px-4 sm:px-6 md:px-8">
           <div className="w-full max-w-[90rem] py-8 sm:py-16 md:py-24 lg:py-32">
-            {/* Hero/About Section */}
-            <section className="mb-20 sm:mb-32 md:mb-40 flex flex-col gap-8 sm:gap-10">
-              <div className="relative group max-w-3xl">
-                {/* CRT Screen Overlays for Hero */}
+            {/* Hero & Contact Form Wrapper */}
+            <div className="flex flex-col lg:flex-row gap-16 lg:gap-8 mb-20 sm:mb-32 md:mb-40">
+              {/* Hero/About Section */}
+              <section className="flex flex-col gap-8 sm:gap-10 lg:mb-0 lg:w-2/3"> {/* Added lg:w-2/3 */}
+                <div className="relative group w-full"> {/* Changed max-w-3xl to w-full */}
+                  {/* CRT Screen Overlays for Hero */}
                 <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden rounded-xl">
                   <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.03)_50%)] bg-[length:100%_4px]" />
                   <motion.div 
@@ -71,6 +74,12 @@ export default function Index() {
                 </div>
               </div>
             </section>
+            
+            {/* Contact Form Section */}
+            <section className="lg:w-1/3"> {/* Added lg:w-1/3 */}
+              <ContactForm />
+            </section>
+            </div> {/* Closing tag for Hero & Contact Form Wrapper */}
 
             {/* Projects Section */}
             <section id="projects" className="flex flex-col gap-10 sm:gap-12 relative">

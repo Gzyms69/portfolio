@@ -25,7 +25,18 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         snake: "WAZ",
         confirm_snake: "CZY NA PEWNO?",
         view_github: "Zobacz na GitHub",
-        execute: "Uruchom link repozytorium"
+        execute: "Uruchom link repozytorium",
+        contact_system: "system_kontaktowy",
+        send_message: "wyslij_wiadomosc",
+        name_label: "imie",
+        name_placeholder: "wpisz_swoje_imie",
+        email_label: "email",
+        email_placeholder: "wpisz_swoj_adres_email",
+        subject_label: "temat",
+        subject_placeholder: "wpisz_temat_wiadomosci",
+        message_label: "wiadomosc",
+        message_placeholder: "wpisz_swoja_wiadomosc",
+        send_button: "wyslij"
       },
       en: {
         projects: "PROJECTS",
@@ -37,7 +48,18 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         snake: "SNAKE",
         confirm_snake: "ARE YOU SURE?",
         view_github: "View on GitHub",
-        execute: "Execute Repository Link"
+        execute: "Execute Repository Link",
+        contact_system: "contact_system",
+        send_message: "send_message",
+        name_label: "name",
+        name_placeholder: "enter_your_name",
+        email_label: "email",
+        email_placeholder: "enter_your_email_address",
+        subject_label: "subject",
+        subject_placeholder: "enter_message_subject",
+        message_label: "message",
+        message_placeholder: "enter_your_message",
+        send_button: "send"
       }
     };
     return uiStrings[language][key] || key;
