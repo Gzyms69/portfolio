@@ -5,7 +5,7 @@ interface GlitchTextProps {
   className?: string;
 }
 
-const GLITCH_CHARS = "!<>-_\/[]{}—=+*^?#________";
+const GLITCH_CHARS = "!<>-_/[]{}—=+*^?#________";
 
 export const GlitchText = ({ text, className = "" }: GlitchTextProps) => {
   const [displayText, setDisplayText] = useState(text);

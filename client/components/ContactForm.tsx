@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Terminal } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Terminal, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { useLanguage } from '@/hooks/use-language';
+import { portfolioConfig } from '@/lib/data';
 import type { ContactRequest } from '@shared/api';
 
 export const ContactForm = () => {
   const { t } = useLanguage();
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState<ContactRequest>({
     name: '',
     email: '',
@@ -19,20 +21,26 @@ export const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatus('loading');
+
     try {
-      // Correctly convert FormData to an iterable for URLSearchParams
-      const formData = new FormData(e.target as HTMLFormElement);
-      const encoded = new URLSearchParams(Array.from(formData.entries()) as string[][]).toString();
-      await fetch("/", {
+      const response = await fetch(`https://formspree.io/f/${portfolioConfig.contact.formspreeId}`, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encoded,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-      alert("Message sent! (Check your email inbox if this is deployed on Netlify)"); // Temporary alert for local testing
-      setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        // Reset to idle after 5 seconds
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+      }
     } catch (error) {
       console.error("Form submission error:", error);
-      alert("Error sending message."); // Temporary alert for local testing
+      setStatus('error');
     }
   };
 
@@ -158,12 +166,46 @@ export const ContactForm = () => {
             {/* Submit Button */}
             <motion.button
               type="submit"
+              disabled={status === 'loading'}
               whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(0,255,65,0.4)' }}
               whileTap={{ scale: 0.98 }}
-              className="mt-4 w-full bg-primary/10 border border-primary/60 text-primary font-['VT323'] text-xl uppercase py-3 rounded tracking-wider shadow-[0_0_10px_rgba(0,255,65,0.2)]"
+              className="mt-4 w-full bg-primary/10 border border-primary/60 text-primary font-['VT323'] text-xl uppercase py-3 rounded tracking-wider shadow-[0_0_10px_rgba(0,255,65,0.2)] flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {t('send_button')}
+              {status === 'loading' ? (
+                <>
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                  <span>SENDING_DATA...</span>
+                </>
+              ) : (
+                t('send_button')
+              )}
             </motion.button>
+
+            {/* Status Messages */}
+            <AnimatePresence>
+              {status === 'success' && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="mt-4 flex items-center gap-3 text-green-500 font-['VT323'] text-lg"
+                >
+                  <CheckCircle2 className="h-5 w-5" />
+                  <span>TRANSMISSION_COMPLETE // MESSAGE_SENT</span>
+                </motion.div>
+              )}
+              {status === 'error' && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="mt-4 flex items-center gap-3 text-red-500 font-['VT323'] text-lg"
+                >
+                  <AlertCircle className="h-5 w-5" />
+                  <span>UPLINK_FAILURE // PLEASE_RETRY</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </form>
         </div>
       </div>

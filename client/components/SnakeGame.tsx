@@ -32,14 +32,14 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
     return newFood;
   }, [snake]);
 
-  const resetGame = () => {
+  const resetGame = useCallback(() => {
     setSnake([{ x: 10, y: 10 }]);
     setFood(generateFood());
     setDirection({ x: 0, y: -1 });
     setGameOver(false);
     setScore(0);
     lastUpdateTimeRef.current = 0; // Reset last update time for rAF
-  };
+  }, [generateFood]);
 
   const moveSnake = useCallback(() => {
     if (gameOver) return;
@@ -60,7 +60,11 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
 
       // Check if food eaten
       if (newHead.x === food.x && newHead.y === food.y) {
-        setScore(s => s + 10);
+        setScore(s => {
+          const newScore = s + 10;
+          setHighScore(prev => Math.max(prev, newScore));
+          return newScore;
+        });
         setFood(generateFood());
       } else {
         newSnake.pop();
@@ -124,17 +128,11 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
     };
   }, [moveSnake, gameOver, score, isOpen]);
 
-  useEffect(() => {
-    if (score > highScore) setHighScore(score);
-  }, [score, highScore]);
-
   // Reset game state when modal closes
-  useEffect(() => {
-    if (!isOpen) {
-        setGameOver(true); // Ensure game loop stops
-        resetGame();
-    }
-  }, [isOpen]);
+  const handleExit = useCallback(() => {
+    resetGame();
+    onExit();
+  }, [onExit, resetGame]);
 
   return (
     <motion.div 
@@ -149,7 +147,7 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
           {/* Header */}
           <div className="flex flex-col items-center gap-2 border-b-2 border-primary/20 pb-4 w-full relative">
             <button 
-              onClick={onExit}
+              onClick={handleExit}
               className="absolute left-0 top-0 flex items-center gap-2 px-3 py-1 bg-red-500/10 border border-red-500/30 hover:bg-red-500/20 text-red-500 font-['VT323'] text-lg uppercase transition-all rounded"
             >
               <LogOut className="h-4 w-4" />

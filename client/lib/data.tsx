@@ -20,6 +20,9 @@ export const portfolioConfig = {
   socials: {
     github: "https://github.com/Gzyms69",
     linkedin: "#",
+  },
+  contact: {
+    formspreeId: "mnnjpjez", // Your Formspree ID (example)
   }
 };
 

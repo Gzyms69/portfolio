@@ -179,13 +179,14 @@ export const InteractiveBackground = () => {
       renderer.render(scene, camera);
       animationFrameId = requestAnimationFrame(animate);
     };
+    const container = containerRef.current;
     animate();
 
     return () => {
       cancelAnimationFrame(animationFrameId);
       renderer.dispose();
-      if (containerRef.current && renderer.domElement.parentElement) {
-        containerRef.current.removeChild(renderer.domElement);
+      if (container && renderer.domElement.parentElement) {
+        container.removeChild(renderer.domElement);
       }
     };
   }, [type, scrollY]);

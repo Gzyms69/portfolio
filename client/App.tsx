@@ -30,7 +30,7 @@ const AnimatedRoutes = () => {
   );
 };
 
-const App = () => {
+export const App = () => {
   return (
     <LanguageProvider>
       <TooltipProvider>
