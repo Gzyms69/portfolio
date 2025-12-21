@@ -58,8 +58,13 @@ export default function Index() {
                       />
                     </div>
 
-                    <div className="font-['VT323'] text-xl sm:text-2xl text-primary/80 leading-relaxed max-w-2xl uppercase">
-                      {`> status: online\n> accessing bio...\n\n${content.title} ${content.description}`}
+                    <div className="flex flex-col gap-6">
+                      <p className="font-['VT323'] text-xl sm:text-2xl text-primary/80 leading-relaxed max-w-2xl lowercase tracking-wide">
+                        {content.title}
+                      </p>
+                      <p className="font-['VT323'] text-lg text-primary/50 leading-relaxed max-w-2xl lowercase">
+                        {content.description}
+                      </p>
                     </div>
                     
                     {/* Tech Stack Tags */}

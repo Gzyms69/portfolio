@@ -10,7 +10,7 @@ import { useLanguage } from "@/hooks/use-language";
 
 export default function CV() {
   const { experiences, education, skills } = cvData;
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const content = portfolioConfig[language];
 
   const handleDownloadCV = () => {
@@ -18,39 +18,26 @@ export default function CV() {
     const cvContent = `
 ${content.name.toUpperCase()}
 
-DOŚWIADCZENIE
+${t('cv_experience').toUpperCase()}
 
-Instruktor Programowania
-Giganci Programowania, Kielce (2024.02 - Obecnie)
-- Nauczanie uczniów liceum do egzaminu maturalnego z informatyki
-- Programowanie gier w Unity, C++, C#, Python dla uczniów w wieku 12-18 lat
-- Wsparcie uczniów na Discord po zajęciach
+${experiences.map(exp => `
+${exp.title}
+${exp.company}, ${exp.location} (${exp.period})
+${exp.responsibilities.map(r => `- ${r}`).join('\n')}
+`).join('\n')}
 
-Specjalista ds. Operacji w Dziale Akcji Korporacyjnych
-Brown Brothers Harriman, Kraków (2023.09 - 2023.12)
-- Przetwarzanie akcji korporacyjnych i płatności dywidend
-- Komunikacja z klientami i eskalacja wewnętrzna
-- Sporządzanie raportów dziennych
+${t('cv_education').toUpperCase()}
 
-Specjalista ds. Odprawy Celnej
-FedEx Express Europe, Kraków (2022.04 - 2023.07)
-- Komunikacja e-mail i telefoniczna z klientami
-- Dokumentacja celna, faktury, listy przewozowe
-- Sporządzanie raportów statusu dziennego
+${education.map(edu => `
+${edu.school}
+${edu.degree} - ${edu.field} (${edu.years})
+`).join('\n')}
 
-WYKSZTAŁCENIE
+${t('cv_skills').toUpperCase()}
 
-AGH Kraków
-Inżynier - Elektronika i Telekomunikacja (2019-2020)
-
-Politechnika Krakowska
-Inżynier - Matematyka Stosowana (2020-2022)
-
-UMIEJĘTNOŚCI
-
-Ogólne: Marketing, Analiza danych, Projektowanie stron internetowych
-Narzędzia: Microsoft Office, Adobe Tools, Język angielski C1/C2
-Programowanie: C++, Python, C, JavaScript
+${t('cv_skills_general')}: ${skills.general.join(', ')}
+${t('cv_skills_tools')}: ${skills.tools.join(', ')}
+${t('cv_skills_programming')}: ${skills.programming.join(', ')}
     `;
 
     const element = document.createElement("a");
@@ -58,7 +45,7 @@ Programowanie: C++, Python, C, JavaScript
       "href",
       "data:text/plain;charset=utf-8," + encodeURIComponent(cvContent)
     );
-    element.setAttribute("download", "Dawid_Czerwinski_CV.txt");
+    element.setAttribute("download", `Dawid_Czerwinski_CV_${language}.txt`);
     element.style.display = "none";
     document.body.appendChild(element);
     element.click();
@@ -90,7 +77,7 @@ Programowanie: C++, Python, C, JavaScript
                   className="gap-3 w-fit px-6"
                 >
                   <Download className="h-5 w-5" />
-                  <span className="font-medium">Pobierz CV</span>
+                  <span className="font-medium">{t('cv_download')}</span>
                 </Button>
               </Reveal>
             </section>
@@ -98,7 +85,7 @@ Programowanie: C++, Python, C, JavaScript
             {/* Experience Section */}
             <section className="mb-12 flex flex-col gap-6">
               <AnimatedCharacters
-                text="Doświadczenie"
+                text={t('cv_experience')}
                 className="text-2xl font-semibold text-strong sm:text-3xl"
               />
               <StaggerContainer className="space-y-6">
@@ -131,7 +118,7 @@ Programowanie: C++, Python, C, JavaScript
             {/* Education Section */}
             <section className="mb-12 flex flex-col gap-6">
               <AnimatedCharacters
-                text="Wykształcenie"
+                text={t('cv_education')}
                 className="text-2xl font-semibold text-strong sm:text-3xl"
               />
               <StaggerContainer className="space-y-4">
@@ -154,14 +141,14 @@ Programowanie: C++, Python, C, JavaScript
             {/* Skills Section */}
             <section className="mb-12 flex flex-col gap-6">
               <AnimatedCharacters
-                text="Umiejętności"
+                text={t('cv_skills')}
                 className="text-2xl font-semibold text-strong sm:text-3xl"
               />
               <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {/* General Skills */}
                 <StaggerItem>
                   <div className="glass-card flex flex-col gap-4 p-6 h-full">
-                    <h3 className="font-semibold text-strong">Ogólne</h3>
+                    <h3 className="font-semibold text-strong">{language === 'pl' ? 'Ogólne' : 'General'}</h3>
                     <ul className="space-y-2">
                       {skills.general.map((skill, idx) => (
                         <li key={idx} className="text-weak text-sm flex gap-2">
@@ -175,7 +162,7 @@ Programowanie: C++, Python, C, JavaScript
                 {/* Tools & Languages */}
                 <StaggerItem>
                   <div className="glass-card flex flex-col gap-4 p-6 h-full">
-                    <h3 className="font-semibold text-strong">Narzędzia</h3>
+                    <h3 className="font-semibold text-strong">{language === 'pl' ? 'Narzędzia' : 'Tools'}</h3>
                     <ul className="space-y-2">
                       {skills.tools.map((tool, idx) => (
                         <li key={idx} className="text-weak text-sm flex gap-2">
@@ -189,7 +176,7 @@ Programowanie: C++, Python, C, JavaScript
                 {/* Programming */}
                 <StaggerItem>
                   <div className="glass-card flex flex-col gap-4 p-6 h-full">
-                    <h3 className="font-semibold text-strong">Programowanie</h3>
+                    <h3 className="font-semibold text-strong">{language === 'pl' ? 'Programowanie' : 'Programming'}</h3>
                     <ul className="space-y-2">
                       {skills.programming.map((lang, idx) => (
                         <li key={idx} className="text-weak text-sm flex gap-2">

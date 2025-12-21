@@ -175,11 +175,15 @@ export const Navigation = () => {
 
             
 
-                     <div className="relative z-10 font-['VT323'] text-primary text-lg tracking-widest">
+                                                               <div className="relative z-10 font-['VT323'] text-primary text-lg tracking-widest">
 
-                       MENU_SYSTEM
+            
 
-                     </div>
+                                                                 MENU_SYSTEM
+
+            
+
+                                                               </div>
 
             
 
@@ -203,23 +207,39 @@ export const Navigation = () => {
 
             
 
-                  <TerminalDialog
+                                    <TerminalDialog
 
-                    isOpen={isSnakeConfirmOpen}
+            
 
-                    onClose={() => setIsSnakeConfirmOpen(false)}
+                                      isOpen={isSnakeConfirmOpen}
 
-                    onConfirm={confirmSnakeNavigation}
+            
 
-                    title={t('snake')}
+                                      onClose={() => setIsSnakeConfirmOpen(false)}
 
-                    message={t('confirm_snake')}
+            
 
-                    confirmText={language === 'pl' ? 'POTWIERDZAM' : 'CONFIRM'}
+                                      onConfirm={confirmSnakeNavigation}
 
-                    cancelText={language === 'pl' ? 'ANULUJ' : 'CANCEL'}
+            
 
-                  />
+                                      title={t('snake')}
+
+            
+
+                                      message={t('confirm_snake')}
+
+            
+
+                                      confirmText="CONFIRM"
+
+            
+
+                                      cancelText="CANCEL"
+
+            
+
+                                    />
 
                   
 
@@ -280,7 +300,7 @@ const NavButton = ({ onClick, icon, label, active }: NavButtonProps) => (
     <div className={`transition-colors ${active ? 'text-primary shadow-[0_0_5px_rgba(0,255,65,0.5)]' : 'text-primary/60 group-hover:text-primary'}`}>
       {icon}
     </div>
-    <span className="absolute left-16 opacity-0 group-hover:opacity-100 transition-all duration-300 font-['VT323'] text-2xl text-primary bg-[#0a0f0a] border border-primary/30 px-3 py-1 rounded-sm pointer-events-none whitespace-nowrap shadow-[0_0_15px_rgba(0,255,65,0.2)] z-[100] translate-x-[-10px] group-hover:translate-x-0 uppercase">
+    <span className="absolute left-16 opacity-0 group-hover:opacity-100 transition-all duration-300 font-['VT323'] text-xl text-primary bg-[#0a0f0a] border border-primary/30 px-3 py-1 rounded-sm pointer-events-none whitespace-nowrap shadow-[0_0_15px_rgba(0,255,65,0.2)] z-[100] translate-x-[-10px] group-hover:translate-x-0 uppercase tracking-widest">
       [ {label} ]
     </span>
   </button>

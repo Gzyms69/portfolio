@@ -5,15 +5,15 @@ export type Language = 'pl' | 'en';
 export const portfolioConfig = {
   pl: {
     name: "Dawid Czerwiński",
-    title: "Full-stack developer budujący aplikacje internetowe i narzędzia automatyzacji.",
-    description: "To portfolio prezentuje moje projekty, od systemu zarządzania biblioteką po rozszerzenia VS Code. Lubię pracować z Pythonem, Reactem i TypeScriptem, aby tworzyć funkcjonalne aplikacje.",
+    title: "Full-stack developer specjalizujący się w tworzeniu zaawansowanych aplikacji internetowych oraz narzędzi do automatyzacji.",
+    description: "Niniejsze portfolio to zestawienie moich projektów – od kompleksowych systemów zarządzania po specjalistyczne narzędzia niskopoziomowe. W swojej pracy stawiam na wydajność i jakość kodu, wykorzystując technologie takie jak Python, React oraz TypeScript.",
     email: "dawidekczerwinski@gmail.com",
     heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "Node.js", "Docker", "Tailwind CSS", "SQL"]
   },
   en: {
     name: "Dawid Czerwiński",
-    title: "Full-stack developer building web applications and automation tools.",
-    description: "This portfolio showcases my projects, from a library management system to VS Code extensions. I enjoy working with Python, React, and TypeScript to create functional applications.",
+    title: "Full-stack developer specializing in building robust web applications and advanced automation tools.",
+    description: "This portfolio showcases my work across the stack, ranging from comprehensive management systems to specialized low-level utilities. I focus on writing high-quality, performant code using Python, React, and TypeScript.",
     email: "dawidekczerwinski@gmail.com",
     heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "Node.js", "Docker", "Tailwind CSS", "SQL"]
   },
@@ -27,12 +27,12 @@ export const projects = [
   {
     title: "BookShop Library",
     pl: {
-      description: "System zarządzania biblioteką (Full-stack) z Python FastAPI, React TypeScript i MS SQL Server w Dockerze",
-      fullDescription: "Kompleksowy projekt portfolio demonstrujący nowoczesne tworzenie stron internetowych. Implementuje hybrydowy system księgarni/biblioteki z zarządzaniem zapasami i analityką w czasie rzeczywistym. Funkcje obejmują: śledzenie zapasów, obsługę wielu typów przedmiotów, panel administratora CRUD, API REST z dokumentacją OpenAPI i type-safe development.",
+      description: "Kompleksowy system zarządzania biblioteką (Full-stack) wykorzystujący Python FastAPI, React i MS SQL Server.",
+      fullDescription: "Zaawansowany projekt demonstrujący nowoczesne podejście do tworzenia aplikacji webowych. System integruje funkcje księgarni oraz biblioteki, oferując analitykę w czasie rzeczywistym oraz pełne zarządzanie asortymentem. Główne atuty to: autorski panel administracyjny CRUD, dokumentacja OpenAPI oraz pełne typowanie danych dla maksymalnej stabilności.",
     },
     en: {
-      description: "Full-stack library management system with Python FastAPI, React TypeScript, and MS SQL Server in Docker",
-      fullDescription: "A comprehensive full-stack portfolio project demonstrating modern web development with Python FastAPI, React TypeScript, and MS SQL Server in a Dockerized environment. Features include: real-time inventory tracking, multi-type item support (books, movies, board games, magazines), admin dashboard with full CRUD operations, and REST API with automatic OpenAPI documentation.",
+      description: "A comprehensive full-stack library management system built with Python FastAPI, React, and MS SQL Server.",
+      fullDescription: "A sophisticated full-stack project demonstrating a modern approach to web development. The system bridges bookstore and library functionalities, featuring real-time inventory analytics and comprehensive stock management. Key highlights include: a custom CRUD admin dashboard, full OpenAPI documentation, and end-to-end type safety for maximum stability.",
     },
     githubUrl: "https://github.com/Gzyms69/bookshop-library",
     techStack: ["Python", "FastAPI", "React", "TypeScript", "MS SQL Server", "Docker", "Tailwind CSS"],
@@ -43,12 +43,12 @@ export const projects = [
   {
     title: "Rust Polyglot Creator",
     pl: {
-      description: "Niezależne od pamięci narzędzie CLI do generowania plików poprawnych w wielu formatach (PNG+ZIP, PNG+WAV)",
-      fullDescription: "Zaawansowane narzędzie wiersza poleceń opracowane w języku Rust do generowania 'plików poliglota'. Projekt demonstruje manipulację plikami na poziomie bitów i głębokie zrozumienie struktur binarnych. Funkcje: tworzenie poliglota PNG+ZIP i PNG+WAV, silniki walidacji, różne strategie osadzania danych oraz modułowa architektura bezpieczna pod kątem pamięci.",
+      description: "Wydajne narzędzie CLI do generowania plików poliglota (PNG+ZIP, PNG+WAV) z bezpiecznym zarządzaniem pamięcią.",
+      fullDescription: "Niskoziomowe narzędzie wiersza poleceń opracowane w języku Rust, służące do tworzenia plików poliglota – pojedynczych plików poprawnie interpretowanych przez wiele formatów jednocześnie. Projekt wymagał zaawansowanej manipulacji strukturami binarnymi i głębokiego zrozumienia specyfikacji plików. Zawiera silniki walidacji oraz modułową architekturę gwarantującą bezpieczeństwo pamięci.",
     },
     en: {
-      description: "Memory-safe CLI tool for generating files valid in multiple formats (PNG+ZIP, PNG+WAV)",
-      fullDescription: "A sophisticated command-line tool developed in Rust for generating 'polyglot files'—single files that are simultaneously valid in multiple file formats. This project demonstrates advanced bit-level file manipulation and deep understanding of binary structures. Features include: seamless creation of PNG+ZIP and PNG+WAV polyglots, robust extraction and validation engines, and a highly modular architecture.",
+      description: "High-performance CLI tool for generating polyglot files (PNG+ZIP, PNG+WAV) with memory-safe architecture.",
+      fullDescription: "A low-level command-line tool developed in Rust for generating 'polyglot files'—single files that are simultaneously valid in multiple file formats. This project involved advanced binary manipulation and a deep understanding of file format specifications. It features robust validation engines and a highly modular, memory-safe architecture.",
     },
     githubUrl: "https://github.com/Gzyms69/rust-polyglot",
     techStack: ["Rust", "CLI", "Systems Programming", "Binary Manipulation"],
@@ -59,12 +59,12 @@ export const projects = [
   {
     title: "Portfolio Website",
     pl: {
-      description: "Nowoczesne portfolio prezentujące projekty z designem glassmorphism i płynnymi animacjami",
-      fullDescription: "Profesjonalna strona portfolio zbudowana na React 18, TypeScript i Vite. Zawiera interaktywne karty projektów, tryb ciemny ze stylizacją glassmorphism, płynne animacje i responsywny design. Wykorzystuje Tailwind CSS 3, Radix UI i framer-motion dla zapewnienia najwyższej jakości doświadczeń użytkownika.",
+      description: "Profesjonalna wizytówka online z nowoczesnym designem glassmorphism i płynnymi animacjami.",
+      fullDescription: "Wysoko wydajna strona portfolio zbudowana przy użyciu React 18 i Vite. Projekt kładzie nacisk na doskonałe doświadczenie użytkownika (UX) poprzez płynne przejścia, responsywny design i unikalną estetykę terminala. Wykorzystuje Tailwind CSS 3 oraz Framer Motion do tworzenia interaktywnych elementów wizualnych.",
     },
     en: {
-      description: "Modern, professional portfolio showcasing projects with glassmorphism design, smooth animations, and theme switching",
-      fullDescription: "A modern, professional portfolio website built on React 18, TypeScript, and Vite for optimal performance. Features include: interactive project showcase, smooth scroll navigation, type-safe full-stack development, Tailwind CSS 3 styling system, Radix UI component library, and seamless theme persistence.",
+      description: "Professional online presence featuring a modern glassmorphism aesthetic and seamless animations.",
+      fullDescription: "A high-performance portfolio website built with React 18 and Vite. The project focuses on delivering a superior user experience (UX) through smooth transitions, responsive design, and a unique terminal aesthetic. It leverages Tailwind CSS 3 and Framer Motion to create engaging, interactive visual elements.",
     },
     githubUrl: "https://github.com/Gzyms69/portfolio",
     techStack: ["React", "TypeScript", "Vite", "TailwindCSS", "Express", "Node.js", "Radix UI"],
@@ -82,37 +82,37 @@ export const projects = [
           location: "Kielce",
           period: "2024.02 - Obecnie",
           responsibilities: [
-            "Nauczanie uczniów liceum do egzaminu maturalnego z informatyki",
-            "Programowanie gier w Unity, poziom podstawowy i zaawansowany C++, C# oraz Python dla uczniów w wieku 12-18 lat",
-            "Wsparcie uczniów na Discord po zajęciach",
+            "Przygotowywanie uczniów szkół średnich do egzaminu maturalnego z informatyki",
+            "Prowadzenie zajęć z programowania gier (Unity) oraz języków C++, C# i Python (poziom podstawowy i zaawansowany)",
+            "Mentoring i wsparcie merytoryczne dla uczniów poprzez platformę Discord",
           ],
         },
         {
-          title: "Specjalista ds. Operacji w Dziale Akcji Korporacyjnych",
+          title: "Specjalista ds. Operacji (Corporate Actions)",
           company: "Brown Brothers Harriman",
           location: "Kraków",
           period: "2023.09 - 2023.12",
           responsibilities: [
-            "Przetwarzanie akcji korporacyjnych i płatności dywidend",
-            "Komunikacja z klientami i eskalacja wewnętrzna",
-            "Sporządzanie raportów dziennych",
+            "Przetwarzanie operacji na papierach wartościowych oraz płatności dywidend",
+            "Zarządzanie komunikacją z klientami i obsługa eskalacji wewnętrznych",
+            "Przygotowywanie precyzyjnych raportów dziennych dla działu operacyjnego",
           ],
         },
         {
-          title: "Specjalista ds. Odprawy Celnej",
+          title: "Specjalista ds. Odpraw Celnych",
           company: "FedEx Express Europe",
           location: "Kraków",
           period: "2022.04 - 2023.07",
           responsibilities: [
-            "Komunikacja e-mail i telefoniczna z klientami",
-            "Dokumentacja celna, faktury, listy przewozowe",
-            "Sporządzanie raportów statusu dziennego",
+            "Profesjonalna obsługa klienta w zakresie procedur celnych",
+            "Zarządzanie dokumentacją celną, fakturami i listami przewozowymi",
+            "Monitorowanie statusu przesyłek i raportowanie postępów",
           ],
         },
       ],
       education: [
         {
-          school: "AGH Kraków",
+          school: "Akademia Górniczo-Hutnicza (AGH) w Krakowie",
           degree: "Inżynier",
           field: "Elektronika i Telekomunikacja",
           years: "2019-2020",
@@ -125,8 +125,8 @@ export const projects = [
         },
       ],
       skills: {
-        general: ["Marketing", "Analiza danych", "Projektowanie stron internetowych"],
-        tools: ["Microsoft Office", "Adobe Tools", "Język angielski C1/C2"],
+        general: ["Marketing", "Analiza danych", "Web Design"],
+        tools: ["Pakiet Microsoft Office", "Narzędzia Adobe", "Język angielski (poziom C1/C2)"],
         programming: ["C++", "Python", "C", "JavaScript"],
       }
     };
