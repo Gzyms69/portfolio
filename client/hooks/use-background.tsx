@@ -10,14 +10,21 @@ interface BackgroundContextType {
 const BackgroundContext = createContext<BackgroundContextType | undefined>(undefined);
 
 export const BackgroundProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Always default to 'ascii' on fresh load for high performance
-  const [type, setType] = useState<BackgroundType>("ascii");
+  const [type, setType] = useState<BackgroundType>(() => {
+    const storedType = localStorage.getItem("portfolio-bg-type");
+    return (storedType as BackgroundType) || "sticks"; 
+  });
 
   useEffect(() => {
     localStorage.setItem("portfolio-bg-type", type);
   }, [type]);
 
-  const toggleBackground = () => setType((prev) => (prev === "ascii" ? "sticks" : "ascii"));
+  const toggleBackground = () => {
+    setType((prev) => {
+      const newType = (prev === "ascii" ? "sticks" : "ascii");
+      return newType;
+    });
+  }
 
   return (
     <BackgroundContext.Provider value={{ type, toggleBackground }}>

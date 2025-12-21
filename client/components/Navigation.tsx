@@ -5,6 +5,7 @@ import { useLanguage } from "@/hooks/use-language";
 import { useState, useRef, useEffect } from "react";
 import { portfolioConfig } from "@/lib/data";
 import { motion, AnimatePresence } from "framer-motion";
+import { TerminalDialog } from "@/components/ui/TerminalDialog";
 
 export const Navigation = () => {
   const navigate = useNavigate();
@@ -12,15 +13,19 @@ export const Navigation = () => {
   const { language, setLanguage, t } = useLanguage();
   const { type: bgType, toggleBackground } = useBackground();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSnakeConfirmOpen, setIsSnakeConfirmOpen] = useState(false);
 
   const toggleLanguage = () => {
     setLanguage(language === 'pl' ? 'en' : 'pl');
   };
 
   const handleSnakeClick = () => {
-    if (window.confirm(t('confirm_snake'))) {
-      navigate('/snake');
-    }
+    setIsSnakeConfirmOpen(true);
+  };
+
+  const confirmSnakeNavigation = () => {
+    setIsSnakeConfirmOpen(false);
+    navigate('/snake');
   };
 
   const getBackgroundIcon = () => {
@@ -148,6 +153,16 @@ export const Navigation = () => {
             </button>
          </div>
       </nav>
+
+      <TerminalDialog
+        isOpen={isSnakeConfirmOpen}
+        onClose={() => setIsSnakeConfirmOpen(false)}
+        onConfirm={confirmSnakeNavigation}
+        title={t('snake')}
+        message={t('confirm_snake')}
+        confirmText={language === 'pl' ? 'POTWIERDZAM' : 'CONFIRM'}
+        cancelText={language === 'pl' ? 'ANULUJ' : 'CANCEL'}
+      />
     </>
   );
 };

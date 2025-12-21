@@ -10,6 +10,17 @@ export const InteractiveBackground = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { type } = useBackground();
+
+  // TEMPORARY DEBUG: Force sticks for 3 seconds
+  const [debugType, setDebugType] = useState<BackgroundType | undefined>(undefined);
+  useEffect(() => {
+    setDebugType('sticks');
+    const timer = setTimeout(() => setDebugType(undefined), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+  const currentType = debugType || type;
+  // END TEMPORARY DEBUG
+
   const { scrollY } = useScroll();
   
   const mouseX = useMotionValue(0);
@@ -195,8 +206,8 @@ export const InteractiveBackground = () => {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-[#030712] pointer-events-none">
-      {type === 'ascii' && <canvas ref={canvasRef} className="absolute inset-0" />}
-      {type === 'sticks' && <div ref={containerRef} className="absolute inset-0" />}
+      {currentType === 'ascii' && <canvas ref={canvasRef} className="absolute inset-0" />}
+      {currentType === 'sticks' && <div ref={containerRef} className="absolute inset-0" />}
       
       <motion.div
         animate={{ scale: [1, 1.1, 0.9, 1], opacity: [0.03, 0.05, 0.04, 0.03] }}
