@@ -6,6 +6,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: '/portfolio/', // Set this to your repository name for GitHub Pages
   server: {
     host: "::",
     port: 8080,
