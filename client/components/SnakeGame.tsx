@@ -19,7 +19,9 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
-  const gameLoopRef = useRef<NodeJS.Timeout>();
+  const gameLoopRef = useRef<number>(); // Use number for requestAnimationFrame ID
+  const lastUpdateTimeRef = useRef<number>(0);
+  const gameSpeedRef = useRef<number>(150); // Initial interval in ms
 
   const generateFood = useCallback((): Point => {
     let newFood: Point;
@@ -38,6 +40,7 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
     setDirection({ x: 0, y: -1 });
     setGameOver(false);
     setScore(0);
+    lastUpdateTimeRef.current = 0; // Reset last update time for rAF
   };
 
   const moveSnake = useCallback(() => {
@@ -70,8 +73,8 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
   }, [direction, food, gameOver, generateFood]);
 
   useEffect(() => {
-    if (!isOpen) { // Pause game when modal is closed
-        clearInterval(gameLoopRef.current);
+    if (!isOpen) {
+        cancelAnimationFrame(gameLoopRef.current as number); // Ensure rAF loop stops
         return;
     }
 
@@ -95,23 +98,33 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
   }, [direction, gameOver, isOpen]); // Added isOpen to dependencies
 
   useEffect(() => {
-    if (!isOpen) return; // Only run game loop if modal is open
+    if (!isOpen) {
+      cancelAnimationFrame(gameLoopRef.current as number);
+      return;
+    }
 
     if (!gameOver) {
-      if (gameLoopRef.current) {
-        clearInterval(gameLoopRef.current);
-      }
-      gameLoopRef.current = setInterval(moveSnake, 150 - Math.min(score / 2, 120)); // Speed up with score
+      gameSpeedRef.current = 150 - Math.min(score / 2, 120); // Update speed
+      const animate = (currentTime: number) => {
+        if (!lastUpdateTimeRef.current) lastUpdateTimeRef.current = currentTime;
+        const deltaTime = currentTime - lastUpdateTimeRef.current;
+
+        if (deltaTime > gameSpeedRef.current) {
+          lastUpdateTimeRef.current = currentTime - (deltaTime % gameSpeedRef.current);
+          moveSnake();
+        }
+        gameLoopRef.current = requestAnimationFrame(animate);
+      };
+
+      gameLoopRef.current = requestAnimationFrame(animate);
     } else {
-      clearInterval(gameLoopRef.current);
+      cancelAnimationFrame(gameLoopRef.current as number);
     }
 
     return () => {
-      if (gameLoopRef.current) {
-        clearInterval(gameLoopRef.current);
-      }
+      cancelAnimationFrame(gameLoopRef.current as number);
     };
-  }, [moveSnake, gameOver, score, isOpen]); // Added isOpen to dependencies
+  }, [moveSnake, gameOver, score, isOpen]);
 
   useEffect(() => {
     if (score > highScore) setHighScore(score);
@@ -207,21 +220,21 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
                       <div className="w-1/3 h-1/3 bg-black rounded-full shadow-[0_0_5px_rgba(0,0,0,0.8)] animate-pulse" />
                     </div>
                     {/* Eye 1 */}
-                    <div 
+                    <div
                       className="absolute w-[10%] h-[10%] bg-white rounded-full"
                       style={{ 
-                        top: direction.y === -1 ? '20%' : direction.y === 1 ? '70%' : '45%', 
-                        left: direction.x === -1 ? '20%' : direction.x === 1 ? '70%' : '20%',
+                        top: direction.y === -1 ? '20%' : direction.y === 1 ? '80%' : '50%', 
+                        left: direction.x === -1 ? '20%' : direction.x === 1 ? '80%' : '35%',
                         transform: 'translate(-50%, -50%)',
                         boxShadow: '0 0 2px white'
                       }}
                     />
                      {/* Eye 2 */}
-                    <div 
+                    <div
                       className="absolute w-[10%] h-[10%] bg-white rounded-full"
                       style={{ 
-                        top: direction.y === -1 ? '20%' : direction.y === 1 ? '70%' : '45%', 
-                        left: direction.x === -1 ? '70%' : direction.x === 1 ? '20%' : '70%',
+                        top: direction.y === -1 ? '20%' : direction.y === 1 ? '80%' : '50%', 
+                        left: direction.x === -1 ? '80%' : direction.x === 1 ? '20%' : '65%',
                         transform: 'translate(-50%, -50%)',
                         boxShadow: '0 0 2px white'
                       }}
