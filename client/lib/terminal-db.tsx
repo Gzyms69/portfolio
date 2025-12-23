@@ -5,15 +5,15 @@ export type Language = 'pl' | 'en';
 export const portfolioConfig = {
   pl: {
     name: "Dawid Czerwiński",
-    title: "Full-stack developer specjalizujący się w tworzeniu zaawansowanych aplikacji internetowych oraz narzędzi do automatyzacji.",
-    description: "Niniejsze portfolio to zestawienie moich projektów – od kompleksowych systemów zarządzania po specjalistyczne narzędzia niskopoziomowe. W swojej pracy stawiam na wydajność i jakość kodu, wykorzystując technologie takie jak Python, React oraz TypeScript.",
+    title: "Inżynier oprogramowania. Tworzę zaawansowane aplikacje internetowe i narzędzia automatyzujące pracę.",
+    description: "Zbiór wybranych realizacji – od systemów zarządzania po niskopoziomowe narzędzia systemowe. Stawiam na wydajność i czystość architektury, wykorzystując technologie takie jak Python, React oraz TypeScript.",
     email: "dawidekczerwinski@gmail.com",
     heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "Node.js", "Docker", "Tailwind CSS", "SQL"]
   },
   en: {
     name: "Dawid Czerwiński",
-    title: "Full-stack developer specializing in building robust web applications and advanced automation tools.",
-    description: "This portfolio showcases my work across the stack, ranging from comprehensive management systems to specialized low-level utilities. I focus on writing high-quality, performant code using Python, React, and TypeScript.",
+    title: "Software Engineer. Developing advanced web applications and automation tools.",
+    description: "A collection of selected projects – from management systems to low-level system utilities. I focus on performance and clean architecture, utilizing technologies such as Python, React, and TypeScript.",
     email: "dawidekczerwinski@gmail.com",
     heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "Node.js", "Docker", "Tailwind CSS", "SQL"]
   },
@@ -30,12 +30,12 @@ export const projects = [
   {
     title: "BookShop Library",
     pl: {
-      description: "Kompleksowy system zarządzania biblioteką (Full-stack) wykorzystujący Python FastAPI, React i MS SQL Server.",
-      fullDescription: "Zaawansowany projekt demonstrujący nowoczesne podejście do tworzenia aplikacji webowych. System integruje funkcje księgarni oraz biblioteki, oferując analitykę w czasie rzeczywistym oraz pełne zarządzanie asortymentem. Główne atuty to: autorski panel administracyjny CRUD, dokumentacja OpenAPI oraz pełne typowanie danych dla maksymalnej stabilności.",
+      description: "Zaawansowany system klasy Enterprise do kompleksowego zarządzania zasobami bibliotecznymi.",
+      fullDescription: "Skalowalna platforma integrująca funkcje e-commerce oraz system zarządzania stanami magazynowymi. Projekt demonstruje nowoczesne podejście do architektury mikroserwisowej, oferując analitykę danych w czasie rzeczywistym. Kluczowe funkcjonalności obejmują autorski panel administracyjny, pełną dokumentację OpenAPI oraz ścisłe typowanie danych zapewniające stabilność operacyjną.",
     },
     en: {
-      description: "A comprehensive full-stack library management system built with Python FastAPI, React, and MS SQL Server.",
-      fullDescription: "A sophisticated full-stack project demonstrating a modern approach to web development. The system bridges bookstore and library functionalities, featuring real-time inventory analytics and comprehensive stock management. Key highlights include: a custom CRUD admin dashboard, full OpenAPI documentation, and end-to-end type safety for maximum stability.",
+      description: "Advanced Enterprise-grade system for comprehensive library resource management.",
+      fullDescription: "A scalable platform integrating e-commerce functionalities with a robust inventory management system. The project demonstrates a modern approach to software architecture, offering real-time data analytics. Key features include a custom admin dashboard, full OpenAPI documentation, and end-to-end type safety for operational stability.",
     },
     githubUrl: "https://github.com/Gzyms69/bookshop-library",
     techStack: ["Python", "FastAPI", "React", "TypeScript", "MS SQL Server", "Docker", "Tailwind CSS"],
@@ -46,12 +46,12 @@ export const projects = [
   {
     title: "Rust Polyglot Creator",
     pl: {
-      description: "Wydajne narzędzie CLI do generowania plików poliglota (PNG+ZIP, PNG+WAV) z bezpiecznym zarządzaniem pamięcią.",
-      fullDescription: "Niskoziomowe narzędzie wiersza poleceń opracowane w języku Rust, służące do tworzenia plików poliglota – pojedynczych plików poprawnie interpretowanych przez wiele formatów jednocześnie. Projekt wymagał zaawansowanej manipulacji strukturami binarnymi i głębokiego zrozumienia specyfikacji plików. Zawiera silniki walidacji oraz modułową architekturę gwarantującą bezpieczeństwo pamięci.",
+      description: "Niskopoziomowe narzędzie systemowe do manipulacji strukturami plików binarnych i generowania plików poliglota.",
+      fullDescription: "Wydajne narzędzie CLI opracowane w języku Rust, umożliwiające tworzenie plików poprawnie interpretowanych przez wiele formatów jednocześnie (PNG+ZIP, PNG+WAV). Projekt wymagał precyzyjnej manipulacji bajtami i dogłębnej analizy specyfikacji binarnych. Architektura zapewnia bezpieczeństwo pamięci oraz wysoką wydajność przetwarzania.",
     },
     en: {
-      description: "High-performance CLI tool for generating polyglot files (PNG+ZIP, PNG+WAV) with memory-safe architecture.",
-      fullDescription: "A low-level command-line tool developed in Rust for generating 'polyglot files'—single files that are simultaneously valid in multiple file formats. This project involved advanced binary manipulation and a deep understanding of file format specifications. It features robust validation engines and a highly modular, memory-safe architecture.",
+      description: "Low-level system utility for binary file manipulation and polyglot file generation.",
+      fullDescription: "A high-performance CLI tool developed in Rust, enabling the creation of files simultaneously valid in multiple formats (PNG+ZIP, PNG+WAV). The project involved precise byte manipulation and in-depth analysis of binary specifications. The architecture ensures memory safety and superior processing efficiency.",
     },
     githubUrl: "https://github.com/Gzyms69/rust-polyglot",
     techStack: ["Rust", "CLI", "Systems Programming", "Binary Manipulation"],
@@ -62,22 +62,22 @@ export const projects = [
   {
     title: "Portfolio Website",
     pl: {
-      description: "Profesjonalna wizytówka online z nowoczesnym designem glassmorphism i płynnymi animacjami.",
-      fullDescription: "Wysoko wydajna strona portfolio zbudowana przy użyciu React 18 i Vite. Projekt kładzie nacisk na doskonałe doświadczenie użytkownika (UX) poprzez płynne przejścia, responsywny design i unikalną estetykę terminala. Wykorzystuje Tailwind CSS 3 oraz Framer Motion do tworzenia interaktywnych elementów wizualnych.",
+      description: "Interaktywny interfejs terminalowy zbudowany w oparciu o React, Framer Motion i nowoczesne standardy UX.",
+      fullDescription: "Wysoko wydajna platforma portfolio wykorzystująca React 18 i Vite. Projekt skupia się na dostarczaniu unikalnych wrażeń wizualnych poprzez płynne przejścia, responsywny design i autorską estetykę terminala. Zaimplementowano zaawansowane animacje oparte na fizyce sprężyn oraz zoptymalizowane renderowanie 3D.",
     },
     en: {
-      description: "Professional online presence featuring a modern glassmorphism aesthetic and seamless animations.",
-      fullDescription: "A high-performance portfolio website built with React 18 and Vite. The project focuses on delivering a superior user experience (UX) through smooth transitions, responsive design, and a unique terminal aesthetic. It leverages Tailwind CSS 3 and Framer Motion to create engaging, interactive visual elements.",
+      description: "Interactive terminal interface built with React, Framer Motion, and modern UX standards.",
+      fullDescription: "A high-performance portfolio platform utilizing React 18 and Vite. The project focuses on delivering unique visual experiences through seamless transitions, responsive design, and custom terminal aesthetics. Implemented advanced spring-physics animations and optimized 3D rendering.",
     },
     githubUrl: "https://github.com/Gzyms69/portfolio",
     techStack: ["React", "TypeScript", "Vite", "TailwindCSS", "Express", "Node.js", "Radix UI"],
     variant: "design" as const,
-        icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
-        imageUrl: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg"
-      }
-    ];
-    
-    export const cvData = {
+    icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
+    imageUrl: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg"
+  }
+];
+
+export const cvData = {
   experiences: [
     {
       title: "Przerwa w karierze (Career Break)",
@@ -86,7 +86,7 @@ export const projects = [
       period: "2025.02 - 2025.10",
       responsibilities: [
         "Przeprowadzka do Holandii i praca za pośrednictwem agencji w sektorach produkcji oraz logistyki",
-        "Moving to the Netherlands, working via job agencies in production and logistics",
+        "Relocation to the Netherlands and working via job agencies in production and logistics",
       ],
     },
     {
@@ -113,26 +113,23 @@ export const projects = [
       ],
     },
   ],
-    
-    
-      education: [
-        {
-          school: "Akademia Górniczo-Hutnicza (AGH) w Krakowie",
-          degree: "Inżynier",
-          field: "Elektronika i Telekomunikacja",
-          years: "2019-2020",
-        },
-        {
-          school: "Politechnika Krakowska",
-          degree: "Inżynier",
-          field: "Matematyka Stosowana",
-          years: "2020-2022",
-        },
-      ],
-      skills: {
-        general: ["Marketing", "Analiza danych", "Web Design"],
-        tools: ["Pakiet Microsoft Office", "Narzędzia Adobe", "Język angielski (poziom C1/C2)"],
-        programming: ["C++", "Python", "C", "JavaScript"],
-      }
-    };
-    
+  education: [
+    {
+      school: "Akademia Górniczo-Hutnicza (AGH) w Krakowie",
+      degree: "Inżynier",
+      field: "Elektronika i Telekomunikacja",
+      years: "2019-2020",
+    },
+    {
+      school: "Politechnika Krakowska",
+      degree: "Inżynier",
+      field: "Matematyka Stosowana",
+      years: "2020-2022",
+    },
+  ],
+  skills: {
+    general: ["Marketing", "Analiza danych", "Web Design"],
+    tools: ["Pakiet Microsoft Office", "Narzędzia Adobe", "Język angielski (poziom C1/C2)"],
+    programming: ["C++", "Python", "C", "JavaScript"],
+  }
+};
