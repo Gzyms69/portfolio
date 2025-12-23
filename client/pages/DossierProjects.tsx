@@ -1,5 +1,5 @@
 import { ProjectCard } from "@/components/ProjectCard";
-import { projects } from "@/lib/data";
+import { projects } from "@/lib/terminal-db";
 import { useLanguage } from "@/hooks/use-language";
 import { DossierContent, DossierItem } from "@/components/DossierContent";
 

@@ -7,10 +7,14 @@ export interface FileSystemItem {
   children?: Record<string, FileSystemItem>;
 }
 
+// This is a simplified 'Virtual File System' parser. 
+// It mimics how the terminal in Fallout 3/NV works.
 export class FalloutTerminalParser {
   private language: Language;
   private currentPath: string[] = []; // Root is []
   
+  // Decided to keep the file structure flat-ish for now to avoid 
+  // complex recursion in the UI breadcrumbs.
   private fileSystem: Record<string, FileSystemItem> = {
     'projects': {
       name: 'projects',

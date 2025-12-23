@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useBackground } from "@/hooks/use-background";
 import { useLanguage } from "@/hooks/use-language";
 import { useState, memo } from "react";
-import { portfolioConfig } from "@/lib/data";
+import { portfolioConfig } from "@/lib/terminal-db";
 import { motion, AnimatePresence } from "framer-motion";
 import { TerminalDialog } from "@/components/ui/TerminalDialog";
 import { SnakeGame } from "@/components/SnakeGame";

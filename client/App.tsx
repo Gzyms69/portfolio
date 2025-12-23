@@ -19,8 +19,8 @@ import { DebugOverlay } from "@/components/DebugOverlay";
 
 // Pages
 import Index from "./pages/Index";
-import Contact from "./pages/Contact";
-import CV from "./pages/CV";
+import Contact from "./pages/CommsUplink";
+import CV from "./pages/ServiceRecord";
 import NotFound from "./pages/NotFound";
 import { DossierProjects } from "./pages/DossierProjects";
 

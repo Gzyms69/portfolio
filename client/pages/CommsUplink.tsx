@@ -6,7 +6,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { SectionPowerUp } from "@/components/SectionPowerUp";
 import { GlitchText } from "@/components/GlitchText";
 import { useLanguage } from "@/hooks/use-language";
-import { portfolioConfig } from "@/lib/data";
+import { portfolioConfig } from "@/lib/terminal-db";
 
 export default function Contact({ isDossier = false }: { isDossier?: boolean }) {
   const { language, t } = useLanguage();

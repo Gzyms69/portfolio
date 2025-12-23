@@ -28,7 +28,13 @@
 
   body {
     @apply bg-background text-foreground font-mono;
+    font-family: 'VT323', monospace;
     position: relative;
+  }
+
+  /* Universal font enforcement without !important to avoid breaking layout */
+  *, ::before, ::after {
+    font-family: 'VT323', monospace;
   }
 }
 

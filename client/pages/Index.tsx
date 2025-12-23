@@ -5,7 +5,7 @@ import { PageTransition } from "@/components/PageTransition";
 import { TechTag } from "@/components/ui/TechTag";
 import { GlitchText } from "@/components/GlitchText";
 import { SectionPowerUp } from "@/components/SectionPowerUp";
-import { projects, portfolioConfig } from "@/lib/data";
+import { projects, portfolioConfig } from "@/lib/terminal-db";
 import { Terminal as TerminalIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/hooks/use-language";

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, ReactNode } from "react";
-import { Language } from "@/lib/data";
+import { Language } from "@/lib/terminal-db";
 
 interface LanguageContextType {
   language: Language;

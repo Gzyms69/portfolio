@@ -4,6 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 export const TVPowerTransition = ({ children, isTransitioning }: { children: React.ReactNode; isTransitioning: boolean }) => {
   const [showPoint, setShowPoint] = useState(false);
 
+  // This handles that tiny white 'pixel' dot that lingers for a split second 
+  // when old tube TVs turn off. Getting the timing to sync with the scale 
+  // animation was purely trial and error.
   useEffect(() => {
     if (isTransitioning) {
       const timer = setTimeout(() => setShowPoint(true), 100);
@@ -21,6 +24,7 @@ export const TVPowerTransition = ({ children, isTransitioning }: { children: Rea
       <motion.div
         initial={{ scale: 1, opacity: 1 }}
         animate={isTransitioning ? {
+          // The classic 'crush to horizontal line' then 'vanish to center' effect.
           scaleY: [1, 0.005, 0.005, 1],
           scaleX: [1, 1, 0, 1],
         } : {

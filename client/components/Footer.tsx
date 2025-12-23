@@ -1,4 +1,4 @@
-import { portfolioConfig } from "@/lib/data";
+import { portfolioConfig } from "@/lib/terminal-db";
 import { Terminal, Shield } from "lucide-react";
 import { useLanguage } from "@/hooks/use-language";
 

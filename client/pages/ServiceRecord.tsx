@@ -4,7 +4,7 @@ import { Download, Terminal as TerminalIcon, Award, BookOpen, Cpu } from "lucide
 import { Button } from "@/components/ui/button";
 import { Reveal, StaggerContainer, StaggerItem } from "@/components/Reveal";
 import { PageTransition } from "@/components/PageTransition";
-import { cvData, portfolioConfig } from "@/lib/data";
+import { cvData, portfolioConfig } from "@/lib/terminal-db";
 import { useLanguage } from "@/hooks/use-language";
 import { DossierContent, DossierItem } from "@/components/DossierContent";
 import { SectionPowerUp } from "@/components/SectionPowerUp";
