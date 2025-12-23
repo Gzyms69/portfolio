@@ -23,7 +23,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         lang: "Język",
         snake: "SNAKE",
         console: "KONSOLA",
-        confirm_snake: "CZY NA PEWNO?",
+        confirm_snake: "JESTEŚ PEWIEN?",
         view_github: "Zobacz na GitHub",
         execute: "Uruchom link repozytorium",
         cv_experience: "Doświadczenie Zawodowe",
