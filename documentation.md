@@ -189,8 +189,15 @@ The background can be toggled between two modes, accessible via the `[ THEME / B
 *   **Full CV Localization**: Translate all content on the CV page to English.
 *   **Mobile Responsiveness**: Thoroughly test and refine the UI across various mobile devices and screen sizes.
 *   **Accessibility (a11y)**: Improve keyboard navigation, ARIA attributes, and color contrast ratios where needed.
-*   **Performance Monitoring**: Re-integrate `web-vitals` with proper configuration if needed for production monitoring.
-*   **More Minigames/Interactive Elements**: Expand the interactive console experience.
+*   **Minigame Expansion**:
+    *   **Snake Power-ups**: Special items for speed, invincibility, or extra points.
+    *   **Fallout Hacking**: A hacking puzzle minigame inspired by the Fallout series.
+    *   **Memory Game**: A retro-themed memory card game.
+*   **Terminal Interactivity**:
+    *   **Interactive Console**: A functional terminal emulator for executing basic commands (e.g., `help`, `about`, `contact`).
+    *   **Enhanced CRT Effects**: Advanced simulations of phosphor glow, realistic flicker, and phosphor decay.
+    *   **Animated Boot-up**: Terminal-style loading sequences and boot screens for page transitions.
+*   **Audio Integration**: Retro-style sound effects (beeps, clicks, hums) and optional low-fi background music to enhance the terminal atmosphere.
 
 ---
 

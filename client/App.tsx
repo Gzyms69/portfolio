@@ -1,20 +1,40 @@
 import "./global.css";
-
-import { Toaster } from "@/components/ui/toaster";
 import { createRoot } from "react-dom/client";
+import { HashRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+
+// UI Components
+import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { InteractiveBackground } from "@/components/InteractiveBackground";
-import { BackgroundProvider } from "@/hooks/use-background";
-import { LanguageProvider } from "@/hooks/use-language";
-import { AnimatePresence } from "framer-motion";
+import { TVPowerTransition } from "@/components/TVPowerTransition";
+import { CRTOverlay } from "@/components/ui/CRTOverlay";
+import { TerminalLoader } from "@/components/TerminalLoader";
+import { DossierView } from "@/components/DossierView";
+import { DebugOverlay } from "@/components/DebugOverlay";
+import { debuggerInstance } from "@/lib/debug-utils";
+
+// Pages
 import Index from "./pages/Index";
 import Contact from "./pages/Contact";
 import CV from "./pages/CV";
 import NotFound from "./pages/NotFound";
+import { DossierProjects } from "./pages/DossierProjects";
+
+// Hooks
+import { BackgroundProvider, useBackground } from "@/hooks/use-background";
+import { LanguageProvider } from "@/hooks/use-language";
+
+console.log("[ROOT] Script Execution Start");
+
+const GlobalEffects = () => {
+  const { type } = useBackground();
+  return <>{type === 'sticks' && <CRTOverlay />}</>;
+};
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -30,24 +50,92 @@ const AnimatedRoutes = () => {
   );
 };
 
-export const App = () => {
+const DossierApp = () => {
+  const { type } = useBackground();
+  const location = useLocation();
+  const navigate = useNavigate();
+  
+  const activeTab = location.pathname === '/' ? 'home' : location.pathname.substring(1).split('/')[0];
+
+  const handleTabChange = (tabId: string) => {
+    const path = tabId === 'home' ? '/' : `/${tabId}`;
+    navigate(path);
+  };
+
+  if (type !== 'sticks') return null;
+
   return (
-    <LanguageProvider>
-      <TooltipProvider>
-        <BackgroundProvider>
+    <DossierView activeTab={activeTab} onTabChange={handleTabChange}>
+      <Routes>
+        <Route path="/" element={<Index isDossier />} />
+        <Route path="/projects" element={<DossierProjects />} />
+        <Route path="/contact" element={<Contact isDossier />} />
+        <Route path="/cv" element={<CV isDossier />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </DossierView>
+  );
+};
+
+const AppContent = () => {
+  const { isTransitioning, type } = useBackground();
+  const [isReady, setIsReady] = useState(false);
+
+  console.log(`[APP_CONTENT] Rendering. isReady: ${isReady}, Theme: ${type}`);
+
+  return (
+    <div className="relative w-full min-h-screen bg-[#030712]">
+      <DebugOverlay />
+      
+      {/* 1. Main Content - Always in DOM */}
+      <div className={`w-full min-h-screen ${isReady ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <TVPowerTransition isTransitioning={isTransitioning}>
+          <GlobalEffects />
           <Toaster />
           <Sonner />
           <ScrollProgress />
           <InteractiveBackground />
-          <SmoothScroll>
-            <BrowserRouter basename="/portfolio"> {/* Added basename for GitHub Pages */}
+          
+          {type === 'ascii' ? (
+            <SmoothScroll>
               <AnimatedRoutes />
-            </BrowserRouter>
-          </SmoothScroll>
+            </SmoothScroll>
+          ) : (
+            <DossierApp />
+          )}
+        </TVPowerTransition>
+      </div>
+
+      {/* 2. Loader Overlay - Unmounts when ready */}
+      {!isReady && (
+        <TerminalLoader onComplete={() => {
+          console.log("[APP_CONTENT] TerminalLoader callback triggered");
+          setIsReady(true);
+        }} />
+      )}
+    </div>
+  );
+};
+
+export const App = () => {
+  console.log("[APP] Root Component Render");
+  return (
+    <LanguageProvider>
+      <TooltipProvider>
+        <BackgroundProvider>
+          <HashRouter>
+            <AppContent />
+          </HashRouter>
         </BackgroundProvider>
       </TooltipProvider>
     </LanguageProvider>
   );
 };
 
-createRoot(document.getElementById("root")!).render(<App />);
+console.log("[ROOT] Mounting React App...");
+const container = document.getElementById("root");
+if (container) {
+  createRoot(container).render(<App />);
+} else {
+  console.error("[ROOT] Critical Failure: Element with ID 'root' not found.");
+}

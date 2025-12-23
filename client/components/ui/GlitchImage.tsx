@@ -19,7 +19,10 @@ export const GlitchImage = ({ src, alt, isExpanded }: GlitchImageProps) => {
   if (!isExpanded) return null;
 
   return (
-    <div className="relative w-full h-64 sm:h-96 rounded-xl overflow-hidden bg-[#0a0a0c] border border-white/5 shadow-2xl group/glitch">
+    <div 
+      className="relative w-full h-64 sm:h-96 rounded-xl overflow-hidden bg-[#0a0a0c] border border-white/5 shadow-2xl group/glitch"
+      style={{ contain: 'layout style paint' }}
+    >
       {isLoaded ? (
         <div className="absolute inset-0 w-full h-full">
           {/* Elegant smooth reveal of the stock photo */}
@@ -30,10 +33,11 @@ export const GlitchImage = ({ src, alt, isExpanded }: GlitchImageProps) => {
             src={src}
             alt={alt}
             className="w-full h-full object-cover"
+            style={{ willChange: 'opacity, transform, filter' }}
           />
 
           {/* Minimalist technical overlays */}
-          <div className="absolute inset-0 z-10 pointer-events-none">
+          <div className="absolute inset-0 z-10 pointer-events-none" style={{ contain: 'strict' }}>
             {/* Soft scanlines */}
             <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px]" />
             
@@ -51,6 +55,7 @@ export const GlitchImage = ({ src, alt, isExpanded }: GlitchImageProps) => {
             animate={{ top: "110%" }}
             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
             className="absolute left-0 right-0 h-px z-20 bg-primary/20 shadow-[0_0_10px_rgba(var(--primary-rgb),0.3)]"
+            style={{ willChange: 'top' }}
           />
         </div>
       ) : (

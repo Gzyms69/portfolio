@@ -1,59 +1,134 @@
 import { motion, useScroll, useSpring, useMotionValue } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo, memo, useState } from 'react';
 import * as THREE from 'three';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { useBackground } from '@/hooks/use-background';
+import { COG_LOGO_POINTS } from '@/lib/logo-data';
+
+// --- Sticks Scene logic ---
+const SticksScene = memo(({ scrollY, isIdle }: { scrollY: any, isIdle: boolean }) => {
+  const meshRef = useRef<THREE.InstancedMesh>(null);
+  const count = 200;
+  const colors = [0x00ff41, 0xffaa00, 0xffff00];
+
+  const data = useMemo(() => Array.from({ length: count }, () => ({
+    position: new THREE.Vector3((Math.random() - 0.5) * 3000, (Math.random() - 0.5) * 4000, (Math.random() - 0.5) * 1500),
+    rotation: new THREE.Euler(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI),
+    rotationSpeed: new THREE.Euler(Math.random() * 0.01, Math.random() * 0.01, Math.random() * 0.01),
+    speed: 1 + Math.random() * 2,
+    color: new THREE.Color(colors[Math.floor(Math.random() * colors.length)])
+  })), []);
+
+  useEffect(() => {
+    if (meshRef.current) {
+      data.forEach((item, i) => {
+        meshRef.current!.setColorAt(i, item.color);
+      });
+      if (meshRef.current.instanceColor) meshRef.current.instanceColor.needsUpdate = true;
+    }
+  }, [data]);
+
+  useFrame(() => {
+    if (!meshRef.current) return;
+    const scrollValue = scrollY.get();
+    const matrix = new THREE.Matrix4();
+    
+    data.forEach((item, i) => {
+      item.position.y -= item.speed;
+      item.rotation.x += item.rotationSpeed.x;
+      item.rotation.y += item.rotationSpeed.y;
+
+      let targetX = item.position.x;
+      let targetY = ((item.position.y + (scrollValue * 0.7) + 2000) % 4000 + 4000) % 4000 - 2000;
+      let targetZ = item.position.z;
+
+      if (isIdle && i < COG_LOGO_POINTS.length) {
+        const logoPoint = COG_LOGO_POINTS[i];
+        const lx = (logoPoint.x - 0.5) * 800;
+        const ly = (0.5 - logoPoint.y) * 800;
+        const lz = 500;
+
+        targetX = THREE.MathUtils.lerp(targetX, lx, 0.05);
+        targetY = THREE.MathUtils.lerp(targetY, ly, 0.05);
+        targetZ = THREE.MathUtils.lerp(targetZ, lz, 0.05);
+      }
+
+      matrix.makeRotationFromEuler(item.rotation);
+      matrix.setPosition(targetX, targetY, targetZ);
+      meshRef.current!.setMatrixAt(i, matrix);
+    });
+    meshRef.current.instanceMatrix.needsUpdate = true;
+  });
+
+  return (
+    <instancedMesh ref={meshRef} args={[null as any, null as any, count]}>
+      <boxGeometry args={[2, 30, 2]} />
+      <meshBasicMaterial transparent opacity={0.6} />
+    </instancedMesh>
+  );
+});
+
+SticksScene.displayName = 'SticksScene';
 
 export const InteractiveBackground = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { type } = useBackground();
   const { scrollY } = useScroll();
+  const [isIdle, setIsIdle] = useState(false);
+  const idleTimerRef = useRef<NodeJS.Timeout>();
   
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 150, damping: 30 });
-  const springY = useSpring(mouseY, { stiffness: 150, damping: 30 });
-  const mouseRef = useRef({ x: 0, y: 0 });
+  const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
 
   useEffect(() => {
+    const resetIdle = () => {
+      setIsIdle(false);
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+      idleTimerRef.current = setTimeout(() => setIsIdle(true), 5000);
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
-      mouseRef.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-      mouseRef.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
+      resetIdle();
     };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    resetIdle();
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    };
   }, [mouseX, mouseY]);
 
-  // --- 1. Canvas ASCII Implementation ---
+  // --- 2D ASCII implementation ---
   useEffect(() => {
     if (type !== 'ascii') return;
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: false });
     if (!ctx) return;
 
     let animationFrameId: number;
     const GLITCH_CHARS = "!<>-_/[]{}—=+*^?#________";
     const characters = GLITCH_CHARS.split("");
     const layers = [
-      { count: 400, size: 12, speed: 0.2, parallax: 0.05, color: 'rgba(0, 255, 65, 0.12)', glowColor: 'rgba(0, 255, 65, 0.35)', glitchColor: 'rgba(0, 255, 65, 0.6)' }, 
-      { count: 100, size: 22, speed: 0.4, parallax: 0.1, color: 'rgba(255, 170, 0, 0.12)', glowColor: 'rgba(255, 170, 0, 0.4)', glitchColor: 'rgba(255, 170, 0, 0.6)' }, 
-      { count: 30, size: 42, speed: 0.7, parallax: 0.2, color: 'rgba(255, 255, 0, 0.1)', glowColor: 'rgba(255, 255, 0, 0.45)', glitchColor: 'rgba(255, 255, 0, 0.6)' }
+      { count: 200, size: 12, speed: 0.2, parallax: 0.05, color: 'rgba(0, 255, 65, 0.15)' }, 
+      { count: 50, size: 22, speed: 0.4, parallax: 0.1, color: 'rgba(255, 170, 0, 0.15)' }
     ];
 
     const items = layers.flatMap((layer, layerIdx) => 
       Array.from({ length: layer.count }, () => ({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
+        baseX: Math.random() * window.innerWidth,
+        baseY: Math.random() * window.innerHeight,
         char: characters[Math.floor(Math.random() * characters.length)],
         layerIdx,
-        morphTimer: Math.random() * 100,
-        glitchTimer: Math.random() * 1000,
-        isGlitching: false,
-        hasGlow: Math.random() > 0.4,
-        glowIntensity: (Math.random() + Math.random() + Math.random()) / 3 * 20 
+        morphTimer: Math.random() * 100
       }))
     );
 
@@ -61,52 +136,39 @@ export const InteractiveBackground = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
     resize();
 
     const render = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       const scrollOffset = scrollY.get();
 
-      items.forEach(item => {
+      items.forEach((item, i) => {
         const layer = layers[item.layerIdx];
-        item.y += layer.speed;
-        if (item.y > canvas.height) item.y = -layer.size;
-        const renderY = (item.y + (scrollOffset * layer.parallax)) % canvas.height;
+        item.baseY += layer.speed;
+        if (item.baseY > canvas.height) item.baseY = -layer.size;
+        
+        let targetX = item.baseX;
+        let targetY = (item.baseY + (scrollOffset * layer.parallax)) % canvas.height;
 
-        item.glitchTimer++;
-        if (item.glitchTimer > 800 + Math.random() * 2000) {
-          item.isGlitching = true;
-          if (item.glitchTimer > 820) {
-            item.isGlitching = false;
-            item.glitchTimer = 0;
-          }
+        if (isIdle && i < COG_LOGO_POINTS.length) {
+          const lp = COG_LOGO_POINTS[i];
+          const lx = lp.x * canvas.width;
+          const ly = lp.y * canvas.height;
+          targetX += (lx - targetX) * 0.05;
+          targetY += (ly - targetY) * 0.05;
         }
 
         item.morphTimer++;
-        if (item.morphTimer > (item.isGlitching ? 2 : 100)) {
+        if (item.morphTimer > 100) {
           item.char = characters[Math.floor(Math.random() * characters.length)];
           item.morphTimer = 0;
         }
 
         ctx.font = `${layer.size}px monospace`;
-        if (item.isGlitching) {
-          ctx.fillStyle = 'rgba(255, 0, 0, 0.2)';
-          ctx.fillText(item.char, item.x + 2, renderY);
-          ctx.fillStyle = 'rgba(0, 255, 255, 0.2)';
-          ctx.fillText(item.char, item.x - 2, renderY);
-          ctx.fillStyle = layer.glitchColor; 
-          ctx.fillText(item.char, item.x, renderY);
-        } else {
-          if (item.hasGlow) {
-            ctx.shadowBlur = item.glowIntensity;
-            ctx.shadowColor = layer.glowColor;
-          } else {
-            ctx.shadowBlur = 0;
-          }
-          ctx.fillStyle = layer.color;
-          ctx.fillText(item.char, item.x, renderY);
-        }
+        ctx.fillStyle = layer.color;
+        ctx.fillText(item.char, targetX, targetY);
       });
       animationFrameId = requestAnimationFrame(render);
     };
@@ -115,86 +177,26 @@ export const InteractiveBackground = () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', resize);
     };
-  }, [type, scrollY]);
-
-  // --- 2. Three.js - 3D Sticks Environment ---
-  useEffect(() => {
-    if (type !== 'sticks' || !containerRef.current) return;
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 4000);
-    camera.position.z = 1500;
-
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Capped at 1.5 for performance
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    // Disabled shadows for significant performance boost
-    renderer.shadowMap.enabled = false; 
-    containerRef.current.appendChild(renderer.domElement);
-
-    scene.add(new THREE.AmbientLight(0xffffff, 0.1));
-    // High-intensity HemiLight provides "fake" depth without shadow calculations
-    scene.add(new THREE.HemisphereLight(0xffffff, 0x000000, 1.0)); 
-    
-    const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
-    dirLight.position.set(500, 1000, 1000);
-    scene.add(dirLight);
-    
-    const mouseLight = new THREE.PointLight(0x00ffff, 4, 1000);
-    scene.add(mouseLight);
-
-    const stickGeometry = new THREE.BoxGeometry(2, 30, 2); 
-    const colors = [0x00ff41, 0xffaa00, 0xffff00]; 
-    const count = 600;
-    const mesh = new THREE.InstancedMesh(stickGeometry, new THREE.MeshLambertMaterial({ color: 0xffffff }), count);
-    
-    const data = Array.from({ length: count }, () => ({
-      position: new THREE.Vector3((Math.random() - 0.5) * 3000, (Math.random() - 0.5) * 4000, (Math.random() - 0.5) * 1500),
-      rotation: new THREE.Euler(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI),
-      rotationSpeed: new THREE.Euler(Math.random() * 0.02, Math.random() * 0.02, Math.random() * 0.02),
-      speed: 0.5 + Math.random() * 1.5,
-      color: new THREE.Color(colors[Math.floor(Math.random() * colors.length)])
-    }));
-
-    data.forEach((item, i) => mesh.setColorAt(i, item.color));
-    scene.add(mesh);
-
-    let animationFrameId: number;
-    const animate = () => {
-      const scrollValue = scrollY.get();
-      mouseLight.position.x = mouseRef.current.x * 1500;
-      mouseLight.position.y = mouseRef.current.y * 1000;
-      mouseLight.position.z = 600;
-
-      const matrix = new THREE.Matrix4();
-      data.forEach((item, i) => {
-        item.position.y -= item.speed;
-        const visualY = ((item.position.y + (scrollValue * 0.7) + 2000) % 4000 + 4000) % 4000 - 2000;
-        matrix.makeRotationFromEuler(item.rotation);
-        matrix.setPosition(item.position.x, visualY, item.position.z);
-        mesh.setMatrixAt(i, matrix);
-      });
-      mesh.instanceMatrix.needsUpdate = true;
-      renderer.render(scene, camera);
-      animationFrameId = requestAnimationFrame(animate);
-    };
-    const container = containerRef.current;
-    animate();
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      renderer.dispose();
-      if (container && renderer.domElement.parentElement) {
-        container.removeChild(renderer.domElement);
-      }
-    };
-  }, [type, scrollY]);
+  }, [type, scrollY, isIdle]);
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-[#030712] pointer-events-none">
-      {type === 'ascii' && <canvas ref={canvasRef} className="absolute inset-0" />}
-      {type === 'sticks' && <div ref={containerRef} className="absolute inset-0" />}
+    <div key={type} className="fixed inset-0 -z-10 overflow-hidden bg-[#030712] pointer-events-none">
+      <div className={`absolute inset-0 transition-opacity duration-500 ${type === 'ascii' ? 'opacity-100' : 'opacity-0'}`}>
+        <canvas ref={canvasRef} className="absolute inset-0" />
+      </div>
+
+      <div className={`absolute inset-0 transition-opacity duration-500 ${type === 'sticks' ? 'opacity-100' : 'opacity-0'}`}>
+        {type === 'sticks' && (
+          <Canvas 
+            camera={{ position: [0, 0, 1500], fov: 45, far: 5000 }}
+            gl={{ antialias: false, alpha: false, stencil: false, depth: true }}
+            dpr={1}
+            performance={{ min: 0.5 }}
+          >
+            <SticksScene scrollY={scrollY} isIdle={isIdle} />
+          </Canvas>
+        )}
+      </div>
       
       <motion.div
         animate={{ scale: [1, 1.1, 0.9, 1], opacity: [0.03, 0.05, 0.04, 0.03] }}
@@ -202,13 +204,6 @@ export const InteractiveBackground = () => {
         className="absolute h-[800px] w-[800px] rounded-full bg-primary/5 blur-[120px]"
         style={{ x: springX, y: springY, translateX: "-50%", translateY: "-50%" }}
       />
-
-      <div className="absolute inset-0 opacity-[0.1] mix-blend-overlay">
-        <svg viewBox="0 0 200 200" className="w-full h-full">
-          <filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch" /></filter>
-          <rect width="100%" height="100%" filter="url(#noiseFilter)" />
-        </svg>
-      </div>
     </div>
   );
 };

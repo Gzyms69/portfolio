@@ -2,8 +2,14 @@ import { portfolioConfig } from "@/lib/data";
 import { Terminal, Shield } from "lucide-react";
 import { useLanguage } from "@/hooks/use-language";
 
+import { useBackground } from "@/hooks/use-background";
+
 export const Footer = () => {
   const { language } = useLanguage();
+  const { type } = useBackground();
+
+  if (type === 'sticks') return null;
+
   return (
     <footer className="relative mt-40 pb-20 px-4 sm:px-8">
       <div className="max-w-7xl mx-auto border-t-2 border-primary/20 pt-10 flex flex-col items-center gap-8 group">

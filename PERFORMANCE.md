@@ -185,7 +185,7 @@ ls -lh dist/spa/_assets/
 - **Status**: Active on all cards
 - **Optimization Path**: Reduce animation complexity, use will-change CSS
 
-#### 4. **GlitchText CPU Intensive Effect** ⚠️⚠️
+#### 4. GlitchText CPU Intensive Effect ⚠️⚠️
 - **Location**: [client/components/GlitchText.tsx](client/components/GlitchText.tsx)
 - **Issue**: Character scrambling on 40ms interval + SVG filters
 - **Impact**:
@@ -195,24 +195,41 @@ ls -lh dist/spa/_assets/
 - **Status**: Active on page title
 - **Optimization Path**: Reduce character count, increase interval, remove on mobile
 
+#### 5. Snake Game Component ⚠️⚠️
+- **Location**: [client/components/SnakeGame.tsx](client/components/SnakeGame.tsx)
+- **Issue**: Continuous `requestAnimationFrame` loop and multiple `motion.div` segments.
+- **Impact**:
+  - High CPU usage during gameplay.
+  - DOM overhead with long snake lengths.
+  - Potential memory leaks if loop isn't cleaned up correctly.
+- **Optimization Path**: Throttle game speed based on device capability, use memoization for segments, ensure strict cleanup on exit.
+
+#### 6. CRT Style Overlays (Flicker & Scanlines) ⚠️⚠️
+- **Location**: Multiple components (Navigation, Footer, ProjectCard, etc.)
+- **Issue**: Repeated linear-gradient backgrounds and continuous opacity animations.
+- **Impact**:
+  - High paint overhead due to frequent redraws of large gradients.
+  - JS-based animations for flicker can stutter under load.
+- **Optimization Path**: Use CSS-only animations, implement `contain: layout style paint`, use pseudo-elements for scanlines.
+
 ### High Priority Issues
 
-#### 5. **Scroll Listener Storm** ⚠️
+#### 7. Scroll Listener Storm ⚠️
 - **Issue**: [ScrollProgress.tsx](client/components/ScrollProgress.tsx) + each ProjectCard has useScroll()
 - **Impact**: Multiple scroll event listeners
 - **Solution**: Single scroll listener context, broadcast to components
 
-#### 6. **PageTransition Route Animations** ⚠️
+#### 8. PageTransition Route Animations ⚠️
 - **Issue**: Full-screen slide + perspective on every route change
 - **Impact**: Heavy on slower devices, noticeable delay
 - **Solution**: Conditional animations based on device capability
 
-#### 7. **No Code Splitting** ⚠️
+#### 9. No Code Splitting ⚠️
 - **Issue**: All pages loaded upfront (Index, Contact, CV)
 - **Impact**: Larger initial bundle
 - **Solution**: React lazy loading + Suspense
 
-#### 8. **Image Optimization** ⚠️
+#### 10. Image Optimization ⚠️
 - **Issue**: Project images in ProjectCard not optimized
 - **Impact**: Large uncompressed images
 - **Solution**: WebP with fallbacks, lazy loading, responsive srcset
@@ -242,6 +259,7 @@ ls -lh dist/spa/_assets/
   - [ ] Test: Home scroll (scroll to bottom)
   - [ ] Test: ProjectCard hover (all cards)
   - [ ] Test: GlitchText render (title)
+  - [ ] Test: Snake Game gameplay (FPS)
   - [ ] Record: Frame rate, long tasks
   - [ ] Document FPS and CPU time
 
@@ -257,10 +275,26 @@ ls -lh dist/spa/_assets/
 
 Priority order by impact:
 1. Lazy-load Three.js InteractiveBackground
-2. Reduce animation complexity on mobile
-3. Add code-splitting for pages
-4. Optimize project images
-5. Consolidate scroll listeners
+2. Optimize CRT effects (CSS-only animations, containment)
+3. Improve Snake Game loop and rendering efficiency
+4. Reduce animation complexity on mobile
+5. Add code-splitting for pages
+6. Optimize project images
+7. Consolidate scroll listeners
+
+---
+
+## Specific Optimizations Guide
+
+### CRT Effects Optimization
+- **Use CSS Animations**: Replace Framer Motion opacity animations with CSS `@keyframes` for the flicker effect.
+- **Containment**: Apply `contain: strict` or `contain: layout style paint` to overlay containers to prevent layout recalculations.
+- **Pseudo-elements**: Use `::before` or `::after` for scanlines to keep the DOM tree lean.
+
+### Snake Game Optimization
+- **Cleanup**: Ensure `cancelAnimationFrame` is called whenever the component unmounts or the game is closed.
+- **Memoization**: Wrap snake segments in `React.memo` to prevent unnecessary re-renders when only one segment moves.
+- **Will-Change**: Use `will-change: transform` on the snake head and food elements.
 
 ### Phase 3: Re-baseline & Validation
 

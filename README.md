@@ -1,75 +1,78 @@
 # Portfolio Website
 
-A modern, responsive portfolio website built with React, TypeScript, and TailwindCSS 3. Features a dark glassmorphism design, smooth animations, and a clean, professional interface.
+A retro-futuristic terminal-themed portfolio website inspired by Fallout aesthetics, built with React, TypeScript, and TailwindCSS. Features interactive backgrounds, a Snake minigame, and a highly stylized terminal interface.
 
 ## Features
 
-- **Responsive Design**: Works seamlessly across desktop, tablet, and mobile devices
-- **Dark Glassmorphism Theme**: Modern aesthetic with glass-like card effects
-- **Smooth Navigation**: Active state indicators and smooth scrolling
-- **Contact Form**: Fully functional form with validation (server integration)
-- **CV Download**: Download resume functionality
-- **Project Showcase**: Interactive project cards with gradient backgrounds
-- **Performance Optimized**: Built with Vite for rapid development and hot reloading
+- **Fallout Terminal Aesthetic**: Retro-futuristic design with CRT effects, scanlines, and phosphor glow
+- **Interactive Backgrounds**: Toggle between ASCII rain and 3D sticks backgrounds
+- **Snake Minigame**: Pixel-art Snake game integrated into the terminal interface
+- **Localized Content**: Full Polish/English language support with toggle
+- **Contact Form**: Netlify Forms integration with terminal-styled UI
+- **Project Showcase**: Interactive project cards with glitch image reveals
+- **Responsive Design**: Works across all device sizes
 
 ## Tech Stack
 
 ### Frontend
 - **React 18** - Modern React with hooks and concurrent features
 - **TypeScript** - Type-safe development
-- **React Router 6** - SPA routing with navigation
-- **TailwindCSS 3** - Utility-first styling
-- **Radix UI** - Accessible component primitives
-- **Lucide React** - Beautiful icons
-- **Framer Motion** - Smooth animations (future enhancement)
+- **Vite** - Fast build tool and dev server
+- **TailwindCSS** - Utility-first styling
+- **Framer Motion** - Animations and motion effects
+- **Three.js** - 3D interactive backgrounds
+- **Lucide React** - Consistent SVG icon set
+- **React Router DOM** - Client-side routing
 
-### Backend
-- **Express.js** - Lightweight Node.js framework
-- **TypeScript** - Server-side type safety
-- **CORS** - Cross-origin resource sharing
-- **Environment Variables** - Secure configuration
+### Fonts
+- **VT323** - Terminal-style monospace font for readable text
+- **Major Mono Display** - Stylized font for titles and UI elements
+
+### Backend/Deployment
+- **Netlify Forms** - Contact form processing
+- **Express.js** - Node.js backend (light usage)
 
 ### Development Tools
-- **Vite** - Fast build tool and dev server
 - **PNPM** - Efficient package management
 - **Prettier** - Code formatting
-- **TypeScript** - Type checking
-- **Vitest** - Unit testing framework (setup ready)
+- **ESLint** - Code linting
 
 ## Project Structure
 
 ```
-portfolio-website/
-├── client/                   # React SPA frontend
-│   ├── components/
-│   │   ├── ui/              # Reusable UI components (Radix UI)
-│   │   ├── Navigation.tsx    # Navigation with active states
-│   │   ├── ProjectCard.tsx   # Project showcase cards
-│   │   ├── Footer.tsx        # Footer component
-│   │   └── GradientBackground.tsx # Animated background components
-│   ├── pages/
-│   │   ├── Index.tsx         # Home page with project showcase
-│   │   ├── Contact.tsx       # Contact form page
-│   │   ├── CV.tsx           # Resume/CV page
-│   │   └── NotFound.tsx      # 404 error page
-│   ├── hooks/                # Custom React hooks
-│   ├── lib/                  # Utilities and configurations
-│   ├── App.tsx               # Main app component with routing
-│   └── global.css            # Global styles and design tokens
-├── server/                   # Express API backend
-│   ├── routes/
-│   │   └── contact.ts        # Contact form API endpoint
-│   └── index.ts              # Server setup and middleware
-├── shared/                   # Shared types and interfaces
-│   └── api.ts                # API response types
-└── public/                   # Static assets
+portfolio/
+├── client/                      # Frontend (React/TypeScript) source code
+│   ├── components/              # Reusable UI components
+│   │   ├── ui/                  # UI primitives (buttons, dialogs, etc.)
+│   │   ├── ContactForm.tsx      # Contact form component
+│   │   ├── GlitchImage.tsx      # Pixelated image reveal for project cards
+│   │   ├── Navigation.tsx       # Main navigation sidebar/mobile bar
+│   │   ├── ProjectCard.tsx      # Interactive project display cards
+│   │   └── SnakeGame.tsx        # The pixel-art Snake minigame component
+│   ├── hooks/                   # Custom React hooks (e.g., useTheme, useBackground, useLanguage)
+│   ├── lib/                     # Utility functions, constants, data definitions
+│   │   └── data.tsx             # Centralized project data and translations
+│   └── pages/                   # Top-level page components (Index, Contact, CV, NotFound)
+├── public/                      # Static assets (images, favicon, robots.txt)
+├── scripts/                     # Utility scripts (e.g., for screenshot capture)
+├── server/                      # Backend (Node.js/Express) source code (currently light)
+│   └── routes/                  # API routes (e.g., contact form endpoint)
+├── .github/                     # GitHub specific configurations (e.g., workflows for GitHub Actions)
+│   └── workflows/
+│       └── deploy.yml           # GitHub Actions workflow for deployment (currently reverted)
+├── package.json                 # Project dependencies and scripts
+├── netlify.toml                 # Netlify specific configuration
+├── postcss.config.js            # PostCSS configuration (TailwindCSS)
+├── tailwind.config.ts           # Tailwind CSS configuration
+├── tsconfig.json                # TypeScript configuration
+└── vite.config.ts               # Vite build configuration
 ```
 
 ## Installation & Setup
 
 ### Prerequisites
 - **Node.js** (v18 or higher)
-- **PNPM** (or npm/yarn)
+- **PNPM** (recommended)
 
 ### Installation
 
@@ -84,89 +87,51 @@ cd portfolio-website
 pnpm install
 ```
 
-3. **Environment Setup**
-```bash
-cp .env.example .env  # Configure your environment variables
-```
-
-4. **Start development server**
+3. **Start development server**
 ```bash
 pnpm dev
 ```
 
 Visit `http://localhost:8080` to view the website.
 
-## Pages
+## Key Features
 
-### Home (`/`)
-- Hero section with personal introduction
-- Project showcase grid with interactive cards
-- Clean, modern design with smooth animations
+### Terminal Aesthetic
+- CRT scanlines and flicker effects
+- Green terminal color scheme with amber/yellow accents
+- VT323 and Major Mono Display fonts for authentic terminal feel
+- Corner brackets and industrial styling
 
-### Contact (`/contact`)
-- Professional contact form with validation
-- Server-side form processing
-- Success/error state feedback
+### Interactive Backgrounds
+- **ASCII Mode**: Matrix-style falling characters with varying speeds and colors
+- **Sticks Mode**: 3D falling stick-like objects rendered with Three.js
+- Background preference saved in localStorage
 
-### CV (`/cv`)
-- Detailed resume presentation
-- Download functionality (TXT format)
-- Structured sections (Experience, Education, Skills)
+### Project Cards
+- Terminal-styled frames with corner brackets
+- Glitch image reveal effects with scanlines
+- 3D tilt and CRT jitter on hover
+- Smooth expansion animations
 
-## Design System
+### Snake Minigame
+- Pixel-art implementation with terminal styling
+- Animated snake with directional eyes
+- Score tracking and increasing difficulty
+- Modal interface with confirmation dialog
 
-### Color Palette
-- **Background**: Dark midnight blue (`#15161A`)
-- **Cards**: Semi-transparent glass effects
-- **Text**: White with opacity variations
-- **Gradients**: Custom color combinations for project categories
+### Localization
+- Polish (default) and English language support
+- Translation hook with centralized string management
+- Language toggle in navigation
 
-### Components
-- **Buttons**: Consistent variants (default, glass, glassPrimary)
-- **Forms**: Styled inputs with focus states
-- **Cards**: Glassmorphism effect containers
-- **Navigation**: Sidebar (desktop) and top bar (mobile)
+## Scripts
 
-## Production Deployment
-
-### Build for Production
 ```bash
+# Start development server
+pnpm dev
+
+# Build for production
 pnpm build
-```
-
-### Start Production Server
-```bash
-pnpm start
-```
-
-### Deployment Options
-- **Netlify**: Drag-and-drop deployment
-- **Vercel**: GitHub integration
-- **Docker**: Containerized deployment
-- **Traditional hosting**: Static file serving
-
-## Customization
-
-### Personal Information
-1. Update `client/pages/Index.tsx` - Modify hero section content
-2. Update `client/pages/CV.tsx` - Add your experience, education, skills
-3. Update navigation links in `client/components/Navigation.tsx`
-
-### Styling
-1. Modify `client/global.css` for color scheme changes
-2. Update `tailwind.config.ts` for theme customization
-3. Add new components following the established patterns
-
-### Content
-1. Replace placeholder project cards in `client/pages/Index.tsx`
-2. Update contact form fields and validation rules
-3. Customize the footer with your links and information
-
-## Testing
-
-```bash
-# Run all tests
-pnpm test
 
 # Type checking
 pnpm typecheck
@@ -174,6 +139,31 @@ pnpm typecheck
 # Code formatting
 pnpm format.fix
 ```
+
+## Customization
+
+### Personal Information
+1. Update content in `client/lib/data.tsx` - Modify project data and translations
+2. Update `client/pages/Index.tsx` - Adjust hero section if needed
+3. Update navigation links in `client/components/Navigation.tsx`
+
+### Styling
+1. Modify `client/global.css` for color scheme changes
+2. Update `tailwind.config.ts` for theme customization
+3. Adjust font usage in components as needed
+
+### Content
+1. Replace project data in `client/lib/data.tsx`
+2. Update contact form fields and validation rules
+3. Customize the footer with your links and information
+
+## Deployment
+
+The project is configured for Netlify deployment:
+1. Connect your repository to Netlify
+2. Set build command to `pnpm build`
+3. Set publish directory to `dist`
+4. Netlify Forms will handle contact form submissions
 
 ## Contributing
 
@@ -194,4 +184,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Built with modern web technologies
+Built with modern web technologies and retro-futuristic aesthetics

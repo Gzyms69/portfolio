@@ -175,88 +175,93 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
             </div>
           </div>
 
-          {/* Game Board */}
-          <div className="relative aspect-square w-full max-w-[500px] bg-[#030712] border-4 border-primary/30 rounded-xl overflow-hidden shadow-[0_0_50px_rgba(0,255,65,0.1)]">
-            {/* Pixel Grid Overlay - More defined */}
-            <div 
-              className="absolute inset-0 z-10 opacity-10" 
-              style={{
-                backgroundSize: `${100/gridSize}% ${100/gridSize}%`,
-                backgroundImage: `linear-gradient(to right, ${'rgba(0,255,65,0.15)'} 1px, transparent 1px), linear-gradient(to bottom, ${'rgba(0,255,65,0.15)'} 1px, transparent 1px)`
-              }}
-            />
-
-            {/* CRT Effect Overlay */}
-            <div className="absolute inset-0 z-20 pointer-events-none opacity-20">
-               <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px]" />
-            </div>
-
-            {/* Render Snake */}
-            {snake.map((segment, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.1 }} // Instant appearance for pixel art
-                className="absolute bg-primary"
-                style={{
-                  width: `${100/gridSize}%`,
-                  height: `${100/gridSize}%`,
-                  left: `${(segment.x * 100) / gridSize}%`,
-                  top: `${(segment.y * 100) / gridSize}%`,
-                  boxShadow: `0 0 5px rgba(0,255,65,${i === 0 ? 0.8 : 0.4})`, // Head has more glow
-                  zIndex: snake.length - i,
-                  imageRendering: 'pixelated' // Ensure sharp pixels
-                }}
-              >
-                {/* Snake Head with Eyes */}
-                {i === 0 && (
-                  <>
-                    <div className="absolute w-full h-full flex items-center justify-center">
-                      <div className="w-1/3 h-1/3 bg-black rounded-full shadow-[0_0_5px_rgba(0,0,0,0.8)] animate-pulse" />
-                    </div>
-                    {/* Eye 1 */}
-                    <div
-                      className="absolute w-[10%] h-[10%] bg-white rounded-full"
-                      style={{ 
-                        top: direction.y === -1 ? '20%' : direction.y === 1 ? '80%' : '50%', 
-                        left: direction.x === -1 ? '20%' : direction.x === 1 ? '80%' : '35%',
-                        transform: 'translate(-50%, -50%)',
-                        boxShadow: '0 0 2px white'
-                      }}
-                    />
-                     {/* Eye 2 */}
-                    <div
-                      className="absolute w-[10%] h-[10%] bg-white rounded-full"
-                      style={{ 
-                        top: direction.y === -1 ? '20%' : direction.y === 1 ? '80%' : '50%', 
-                        left: direction.x === -1 ? '80%' : direction.x === 1 ? '20%' : '65%',
-                        transform: 'translate(-50%, -50%)',
-                        boxShadow: '0 0 2px white'
-                      }}
-                    />
-                  </>
-                )}
-              </motion.div>
-            ))}
-
-            {/* Render Food - Pixelated 'Byte' */}
-            <motion.div 
-              key={`${food.x}-${food.y}`} // Key for re-animation on food change
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: [1, 0.8, 1], scale: [1.2, 1, 1.2] }} // Pulsing animation
-              exit={{ opacity: 0, scale: 0.5 }}
-              transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }}
-              className="absolute bg-[#ffaa00] shadow-[0_0_15px_#ffaa00]"
-              style={{
-                width: `${100/gridSize}%`,
-                height: `${100/gridSize}%`,
-                left: `${(food.x * 100) / gridSize}%`,
-                top: `${(food.y * 100) / gridSize}%`,
-                imageRendering: 'pixelated' // Ensure sharp pixels
-              }}
-            >
-              {/* Inner pixel for food */}
+                      {/* Game Board */}
+                    <div 
+                      className="relative aspect-square w-full max-w-[500px] bg-[#030712] border-4 border-primary/30 rounded-xl overflow-hidden shadow-[0_0_50px_rgba(0,255,65,0.1)]"
+                      style={{ contain: 'layout style paint' }}
+                    >
+                      {/* Pixel Grid Overlay - More defined */}
+                      <div 
+                        className="absolute inset-0 z-10 opacity-10" 
+                        style={{
+                          backgroundSize: `${100/gridSize}% ${100/gridSize}%`,
+                          backgroundImage: `linear-gradient(to right, ${'rgba(0,255,65,0.15)'} 1px, transparent 1px), linear-gradient(to bottom, ${'rgba(0,255,65,0.15)'} 1px, transparent 1px)`,
+                          contain: 'strict'
+                        }}
+                      />
+          
+                      {/* CRT Effect Overlay */}
+                      <div className="absolute inset-0 z-20 pointer-events-none opacity-20">
+                         <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px]" />
+                      </div>
+          
+                      {/* Render Snake */}
+                      {snake.map((segment, i) => (
+                        <motion.div 
+                          key={`${segment.x}-${segment.y}-${i}`} // More unique key
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.1 }}
+                          className="absolute bg-primary"
+                          style={{
+                            width: `${100/gridSize}%`,
+                            height: `${100/gridSize}%`,
+                            left: `${(segment.x * 100) / gridSize}%`,
+                            top: `${(segment.y * 100) / gridSize}%`,
+                            boxShadow: `0 0 5px rgba(0,255,65,${i === 0 ? 0.8 : 0.4})`,
+                            zIndex: snake.length - i,
+                            imageRendering: 'pixelated',
+                            willChange: 'transform, opacity'
+                          }}
+                        >
+                          {/* Snake Head with Eyes */}
+                          {i === 0 && (
+                            <>
+                              <div className="absolute w-full h-full flex items-center justify-center">
+                                <div className="w-1/3 h-1/3 bg-black rounded-full shadow-[0_0_5px_rgba(0,0,0,0.8)] animate-pulse" />
+                              </div>
+                              {/* Eye 1 */}
+                              <div
+                                className="absolute w-[10%] h-[10%] bg-white rounded-full"
+                                style={{ 
+                                  top: direction.y === -1 ? '20%' : direction.y === 1 ? '80%' : '50%', 
+                                  left: direction.x === -1 ? '20%' : direction.x === 1 ? '80%' : '35%',
+                                  transform: 'translate(-50%, -50%)',
+                                  boxShadow: '0 0 2px white'
+                                }}
+                              />
+                               {/* Eye 2 */}
+                              <div
+                                className="absolute w-[10%] h-[10%] bg-white rounded-full"
+                                style={{ 
+                                  top: direction.y === -1 ? '20%' : direction.y === 1 ? '80%' : '50%', 
+                                  left: direction.x === -1 ? '80%' : direction.x === 1 ? '20%' : '65%',
+                                  transform: 'translate(-50%, -50%)',
+                                  boxShadow: '0 0 2px white'
+                                }}
+                              />
+                            </>
+                          )}
+                        </motion.div>
+                      ))}
+          
+                      {/* Render Food - Pixelated 'Byte' */}
+                      <motion.div 
+                        key={`${food.x}-${food.y}`}
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: [1, 0.8, 1], scale: [1.2, 1, 1.2] }}
+                        exit={{ opacity: 0, scale: 0.5 }}
+                        transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }}
+                        className="absolute bg-[#ffaa00] shadow-[0_0_15px_#ffaa00]"
+                        style={{
+                          width: `${100/gridSize}%`,
+                          height: `${100/gridSize}%`,
+                          left: `${(food.x * 100) / gridSize}%`,
+                          top: `${(food.y * 100) / gridSize}%`,
+                          imageRendering: 'pixelated',
+                          willChange: 'transform, scale, opacity'
+                        }}
+                      >              {/* Inner pixel for food */}
               <div className="absolute inset-1/4 w-1/2 h-1/2 bg-white/70 animate-pulse" />
             </motion.div>
 
