@@ -1,5 +1,5 @@
 import { motion, useScroll, useSpring, useMotionValue, MotionValue } from 'framer-motion';
-import { useEffect, useRef, memo, useState } from 'react';
+import { useEffect, useRef, memo, useState, useMemo } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useBackground } from '@/hooks/use-background';
@@ -8,16 +8,15 @@ import { COG_LOGO_POINTS } from '@/lib/logo-data';
 // --- Sticks Scene logic ---
 const SticksScene = memo(({ scrollY, isIdle }: { scrollY: MotionValue<number>, isIdle: boolean }) => {
   const meshRef = useRef<THREE.InstancedMesh>(null);
-  const count = 200;
+  const count = 120; // Reduced count for performance
   
-  // Use lazy state initialization to handle random values purely once per mount
   const [data] = useState(() => {
     const colors = [0x00ff41, 0xffaa00, 0xffff00];
     return Array.from({ length: count }, () => ({
       position: new THREE.Vector3((Math.random() - 0.5) * 3000, (Math.random() - 0.5) * 4000, (Math.random() - 0.5) * 1500),
       rotation: new THREE.Euler(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI),
-      rotationSpeed: new THREE.Euler(Math.random() * 0.01, Math.random() * 0.01, Math.random() * 0.01),
-      speed: 1 + Math.random() * 2,
+      rotationSpeed: new THREE.Euler(Math.random() * 0.005, Math.random() * 0.005, Math.random() * 0.005),
+      speed: 0.8 + Math.random() * 1.5,
       color: new THREE.Color(colors[Math.floor(Math.random() * colors.length)])
     }));
   });
@@ -31,10 +30,11 @@ const SticksScene = memo(({ scrollY, isIdle }: { scrollY: MotionValue<number>, i
     }
   }, [data]);
 
+  const matrix = useMemo(() => new THREE.Matrix4(), []);
+
   useFrame(() => {
     if (!meshRef.current) return;
     const scrollValue = scrollY.get();
-    const matrix = new THREE.Matrix4();
     
     data.forEach((item, i) => {
       item.position.y -= item.speed;
@@ -42,7 +42,7 @@ const SticksScene = memo(({ scrollY, isIdle }: { scrollY: MotionValue<number>, i
       item.rotation.y += item.rotationSpeed.y;
 
       let targetX = item.position.x;
-      let targetY = ((item.position.y + (scrollValue * 0.7) + 2000) % 4000 + 4000) % 4000 - 2000;
+      let targetY = ((item.position.y + (scrollValue * 0.5) + 2000) % 4000 + 4000) % 4000 - 2000;
       let targetZ = item.position.z;
 
       if (isIdle && i < COG_LOGO_POINTS.length) {
@@ -51,9 +51,9 @@ const SticksScene = memo(({ scrollY, isIdle }: { scrollY: MotionValue<number>, i
         const ly = (0.5 - logoPoint.y) * 800;
         const lz = 500;
 
-        targetX = THREE.MathUtils.lerp(targetX, lx, 0.05);
-        targetY = THREE.MathUtils.lerp(targetY, ly, 0.05);
-        targetZ = THREE.MathUtils.lerp(targetZ, lz, 0.05);
+        targetX = THREE.MathUtils.lerp(targetX, lx, 0.03);
+        targetY = THREE.MathUtils.lerp(targetY, ly, 0.03);
+        targetZ = THREE.MathUtils.lerp(targetZ, lz, 0.03);
       }
 
       matrix.makeRotationFromEuler(item.rotation);
@@ -66,7 +66,7 @@ const SticksScene = memo(({ scrollY, isIdle }: { scrollY: MotionValue<number>, i
   return (
     <instancedMesh ref={meshRef} args={[null as unknown as THREE.BufferGeometry, null as unknown as THREE.MeshBasicMaterial, count]}>
       <boxGeometry args={[2, 30, 2]} />
-      <meshBasicMaterial transparent opacity={0.6} />
+      <meshBasicMaterial transparent opacity={0.4} />
     </instancedMesh>
   );
 });
@@ -82,8 +82,8 @@ export const InteractiveBackground = () => {
   
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
-  const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
 
   useEffect(() => {
     const resetIdle = () => {
@@ -107,7 +107,6 @@ export const InteractiveBackground = () => {
     };
   }, [mouseX, mouseY]);
 
-  // --- 2D ASCII implementation ---
   useEffect(() => {
     if (type !== 'ascii') return;
     const canvas = canvasRef.current;
@@ -119,8 +118,8 @@ export const InteractiveBackground = () => {
     const GLITCH_CHARS = "!<>-_/[]{}—=+*^?#________";
     const characters = GLITCH_CHARS.split("");
     const layers = [
-      { count: 200, size: 12, speed: 0.2, parallax: 0.05, color: 'rgba(0, 255, 65, 0.15)' }, 
-      { count: 50, size: 22, speed: 0.4, parallax: 0.1, color: 'rgba(255, 170, 0, 0.15)' }
+      { count: 100, size: 12, speed: 0.15, parallax: 0.03, color: 'rgba(0, 255, 65, 0.12)' }, 
+      { count: 30, size: 20, speed: 0.3, parallax: 0.06, color: 'rgba(255, 170, 0, 0.12)' }
     ];
 
     const items = layers.flatMap((layer, layerIdx) => 
@@ -159,12 +158,12 @@ export const InteractiveBackground = () => {
           const lp = COG_LOGO_POINTS[i];
           const lx = lp.x * canvas.width;
           const ly = lp.y * canvas.height;
-          targetX += (lx - targetX) * 0.05;
-          targetY += (ly - targetY) * 0.05;
+          targetX += (lx - targetX) * 0.03;
+          targetY += (ly - targetY) * 0.03;
         }
 
         item.morphTimer++;
-        if (item.morphTimer > 100) {
+        if (item.morphTimer > 150) {
           item.char = characters[Math.floor(Math.random() * characters.length)];
           item.morphTimer = 0;
         }
@@ -192,7 +191,13 @@ export const InteractiveBackground = () => {
         {type === 'sticks' && (
           <Canvas 
             camera={{ position: [0, 0, 1500], fov: 45, far: 5000 }}
-            gl={{ antialias: false, alpha: false, stencil: false, depth: true }}
+            gl={{ 
+              antialias: false, 
+              alpha: false, 
+              stencil: false, 
+              depth: true,
+              powerPreference: "high-performance"
+            }}
             dpr={1}
             performance={{ min: 0.5 }}
           >
@@ -202,8 +207,8 @@ export const InteractiveBackground = () => {
       </div>
       
       <motion.div
-        animate={{ scale: [1, 1.1, 0.9, 1], opacity: [0.03, 0.05, 0.04, 0.03] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ scale: [1, 1.05, 1], opacity: [0.02, 0.04, 0.02] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
         className="absolute h-[800px] w-[800px] rounded-full bg-primary/5 blur-[120px]"
         style={{ x: springX, y: springY, translateX: "-50%", translateY: "-50%" }}
       />

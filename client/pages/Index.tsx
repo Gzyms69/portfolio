@@ -1,4 +1,3 @@
-import { Navigation } from "@/components/Navigation";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Footer } from "@/components/Footer";
 import { StaggerItem } from "@/components/Reveal";
@@ -13,7 +12,7 @@ import { useLanguage } from "@/hooks/use-language";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { ContactForm } from "@/components/ContactForm";
- // Added ContactForm import
+import { Navigation } from "@/components/Navigation";
 
 import { DossierContent, DossierItem } from "@/components/DossierContent";
 
@@ -34,53 +33,52 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
   if (isDossier) {
     return (
       <DossierContent>
-        <div className="space-y-12">
-          <DossierItem>
-            <div className="flex flex-col gap-2 border-b border-primary/10 pb-6">
-              <div className="flex items-center gap-2 text-[10px] font-mono text-primary/40 uppercase tracking-widest mb-2">
-                <TerminalIcon className="h-3 w-3" />
-                <span>Dossier_ID: DA-2112</span>
-              </div>
-              <h1 className="text-5xl sm:text-6xl font-bold font-['VT323'] text-primary uppercase tracking-tight">
-                {content.name}
-              </h1>
+        <DossierItem>
+          <div className="flex flex-col gap-2 border-b border-primary/10 pb-6">
+            <div className="flex items-center gap-2 text-[10px] font-mono text-primary/40 uppercase tracking-widest mb-2">
+              <TerminalIcon className="h-3 w-3" />
+              <span>{t('dossier_id')} DA-2112</span>
             </div>
-          </DossierItem>
+            <GlitchText
+              text={content.name}
+              className="text-5xl sm:text-6xl font-bold font-mono text-primary uppercase tracking-tight"
+            />
+          </div>
+        </DossierItem>
 
-          <DossierItem>
-            <div className="flex flex-col gap-6 max-w-2xl">
-              <p className="font-['VT323'] text-2xl text-primary/90 leading-relaxed uppercase text-shadow-sm">
-                {content.title}
-              </p>
-              <div className="space-y-4 font-['VT323'] text-xl text-primary/60 leading-relaxed uppercase">
-                {content.description.split('\n').map((para, i) => (
-                  <p key={i}>{para}</p>
+        <DossierItem>
+          <div className="flex flex-col gap-6 max-w-2xl">
+            <p className="font-mono text-2xl text-primary/90 leading-relaxed uppercase text-shadow-sm">
+              {content.title}
+            </p>
+            <div className="space-y-4 font-mono text-xl text-primary/60 leading-relaxed uppercase">
+              {content.description.split('\n').map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+          </div>
+        </DossierItem>
+        
+        <DossierItem>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8 border-t border-primary/10">
+            <div>
+              <span className="block text-[10px] font-mono text-primary/30 uppercase tracking-[0.3em] mb-4">{t('cv_skills')}:</span>
+              <div className="flex flex-wrap gap-2">
+                {content.heroTechStack.map((tech, index) => (
+                  <TechTag key={index} tech={tech} />
                 ))}
               </div>
             </div>
-          </DossierItem>
-          
-          <DossierItem>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8 border-t border-primary/10">
-              <div>
-                <span className="block text-[10px] font-mono text-primary/30 uppercase tracking-[0.3em] mb-4">Core_Competencies:</span>
-                <div className="flex flex-wrap gap-2">
-                  {content.heroTechStack.map((tech, index) => (
-                    <TechTag key={index} tech={tech} />
-                  ))}
-                </div>
-              </div>
-              <div className="space-y-2">
-                <span className="block text-[10px] font-mono text-primary/30 uppercase tracking-[0.3em] mb-4">Service_Status:</span>
-                <div className="font-['VT323'] text-primary/80">
-                  <div>AVAILABILITY: IMMEDIATE</div>
-                  <div>LOCATION: REMOTE_READY</div>
-                  <div>CLEARANCE: LEVEL_4</div>
-                </div>
+            <div className="space-y-2">
+              <span className="block text-[10px] font-mono text-primary/30 uppercase tracking-[0.3em] mb-4">{t('service_status')}</span>
+              <div className="font-mono text-primary/80">
+                <div>{t('availability')} {t('immediate')}</div>
+                <div>LOCATION: {t('location_remote')}</div>
+                <div>{t('clearance_level')} LEVEL_4</div>
               </div>
             </div>
-          </DossierItem>
-        </div>
+          </div>
+        </DossierItem>
       </DossierContent>
     );
   }
@@ -88,10 +86,8 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
   return (
     <PageTransition>
       <div className="min-h-screen">
-        {/* Navigation */}
         <Navigation />
 
-        {/* Main Content */}
         <main className="flex w-full justify-center px-4 sm:px-6 md:px-8">
           <div className="w-full max-w-[90rem] py-8 sm:py-16 md:py-24 lg:py-32">
             {/* Hero & Contact Form Wrapper */}
@@ -121,26 +117,26 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
                       <div className="flex flex-col gap-2 border-b border-primary/10 pb-6">
                         <div className="flex items-center gap-2 text-[10px] font-mono text-primary/40 uppercase tracking-widest mb-2">
                           <TerminalIcon className="h-3 w-3" />
-                          <span>User_Profile // ID: DA-2112</span>
+                          <span>{t('dossier_id')} DA-2112</span>
                         </div>
                         <GlitchText
                           text={content.name}
-                          className="text-4xl font-bold font-['VT323'] text-primary sm:text-5xl md:text-6xl lg:text-7xl leading-none uppercase tracking-tight"
+                          className="text-4xl font-bold font-mono text-primary sm:text-5xl md:text-6xl lg:text-7xl leading-none uppercase tracking-tight"
                         />
                       </div>
 
                       <div className="flex flex-col gap-6">
-                        <p className="font-['VT323'] text-xl sm:text-2xl text-primary/80 leading-relaxed max-w-2xl lowercase tracking-wide">
+                        <p className="font-mono text-xl sm:text-2xl text-primary/80 leading-relaxed max-w-2xl lowercase tracking-wide">
                           {content.title}
                         </p>
-                        <p className="font-['VT323'] text-lg text-primary/50 leading-relaxed max-w-2xl lowercase">
+                        <p className="font-mono text-lg text-primary/50 leading-relaxed max-w-2xl lowercase">
                           {content.description}
                         </p>
                       </div>
                       
                       {/* Tech Stack Tags */}
                       <div className="flex flex-wrap gap-3 pt-6 border-t border-primary/10">
-                        <span className="w-full text-[10px] font-mono text-primary/30 uppercase tracking-[0.3em] mb-2">Capabilities:</span>
+                        <span className="w-full text-[10px] font-mono text-primary/30 uppercase tracking-[0.3em] mb-2">{t('cv_skills')}:</span>
                         {content.heroTechStack.map((tech, index) => (
                           <TechTag key={index} tech={tech} />
                         ))}
@@ -165,7 +161,7 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
                 <GlitchText
                   text={t('projects')}
                   triggerInView
-                  className="text-3xl font-bold text-strong sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter font-['VT323']"
+                  className="text-3xl font-bold text-strong sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter font-mono"
                 />
                 <span className="text-[10px] font-mono text-primary/40 mt-auto mb-2 hidden sm:block">
                   [DATA_STREAM_v4.0]

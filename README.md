@@ -1,187 +1,37 @@
-# Portfolio Website
+# Vault-Tec OS v4.0 | Portfolio
 
-A retro-futuristic terminal-themed portfolio website inspired by Fallout aesthetics, built with React, TypeScript, and TailwindCSS. Features interactive backgrounds, a Snake minigame, and a highly stylized terminal interface.
+A retro-futuristic terminal experience inspired by Fallout aesthetics. This isn't just a portfolio; it's a simulated terminal interface built with React, TypeScript, and Framer Motion. 
 
-## Features
+I built this because I wanted to push the boundaries of "Glassmorphism" and see if I could make a website feel like a physical, mechanical object from the 70s.
 
-- **Fallout Terminal Aesthetic**: Retro-futuristic design with CRT effects, scanlines, and phosphor glow
-- **Interactive Backgrounds**: Toggle between ASCII rain and 3D sticks backgrounds
-- **Snake Minigame**: Pixel-art Snake game integrated into the terminal interface
-- **Localized Content**: Full Polish/English language support with toggle
-- **Contact Form**: Netlify Forms integration with terminal-styled UI
-- **Project Showcase**: Interactive project cards with glitch image reveals
-- **Responsive Design**: Works across all device sizes
+## 🕹️ Why I Built This
+Most portfolios look the same. I wanted something that felt **alive**. Getting the "CRT zap" and the "phosphor glow" to feel right was a massive headache. I spent way too many hours tweaking animation timings in Framer Motion just to get that specific "mechanical delay" you'd expect from a 50-year-old monitor.
 
-## Tech Stack
+The Dossier mode was originally supposed to be just a dark mode toggle, but it evolved into a full 3D environment once I realized how much better the "Vault-Tec" vibe works when you feel like you're actually looking at a classified physical file.
 
-### Frontend
-- **React 18** - Modern React with hooks and concurrent features
-- **TypeScript** - Type-safe development
-- **Vite** - Fast build tool and dev server
-- **TailwindCSS** - Utility-first styling
-- **Framer Motion** - Animations and motion effects
-- **Three.js** - 3D interactive backgrounds
-- **Lucide React** - Consistent SVG icon set
-- **React Router DOM** - Client-side routing
+## 🛠️ Tech Stack & Struggles
+*   **React 18 & Vite**: Standard choice for speed, but necessary for the complex state management between theme transitions.
+*   **Framer Motion**: The backbone of the experience. Without the `AnimatePresence` logic, the "TV Power Off" effect would have looked like a cheap glitch.
+*   **Three.js (R3F)**: Powering the "Sticks" background. **Performance Note:** I had to scale back the stick count from 200 to 120 because, while it looked great on my desktop, it was absolute murder on mobile GPUs.
+*   **TailwindCSS**: Used for everything layout-related. Managing the "green-on-black" contrast while keeping text readable was a challenge.
 
-### Fonts
-- **VT323** - Terminal-style monospace font for readable text
-- **Major Mono Display** - Stylized font for titles and UI elements
+## 📂 System Architecture
+The project follows a "Shell-first" architecture:
+-   `client/components`: Highly specialized UI modules (Terminal components, Snake game logic).
+-   `client/hooks`: Custom logic for theme synchronization and language parsing.
+-   `client/lib/terminal-db.tsx`: The centralized "database" for the terminal's VFS (Virtual File System).
 
-### Backend/Deployment
-- **Netlify Forms** - Contact form processing
-- **Express.js** - Node.js backend (light usage)
+## ⚡ Lessons Learned
+1.  **3D is Heavy**: Real-time 3D backgrounds are cool, but optimization is king. I learned a lot about instanced meshes to keep the frame rate stable.
+2.  **Typography Matters**: Finding the right balance between the pixelated `VT323` and readability was hard. 
+3.  **i18n is more than translation**: Adapting the terminal commands to sound natural in both Polish and English required more than just literal translation—it required "contextual adaptation" (e.g., ensuring "POLECENIA" feels as authoritative as "COMMANDS").
 
-### Development Tools
-- **PNPM** - Efficient package management
-- **Prettier** - Code formatting
-- **ESLint** - Code linting
-
-## Project Structure
-
-```
-portfolio/
-├── client/                      # Frontend (React/TypeScript) source code
-│   ├── components/              # Reusable UI components
-│   │   ├── ui/                  # UI primitives (buttons, dialogs, etc.)
-│   │   ├── ContactForm.tsx      # Contact form component
-│   │   ├── GlitchImage.tsx      # Pixelated image reveal for project cards
-│   │   ├── Navigation.tsx       # Main navigation sidebar/mobile bar
-│   │   ├── ProjectCard.tsx      # Interactive project display cards
-│   │   └── SnakeGame.tsx        # The pixel-art Snake minigame component
-│   ├── hooks/                   # Custom React hooks (e.g., useTheme, useBackground, useLanguage)
-│   ├── lib/                     # Utility functions, constants, data definitions
-│   │   └── data.tsx             # Centralized project data and translations
-│   └── pages/                   # Top-level page components (Index, Contact, CV, NotFound)
-├── public/                      # Static assets (images, favicon, robots.txt)
-├── scripts/                     # Utility scripts (e.g., for screenshot capture)
-├── server/                      # Backend (Node.js/Express) source code (currently light)
-│   └── routes/                  # API routes (e.g., contact form endpoint)
-├── .github/                     # GitHub specific configurations (e.g., workflows for GitHub Actions)
-│   └── workflows/
-│       └── deploy.yml           # GitHub Actions workflow for deployment (currently reverted)
-├── package.json                 # Project dependencies and scripts
-├── netlify.toml                 # Netlify specific configuration
-├── postcss.config.js            # PostCSS configuration (TailwindCSS)
-├── tailwind.config.ts           # Tailwind CSS configuration
-├── tsconfig.json                # TypeScript configuration
-└── vite.config.ts               # Vite build configuration
-```
-
-## Installation & Setup
-
-### Prerequisites
-- **Node.js** (v18 or higher)
-- **PNPM** (recommended)
-
-### Installation
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/your-username/portfolio-website.git
-cd portfolio-website
-```
-
-2. **Install dependencies**
+## 🚀 Installation
 ```bash
 pnpm install
-```
-
-3. **Start development server**
-```bash
 pnpm dev
 ```
-
-Visit `http://localhost:8080` to view the website.
-
-## Key Features
-
-### Terminal Aesthetic
-- CRT scanlines and flicker effects
-- Green terminal color scheme with amber/yellow accents
-- VT323 and Major Mono Display fonts for authentic terminal feel
-- Corner brackets and industrial styling
-
-### Interactive Backgrounds
-- **ASCII Mode**: Matrix-style falling characters with varying speeds and colors
-- **Sticks Mode**: 3D falling stick-like objects rendered with Three.js
-- Background preference saved in localStorage
-
-### Project Cards
-- Terminal-styled frames with corner brackets
-- Glitch image reveal effects with scanlines
-- 3D tilt and CRT jitter on hover
-- Smooth expansion animations
-
-### Snake Minigame
-- Pixel-art implementation with terminal styling
-- Animated snake with directional eyes
-- Score tracking and increasing difficulty
-- Modal interface with confirmation dialog
-
-### Localization
-- Polish (default) and English language support
-- Translation hook with centralized string management
-- Language toggle in navigation
-
-## Scripts
-
-```bash
-# Start development server
-pnpm dev
-
-# Build for production
-pnpm build
-
-# Type checking
-pnpm typecheck
-
-# Code formatting
-pnpm format.fix
-```
-
-## Customization
-
-### Personal Information
-1. Update content in `client/lib/data.tsx` - Modify project data and translations
-2. Update `client/pages/Index.tsx` - Adjust hero section if needed
-3. Update navigation links in `client/components/Navigation.tsx`
-
-### Styling
-1. Modify `client/global.css` for color scheme changes
-2. Update `tailwind.config.ts` for theme customization
-3. Adjust font usage in components as needed
-
-### Content
-1. Replace project data in `client/lib/data.tsx`
-2. Update contact form fields and validation rules
-3. Customize the footer with your links and information
-
-## Deployment
-
-The project is configured for Netlify deployment:
-1. Connect your repository to Netlify
-2. Set build command to `pnpm build`
-3. Set publish directory to `dist`
-4. Netlify Forms will handle contact form submissions
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Developer
-
-**Dawid Czerwiński**
-- GitHub: [Profile](https://github.com/Gzyms69)
 
 ---
-
-Built with modern web technologies and retro-futuristic aesthetics
+**Vault-Tec OS v4.0** - *Better Living, Underground.*
+Developed by **Dawid Czerwiński**

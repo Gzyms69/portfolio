@@ -1,5 +1,5 @@
 import { Home, Github, Briefcase, Boxes, Terminal, Activity, Worm, Command, Power } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useBackground } from "@/hooks/use-background";
 import { useLanguage } from "@/hooks/use-language";
 import { useState, memo } from "react";
@@ -87,6 +87,7 @@ NavButton.displayName = 'NavButton';
 
 export const Navigation = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { language, setLanguage, t } = useLanguage();
   const { type: bgType, toggleBackground } = useBackground();
   const [isSnakeConfirmOpen, setIsSnakeConfirmOpen] = useState(false);
@@ -115,7 +116,12 @@ export const Navigation = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const handleHomeScroll = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleHomeScroll = () => {
+    if (location.pathname !== '/') {
+      navigate('/');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   if (bgType === 'sticks') return null;
 

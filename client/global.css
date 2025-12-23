@@ -3,234 +3,47 @@
 @tailwind utilities;
 
 @layer base {
-  /**
-   * BookShop Design System - Gray-based color palette
-   */
   :root {
     --background: 222.2 84% 5%;
     --foreground: 210 40% 98%;
-
     --card: 222.2 84% 5%;
     --card-foreground: 210 40% 98%;
-
     --popover: 222.2 84% 5%;
     --popover-foreground: 210 40% 98%;
-
     --primary: 142.1 76.2% 36.3%;
     --primary-foreground: 355.7 100% 97.3%;
-
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 10.6% 64.9%;
     --muted-foreground: 215 20.2% 65.1%;
-
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 10.6% 64.9%;
     --input: 217.2 10.6% 64.9%;
     --ring: 142.1 76.2% 36.3%;
-
     --radius: 0.5rem;
-  }
-
-  .light {
-    --background: 0 0% 92%;
-    --foreground: 222.2 84% 5%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 5%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 5%;
-
-    --primary: 142.1 76.2% 36.3%;
-    --primary-foreground: 355.7 100% 97.3%;
-
-    --secondary: 210 40% 15%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 0 0% 85%;
-    --muted-foreground: 0 0% 30%;
-
-    --accent: 210 40% 20%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 0 0% 75%;
-    --input: 0 0% 95%;
-    --ring: 142.1 70% 45%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 5%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 5%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 5%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 142.1 76.2% 36.3%;
-    --primary-foreground: 355.7 100% 97.3%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 10.6% 64.9%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 10.6% 64.9%;
-    --input: 217.2 10.6% 64.9%;
-    --ring: 142.1 76.2% 36.3%;
-
-    --radius: 0.5rem;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
-    position: relative; /* Added to fix Framer Motion useScroll warnings */
-  }
-
-  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
-    overflow-wrap: anywhere;
-    word-break: break-word;
-  }
-
-  pre,
-  code {
-    overflow-x: auto;
-    white-space: pre;
+    @apply bg-background text-foreground font-mono;
+    position: relative;
   }
 }
 
-/* Custom scrollbar for webkit browsers */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-muted;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-muted-foreground/50 rounded;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-muted-foreground/70;
-}
-
-/* Line clamping utilities */
-.line-clamp-1 {
-  @apply overflow-hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-}
-
-.line-clamp-2 {
-  @apply overflow-hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-/* Smooth transitions for all interactive elements */
-* {
-  @apply transition-colors duration-150 ease-in-out;
-  transition-property: transform, opacity;
-}
-
-/* Focus states for accessibility */
-button:focus-visible,
-input:focus-visible,
-select:focus-visible {
-  outline: 2px solid #10b981;
-  outline-offset: 2px;
-}
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { @apply bg-muted; }
+::-webkit-scrollbar-thumb { @apply bg-muted-foreground/50 rounded; }
+::-webkit-scrollbar-thumb:hover { @apply bg-muted-foreground/70; }
 
 @layer components {
+  .text-strong { @apply text-foreground; }
+  .text-medium { @apply text-muted-foreground; }
+  .text-weak { @apply text-muted-foreground/70; }
+  
   .glass-card {
     @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-glass;
-  }
-
-  .light .glass-card {
-    @apply bg-white/80 border border-gray-200/80 shadow-lg;
-  }
-
-  .text-strong {
-    @apply text-foreground;
-  }
-
-  .text-medium {
-    @apply text-muted-foreground;
-  }
-
-  .light .text-medium {
-    @apply text-gray-700;
-  }
-
-  .text-weak {
-    @apply text-muted-foreground/70;
-  }
-
-  /* Type-dependent color badges for project cards */
-  .badge-cyan {
-    @apply text-cyan-500 bg-cyan-500/20 border-cyan-500/30;
-  }
-
-  .badge-lime {
-    @apply text-lime-500 bg-lime-500/20 border-lime-500/30;
-  }
-
-  .badge-fuchsia {
-    @apply text-fuchsia-500 bg-fuchsia-500/20 border-fuchsia-500/30;
-  }
-
-  .badge-amber {
-    @apply text-amber-500 bg-amber-500/20 border-amber-500/30;
-  }
-
-  .badge-gray {
-    @apply text-gray-400 bg-gray-500/10 border-gray-500/20;
-  }
-
-  .animated-title {
-    color: transparent;
-    background: linear-gradient(90deg, #fde047, #67e8f9, #93c5fd, #6ee7b7, #4ade80, #67e8f9, #fb923c, #fde047);
-    background-clip: text;
-    background-size: 400% 100%;
-    animation: waveFlow 8s linear infinite;
-  }
-}
-
-@keyframes waveFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 400% 50%;
   }
 }

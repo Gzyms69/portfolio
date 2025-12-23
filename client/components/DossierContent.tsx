@@ -28,6 +28,9 @@ export const DossierContent: React.FC<DossierContentProps> = ({ children }) => {
 
 export const DossierItem = ({ children }: { children: React.ReactNode }) => (
   <motion.div
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
     variants={{
       hidden: { opacity: 0, x: 20, filter: 'brightness(2)' },
       visible: { 

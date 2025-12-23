@@ -1,16 +1,21 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Mail } from "lucide-react";
-import { Reveal } from "@/components/Reveal";
-import { AnimatedText, AnimatedCharacters } from "@/components/AnimatedText";
+import { Terminal as TerminalIcon } from "lucide-react";
 import { PageTransition } from "@/components/PageTransition";
 import { ContactForm } from "@/components/ContactForm";
+import { SectionPowerUp } from "@/components/SectionPowerUp";
+import { GlitchText } from "@/components/GlitchText";
+import { useLanguage } from "@/hooks/use-language";
+import { portfolioConfig } from "@/lib/data";
 
 export default function Contact({ isDossier = false }: { isDossier?: boolean }) {
+  const { language, t } = useLanguage();
+  const content = portfolioConfig[language];
+
   if (isDossier) {
     return (
-      <div className="animate-in fade-in slide-in-from-right-10 duration-700 h-full flex flex-col items-center justify-center max-w-2xl mx-auto">
-        <div className="w-full">
+      <div className="h-full flex flex-col items-center justify-center max-w-2xl mx-auto py-10">
+        <div className="w-full bg-[#0a0f0a] border-2 border-primary/20 p-8 rounded-lg shadow-[inset_0_0_30px_rgba(0,255,65,0.05)]">
           <ContactForm />
         </div>
       </div>
@@ -19,41 +24,64 @@ export default function Contact({ isDossier = false }: { isDossier?: boolean }) 
 
   return (
     <PageTransition>
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-[#030712] text-primary font-mono">
         <Navigation />
 
         <main className="flex w-full justify-center px-4 sm:px-8 md:px-16 lg:px-20">
-          <div className="w-full max-w-2xl py-8 sm:py-16 md:py-24 lg:py-32">
-            {/* Header */}
-            <section className="mb-12 flex flex-col gap-4 text-center">
-              <Reveal delay={0.1}>
-                <div className="flex justify-center mb-4">
-                  <Mail className="h-12 w-12 text-strong" strokeWidth={1.5} />
-                </div>
-              </Reveal>
-              <AnimatedCharacters
-                text="Skontaktuj się ze mną"
-                className="text-4xl font-semibold text-strong sm:text-5xl md:text-6xl leading-tight justify-center"
-              />
-              <AnimatedText
-                text="Wypełnij formularz"
-                className="text-weak text-base sm:text-lg justify-center"
-              />
-            </section>
+          <div className="w-full max-w-[90rem] py-8 sm:py-16 md:py-24 lg:py-32">
+            
+            {/* Header Section */}
+            <SectionPowerUp>
+              <div className="relative group w-full mb-20 max-w-4xl mx-auto">
+                <div className="relative z-10 bg-[#0a0f0a] border-2 border-primary/30 p-8 sm:p-10 md:p-14 rounded-xl shadow-[0_0_20px_rgba(0,255,65,0.1)] overflow-hidden">
+                  <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-primary m-2" />
+                  <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-primary m-2" />
+                  <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-primary m-2" />
+                  <div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-primary m-2" />
 
-            {/* Form */}
-            <Reveal delay={0.4} width="100%">
-              <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 flex flex-col gap-8 p-8 sm:p-10 md:p-12">
-                <div className="flex flex-col gap-1">
-                  <h2 className="text-xl font-semibold text-strong">
-                    Dane do kontaktu
-                  </h2>
-                  <div className="h-1 w-12 bg-gradient-to-r from-white/40 to-transparent rounded"></div>
-                </div>
+                  <div className="flex flex-col gap-8">
+                    <div className="flex flex-col gap-2 border-b border-primary/10 pb-6 text-center">
+                      <div className="flex items-center justify-center gap-2 text-[10px] font-mono text-primary/40 uppercase tracking-widest mb-2">
+                        <TerminalIcon className="h-3 w-3" />
+                        <span>{t('contact_system')} // v4.0.2</span>
+                      </div>
+                      <GlitchText
+                        text={t('send_message')}
+                        className="text-4xl font-bold font-mono text-primary sm:text-5xl md:text-6xl leading-none uppercase tracking-tight"
+                      />
+                    </div>
 
-                <ContactForm />
+                    <div className="text-center max-w-2xl mx-auto">
+                      <p className="font-mono text-xl text-primary/60 leading-relaxed uppercase">
+                        Establishing encrypted uplink to terminal: {content.name.split(' ')[0].toUpperCase()}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </Reveal>
+            </SectionPowerUp>
+
+            <div className="max-w-2xl mx-auto">
+              <SectionPowerUp>
+                <div className="bg-[#0a0f0a] border border-primary/20 p-8 rounded-xl shadow-[inset_0_0_20px_rgba(0,255,65,0.05)] relative overflow-hidden">
+                  {/* Decorative Scanline */}
+                  <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.5)_50%)] bg-[length:100%_4px]" />
+                  
+                  <div className="relative z-10">
+                    <ContactForm />
+                  </div>
+
+                  {/* Footer Decoration */}
+                  <div className="mt-8 pt-6 border-t border-primary/10 flex justify-between items-center opacity-40">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                      <span className="text-[8px] uppercase tracking-[0.2em]">Ready_To_Send</span>
+                    </div>
+                    <span className="text-[8px] uppercase tracking-[0.2em]">Encryption: AES-256</span>
+                  </div>
+                </div>
+              </SectionPowerUp>
+            </div>
 
             <Footer />
           </div>

@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '@/hooks/use-language';
 import { useBackground } from '@/hooks/use-background';
 import { GlitchText } from './GlitchText';
-import { FileText, User, Briefcase, Mail, Power } from 'lucide-react';
+import { FileText, User, Briefcase, Mail, Power, Languages } from 'lucide-react';
 
 interface DossierViewProps {
   activeTab: string;
@@ -11,14 +12,17 @@ interface DossierViewProps {
 }
 
 export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange, children }) => {
+  const { t, language, setLanguage } = useLanguage();
   const { toggleBackground } = useBackground();
 
   const tabs = [
-    { id: 'home', label: 'PERSONNEL_FILE', icon: <User className="w-4 h-4" /> },
-    { id: 'projects', label: 'ASSIGNMENTS', icon: <Briefcase className="w-4 h-4" /> },
-    { id: 'cv', label: 'SERVICE_RECORD', icon: <FileText className="w-4 h-4" /> },
-    { id: 'contact', label: 'COMMS_UPLINK', icon: <Mail className="w-4 h-4" /> },
+    { id: 'home', label: t('dossier_personnel'), icon: <User className="w-4 h-4" /> },
+    { id: 'projects', label: t('dossier_assignments'), icon: <Briefcase className="w-4 h-4" /> },
+    { id: 'cv', label: t('dossier_service'), icon: <FileText className="w-4 h-4" /> },
+    { id: 'contact', label: t('dossier_comms'), icon: <Mail className="w-4 h-4" /> },
   ];
+
+  const toggleLanguage = () => setLanguage(language === 'pl' ? 'en' : 'pl');
 
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center p-4 sm:p-8 pointer-events-none">
@@ -37,12 +41,21 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
             >
               <Power className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
             </button>
+            
+            <button 
+              onClick={toggleLanguage}
+              className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center border border-primary/30 hover:bg-primary/20 transition-colors group font-mono text-xs text-primary"
+              title="LANGUAGE_SWITCH"
+            >
+              <Languages className="w-5 h-5 text-primary group-hover:rotate-12 transition-transform" />
+            </button>
+
             <div>
-              <h1 className="font-['VT323'] text-2xl text-primary leading-none">VAULT-TEC_OS_v4.0</h1>
-              <span className="text-[10px] font-mono text-primary/40 uppercase tracking-widest text-xs">Security_Level: OVERSEER</span>
+              <h1 className="font-mono text-2xl text-primary leading-none">VAULT-TEC_OS_v4.0</h1>
+              <span className="text-[10px] font-mono text-primary/40 uppercase tracking-widest text-xs">Security_Level: OVERSEER // {language.toUpperCase()}</span>
             </div>
           </div>
-          <div className="hidden sm:flex items-center gap-8 font-['VT323'] text-primary/60 text-sm">
+          <div className="hidden sm:flex items-center gap-8 font-mono text-primary/60 text-sm">
             <div className="flex flex-col items-end">
               <span>LOC: SECTOR_7G</span>
               <span>REF: CZERWINSKI_D</span>
@@ -65,7 +78,7 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
               >
                 {tab.icon}
                 <div className="absolute left-full ml-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
-                  <div className="bg-[#0a0f0a] border border-primary/30 px-3 py-1 text-primary font-['VT323'] text-lg shadow-xl">
+                  <div className="bg-[#0a0f0a] border border-primary/30 px-3 py-1 text-primary font-mono text-lg shadow-xl">
                     {tab.label}
                   </div>
                 </div>
@@ -79,7 +92,7 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
             
             <AnimatePresence mode="wait">
               <motion.div
-                key={activeTab}
+                key={`${activeTab}-${language}`}
                 initial={{ opacity: 0, x: 20, filter: 'brightness(3)' }}
                 animate={{ opacity: 1, x: 0, filter: 'brightness(1)' }}
                 exit={{ opacity: 0, x: -20, filter: 'brightness(0)' }}
@@ -88,13 +101,13 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
               >
                 <div className="mb-8 border-b border-primary/10 pb-4 flex justify-between items-end">
                   <div>
-                    <span className="text-[10px] font-mono text-primary/30 uppercase tracking-[0.4em]">Current_Dossier:</span>
-                    <h2 className="text-primary text-4xl sm:text-5xl font-['VT323'] uppercase tracking-tight">
+                    <span className="text-[10px] font-mono text-primary/30 uppercase tracking-[0.4em]">{t('dossier_id')}</span>
+                    <h2 className="text-primary text-4xl sm:text-5xl font-mono uppercase tracking-tight">
                       <GlitchText text={tabs.find(t => t.id === activeTab)?.label || ''} />
                     </h2>
                   </div>
                   <div className="text-primary/20 font-mono text-[10px]">
-                    STATUS: [DECRYPTED_SUCCESS]
+                    {t('dossier_status')}: [{t('dossier_decrypted')}]
                   </div>
                 </div>
 
@@ -109,14 +122,14 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
           <div className="flex gap-6 items-center">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="font-['VT323'] text-xs text-primary/40 uppercase tracking-widest text-xs">Uplink_Active</span>
+              <span className="font-mono text-xs text-primary/40 uppercase tracking-widest text-xs">Uplink_Active</span>
             </div>
-            <div className="hidden sm:block font-['VT323'] text-xs text-primary/20 uppercase tracking-widest text-xs">
+            <div className="hidden sm:block font-mono text-xs text-primary/20 uppercase tracking-widest text-xs">
               Memory: 640KB_REMAINING
             </div>
           </div>
           <div className="flex gap-4 items-center">
-             <span className="font-['VT323'] text-xs text-primary/40 uppercase tracking-widest text-xs">Terminal_ID: VAULT-101</span>
+             <span className="font-mono text-xs text-primary/40 uppercase tracking-widest text-xs">Terminal_ID: VAULT-101</span>
           </div>
         </div>
       </motion.div>

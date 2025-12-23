@@ -13,6 +13,13 @@ export default {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      sans: ["VT323", "monospace"],
+      mono: ["VT323", "monospace"],
+      serif: ["VT323", "monospace"],
+      terminal: ["VT323", "monospace"],
+      major: ["Major Mono Display", "monospace"],
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",

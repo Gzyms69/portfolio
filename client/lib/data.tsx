@@ -78,41 +78,43 @@ export const projects = [
     ];
     
     export const cvData = {
-      experiences: [
-        {
-          title: "Instruktor Programowania",
-          company: "Giganci Programowania",
-          location: "Kielce",
-          period: "2024.02 - Obecnie",
-          responsibilities: [
-            "Przygotowywanie uczniów szkół średnich do egzaminu maturalnego z informatyki",
-            "Prowadzenie zajęć z programowania gier (Unity) oraz języków C++, C# i Python (poziom podstawowy i zaawansowany)",
-            "Mentoring i wsparcie merytoryczne dla uczniów poprzez platformę Discord",
-          ],
-        },
-        {
-          title: "Specjalista ds. Operacji (Corporate Actions)",
-          company: "Brown Brothers Harriman",
-          location: "Kraków",
-          period: "2023.09 - 2023.12",
-          responsibilities: [
-            "Przetwarzanie operacji na papierach wartościowych oraz płatności dywidend",
-            "Zarządzanie komunikacją z klientami i obsługa eskalacji wewnętrznych",
-            "Przygotowywanie precyzyjnych raportów dziennych dla działu operacyjnego",
-          ],
-        },
-        {
-          title: "Specjalista ds. Odpraw Celnych",
-          company: "FedEx Express Europe",
-          location: "Kraków",
-          period: "2022.04 - 2023.07",
-          responsibilities: [
-            "Profesjonalna obsługa klienta w zakresie procedur celnych",
-            "Zarządzanie dokumentacją celną, fakturami i listami przewozowymi",
-            "Monitorowanie statusu przesyłek i raportowanie postępów",
-          ],
-        },
+  experiences: [
+    {
+      title: "Przerwa w karierze (Career Break)",
+      company: "Randstad i okolice, Holandia",
+      location: "Netherlands",
+      period: "2025.02 - 2025.10",
+      responsibilities: [
+        "Przeprowadzka do Holandii i praca za pośrednictwem agencji w sektorach produkcji oraz logistyki",
+        "Moving to the Netherlands, working via job agencies in production and logistics",
       ],
+    },
+    {
+      title: "Instruktor Programowania",
+      company: "Giganci Programowania",
+      location: "Kielce / Mińsk Mazowiecki",
+      period: "2024.01 - 2025.02",
+      responsibilities: [
+        "Przygotowywanie uczniów szkół średnich do egzaminu maturalnego z informatyki",
+        "Prowadzenie zajęć z programowania gier (Unity) oraz języków C++, C# i Python (poziom podstawowy i zaawansowany)",
+        "Mentoring i wsparcie merytoryczne dla uczniów poprzez platformę Discord",
+      ],
+    },
+    {
+      title: "Specjalista ds. Odpraw Celnych (Clearance Broker)",
+      company: "FedEx Express Europe",
+      location: "Kraków",
+      period: "2022.03 - 2023.07",
+      responsibilities: [
+        "Gromadzenie i weryfikacja dokumentacji do celów odprawy celnej (Collecting paperwork for clearance purposes)",
+        "Profesjonalna obsługa klienta w zakresie procedur celnych",
+        "Zarządzanie dokumentacją celną, fakturami i listami przewozowymi",
+        "Monitorowanie statusu przesyłek i raportowanie postępów",
+      ],
+    },
+  ],
+    
+    
       education: [
         {
           school: "Akademia Górniczo-Hutnicza (AGH) w Krakowie",
