@@ -11,7 +11,7 @@ import { SectionPowerUp } from "@/components/SectionPowerUp";
 import { GlitchText } from "@/components/GlitchText";
 import { TypewriterText } from "@/components/TypewriterText";
 
-export default function CV({ isDossier = false }: { isDossier?: boolean }) {
+export default function ServiceRecord({ isDossier = false }: { isDossier?: boolean }) {
   const { experiences, education, skills } = cvData;
   const { language, t } = useLanguage();
   const content = portfolioConfig[language];
