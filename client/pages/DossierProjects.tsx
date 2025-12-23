@@ -22,6 +22,7 @@ export const DossierProjects = () => {
                 variant={project.variant}
                 icon={project.icon}
                 imageUrl={project.imageUrl}
+                isDossier={true}
                 className="border-none shadow-none group-hover:shadow-none"
               />
             </div>

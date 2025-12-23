@@ -9,6 +9,7 @@ import { useLanguage } from "@/hooks/use-language";
 import { DossierContent, DossierItem } from "@/components/DossierContent";
 import { SectionPowerUp } from "@/components/SectionPowerUp";
 import { GlitchText } from "@/components/GlitchText";
+import { TypewriterText } from "@/components/TypewriterText";
 
 export default function CV({ isDossier = false }: { isDossier?: boolean }) {
   const { experiences, education, skills } = cvData;
@@ -63,17 +64,25 @@ ${t('cv_skills_programming')}: ${skills.programming.join(', ')}
               <div key={idx} className="relative group pl-6 border-l border-primary/20">
                 <div className="absolute -left-[5px] top-2 w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(0,255,65,0.5)]" />
                 <div className="flex flex-col gap-1">
-                  <h4 className="text-2xl font-mono text-primary uppercase">{exp.title}</h4>
+                  <h4 className="text-2xl font-mono text-primary uppercase">
+                    <TypewriterText text={exp.title} speed={20} delay={idx * 500} />
+                  </h4>
                   <div className="flex justify-between items-center text-primary/60 font-mono text-lg">
-                    <span>{exp.company} // {exp.location}</span>
-                    <span className="text-primary/40 text-sm">{exp.period}</span>
+                    <span>
+                      <TypewriterText text={`${exp.company} // ${exp.location}`} speed={15} delay={idx * 500 + 300} cursor={false} />
+                    </span>
+                    <span className="text-primary/40 text-sm">
+                      <TypewriterText text={exp.period} speed={15} delay={idx * 500 + 600} cursor={false} />
+                    </span>
                   </div>
                 </div>
                 <ul className="mt-4 space-y-2">
                   {exp.responsibilities.map((resp, rIdx) => (
                     <li key={rIdx} className="text-primary/50 font-mono text-lg leading-snug flex gap-3">
                       <span className="text-primary/30 mt-1">{'>'}</span>
-                      <span>{resp}</span>
+                      <span>
+                        <TypewriterText text={resp} speed={10} delay={idx * 500 + 800 + (rIdx * 200)} cursor={rIdx === exp.responsibilities.length - 1} />
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -87,14 +96,22 @@ ${t('cv_skills_programming')}: ${skills.programming.join(', ')}
             <div>
               <div className="flex items-center gap-4 border-l-4 border-primary pl-4 py-1 bg-primary/5 mb-6">
                 <BookOpen className="w-5 h-5 text-primary" />
-                <h3 className="text-3xl font-mono text-primary uppercase tracking-tight">{t('edu_protocol')}</h3>
+                <h3 className="text-3xl font-mono text-primary uppercase tracking-tight">
+                  <GlitchText text={t('edu_protocol')} />
+                </h3>
               </div>
               <div className="space-y-6">
                 {education.map((edu, idx) => (
                   <div key={idx} className="font-mono">
-                    <h4 className="text-xl text-primary uppercase">{edu.school}</h4>
-                    <p className="text-primary/60 text-lg">{edu.degree} - {edu.field}</p>
-                    <p className="text-primary/40 text-sm">{edu.years}</p>
+                    <h4 className="text-xl text-primary uppercase">
+                      <TypewriterText text={edu.school} speed={20} delay={1500 + idx * 300} />
+                    </h4>
+                    <p className="text-primary/60 text-lg">
+                      <TypewriterText text={`${edu.degree} - ${edu.field}`} speed={15} delay={1800 + idx * 300} cursor={false} />
+                    </p>
+                    <p className="text-primary/40 text-sm">
+                      <TypewriterText text={edu.years} speed={15} delay={2000 + idx * 300} cursor={false} />
+                    </p>
                   </div>
                 ))}
               </div>
@@ -103,7 +120,9 @@ ${t('cv_skills_programming')}: ${skills.programming.join(', ')}
             <div>
               <div className="flex items-center gap-4 border-l-4 border-primary pl-4 py-1 bg-primary/5 mb-6">
                 <Cpu className="w-5 h-5 text-primary" />
-                <h3 className="text-3xl font-mono text-primary uppercase tracking-tight">{t('tech_specs')}</h3>
+                <h3 className="text-3xl font-mono text-primary uppercase tracking-tight">
+                  <GlitchText text={t('tech_specs')} />
+                </h3>
               </div>
               <div className="space-y-4">
                 {Object.entries(skills).map(([category, list], idx) => (

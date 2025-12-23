@@ -7,6 +7,7 @@ import { SectionPowerUp } from "@/components/SectionPowerUp";
 import { GlitchText } from "@/components/GlitchText";
 import { useLanguage } from "@/hooks/use-language";
 import { portfolioConfig } from "@/lib/terminal-db";
+import { TypewriterText } from "@/components/TypewriterText";
 
 export default function Contact({ isDossier = false }: { isDossier?: boolean }) {
   const { language, t } = useLanguage();
@@ -51,10 +52,12 @@ export default function Contact({ isDossier = false }: { isDossier?: boolean }) 
                       />
                     </div>
 
-                    <div className="text-center max-w-2xl mx-auto">
-                      <p className="font-mono text-xl text-primary/60 leading-relaxed uppercase">
-                        Establishing encrypted uplink to terminal: {content.name.split(' ')[0].toUpperCase()}
-                      </p>
+                    <div className="text-center max-w-2xl mx-auto min-h-[2em]">
+                      <TypewriterText 
+                        text={`Establishing encrypted uplink to terminal: ${content.name.split(' ')[0].toUpperCase()}`}
+                        className="font-mono text-xl text-primary/60 leading-relaxed uppercase"
+                        speed={20}
+                      />
                     </div>
                   </div>
                 </div>
@@ -64,14 +67,12 @@ export default function Contact({ isDossier = false }: { isDossier?: boolean }) 
             <div className="max-w-2xl mx-auto">
               <SectionPowerUp>
                 <div className="bg-[#0a0f0a] border border-primary/20 p-8 rounded-xl shadow-[inset_0_0_20px_rgba(0,255,65,0.05)] relative overflow-hidden">
-                  {/* Decorative Scanline */}
                   <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.5)_50%)] bg-[length:100%_4px]" />
                   
                   <div className="relative z-10">
                     <ContactForm />
                   </div>
 
-                  {/* Footer Decoration */}
                   <div className="mt-8 pt-6 border-t border-primary/10 flex justify-between items-center opacity-40">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />

@@ -13,6 +13,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { ContactForm } from "@/components/ContactForm";
 import { Navigation } from "@/components/Navigation";
+import { TypewriterText } from "@/components/TypewriterText";
 
 import { DossierContent, DossierItem } from "@/components/DossierContent";
 
@@ -39,21 +40,36 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
               <TerminalIcon className="h-3 w-3" />
               <span>{t('dossier_id')} DA-2112</span>
             </div>
-            <GlitchText
-              text={content.name}
-              className="text-5xl sm:text-6xl font-bold font-mono text-primary uppercase tracking-tight"
-            />
+            <div className="min-h-[60px] sm:min-h-[72px]">
+              <TypewriterText
+                text={content.name}
+                className="text-5xl sm:text-6xl font-bold font-mono text-primary uppercase tracking-tight"
+                speed={50}
+              />
+            </div>
           </div>
         </DossierItem>
 
         <DossierItem>
           <div className="flex flex-col gap-6 max-w-2xl">
-            <p className="font-mono text-2xl text-primary/90 leading-relaxed uppercase text-shadow-sm">
-              {content.title}
-            </p>
+            <div className="min-h-[32px]">
+              <TypewriterText 
+                text={content.title}
+                className="font-mono text-2xl text-primary/90 leading-relaxed uppercase text-shadow-sm"
+                speed={30}
+                delay={1000}
+              />
+            </div>
             <div className="space-y-4 font-mono text-xl text-primary/60 leading-relaxed uppercase">
               {content.description.split('\n').map((para, i) => (
-                <p key={i}>{para}</p>
+                <div key={i} className="min-h-[28px]">
+                  <TypewriterText 
+                    text={para} 
+                    speed={20} 
+                    delay={2500 + (i * 1000)}
+                    cursor={i === content.description.split('\n').length - 1}
+                  />
+                </div>
               ))}
             </div>
           </div>
@@ -90,13 +106,10 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
 
         <main className="flex w-full justify-center px-4 sm:px-6 md:px-8">
           <div className="w-full max-w-[90rem] py-8 sm:py-16 md:py-24 lg:py-32">
-            {/* Hero & Contact Form Wrapper */}
             <SectionPowerUp>
               <div className="flex flex-col lg:flex-row gap-16 lg:gap-8 mb-20 sm:mb-32 md:mb-40">
-                {/* Hero/About Section */}
-                <section className="flex flex-col gap-8 sm:gap-10 lg:mb-0 lg:w-2/3"> {/* Added lg:w-2/3 */}
-                  <div className="relative group w-full"> {/* Changed max-w-3xl to w-full */}
-                    {/* CRT Screen Overlays for Hero */}
+                <section className="flex flex-col gap-8 sm:gap-10 lg:mb-0 lg:w-2/3"> 
+                  <div className="relative group w-full"> 
                   <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden rounded-xl">
                     <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.03)_50%)] bg-[length:100%_4px]" />
                     <motion.div 
@@ -107,7 +120,6 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
                   </div>
 
                   <div className="relative z-10 bg-[#0a0f0a] border-2 border-primary/30 p-8 sm:p-10 md:p-14 rounded-xl shadow-[0_0_20px_rgba(0,255,65,0.1)] overflow-hidden transition-all duration-500 hover:border-primary/60">
-                    {/* Corner Brackets */}
                     <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-primary m-2" />
                     <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-primary m-2" />
                     <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-primary m-2" />
@@ -134,7 +146,6 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
                         </p>
                       </div>
                       
-                      {/* Tech Stack Tags */}
                       <div className="flex flex-wrap gap-3 pt-6 border-t border-primary/10">
                         <span className="w-full text-[10px] font-mono text-primary/30 uppercase tracking-[0.3em] mb-2">{t('cv_skills')}:</span>
                         {content.heroTechStack.map((tech, index) => (
@@ -146,16 +157,13 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
                 </div>
               </section>
               
-              {/* Contact Form Section */}
-              <section className="lg:w-1/3"> {/* Added lg:w-1/3 */}
+              <section className="lg:w-1/3"> 
                 <ContactForm />
               </section>
               </div>
             </SectionPowerUp>
 
-            {/* Projects Section */}
             <section id="projects" className="flex flex-col gap-10 sm:gap-12 relative">
-              {/* Section Title */}
               <div className="px-4 sm:px-6 md:px-8 sticky top-24 z-20 py-4 flex items-center gap-4">
                 <div className="h-px w-8 bg-primary/40 hidden sm:block" />
                 <GlitchText
@@ -168,13 +176,12 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
                 </span>
               </div>
 
-              {/* Project Cards Grid */}
               <div className="flex flex-col gap-20 sm:gap-32">
                 {projects.map((project, index) => (
                   <div 
                     key={index} 
                     className="sticky top-40 sm:top-48 md:top-56"
-                    style={{ paddingTop: `${index * 20}px` }}
+                    style={{paddingTop: `${index * 20}px`}}
                   >
                     <SectionPowerUp>
                       <StaggerItem>
@@ -195,7 +202,6 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
               </div>
             </section>
 
-            {/* Footer */}
             <Footer />
           </div>
         </main>
