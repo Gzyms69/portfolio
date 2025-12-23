@@ -10,13 +10,26 @@ import { projects, portfolioConfig } from "@/lib/data";
 import { Terminal as TerminalIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/hooks/use-language";
-import { ContactForm } from "@/components/ContactForm"; // Added ContactForm import
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { ContactForm } from "@/components/ContactForm";
+ // Added ContactForm import
 
 import { DossierContent, DossierItem } from "@/components/DossierContent";
 
 export default function Index({ isDossier = false }: { isDossier?: boolean }) {
   const { language, t } = useLanguage();
   const content = portfolioConfig[language];
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (!isDossier && pathname === '/projects') {
+      const el = document.getElementById('projects');
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 500);
+      }
+    }
+  }, [pathname, isDossier]);
 
   if (isDossier) {
     return (

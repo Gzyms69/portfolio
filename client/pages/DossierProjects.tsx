@@ -9,23 +9,26 @@ export const DossierProjects = () => {
   return (
     <DossierContent>
       <div className="flex flex-col gap-12 pb-20">
-        {projects.map((project, index) => (
-          <DossierItem key={index}>
-            <div className="border border-primary/10 bg-[#0a0f0a]/40 p-1 rounded-sm">
-              <ProjectCard
-                title={project.title}
-                description={project[language].description}
-                fullDescription={project[language].fullDescription}
-                githubUrl={project.githubUrl}
-                techStack={project.techStack}
-                variant={project.variant}
-                icon={project.icon}
-                imageUrl={project.imageUrl}
-                className="border-none shadow-none group-hover:shadow-none"
-              />
-            </div>
-          </DossierItem>
-        ))}
+        {projects.map((project, index) => {
+          const projectData = project[language as keyof typeof project] as any;
+          return (
+            <DossierItem key={index}>
+              <div className="border border-primary/10 bg-[#0a0f0a]/40 p-1 rounded-sm">
+                <ProjectCard
+                  title={project.title}
+                  description={projectData.description}
+                  fullDescription={projectData.fullDescription}
+                  githubUrl={project.githubUrl}
+                  techStack={project.techStack}
+                  variant={project.variant}
+                  icon={project.icon}
+                  imageUrl={project.imageUrl}
+                  className="border-none shadow-none group-hover:shadow-none"
+                />
+              </div>
+            </DossierItem>
+          );
+        })}
       </div>
     </DossierContent>
   );
