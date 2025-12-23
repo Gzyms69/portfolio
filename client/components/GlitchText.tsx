@@ -137,16 +137,20 @@ export const GlitchMenu = ({ isOpen, children, className = "" }: GlitchMenuProps
   const [isGlitchActive, setIsGlitchActive] = useState(false);
 
   useEffect(() => {
+    let startTimer: NodeJS.Timeout;
+    let endTimer: NodeJS.Timeout;
+
     if (isOpen) {
-      const startTimer = setTimeout(() => setIsGlitchActive(true), 0);
-      const endTimer = setTimeout(() => setIsGlitchActive(false), 1500);
-      return () => {
-        clearTimeout(startTimer);
-        clearTimeout(endTimer);
-      };
+      startTimer = setTimeout(() => setIsGlitchActive(true), 10);
+      endTimer = setTimeout(() => setIsGlitchActive(false), 1500);
     } else {
       setIsGlitchActive(false);
     }
+
+    return () => {
+      if (startTimer) clearTimeout(startTimer);
+      if (endTimer) clearTimeout(endTimer);
+    };
   }, [isOpen]);
 
   return (

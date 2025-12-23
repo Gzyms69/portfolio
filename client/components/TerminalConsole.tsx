@@ -134,7 +134,7 @@ export const TerminalConsole = ({ isOpen, onClose }: TerminalConsoleProps) => {
     >
       <motion.div
         animate={{
-          ...controls as any,
+          ...controls,
           scale: 1,
           opacity: 1
         }}
