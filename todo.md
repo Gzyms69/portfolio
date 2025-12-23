@@ -43,15 +43,15 @@ Implementing techniques from Olivier Larose's "Top 5 Techniques for Web Animatio
 - [ ] **Power-ups**: Add special items that give temporary abilities (speed boost, invincibility, extra points).
 - [ ] **Multiple Levels**: Create progressively challenging levels with obstacles and mazes.
 - [ ] **Sound Effects**: Integrate retro-style sound effects for movement, eating food, and game over.
-- [ ] **High Score Persistence**: Store high scores in localStorage with ability to reset.
-- [ ] **Game Controls UI**: Add on-screen controls for mobile/touch devices.
+- [x] **High Score Persistence**: Store high scores in localStorage with ability to reset.
+- [x] **Game Controls UI**: Add on-screen controls for mobile/touch devices.
 - [ ] **Visual Themes**: Add different visual themes for the snake game (different color schemes, textures).
 - [ ] **Pause Functionality**: Allow players to pause/resume the game.
 - [ ] **Statistics Tracking**: Track games played, win rate, longest snake, etc.
 
 ## 10. Fallout Terminal UI Improvements
 - [x] **Enhanced CRT Effects**: Improved scanlines and flicker logic in `GlitchTransition`.
-- [ ] **Terminal Animations**: Add typing animations for text content, loading sequences, and boot-up screens.
+- [x] **Terminal Animations**: Add typing animations for text content, loading sequences, and boot-up screens.
 - [x] **Interactive Console**: Built `TerminalConsole` with bilingual support (`terminal-logic.ts`).
 - [ ] **System Status Panel**: Create a persistent status panel showing "system stats" (CPU, memory, etc.).
 - [x] **Animated Brackets**: Integrated into `TerminalFrame` and `NavButton`.
@@ -72,6 +72,7 @@ Implementing techniques from Olivier Larose's "Top 5 Techniques for Web Animatio
     - [x] Added "Phosphor Afterglow" look.
 - [x] **Interaction & 3D**:
     - [x] Minimalist flat casing with depth shadows implemented.
+    - [x] **Mobile-First Navigation**: Fullscreen responsive menu for mobile devices.
     - [ ] Integrate mechanical "clunk" and digital "whine" sound effects (optional).
 
 ## 13. Impressive Theme Toggle (Hardware Mode Switch)

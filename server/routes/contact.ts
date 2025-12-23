@@ -54,9 +54,6 @@ export const handleContact: RequestHandler = (req, res) => {
       return;
     }
 
-    // Log submission without sensitive content for security
-    console.log("Contact form submission received at:", new Date().toISOString());
-
     // TODO: In production, implement rate limiting and these secure actions:
     // 1. Send email using a secure service (SendGrid, Mailgun, etc.)
     // 2. Store contact in database with proper encryption

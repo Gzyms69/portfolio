@@ -9,6 +9,7 @@ import { TerminalDialog } from "@/components/ui/TerminalDialog";
 import { SnakeGame } from "@/components/SnakeGame";
 import { TerminalConsole } from "@/components/TerminalConsole";
 import { GlitchText } from "./GlitchText";
+import { Magnetic } from "./ui/Magnetic";
 
 interface NavButtonProps {
   onClick: () => void;
@@ -22,64 +23,66 @@ const NavButton = memo(({ onClick, icon, label, active, isMenuOpen }: NavButtonP
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <button
-      onClick={onClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`group relative flex h-12 w-12 flex-col items-center justify-center rounded-lg border transition-all duration-300 ${
-        active 
-        ? 'bg-primary/20 border-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' 
-        : 'bg-primary/5 border-primary/20 hover:bg-primary/15 hover:border-primary/40'
-      }`}
-    >
-      <svg
-        className="absolute inset-[-4px] w-[calc(100%+8px)] h-[calc(100%+8px)] pointer-events-none"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
+    <Magnetic strength={0.2} className="w-12 h-12">
+      <button
+        onClick={onClick}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className={`group relative flex h-full w-full flex-col items-center justify-center rounded-lg border transition-all duration-300 ${
+          active 
+          ? 'bg-primary/20 border-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' 
+          : 'bg-primary/5 border-primary/20 hover:bg-primary/15 hover:border-primary/40'
+        }`}
       >
-        {[
-          { d: "M 0,15 L 0,0 L 15,0", delay: 0.5 },
-          { d: "M 85,0 L 100,0 L 100,15", delay: 0.6 },
-          { d: "M 0,85 L 0,100 L 15,100", delay: 0.7 },
-          { d: "M 100,85 L 100,100 L 85,100", delay: 0.8 }
-        ].map((path, i) => (
-          <motion.path
-            key={i}
-            d={path.d}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="0.5"
-            className="text-primary"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ 
-              pathLength: isMenuOpen ? 1 : 0, 
-              opacity: isMenuOpen ? 1 : 0,
-              filter: isHovered ? "brightness(1.5)" : "brightness(1)"
-            }}
-            transition={{ 
-              pathLength: { duration: 0.4, delay: path.delay },
-              opacity: { duration: 0.2, delay: path.delay }
-            }}
-          />
-        ))}
-      </svg>
+        <svg
+          className="absolute inset-[-4px] w-[calc(100%+8px)] h-[calc(100%+8px)] pointer-events-none"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
+          {[
+            { d: "M 0,15 L 0,0 L 15,0", delay: 0.5 },
+            { d: "M 85,0 L 100,0 L 100,15", delay: 0.6 },
+            { d: "M 0,85 L 0,100 L 15,100", delay: 0.7 },
+            { d: "M 100,85 L 100,100 L 85,100", delay: 0.8 }
+          ].map((path, i) => (
+            <motion.path
+              key={i}
+              d={path.d}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="0.5"
+              className="text-primary"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ 
+                pathLength: isMenuOpen ? 1 : 0, 
+                opacity: isMenuOpen ? 1 : 0,
+                filter: isHovered ? "brightness(1.5)" : "brightness(1)"
+              }}
+              transition={{ 
+                pathLength: { duration: 0.4, delay: path.delay },
+                opacity: { duration: 0.2, delay: path.delay }
+              }}
+            />
+          ))}
+        </svg>
 
-      <div className={`transition-colors relative z-10 ${active ? 'text-primary shadow-[0_0_5px_rgba(0,255,65,0.5)]' : 'text-primary/60 group-hover:text-primary'}`}>
-        {icon}
-      </div>
-      <AnimatePresence>
-        {isHovered && (
-          <motion.span 
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -10 }}
-            className="absolute left-16 font-mono text-2xl text-primary bg-[#0a0f0a] border border-primary/30 px-3 py-1 rounded-sm pointer-events-none whitespace-nowrap shadow-[0_0_15px_rgba(0,255,65,0.2)] z-[100] uppercase tracking-widest"
-          >
-            [ <GlitchText text={label} className="font-mono" /> ]
-          </motion.span>
-        )}
-      </AnimatePresence>
-    </button>
+        <div className={`transition-colors relative z-10 ${active ? 'text-primary shadow-[0_0_5px_rgba(0,255,65,0.5)]' : 'text-primary/60 group-hover:text-primary'}`}>
+          {icon}
+        </div>
+        <AnimatePresence>
+          {isHovered && (
+            <motion.span 
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -10 }}
+              className="absolute left-16 font-mono text-2xl text-primary bg-[#0a0f0a] border border-primary/30 px-3 py-1 rounded-sm pointer-events-none whitespace-nowrap shadow-[0_0_15px_rgba(0,255,65,0.2)] z-[100] uppercase tracking-widest"
+            >
+              [ <GlitchText text={label} className="font-mono" /> ]
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </button>
+    </Magnetic>
   );
 });
 
@@ -140,15 +143,17 @@ export const Navigation = () => {
     <>
       {/* Desktop Menu Trigger */}
       <div className="fixed left-8 top-8 z-[110] hidden sm:block">
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="relative flex items-center justify-center w-12 h-12 rounded-full bg-[#0a0f0a] border-2 border-primary/30 shadow-[0_0_15px_rgba(0,255,65,0.2)] text-primary hover:border-primary/60 hover:shadow-[0_0_25px_rgba(0,255,65,0.4)] transition-all duration-300 group"
-        >
-          <Power className={`h-6 w-6 transition-all duration-500 ${isMenuOpen ? 'rotate-180 text-primary' : 'animate-pulse text-primary/40'}`} />
-          <span className="absolute left-16 opacity-0 group-hover:opacity-100 transition-all duration-300 font-mono text-xl text-primary bg-[#0a0f0a] border border-primary/30 px-3 py-1 rounded-sm pointer-events-none whitespace-nowrap uppercase z-[120] translate-x-[-10px] group-hover:translate-x-0">
-            [ <GlitchText text={isMenuOpen ? 'POWER OFF' : 'POWER ON'} className="font-mono" /> ]
-          </span>
-        </button>
+        <Magnetic strength={0.3}>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="relative flex items-center justify-center w-12 h-12 rounded-full bg-[#0a0f0a] border-2 border-primary/30 shadow-[0_0_15px_rgba(0,255,65,0.2)] text-primary hover:border-primary/60 hover:shadow-[0_0_25px_rgba(0,255,65,0.4)] transition-all duration-300 group"
+          >
+            <Power className={`h-6 w-6 transition-all duration-500 ${isMenuOpen ? 'rotate-180 text-primary' : 'animate-pulse text-primary/40'}`} />
+            <span className="absolute left-16 opacity-0 group-hover:opacity-100 transition-all duration-300 font-mono text-xl text-primary bg-[#0a0f0a] border border-primary/30 px-3 py-1 rounded-sm pointer-events-none whitespace-nowrap uppercase z-[120] translate-x-[-10px] group-hover:translate-x-0">
+              [ <GlitchText text={isMenuOpen ? 'POWER OFF' : 'POWER ON'} className="font-mono" /> ]
+            </span>
+          </button>
+        </Magnetic>
       </div>
 
       {/* Desktop Sidebar Nav */}
