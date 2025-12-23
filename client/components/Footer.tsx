@@ -32,8 +32,8 @@ export const Footer = () => {
 
         {/* Main Footer Content */}
         <div className="flex flex-col items-center gap-2">
-          <p className="font-['Major_Mono_Display'] text-xl text-primary/60 hover:text-primary transition-colors duration-300 lowercase">
-            © {new Date().getFullYear()} // {portfolioConfig[language].name.toLowerCase()}
+          <p className="text-[10px] uppercase tracking-[0.2em] text-primary/30">
+            (c) {new Date().getFullYear()} // {portfolioConfig[language].name.toLowerCase()}
           </p>
           <div className="flex items-center gap-4 text-primary/30 text-[9px] font-mono tracking-widest">
             <div className="flex items-center gap-1">
