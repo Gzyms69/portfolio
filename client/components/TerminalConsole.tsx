@@ -64,12 +64,13 @@ export const TerminalConsole = ({ isOpen, onClose }: TerminalConsoleProps) => {
 
   useEffect(() => {
     if (isOpen) {
+      controls.start({ scale: 1, opacity: 1, transition: { duration: 0.3 } });
       bootSequence();
     } else {
       setHistory([]);
       setSelectedFile(null);
     }
-  }, [isOpen, bootSequence]);
+  }, [isOpen, bootSequence, controls]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -133,11 +134,7 @@ export const TerminalConsole = ({ isOpen, onClose }: TerminalConsoleProps) => {
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <motion.div
-        animate={{
-          ...controls,
-          scale: 1,
-          opacity: 1
-        }}
+        animate={controls}
         initial={{ scale: 0.9, opacity: 0 }}
         exit={{ scale: 0.9, opacity: 0 }}
         className="relative w-full max-w-3xl h-[80vh] bg-[#030712] border-4 border-primary/30 rounded-xl shadow-[0_0_50px_rgba(0,255,65,0.2)] flex flex-col overflow-hidden"

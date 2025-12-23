@@ -68,7 +68,7 @@ export const handleContact: RequestHandler = (req, res) => {
       message: "Wiadomość została wysłana pomyślnie",
     });
 
-  } catch (_error) {
+  } catch {
     // Log error without exposing internal details
     console.error("Contact form error:", new Date().toISOString());
 
