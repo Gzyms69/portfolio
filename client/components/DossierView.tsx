@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useLanguage } from '@/hooks/use-language';
 import { useBackground } from '@/hooks/use-background';
 import { GlitchText } from './GlitchText';
-import { Terminal as TerminalIcon, FileText, User, Briefcase, Mail, Power } from 'lucide-react';
+import { FileText, User, Briefcase, Mail, Power } from 'lucide-react';
 
 interface DossierViewProps {
   activeTab: string;
@@ -12,7 +11,6 @@ interface DossierViewProps {
 }
 
 export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange, children }) => {
-  const { t } = useLanguage();
   const { toggleBackground } = useBackground();
 
   const tabs = [

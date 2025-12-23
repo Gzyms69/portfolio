@@ -1,7 +1,7 @@
 import "./global.css";
 import { createRoot } from "react-dom/client";
 import { HashRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
 // UI Components
@@ -16,7 +16,6 @@ import { CRTOverlay } from "@/components/ui/CRTOverlay";
 import { TerminalLoader } from "@/components/TerminalLoader";
 import { DossierView } from "@/components/DossierView";
 import { DebugOverlay } from "@/components/DebugOverlay";
-import { debuggerInstance } from "@/lib/debug-utils";
 
 // Pages
 import Index from "./pages/Index";

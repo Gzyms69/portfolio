@@ -1,4 +1,4 @@
-import { motion, useScroll, useSpring, useMotionValue } from 'framer-motion';
+import { motion, useScroll, useSpring, useMotionValue, MotionValue } from 'framer-motion';
 import { useEffect, useRef, useMemo, memo, useState } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
@@ -6,10 +6,10 @@ import { useBackground } from '@/hooks/use-background';
 import { COG_LOGO_POINTS } from '@/lib/logo-data';
 
 // --- Sticks Scene logic ---
-const SticksScene = memo(({ scrollY, isIdle }: { scrollY: any, isIdle: boolean }) => {
+const SticksScene = memo(({ scrollY, isIdle }: { scrollY: MotionValue<number>, isIdle: boolean }) => {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const count = 200;
-  const colors = [0x00ff41, 0xffaa00, 0xffff00];
+  const colors = useMemo(() => [0x00ff41, 0xffaa00, 0xffff00], []);
 
   const data = useMemo(() => Array.from({ length: count }, () => ({
     position: new THREE.Vector3((Math.random() - 0.5) * 3000, (Math.random() - 0.5) * 4000, (Math.random() - 0.5) * 1500),
@@ -17,7 +17,7 @@ const SticksScene = memo(({ scrollY, isIdle }: { scrollY: any, isIdle: boolean }
     rotationSpeed: new THREE.Euler(Math.random() * 0.01, Math.random() * 0.01, Math.random() * 0.01),
     speed: 1 + Math.random() * 2,
     color: new THREE.Color(colors[Math.floor(Math.random() * colors.length)])
-  })), []);
+  })), [colors]);
 
   useEffect(() => {
     if (meshRef.current) {
@@ -61,7 +61,7 @@ const SticksScene = memo(({ scrollY, isIdle }: { scrollY: any, isIdle: boolean }
   });
 
   return (
-    <instancedMesh ref={meshRef} args={[null as any, null as any, count]}>
+    <instancedMesh ref={meshRef} args={[null as unknown as THREE.BufferGeometry, null as unknown as THREE.MeshBasicMaterial, count]}>
       <boxGeometry args={[2, 30, 2]} />
       <meshBasicMaterial transparent opacity={0.6} />
     </instancedMesh>
