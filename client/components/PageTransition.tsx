@@ -18,11 +18,11 @@ const slide = {
   initial: { top: "100vh" },
   enter: { 
     top: "100vh",
-    transition: { duration: 1, ease: [0.76, 0, 0.24, 1] }
+    transition: { duration: 1, ease: [0.76, 0, 0.24, 1] as const }
   },
   exit: { 
     top: "0vh",
-    transition: { duration: 1, ease: [0.76, 0, 0.24, 1] }
+    transition: { duration: 1, ease: [0.76, 0, 0.24, 1] as const }
   }
 };
 
@@ -33,7 +33,7 @@ const perspective = {
     y: -100, 
     scale: 0.9, 
     opacity: 0.5,
-    transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] }
+    transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] as const }
   }
 };
 

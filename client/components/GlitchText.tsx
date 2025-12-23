@@ -138,9 +138,14 @@ export const GlitchMenu = ({ isOpen, children, className = "" }: GlitchMenuProps
 
   useEffect(() => {
     if (isOpen) {
-      setIsGlitchActive(true);
-      const timer = setTimeout(() => setIsGlitchActive(false), 1500);
-      return () => clearTimeout(timer);
+      const startTimer = setTimeout(() => setIsGlitchActive(true), 0);
+      const endTimer = setTimeout(() => setIsGlitchActive(false), 1500);
+      return () => {
+        clearTimeout(startTimer);
+        clearTimeout(endTimer);
+      };
+    } else {
+      setIsGlitchActive(false);
     }
   }, [isOpen]);
 

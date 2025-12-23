@@ -1,5 +1,5 @@
 import { motion, useScroll, useSpring, useMotionValue, MotionValue } from 'framer-motion';
-import { useEffect, useRef, useMemo, memo, useState } from 'react';
+import { useEffect, useRef, memo, useState } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useBackground } from '@/hooks/use-background';

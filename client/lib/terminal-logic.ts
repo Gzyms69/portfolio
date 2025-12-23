@@ -141,7 +141,7 @@ export class FalloutTerminalParser {
     // Support simple paths like 'about/me.txt'
     if (filename.includes('/')) {
       const parts = filename.split('/');
-      let current: any = { children: this.fileSystem };
+      let current: FileSystemItem = { name: 'temp', type: 'dir', children: this.fileSystem };
       let found = true;
       for (let i = 0; i < parts.length; i++) {
         const part = parts[i];

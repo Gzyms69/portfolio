@@ -62,12 +62,3 @@ export default function Contact({ isDossier = false }: { isDossier?: boolean }) 
     </PageTransition>
   );
 }
-
-            <Footer />
-          </div>
-        </main>
-      </div>
-    </PageTransition>
-  );
-}
-
