@@ -34,7 +34,7 @@
 
   /* Universal font enforcement without !important to avoid breaking layout */
   *, ::before, ::after {
-    font-family: 'VT323', monospace;
+    font-family: 'VT323', monospace !important;
   }
 }
 
