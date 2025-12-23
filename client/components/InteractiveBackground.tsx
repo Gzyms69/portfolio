@@ -9,15 +9,18 @@ import { COG_LOGO_POINTS } from '@/lib/logo-data';
 const SticksScene = memo(({ scrollY, isIdle }: { scrollY: MotionValue<number>, isIdle: boolean }) => {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const count = 200;
-  const colors = useMemo(() => [0x00ff41, 0xffaa00, 0xffff00], []);
-
-  const data = useMemo(() => Array.from({ length: count }, () => ({
-    position: new THREE.Vector3((Math.random() - 0.5) * 3000, (Math.random() - 0.5) * 4000, (Math.random() - 0.5) * 1500),
-    rotation: new THREE.Euler(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI),
-    rotationSpeed: new THREE.Euler(Math.random() * 0.01, Math.random() * 0.01, Math.random() * 0.01),
-    speed: 1 + Math.random() * 2,
-    color: new THREE.Color(colors[Math.floor(Math.random() * colors.length)])
-  })), [colors]);
+  
+  // Use lazy state initialization to handle random values purely once per mount
+  const [data] = useState(() => {
+    const colors = [0x00ff41, 0xffaa00, 0xffff00];
+    return Array.from({ length: count }, () => ({
+      position: new THREE.Vector3((Math.random() - 0.5) * 3000, (Math.random() - 0.5) * 4000, (Math.random() - 0.5) * 1500),
+      rotation: new THREE.Euler(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI),
+      rotationSpeed: new THREE.Euler(Math.random() * 0.01, Math.random() * 0.01, Math.random() * 0.01),
+      speed: 1 + Math.random() * 2,
+      color: new THREE.Color(colors[Math.floor(Math.random() * colors.length)])
+    }));
+  });
 
   useEffect(() => {
     if (meshRef.current) {

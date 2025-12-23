@@ -5,7 +5,7 @@
 
 class SystemDebugger {
   private logs: string[] = [];
-  private originalConsole: any = {};
+  private originalConsole: Record<string, (...args: unknown[]) => void> = {};
 
   constructor() {
     this.logs.push(`[SYSTEM_DEBUG_INIT] ${new Date().toISOString()}`);
@@ -15,22 +15,22 @@ class SystemDebugger {
   private setupInterception() {
     if (typeof window === 'undefined') return;
 
-    const methods: Array<keyof Console> = ['log', 'error', 'warn', 'info'];
+    const methods: Array<'log' | 'error' | 'warn' | 'info'> = ['log', 'error', 'warn', 'info'];
     
     methods.forEach(method => {
-      this.originalConsole[method] = console[method];
-      console[method] = (...args: any[]) => {
+      this.originalConsole[method] = console[method].bind(console);
+      console[method] = (...args: unknown[]) => {
         const message = args.map(arg => 
           typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
         ).join(' ');
         
         this.logs.push(`[${method.toUpperCase()}] ${message}`);
-        this.originalConsole[method].apply(console, args);
+        this.originalConsole[method](...args);
       };
     });
 
     // Capture global errors
-    window.onerror = (msg, url, line, col, error) => {
+    window.onerror = (msg, url, line, col, _error) => {
       this.logs.push(`[FATAL_ERROR] ${msg} at ${line}:${col} (${url})`);
       return false;
     };

@@ -66,7 +66,7 @@ export const TerminalLoader: React.FC<TerminalLoaderProps> = ({ onComplete }) =>
         times: [0, 0.3, 0.8, 1],
         ease: "circIn"
       }}
-      onAnimationComplete={(definition) => {
+      onAnimationComplete={(_definition) => {
         // Only trigger onComplete if the finishing animation just finished
         if (isFinishing) {
           onComplete();

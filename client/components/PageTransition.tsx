@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ReactNode } from "react";
 
-const anim = (variants: any) => ({
+const anim = (variants: Variants) => ({
   initial: "initial",
   animate: "enter",
   exit: "exit",

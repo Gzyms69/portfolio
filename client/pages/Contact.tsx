@@ -1,40 +1,12 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Mail } from "lucide-react";
-import { useState, FormEvent } from "react";
-import { Button } from "@/components/ui/button";
-import { AnimatedText, AnimatedCharacters } from "@/components/AnimatedText";
 import { Reveal } from "@/components/Reveal";
+import { AnimatedText, AnimatedCharacters } from "@/components/AnimatedText";
 import { PageTransition } from "@/components/PageTransition";
-
 import { ContactForm } from "@/components/ContactForm";
 
 export default function Contact({ isDossier = false }: { isDossier?: boolean }) {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<{
-    type: "success" | "error" | null;
-    message: string;
-  }>({ type: null, message: "" });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    // ... same submit logic ...
-  };
-
   if (isDossier) {
     return (
       <div className="animate-in fade-in slide-in-from-right-10 duration-700 h-full flex flex-col items-center justify-center max-w-2xl mx-auto">
@@ -79,106 +51,17 @@ export default function Contact({ isDossier = false }: { isDossier?: boolean }) 
                   <div className="h-1 w-12 bg-gradient-to-r from-white/40 to-transparent rounded"></div>
                 </div>
 
-                {/* Status Messages */}
-                {status.type && (
-                  <div
-                    className={`rounded-lg p-4 ${
-                      status.type === "success"
-                        ? "bg-green-500/20 border border-green-500/50"
-                        : "bg-red-500/20 border border-red-500/50"
-                    }`}
-                  >
-                    <p
-                      className={
-                        status.type === "success"
-                          ? "text-green-300"
-                          : "text-red-300"
-                      }
-                    >
-                      {status.message}
-                    </p>
-                  </div>
-                )}
-
-                <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-                  {/* Name Field */}
-                  <div className="flex flex-col gap-2">
-                    <label
-                      htmlFor="name"
-                      className="text-sm font-medium text-medium"
-                    >
-                      Imię <span className="text-red-400">*</span>
-                    </label>
-                    <input
-                      id="name"
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="Twoje imię"
-                      className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-3 text-gray-100 placeholder:text-gray-400 focus:border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all"
-                    />
-                  </div>
-
-                  {/* Email Field */}
-                  <div className="flex flex-col gap-2">
-                    <label
-                      htmlFor="email"
-                      className="text-sm font-medium text-medium"
-                    >
-                      Adres e-mail <span className="text-red-400">*</span>
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="twój.email@example.com"
-                      className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-3 text-gray-100 placeholder:text-gray-400 focus:border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all"
-                    />
-                  </div>
-
-                  {/* Message Field */}
-                  <div className="flex flex-col gap-2">
-                    <label
-                      htmlFor="message"
-                      className="text-sm font-medium text-medium flex justify-between"
-                    >
-                      <span>
-                        Wiadomość <span className="text-red-400">*</span>
-                      </span>
-                      <span className="text-xs text-weak">
-                        {formData.message.length}/3000
-                      </span>
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      maxLength={3000}
-                      placeholder="Twoja wiadomość..."
-                      className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-3 text-gray-100 placeholder:text-gray-400 focus:border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all resize-none"
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  <Button
-                    type="submit"
-                    disabled={loading}
-                    variant="glassPrimary"
-                    className="mt-4 w-full"
-                  >
-                    {loading ? "Wysyłanie..." : "Wyślij"}
-                  </Button>
-                </form>
+                <ContactForm />
               </div>
             </Reveal>
+
+            <Footer />
+          </div>
+        </main>
+      </div>
+    </PageTransition>
+  );
+}
 
             <Footer />
           </div>
