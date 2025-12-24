@@ -9,7 +9,7 @@ export const DossierProjects = () => {
   return (
     <DossierContent>
       {projects.map((project, index) => {
-        const projectData = project[language as 'en' | 'pl'];
+        const projectData = project[language];
         return (
           <DossierItem key={index}>
             <div className="border border-primary/10 bg-[#0a0f0a]/40 p-1 rounded-sm">

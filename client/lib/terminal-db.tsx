@@ -1,8 +1,7 @@
 import { BookOpen, Zap } from "lucide-react";
+import { Project, CVData, GlobalConfig } from "@shared/types";
 
-export type Language = 'pl' | 'en';
-
-export const portfolioConfig = {
+export const portfolioConfig: GlobalConfig = {
   pl: {
     name: "Dawid Czerwiński",
     title: "Inżynier oprogramowania. Tworzę zaawansowane aplikacje internetowe i narzędzia automatyzujące pracę.",
@@ -26,7 +25,7 @@ export const portfolioConfig = {
   }
 };
 
-export const projects = [
+export const projects: Project[] = [
   {
     title: "BookShop Library",
     pl: {
@@ -39,7 +38,7 @@ export const projects = [
     },
     githubUrl: "https://github.com/Gzyms69/bookshop-library",
     techStack: ["Python", "FastAPI", "React", "TypeScript", "MS SQL Server", "Docker", "Tailwind CSS"],
-    variant: "design" as const,
+    variant: "design",
     icon: <BookOpen className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     imageUrl: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg"
   },
@@ -55,7 +54,7 @@ export const projects = [
     },
     githubUrl: "https://github.com/Gzyms69/rust-polyglot",
     techStack: ["Rust", "CLI", "Systems Programming", "Binary Manipulation"],
-    variant: "design" as const,
+    variant: "design",
     icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     imageUrl: "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg"
   },
@@ -71,13 +70,13 @@ export const projects = [
     },
     githubUrl: "https://github.com/Gzyms69/portfolio",
     techStack: ["React", "TypeScript", "Vite", "TailwindCSS", "Express", "Node.js", "Radix UI"],
-    variant: "design" as const,
+    variant: "design",
     icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     imageUrl: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg"
   }
 ];
 
-export const cvData = {
+export const cvData: CVData = {
   experiences: [
     {
       title: "Przerwa w karierze (Career Break)",

@@ -26,7 +26,7 @@ export const TerminalConsole = ({ isOpen, onClose }: TerminalConsoleProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const controls = useAnimation();
   
-  const parser = useMemo(() => new FalloutTerminalParser(language as 'en' | 'pl'), [language]);
+  const parser = useMemo(() => new FalloutTerminalParser(language), [language]);
 
   const backToTerminal = () => {
     setSelectedFile(null);

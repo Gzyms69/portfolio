@@ -125,13 +125,13 @@ ${t('cv_skills_programming')}: ${skills.programming.join(', ')}
                 </h3>
               </div>
               <div className="space-y-4">
-                {Object.entries(skills).map(([category, list], idx) => (
+                {(Object.entries(skills) as [keyof typeof skills, string[]][]).map(([category, list], idx) => (
                   <div key={idx} className="font-mono">
                     <span className="text-primary/40 text-xs uppercase block mb-1">
                       {category === 'general' ? t('cv_skills_general') : category === 'tools' ? t('cv_skills_tools') : t('cv_skills_programming')}
                     </span>
                     <div className="flex flex-wrap gap-2">
-                      {list.map((skill, sIdx) => (
+                      {list.map((skill: string, sIdx: number) => (
                         <span key={sIdx} className="bg-primary/10 border border-primary/20 px-2 py-0.5 text-primary text-sm rounded-sm">
                           {skill}
                         </span>

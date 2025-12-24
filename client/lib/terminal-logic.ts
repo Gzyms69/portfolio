@@ -1,11 +1,4 @@
-export type Language = 'en' | 'pl';
-
-export interface FileSystemItem {
-  name: string;
-  type: 'file' | 'dir';
-  content?: string | string[];
-  children?: Record<string, FileSystemItem>;
-}
+import { Language, FileSystemItem } from "@shared/types";
 
 // This is a simplified 'Virtual File System' parser. 
 // It mimics how the terminal in Fallout 3/NV works.
