@@ -130,7 +130,7 @@ export const TerminalConsole = ({ isOpen, onClose }: TerminalConsoleProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[250] flex items-center justify-center bg-black/90 backdrop-blur-md p-4"
+      className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/90 backdrop-blur-md p-4"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <motion.div

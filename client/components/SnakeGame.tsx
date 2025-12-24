@@ -24,11 +24,10 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
     return 0;
   });
 
-  const gameLoopRef = useRef<number>(); 
+  const gameLoopRef = useRef<number>(0); 
   const lastUpdateTimeRef = useRef<number>(0);
   const gameSpeedRef = useRef<number>(150); 
 
-  // Save High Score whenever it changes
   useEffect(() => {
     if (highScore > 0) {
       localStorage.setItem("vault_snake_highscore", highScore.toString());
@@ -74,7 +73,7 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
       if (newHead.x === food.x && newHead.y === food.y) {
         setScore(s => {
           const newScore = s + 10;
-          setHighScore(prev => Math.max(prev, newScore));
+          setHighScore(prevHS => Math.max(prevHS, newScore));
           return newScore;
         });
         setFood(generateFood());
@@ -88,7 +87,7 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
 
   useEffect(() => {
     if (!isOpen) {
-        cancelAnimationFrame(gameLoopRef.current as number);
+        if (gameLoopRef.current) cancelAnimationFrame(gameLoopRef.current);
         return;
     }
 
@@ -112,7 +111,7 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
 
   useEffect(() => {
     if (!isOpen) {
-      cancelAnimationFrame(gameLoopRef.current as number);
+      if (gameLoopRef.current) cancelAnimationFrame(gameLoopRef.current);
       return;
     }
 
@@ -131,11 +130,11 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
 
       gameLoopRef.current = requestAnimationFrame(animate);
     } else {
-      cancelAnimationFrame(gameLoopRef.current as number);
+      if (gameLoopRef.current) cancelAnimationFrame(gameLoopRef.current);
     }
 
     return () => {
-      cancelAnimationFrame(gameLoopRef.current as number);
+      if (gameLoopRef.current) cancelAnimationFrame(gameLoopRef.current);
     };
   }, [moveSnake, gameOver, score, isOpen]);
 
@@ -146,7 +145,6 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
 
   const handleControl = (newDir: Point) => {
     if (gameOver) return;
-    // Prevent reverse direction
     if (newDir.x !== 0 && newDir.x === -direction.x) return;
     if (newDir.y !== 0 && newDir.y === -direction.y) return;
     setDirection(newDir);
@@ -158,14 +156,14 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 0.9, opacity: 0 }}
       transition={{ type: "spring", damping: 15, stiffness: 200 }}
-      className="relative w-full max-w-2xl min-h-[85vh] sm:min-h-[600px] bg-[#030712] border-4 border-primary/30 rounded-xl overflow-y-auto shadow-[0_0_50px_rgba(0,255,65,0.2)] flex flex-col items-center p-4 sm:p-8"
+      className="relative w-full max-w-2xl h-[95vh] sm:h-auto sm:min-h-[600px] bg-[#030712] border-4 border-primary/30 rounded-xl overflow-y-auto overflow-x-hidden shadow-[0_0_50px_rgba(0,255,65,0.2)] flex flex-col items-center p-4 sm:p-8 z-[300]"
     >
-        <main className="flex flex-col items-center gap-6 py-10 px-2 w-full max-w-2xl mt-4">
+        <div className="flex flex-col items-center gap-4 py-4 px-2 w-full max-w-lg">
           {/* Header */}
           <div className="flex flex-col items-center gap-2 border-b-2 border-primary/20 pb-4 w-full relative">
             <button 
-              onClick={handleExit}
-              className="absolute left-0 top-0 flex items-center gap-2 px-2 py-1 bg-red-500/10 border border-red-500/30 hover:bg-red-500/20 text-red-500 font-mono text-sm uppercase transition-all rounded"
+              onPointerDown={handleExit}
+              className="absolute left-0 top-0 flex items-center gap-2 px-2 py-1 bg-red-500/10 border border-red-500/30 hover:bg-red-500/20 text-red-500 font-mono text-sm uppercase transition-all rounded z-10"
             >
               <LogOut className="h-3 w-3" />
               <span className="hidden sm:inline">EXIT_SYSTEM</span>
@@ -194,17 +192,17 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
           </div>
 
           {/* Game Board Container */}
-          <div className="relative w-full max-w-[400px] aspect-square">
+          <div className="relative w-full max-w-[320px] sm:max-w-[400px] aspect-square touch-none group/board">
             <div 
               className="relative w-full h-full bg-[#030712] border-4 border-primary/30 rounded-xl overflow-hidden shadow-[0_0_50px_rgba(0,255,65,0.1)]"
-              style={{ contain: 'layout style paint' }}
+              style={{ contain: 'layout style paint', touchAction: 'none' }}
             >
+              {/* Scanline Grid */}
               <div 
-                className="absolute inset-0 z-10 opacity-10" 
+                className="absolute inset-0 z-10 opacity-10 pointer-events-none" 
                 style={{
                   backgroundSize: `${100/gridSize}% ${100/gridSize}%`,
-                  backgroundImage: `linear-gradient(to right, ${'rgba(0,255,65,0.15)'} 1px, transparent 1px), linear-gradient(to bottom, ${'rgba(0,255,65,0.15)'} 1px, transparent 1px)`,
-                  contain: 'strict'
+                  backgroundImage: `linear-gradient(to right, ${'rgba(0,255,65,0.1)'} 1px, transparent 1px), linear-gradient(to bottom, ${'rgba(0,255,65,0.1)'} 1px, transparent 1px)`,
                 }}
               />
   
@@ -212,70 +210,70 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
                  <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px]" />
               </div>
   
-              {snake.map((segment, i) => (
-                <motion.div 
-                  key={`${segment.x}-${segment.y}-${i}`}
-                  className="absolute bg-primary"
-                  style={{
-                    width: `${100/gridSize}%`,
-                    height: `${100/gridSize}%`,
-                    left: `${(segment.x * 100) / gridSize}%`,
-                    top: `${(segment.y * 100) / gridSize}%`,
-                    boxShadow: `0 0 5px rgba(0,255,65,${i === 0 ? 0.8 : 0.4})`,
-                    zIndex: snake.length - i,
-                    imageRendering: 'pixelated',
-                  }}
-                >
-                  {i === 0 && (
-                    <>
-                      <div className="absolute w-full h-full flex items-center justify-center">
-                        <div className="w-1/3 h-1/3 bg-black rounded-full shadow-[0_0_5px_rgba(0,0,0,0.8)] animate-pulse" />
+              {/* Render Snake */}
+              {snake.map((segment, i) => {
+                const isHead = i === 0;
+                return (
+                  <div 
+                    key={`${segment.x}-${segment.y}-${i}`}
+                    className={`absolute rounded-sm transition-all duration-150 ${isHead ? 'bg-primary z-30' : 'bg-primary/60 z-20'}`}
+                    style={{
+                      width: `${100/gridSize}%`,
+                      height: `${100/gridSize}%`,
+                      left: `${(segment.x * 100) / gridSize}%`,
+                      top: `${(segment.y * 100) / gridSize}%`,
+                      boxShadow: isHead 
+                        ? '0 0 15px rgba(0,255,65,0.8), inset 0 0 5px rgba(255,255,255,0.5)' 
+                        : '0 0 5px rgba(0,255,65,0.3)',
+                      transform: isHead ? 'scale(1.1)' : 'scale(0.95)',
+                    }}
+                  >
+                    {isHead && (
+                      <div className="relative w-full h-full">
+                        {/* More subtle, 'focused' eyes */}
+                        <div
+                          className="absolute w-[15%] h-[15%] bg-black rounded-full shadow-[0_0_2px_rgba(0,255,65,0.5)]"
+                          style={{ 
+                            top: direction.y === -1 ? '25%' : direction.y === 1 ? '75%' : '35%', 
+                            left: direction.x === -1 ? '25%' : direction.x === 1 ? '75%' : '35%',
+                          }}
+                        />
+                        <div
+                          className="absolute w-[15%] h-[15%] bg-black rounded-full shadow-[0_0_2px_rgba(0,255,65,0.5)]"
+                          style={{ 
+                            top: direction.y === -1 ? '25%' : direction.y === 1 ? '75%' : '35%', 
+                            left: direction.x === 1 ? '75%' : direction.x === -1 ? '25%' : '65%',
+                          }}
+                        />
                       </div>
-                      <div
-                        className="absolute w-[10%] h-[10%] bg-white rounded-full"
-                        style={{ 
-                          top: direction.y === -1 ? '20%' : direction.y === 1 ? '80%' : '50%', 
-                          left: direction.x === -1 ? '20%' : direction.x === 1 ? '80%' : '35%',
-                          transform: 'translate(-50%, -50%)',
-                          boxShadow: '0 0 2px white'
-                        }}
-                      />
-                      <div
-                        className="absolute w-[10%] h-[10%] bg-white rounded-full"
-                        style={{ 
-                          top: direction.y === -1 ? '20%' : direction.y === 1 ? '80%' : '50%', 
-                          left: direction.x === 1 ? '80%' : direction.x === -1 ? '20%' : '65%',
-                          transform: 'translate(-50%, -50%)',
-                          boxShadow: '0 0 2px white'
-                        }}
-                      />
-                    </>
-                  )}
-                </motion.div>
-              ))}
+                    )}
+                  </div>
+                );
+              })}
   
+              {/* Render Food - Animated Byte */}
               <motion.div 
                 key={`${food.x}-${food.y}`}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: [1, 0.8, 1], scale: [1.2, 1, 1.2] }}
-                transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }}
-                className="absolute bg-[#ffaa00] shadow-[0_0_15px_#ffaa00]"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: [1, 1.2, 1] }}
+                transition={{ repeat: Infinity, duration: 1.5 }}
+                className="absolute bg-[#ffaa00] z-10 rounded-sm"
                 style={{
                   width: `${100/gridSize}%`,
                   height: `${100/gridSize}%`,
                   left: `${(food.x * 100) / gridSize}%`,
                   top: `${(food.y * 100) / gridSize}%`,
-                  imageRendering: 'pixelated',
+                  boxShadow: '0 0 20px #ffaa00, inset 0 0 5px white',
                 }}
               >
-                <div className="absolute inset-1/4 w-1/2 h-1/2 bg-white/70 animate-pulse" />
+                <div className="absolute inset-0 bg-white/30 animate-pulse rounded-sm" />
               </motion.div>
 
               {gameOver && (
                 <motion.div 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="absolute inset-0 z-30 bg-black/90 flex flex-col items-center justify-center p-4 text-center backdrop-blur-sm"
+                  className="absolute inset-0 z-40 bg-black/90 flex flex-col items-center justify-center p-4 text-center backdrop-blur-sm"
                 >
                   <motion.h2 
                     animate={{ x: [0, 5, -5, 0] }}
@@ -288,7 +286,7 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
                     Interrupted_Session
                   </p>
                   <button 
-                    onClick={resetGame}
+                    onPointerDown={resetGame}
                     className="flex items-center gap-3 px-6 py-2 bg-red-500/10 border border-red-500/40 hover:bg-red-500/20 text-red-500 font-mono text-xl uppercase transition-all"
                   >
                     <RefreshCcw className="h-4 w-4" />
@@ -300,40 +298,40 @@ export const SnakeGame = ({ isOpen, onExit }: SnakeGameProps) => {
           </div>
 
           {/* Mobile Controls (D-pad) */}
-          <div className="grid grid-cols-3 gap-2 sm:hidden mt-4">
+          <div className="grid grid-cols-3 gap-3 sm:hidden mt-2 p-2 bg-primary/5 rounded-2xl border border-primary/10">
             <div />
             <button 
-              onClick={() => handleControl({ x: 0, y: -1 })}
-              className="w-14 h-14 bg-primary/10 border-2 border-primary/30 rounded-lg flex items-center justify-center text-primary active:bg-primary active:text-black transition-all"
+              onPointerDown={() => handleControl({ x: 0, y: -1 })}
+              className="w-16 h-16 bg-primary/10 border-2 border-primary/30 rounded-xl flex items-center justify-center text-primary active:bg-primary active:text-black transition-all shadow-[0_0_10px_rgba(0,255,65,0.1)]"
             >
-              <ChevronUp className="w-8 h-8" />
+              <ChevronUp className="w-10 h-10" />
             </button>
             <div />
             
             <button 
-              onClick={() => handleControl({ x: -1, y: 0 })}
-              className="w-14 h-14 bg-primary/10 border-2 border-primary/30 rounded-lg flex items-center justify-center text-primary active:bg-primary active:text-black transition-all"
+              onPointerDown={() => handleControl({ x: -1, y: 0 })}
+              className="w-16 h-16 bg-primary/10 border-2 border-primary/30 rounded-xl flex items-center justify-center text-primary active:bg-primary active:text-black transition-all shadow-[0_0_10px_rgba(0,255,65,0.1)]"
             >
-              <ChevronLeft className="w-8 h-8" />
+              <ChevronLeft className="w-10 h-10" />
             </button>
             <button 
-              onClick={() => handleControl({ x: 0, y: 1 })}
-              className="w-14 h-14 bg-primary/10 border-2 border-primary/30 rounded-lg flex items-center justify-center text-primary active:bg-primary active:text-black transition-all"
+              onPointerDown={() => handleControl({ x: 0, y: 1 })}
+              className="w-16 h-16 bg-primary/10 border-2 border-primary/30 rounded-xl flex items-center justify-center text-primary active:bg-primary active:text-black transition-all shadow-[0_0_10px_rgba(0,255,65,0.1)]"
             >
-              <ChevronDown className="w-8 h-8" />
+              <ChevronDown className="w-10 h-10" />
             </button>
             <button 
-              onClick={() => handleControl({ x: 1, y: 0 })}
-              className="w-14 h-14 bg-primary/10 border-2 border-primary/30 rounded-lg flex items-center justify-center text-primary active:bg-primary active:text-black transition-all"
+              onPointerDown={() => handleControl({ x: 1, y: 0 })}
+              className="w-16 h-16 bg-primary/10 border-2 border-primary/30 rounded-xl flex items-center justify-center text-primary active:bg-primary active:text-black transition-all shadow-[0_0_10px_rgba(0,255,65,0.1)]"
             >
-              <ChevronRight className="w-8 h-8" />
+              <ChevronRight className="w-10 h-10" />
             </button>
           </div>
 
           <div className="font-mono text-primary/30 text-[10px] uppercase tracking-[0.2em] text-center hidden sm:block">
             [ USE_ARROW_KEYS_TO_NAVIGATE ]
           </div>
-        </main>
+        </div>
       </motion.div>
   );
 };

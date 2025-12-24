@@ -315,9 +315,32 @@ export const Navigation = () => {
         )}
       </AnimatePresence>
 
-      <TerminalDialog isOpen={isSnakeConfirmOpen} onClose={() => setIsSnakeConfirmOpen(false)} onConfirm={confirmSnakeNavigation} title={t('snake')} message={t('confirm_snake')} confirmText="CONFIRM" cancelText="CANCEL" />
-      <AnimatePresence>{isSnakeGameOpen && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, pointerEvents: 'none' }} className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 p-4 pointer-events-auto"><SnakeGame isOpen={isSnakeGameOpen} onExit={exitSnakeGame} /></motion.div>}</AnimatePresence>
-      <AnimatePresence>{isTerminalOpen && <TerminalConsole isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />}</AnimatePresence>
+      <TerminalDialog 
+        isOpen={isSnakeConfirmOpen} 
+        onClose={() => setIsSnakeConfirmOpen(false)} 
+        onConfirm={confirmSnakeNavigation} 
+        title={t('snake')} 
+        message={t('confirm_snake')} 
+        confirmText="CONFIRM" 
+        cancelText="CANCEL" 
+      />
+      <AnimatePresence>
+        {isSnakeGameOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0, pointerEvents: 'none' }} 
+            className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/80 p-4 pointer-events-auto"
+          >
+            <SnakeGame isOpen={isSnakeGameOpen} onExit={exitSnakeGame} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {isTerminalOpen && (
+          <TerminalConsole isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />
+        )}
+      </AnimatePresence>
     </>
   );
 };
