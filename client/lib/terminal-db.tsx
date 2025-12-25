@@ -4,15 +4,15 @@ import { Project, CVData, GlobalConfig } from "@shared/types";
 export const portfolioConfig: GlobalConfig = {
   pl: {
     name: "Dawid Czerwiński",
-    title: "Inżynier oprogramowania. Tworzę zaawansowane aplikacje internetowe i narzędzia automatyzujące pracę.",
-    description: "Zbiór wybranych realizacji – od systemów zarządzania po niskopoziomowe narzędzia systemowe. Stawiam na wydajność i czystość architektury, wykorzystując technologie takie jak Python, React oraz TypeScript.",
+    title: "Software Engineer & Instruktor Programowania. Łączę pasję do edukacji technicznej z nowoczesnym developmentem.",
+    description: "Były instruktor programowania (C++, Python, Unity) z inżynierskim wykształceniem (AGH, PK). Wykorzystuję analityczne podejście zdobyte w logistyce i edukacji do budowy wydajnych systemów webowych. Moje portfolio to dowód przejścia od nauczania architektury kodu do praktycznego tworzenia skalowalnych rozwiązań w React, TypeScript i FastAPI.",
     email: "dawidekczerwinski@gmail.com",
     heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "Node.js", "Docker", "Tailwind CSS", "SQL"]
   },
   en: {
     name: "Dawid Czerwiński",
-    title: "Software Engineer. Developing advanced web applications and automation tools.",
-    description: "A collection of selected projects – from management systems to low-level system utilities. I focus on performance and clean architecture, utilizing technologies such as Python, React, and TypeScript.",
+    title: "Software Engineer & Technical Educator. Bridging the gap between tech education and modern engineering.",
+    description: "Former programming instructor (C++, Python, Unity) with a solid engineering foundation (AGH, PK). I leverage analytical skills honed in logistics and education to build robust, high-performance web systems. My portfolio reflects a strategic transition from teaching code to architecting scalable full-stack solutions using React, TypeScript, and FastAPI.",
     email: "dawidekczerwinski@gmail.com",
     heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "Node.js", "Docker", "Tailwind CSS", "SQL"]
   },
@@ -21,7 +21,7 @@ export const portfolioConfig: GlobalConfig = {
     linkedin: "#",
   },
   contact: {
-    formspreeId: "mnnjpjez", // Your Formspree ID (example)
+    formspreeId: "mnnjpjez", 
   }
 };
 
