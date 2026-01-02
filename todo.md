@@ -35,9 +35,9 @@ Implementing techniques from Olivier Larose's "Top 5 Techniques for Web Animatio
 
 ## 8. Technical Debt & Quality Improvements
 - [x] **TypeScript Rigor**: `strict: true` is enabled. (Evaluated with AI: deeper strictness like `noUncheckedIndexedAccess` deemed unnecessary for this project scope).
-- [ ] **Linting Standard**: Configure ESLint with `typescript-eslint` to enforce code quality beyond simple formatting.
+- [x] **Linting Standard**: Configure ESLint with `typescript-eslint` to enforce code quality beyond simple formatting.
 - [ ] **Test Coverage**: Expand `vitest` suite to cover core components and server routes. Currently only minimal utility tests exist.
-- [ ] **Shared Code**: Populate `shared/` directory with meaningful types shared between Client and Server to ensure end-to-end type safety.
+- [x] **Shared Code**: Centralized core types (Language, Project, GlobalConfig, etc.) in `shared/types.ts` for end-to-end consistency.
 
 ## 9. Snake Game Enhancements
 - [ ] **Power-ups**: Add special items that give temporary abilities (speed boost, invincibility, extra points).

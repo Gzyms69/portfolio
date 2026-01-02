@@ -77,7 +77,7 @@ const DossierApp = () => {
 
 const AppContent = () => {
 
-  const { isTransitioning, type } = useBackground();
+  const { isTransitioning, type, toggleBackground } = useBackground();
 
   const [isReady, setIsReady] = useState(false);
 
@@ -85,7 +85,10 @@ const AppContent = () => {
 
   return (
 
-    <div className="relative w-full min-h-screen bg-[#030712]">
+    <div 
+      className="relative w-full min-h-screen"
+      onDoubleClick={toggleBackground}
+    >
 
       <DebugOverlay />
 
@@ -95,9 +98,9 @@ const AppContent = () => {
 
       <div className={`w-full min-h-screen ${isReady ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
 
-        <TVPowerTransition isTransitioning={isTransitioning}>
+        <GlobalEffects />
 
-          <GlobalEffects />
+        <TVPowerTransition isTransitioning={isTransitioning}>
 
           <Toaster />
 
@@ -109,19 +112,21 @@ const AppContent = () => {
 
           
 
+          {/* Always render the standard view for now, effectively decoupling background from view mode */}
+          <SmoothScroll>
+            <AnimatedRoutes />
+          </SmoothScroll>
+
+          {/* 
+          Legacy Mode Switch Logic:
           {type === 'ascii' ? (
-
             <SmoothScroll>
-
               <AnimatedRoutes />
-
             </SmoothScroll>
-
           ) : (
-
             <DossierApp />
-
-          )}
+          )} 
+          */}
 
         </TVPowerTransition>
 

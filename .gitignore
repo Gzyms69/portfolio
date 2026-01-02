@@ -137,5 +137,10 @@ dist
 *.njsproj
 *.sln
 *.sw?
+*.code-workspace
 
 .config/
+
+# Local/Temporary files
+mobile_verify/
+todo.md

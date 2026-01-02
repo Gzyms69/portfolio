@@ -137,8 +137,6 @@ export const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
-  if (bgType === 'sticks') return null;
-
   return (
     <>
       {/* Desktop Menu Trigger */}

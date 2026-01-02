@@ -1,27 +1,35 @@
 import { defineConfig, Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { createServer } from "./server";
+import { createServer } from "./server/index";
 import { visualizer } from "rollup-plugin-visualizer";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   base: '/portfolio/', // Set this to your repository name for GitHub Pages
+  root: "client",
+  publicDir: "../public",
+  envDir: "..",
   server: {
     host: "::",
     port: 8080,
+    watch: {
+      usePolling: true,
+      interval: 100,
+    },
     fs: {
-      allow: [".", "./client", "./shared"],
-      deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "server/**"],
+      allow: [".."],
+      deny: ["../.env", "../.env.*", "../**/.git/**", "../server/**"],
     },
   },
   build: {
-    outDir: "dist/spa",
+    outDir: "../dist/spa",
+    emptyOutDir: true,
   },
   plugins: [
     react(),
     expressPlugin(),
-    ...(mode === "analyze" ? [visualizer({ open: true, filename: "dist/stats.html" })] : [])
+    ...(mode === "analyze" ? [visualizer({ open: true, filename: "../dist/stats.html" })] : [])
   ],
   resolve: {
     alias: {

@@ -1,9 +1,28 @@
 {
-  "name": "portfolio",
+  "name": "vault-tec-os-portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A retro-futuristic terminal experience portfolio built with React, TypeScript, and Framer Motion",
   "homepage": "https://Gzyms69.github.io/portfolio/",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gzyms69/portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Gzyms69/portfolio/issues"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "portfolio",
+    "terminal",
+    "threejs",
+    "framer-motion",
+    "vite"
+  ],
+  "author": "Dawid Czerwiński",
+  "license": "MIT",
   "pkg": {
     "assets": [
       "dist/spa/*"
@@ -21,12 +40,14 @@
     "test": "vitest --run",
     "format.fix": "prettier --write .",
     "typecheck": "tsc",
-    "deploy": "gh-pages -d dist/spa"
+    "deploy": "gh-pages -d dist/spa",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
     "@react-three/postprocessing": "^2.19.1",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "lenis": "^1.3.16",
@@ -50,7 +71,6 @@
     "autoprefixer": "^10.4.21",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "cors": "^2.8.5",
     "eslint": "^9.39.2",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.26",

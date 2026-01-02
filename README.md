@@ -1,37 +1,90 @@
-# Vault-Tec OS v4.0 | Portfolio
+# Vault-Tec OS Portfolio
 
-A retro-futuristic terminal experience inspired by Fallout aesthetics. This isn't just a portfolio; it's a simulated terminal interface built with React, TypeScript, and Framer Motion. 
+A retro-futuristic terminal experience inspired by Fallout aesthetics. This is a simulated terminal interface built with React, TypeScript, and Framer Motion.
 
-I built this because I wanted to push the boundaries of "Glassmorphism" and see if I could make a website feel like a physical, mechanical object from the 70s.
+## Project Overview
 
-## Why I Built This
-Most portfolios look the same. I wanted something that felt **alive**. Getting the "CRT zap" and the "phosphor glow" to feel right was a massive headache. I spent way too many hours tweaking animation timings in Framer Motion just to get that specific "mechanical delay" you'd expect from a 50-year-old monitor.
+This portfolio project explores the concept of glassmorphism and captures the feel of a physical, mechanical object from the 1970s. The interface is designed to feel responsive and weighted, with CRT effects and phosphor glow that mimic the mechanical delay expected from a vintage monitor.
 
-The Dossier mode was originally supposed to be just a dark mode toggle, but it evolved into a full 3D environment once I realized how much better the "Vault-Tec" vibe works when you feel like you're actually looking at a classified physical file.
+What began as a simple dark mode toggle evolved into a full 3D environment to better suit the classified physical file aesthetic of Dossier mode.
 
-## Tech Stack & Struggles
-*   **React 18 & Vite**: Standard choice for speed, but necessary for the complex state management between theme transitions.
-*   **Framer Motion**: The backbone of the experience. Without the `AnimatePresence` logic, the "TV Power Off" effect would have looked like a cheap glitch.
-*   **Three.js (R3F)**: Powering the "Sticks" background. **Performance Note:** I had to scale back the stick count from 200 to 120 because, while it looked great on my desktop, it was absolute murder on mobile GPUs.
-*   **TailwindCSS**: Used for everything layout-related. Managing the "green-on-black" contrast while keeping text readable was a challenge.
+## Features
 
-## System Architecture
-The project follows a "Shell-first" architecture:
--   `Client`: Highly specialized UI modules (Terminal components, Snake game logic).
--   `Hooks`: Custom logic for theme synchronization and language parsing.
--   `Terminal DB`: The centralized "database" for the terminal's VFS (Virtual File System).
+- Interactive Terminal: A functional command-line interface with custom commands
+- Dual Language Support: Full support for both English and Polish
+- Retro Aesthetics: Custom CRT effects, scanlines, and vintage typography
+- 3D Environment: An immersive view for project details and dossiers
+- Responsive Design: Optimized for both desktop and mobile performance
 
-## Lessons Learned
-1.  **3D is Heavy**: Real-time 3D backgrounds are cool, but optimization is king. I learned a lot about instanced meshes to keep the frame rate stable.
-2.  **Typography Matters**: Finding the right balance between the pixelated `VT323` and readability was hard. 
-3.  **i18n is more than translation**: Adapting the terminal commands to sound natural in both Polish and English required more than just literal translation—it required "contextual adaptation" (e.g., ensuring "POLECENIA" feels as authoritative as "COMMANDS").
+## Tech Stack
 
-## Installation
-```bash
-pnpm install
-pnpm dev
-```
+- React 18 & Vite: For state management and rapid development
+- Framer Motion: Handles complex animation logic and transitions
+- Three.js (React Three Fiber): Powers the interactive 3D background elements
+- TailwindCSS: Manages layout and styling with a focus on high-contrast readability
+
+## Project Structure
+
+- `client/`: Contains the React frontend, including terminal logic and UI components
+- `server/`: Node.js backend for handling API requests
+- `shared/`: Shared TypeScript types and utilities used by both client and server
+- `docs/`: Detailed documentation regarding performance, security, and architecture
+- `scripts/`: Utility scripts for development and deployment
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- pnpm package manager
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Gzyms69/portfolio.git
+   ```
+
+2. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+
+3. Start the development server:
+   ```bash
+   pnpm dev
+   ```
+
+## Development Scripts
+
+The project includes a utility script `scripts/dev.sh` to simplify development tasks:
+
+- **Start Local Server**:
+  ```bash
+  ./scripts/dev.sh start
+  ```
+- **Stop Local Server**:
+  ```bash
+  ./scripts/dev.sh stop
+  ```
+- **Run in Docker**:
+  ```bash
+  ./scripts/dev.sh docker-start
+  ```
+- **Stop Docker**:
+  ```bash
+  ./scripts/dev.sh docker-stop
+  ```
+
+## Key Technical Insights
+
+- **3D Optimization**: Real-time 3D backgrounds require careful optimization. Using instanced meshes helped maintain a stable frame rate across different devices
+- **Typography and Readability**: Balancing the retro VT323 font with modern readability standards was a key design challenge
+- **Contextual Localization**: Internationalization involves more than direct translation. Commands and system messages were adapted to maintain a consistent tone in both languages
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-**Vault-Tec OS v4.0** - *Better Living, Underground.*
-Developed by **Dawid Czerwiński**
+Portfolio by Dawid Czerwiński
