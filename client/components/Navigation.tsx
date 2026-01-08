@@ -1,4 +1,4 @@
-import { Home, Github, Briefcase, Boxes, Terminal, Activity, Worm, Command, Power, Languages, X, FileText, Settings } from "lucide-react";
+import { Home, Github, Briefcase, Boxes, Terminal, Activity, Worm, Command, Languages, X, FileText, Settings } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useBackground } from "@/hooks/use-background";
 import { useLanguage } from "@/hooks/use-language";
