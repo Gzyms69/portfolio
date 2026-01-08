@@ -29,12 +29,12 @@ export const projects: Project[] = [
   {
     title: "WikiGraph Lab",
     pl: {
-      description: "Odkryj ukrytą strukturę Wikipedii. To narzędzie 3D wizualizuje powiązania między pojęciami, zamieniając surowe dane w interaktywny wszechświat wiedzy.",
-      fullDescription: "A gdyby tak zobaczyć, jak 'Miłość' łączy się z 'Filozofią' w angielskiej, polskiej i japońskiej Wikipedii jednocześnie? WikiGraph Lab to wydajny silnik, który przetwarza zrzuty Wikipedii i buduje trójwymiarową bazę grafową. Wykorzystuje zaawansowane algorytmy, takie jak PageRank, by wyłonić najbardziej wpływowe pojęcia i pozwolić Ci nawigować po sieci ludzkiej wiedzy jak po galaktyce powiązanych węzłów.",
+      description: "Profesjonalna platforma badawcza wykorzystująca Index Jaccarda do analizy semantycznej Wikipedii. Trójwarstwowa architektura (Neo4j, FastAPI, Next.js) łączy wydajność z immersyjną wizualizacją.",
+      fullDescription: "WikiGraph Lab to zaawansowany system inżynierski zaprojektowany zarówno dla badaczy danych, jak i entuzjastów wiedzy. Projekt demonstruje profesjonalne podejście do architektury oprogramowania, integrując wysokowydajną bazę grafową Neo4j, skalowalne API oparte na FastAPI oraz nowoczesny frontend w Next.js. Zamiast prostych metryk, silnik wykorzystuje algorytm Indeksu Jaccarda do precyzyjnego filtrowania szumu semantycznego i identyfikacji istotnych połączeń międzyjęzykowych, przekształcając surowe zrzuty Wikipedii w uporządkowany graf wiedzy.",
     },
     en: {
-      description: "Uncover the hidden structure of Wikipedia. This 3D visualization tool reveals how concepts connect across languages, turning raw data into an interactive universe of knowledge.",
-      fullDescription: "What if you could see how 'Love' connects to 'Philosophy' across English, Polish, and Japanese Wikipedia simultaneously? WikiGraph Lab is a high-performance engine that ingests massive Wikipedia dumps and builds a 3D graph database. It uses advanced algorithms like PageRank to surface the most influential concepts and allows you to navigate the web of human knowledge as a galaxy of interconnected nodes.",
+      description: "Research-grade platform leveraging Jaccard Index for semantic analysis of Wikipedia. Three-tier architecture (Neo4j, FastAPI, Next.js) combines performance with immersive visualization.",
+      fullDescription: "WikiGraph Lab is an advanced engineering system designed for both data researchers and knowledge enthusiasts. The project demonstrates a professional approach to software architecture, integrating a high-performance Neo4j graph database, a scalable FastAPI-based API, and a modern Next.js frontend. Moving beyond basic metrics, the engine employs the Jaccard Index algorithm to precisely filter semantic noise and identify meaningful cross-lingual connections, transforming raw Wikipedia dumps into a structured knowledge graph.",
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
     techStack: ["Python", "FastAPI", "Neo4j", "Next.js", "TypeScript", "Docker", "Graph Data Science"],
