@@ -1,4 +1,4 @@
-import { BookOpen, Zap } from "lucide-react";
+import { Zap, Share2 } from "lucide-react";
 import { Project, CVData, GlobalConfig } from "@shared/types";
 
 export const portfolioConfig: GlobalConfig = {
@@ -27,30 +27,30 @@ export const portfolioConfig: GlobalConfig = {
 
 export const projects: Project[] = [
   {
-    title: "BookShop Library",
+    title: "WikiGraph Lab",
     pl: {
-      description: "Zaawansowany system klasy Enterprise do kompleksowego zarządzania zasobami bibliotecznymi.",
-      fullDescription: "Skalowalna platforma integrująca funkcje e-commerce oraz system zarządzania stanami magazynowymi. Projekt demonstruje nowoczesne podejście do architektury mikroserwisowej, oferując analitykę danych w czasie rzeczywistym. Kluczowe funkcjonalności obejmują autorski panel administracyjny, pełną dokumentację OpenAPI oraz ścisłe typowanie danych zapewniające stabilność operacyjną.",
+      description: "Odkryj ukrytą strukturę Wikipedii. To narzędzie 3D wizualizuje powiązania między pojęciami, zamieniając surowe dane w interaktywny wszechświat wiedzy.",
+      fullDescription: "A gdyby tak zobaczyć, jak 'Miłość' łączy się z 'Filozofią' w angielskiej, polskiej i japońskiej Wikipedii jednocześnie? WikiGraph Lab to wydajny silnik, który przetwarza zrzuty Wikipedii i buduje trójwymiarową bazę grafową. Wykorzystuje zaawansowane algorytmy, takie jak PageRank, by wyłonić najbardziej wpływowe pojęcia i pozwolić Ci nawigować po sieci ludzkiej wiedzy jak po galaktyce powiązanych węzłów.",
     },
     en: {
-      description: "Advanced Enterprise-grade system for comprehensive library resource management.",
-      fullDescription: "A scalable platform integrating e-commerce functionalities with a robust inventory management system. The project demonstrates a modern approach to software architecture, offering real-time data analytics. Key features include a custom admin dashboard, full OpenAPI documentation, and end-to-end type safety for operational stability.",
+      description: "Uncover the hidden structure of Wikipedia. This 3D visualization tool reveals how concepts connect across languages, turning raw data into an interactive universe of knowledge.",
+      fullDescription: "What if you could see how 'Love' connects to 'Philosophy' across English, Polish, and Japanese Wikipedia simultaneously? WikiGraph Lab is a high-performance engine that ingests massive Wikipedia dumps and builds a 3D graph database. It uses advanced algorithms like PageRank to surface the most influential concepts and allows you to navigate the web of human knowledge as a galaxy of interconnected nodes.",
     },
-    githubUrl: "https://github.com/Gzyms69/bookshop-library",
-    techStack: ["Python", "FastAPI", "React", "TypeScript", "MS SQL Server", "Docker", "Tailwind CSS"],
+    githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
+    techStack: ["Python", "FastAPI", "Neo4j", "Next.js", "TypeScript", "Docker", "Graph Data Science"],
     variant: "design",
-    icon: <BookOpen className="h-8 w-8 text-gray-600 flex-shrink-0" />,
-    imageUrl: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg"
+    icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />,
+    imageUrl: "https://images.unsplash.com/photo-1558494949-ef526b01201b?q=80&w=1200&auto=format&fit=crop"
   },
   {
     title: "Rust Polyglot Creator",
     pl: {
-      description: "Niskopoziomowe narzędzie systemowe do manipulacji strukturami plików binarnych i generowania plików poliglota.",
-      fullDescription: "Wydajne narzędzie CLI opracowane w języku Rust, umożliwiające tworzenie plików poprawnie interpretowanych przez wiele formatów jednocześnie (PNG+ZIP, PNG+WAV). Projekt wymagał precyzyjnej manipulacji bajtami i dogłębnej analizy specyfikacji binarnych. Architektura zapewnia bezpieczeństwo pamięci oraz wysoką wydajność przetwarzania.",
+      description: "Cyfrowa alchemia. Twórz pliki-kameleony, które są jednocześnie poprawnymi obrazami PNG i działającymi archiwami ZIP.",
+      fullDescription: "Eksploruj dziwne zakamarki formatów binarnych. To narzędzie CLI w języku Rust pozwala tworzyć pliki 'poligloci'—pojedyncze binaria, które są poprawne w wielu formatach jednocześnie. Ukryj archiwum ZIP w zdjęciu z wakacji lub zaszyj plik WAV w dokumencie. To głębokie zanurzenie w manipulację bajtami i specyfikacje struktur plików.",
     },
     en: {
-      description: "Low-level system utility for binary file manipulation and polyglot file generation.",
-      fullDescription: "A high-performance CLI tool developed in Rust, enabling the creation of files simultaneously valid in multiple formats (PNG+ZIP, PNG+WAV). The project involved precise byte manipulation and in-depth analysis of binary specifications. The architecture ensures memory safety and superior processing efficiency.",
+      description: "File alchemy in practice. Create 'chameleon' files that are valid PNG images and functioning ZIP archives at the same time.",
+      fullDescription: "Explore the weird edges of binary formats. This Rust-based CLI tool lets you craft 'polyglot' files—single binaries that are valid in multiple formats simultaneously. Hide a ZIP archive inside a vacation photo, or embed a WAV file in a document. It's a deep dive into byte manipulation and file structure specifications.",
     },
     githubUrl: "https://github.com/Gzyms69/rust-polyglot",
     techStack: ["Rust", "CLI", "Systems Programming", "Binary Manipulation"],
