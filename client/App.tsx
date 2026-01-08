@@ -52,7 +52,7 @@ const DossierApp = () => {
   const { type } = useBackground();
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   const activeTab = location.pathname === '/' ? 'home' : location.pathname.substring(1).split('/')[0];
 
   const handleTabChange = (tabId: string) => {
@@ -85,20 +85,18 @@ const AppContent = () => {
 
   return (
 
-    <div 
+    <div
       className="relative w-full min-h-screen"
       onDoubleClick={toggleBackground}
     >
 
       <DebugOverlay />
 
-      
+
 
       {/* 1. Main Content - Always in DOM */}
 
       <div className={`w-full min-h-screen ${isReady ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-
-        <GlobalEffects />
 
         <TVPowerTransition isTransitioning={isTransitioning}>
 
@@ -110,22 +108,29 @@ const AppContent = () => {
 
           <InteractiveBackground />
 
-          
+          {type === 'ascii' ? (
+            <>
+              <GlobalEffects />
+              <SmoothScroll>
+                <AnimatedRoutes />
+              </SmoothScroll>
+            </>
+          ) : (
+            <>
+              <GlobalEffects />
+              <DossierApp />
+            </>
+          )}
 
-          {/* Always render the standard view for now, effectively decoupling background from view mode */}
-          <SmoothScroll>
-            <AnimatedRoutes />
-          </SmoothScroll>
-
-          {/* 
-          Legacy Mode Switch Logic:
+          {/*
+          Legacy Mode Switch Logic (Commented for reference):
           {type === 'ascii' ? (
             <SmoothScroll>
               <AnimatedRoutes />
             </SmoothScroll>
           ) : (
             <DossierApp />
-          )} 
+          )}
           */}
 
         </TVPowerTransition>

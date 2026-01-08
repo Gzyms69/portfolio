@@ -29,7 +29,7 @@ export const TVPowerTransition = ({ children, isTransitioning }: { children: Rea
           filter: ["brightness(1)", "brightness(1.5)", "brightness(1)"]
         } : {
           opacity: 1,
-          filter: "brightness(1)"
+          filter: "none"
         }}
         transition={{ 
           duration: 0.25, 
