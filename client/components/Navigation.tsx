@@ -224,7 +224,7 @@ export const Navigation = () => {
             onClick={() => setIsMobileMenuOpen(true)}
             className="p-2 border-2 border-primary/40 rounded bg-primary/10 text-primary animate-pulse shadow-[0_0_10px_rgba(0,255,65,0.2)]"
           >
-            <Power className="h-5 w-5" />
+            <Settings className="h-5 w-5" />
           </button>
         </div>
       </nav>
