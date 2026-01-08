@@ -64,7 +64,7 @@ const DossierApp = () => {
 
   return (
     <DossierView activeTab={activeTab} onTabChange={handleTabChange}>
-      <Routes>
+      <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Index isDossier />} />
         <Route path="/projects" element={<DossierProjects />} />
         <Route path="/contact" element={<Contact isDossier />} />
