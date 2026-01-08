@@ -40,7 +40,7 @@ export const projects: Project[] = [
     techStack: ["Python", "FastAPI", "Neo4j", "Next.js", "TypeScript", "Docker", "Graph Data Science"],
     variant: "design",
     icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />,
-    imageUrl: "https://images.unsplash.com/photo-1558494949-ef526b01201b?q=80&w=1200&auto=format&fit=crop"
+    imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop"
   },
   {
     title: "Rust Polyglot Creator",
