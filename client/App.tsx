@@ -49,7 +49,7 @@ const AnimatedRoutes = () => {
 };
 
 const DossierApp = () => {
-  const { type } = useBackground();
+  const { viewMode } = useBackground();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -60,7 +60,7 @@ const DossierApp = () => {
     navigate(path);
   };
 
-  if (type !== 'sticks') return null;
+  if (viewMode !== 'dossier') return null;
 
   return (
     <DossierView activeTab={activeTab} onTabChange={handleTabChange}>
@@ -77,7 +77,7 @@ const DossierApp = () => {
 
 const AppContent = () => {
 
-  const { isTransitioning, type, toggleBackground } = useBackground();
+  const { isTransitioning, viewMode, toggleBackground } = useBackground();
 
   const [isReady, setIsReady] = useState(false);
 
@@ -108,7 +108,7 @@ const AppContent = () => {
 
           <InteractiveBackground />
 
-          {type === 'ascii' ? (
+          {viewMode === 'standard' ? (
             <>
               <GlobalEffects />
               <SmoothScroll>
@@ -121,17 +121,6 @@ const AppContent = () => {
               <DossierApp />
             </>
           )}
-
-          {/*
-          Legacy Mode Switch Logic (Commented for reference):
-          {type === 'ascii' ? (
-            <SmoothScroll>
-              <AnimatedRoutes />
-            </SmoothScroll>
-          ) : (
-            <DossierApp />
-          )}
-          */}
 
         </TVPowerTransition>
 

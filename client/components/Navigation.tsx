@@ -1,4 +1,4 @@
-import { Home, Github, Briefcase, Boxes, Terminal, Activity, Worm, Command, Power, Languages, X } from "lucide-react";
+import { Home, Github, Briefcase, Boxes, Terminal, Activity, Worm, Command, Power, Languages, X, FileText } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useBackground } from "@/hooks/use-background";
 import { useLanguage } from "@/hooks/use-language";
@@ -92,7 +92,7 @@ export const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { language, setLanguage, t } = useLanguage();
-  const { type: bgType, toggleBackground } = useBackground();
+  const { type: bgType, toggleBackground, toggleViewMode } = useBackground();
   const [isSnakeConfirmOpen, setIsSnakeConfirmOpen] = useState(false);
   const [isSnakeGameOpen, setIsSnakeGameOpen] = useState(false);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -181,6 +181,7 @@ export const Navigation = () => {
                   <NavButton onClick={handleProjectsScroll} icon={<Briefcase className="h-6 w-6" />} label={t('projects')} isMenuOpen={isMenuOpen} />
                   <div className="h-px bg-primary/20 mx-2 w-full" />
                   <NavButton onClick={() => setIsTerminalOpen(true)} icon={<Terminal className="h-6 w-6" />} label="CONSOLE" active={isTerminalOpen} isMenuOpen={isMenuOpen} />
+                  <NavButton onClick={toggleViewMode} icon={<FileText className="h-6 w-6" />} label="DOSSIER" isMenuOpen={isMenuOpen} />
                   <NavButton onClick={toggleBackground} icon={
                     <motion.div key={bgType} initial={{ rotateY: 90, opacity: 0 }} animate={{ rotateY: 0, opacity: 1 }} transition={{ type: "spring", damping: 12, stiffness: 200 }}>
                       {getBackgroundIcon()}
@@ -272,6 +273,14 @@ export const Navigation = () => {
               >
                 <Briefcase className="w-6 h-6" />
                 <span>{t('projects')}</span>
+              </button>
+
+              <button 
+                onClick={() => { toggleViewMode(); setIsMobileMenuOpen(false); }}
+                className="flex items-center gap-6 p-4 border border-primary/10 bg-primary/5 rounded-lg text-primary text-xl font-mono uppercase transition-all active:bg-primary active:text-black"
+              >
+                <FileText className="w-6 h-6" />
+                <span>DOSSIER</span>
               </button>
 
               <div className="grid grid-cols-2 gap-4">

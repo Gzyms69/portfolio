@@ -14,7 +14,7 @@ interface DossierViewProps {
 
 export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange, children }) => {
   const { t, language, setLanguage } = useLanguage();
-  const { toggleBackground } = useBackground();
+  const { toggleViewMode } = useBackground();
 
   const tabs = [
     { id: 'home', label: t('dossier_personnel'), icon: <User className="w-4 h-4" /> },
@@ -45,9 +45,9 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
           <div className="flex items-center gap-4">
             <Magnetic strength={0.3}>
               <button 
-                onClick={toggleBackground}
+                onClick={toggleViewMode}
                 className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center border border-primary/30 hover:bg-primary/20 transition-colors group"
-                title="SYSTEM_SHUTDOWN"
+                title="EXIT_DOSSIER"
               >
                 <Power className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
               </button>
