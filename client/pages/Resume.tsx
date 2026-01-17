@@ -32,10 +32,17 @@ export default function Resume() {
         </div>
 
         {/* Header */}
-        <header className="border-b-2 border-black pb-4 mb-4 flex flex-col sm:flex-row justify-between items-start">
-          <div>
-            <h1 className="text-3xl font-bold uppercase tracking-tight mb-1">{content.name}</h1>
-            <p className="text-lg text-gray-700 font-medium">{content.title}</p>
+        <header className="border-b-2 border-black pb-4 mb-4 flex flex-col sm:flex-row justify-between items-start gap-4">
+          <div className="flex items-center gap-4">
+            <img 
+              src="/portfolio/profile.jpg"
+              alt={content.name}
+              className="w-16 h-16 rounded-full border border-gray-300 object-cover"
+            />
+            <div>
+              <h1 className="text-3xl font-bold uppercase tracking-tight mb-1">{content.name}</h1>
+              <p className="text-lg text-gray-700 font-medium">{content.title}</p>
+            </div>
           </div>
           
           <div className="flex flex-col gap-1 text-xs text-gray-600 sm:text-right mt-2 sm:mt-0">
@@ -84,6 +91,9 @@ export default function Resume() {
             
             <span className="font-bold text-gray-800">{t('resume_skills_general')}</span>
             <span className="text-gray-700">{skills.general.join(", ")}</span>
+
+            <span className="font-bold text-gray-800">{t('resume_languages')}</span>
+            <span className="text-gray-700">{languages.join(" • ")}</span>
           </div>
         </section>
 
@@ -154,16 +164,8 @@ export default function Resume() {
           </div>
         </section>
 
-        {/* Languages */}
-        <section className="mb-8">
-          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-2 text-gray-800">{t('resume_languages')}</h2>
-          <div className="text-xs text-gray-700">
-            {languages.join(" • ")}
-          </div>
-        </section>
-
         {/* Footnote */}
-        <footer className="mt-auto pt-8">
+        <footer className="mt-auto pt-4">
           <p className="text-[8px] leading-tight text-gray-400 text-justify">
             {t('resume_gdpr')}
           </p>
