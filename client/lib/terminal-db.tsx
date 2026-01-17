@@ -4,17 +4,17 @@ import { Project, CVData, GlobalConfig, Language } from "@shared/types";
 export const portfolioConfig: GlobalConfig = {
   pl: {
     name: "Dawid Czerwiński",
-    title: "Junior Software Engineer & pasjonat IT",
-    description: "Programista i pasjonat IT łączący umiejętności techniczne z doświadczeniem w edukacji i logistyce. Jako były instruktor programowania (Python, C++, C#) posiadam solidne fundamenty w algorytmice i debugowaniu. Wyróżniam się analitycznym podejściem do rozwiązywania problemów, zdobytym m.in. w FedEx i BBH. Obecnie poszukuję roli Junior Developera lub Wsparcia Technicznego, gdzie mogę wykorzystać moją wiedzę z zakresu Reacta, Pythona i systemów IT.",
+    title: "",
+    description: "Programista i pasjonat IT łączący umiejętności techniczne z doświadczeniem w edukacji i logistyce. Jako były instruktor programowania (Python, C++, C#) posiadam solidne fundamenty w algorytmice i debugowaniu. Wyróżniam się analitycznym podejściem do rozwiązywania problemów oraz biegłością w pracy z systemami Linux (codzienne użytkowanie Ubuntu i Bash). Obecnie poszukuję roli Junior Developera lub Wsparcia Technicznego, gdzie mogę wykorzystać moją wiedzę z zakresu Reacta, Pythona i systemów IT.",
     email: "dawidczerwinskibiznes@gmail.com",
-    heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "SQL", "Git", "Hardware Support"]
+    heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "SQL", "Git", "Linux", "Bash"]
   },
   en: {
     name: "Dawid Czerwiński",
-    title: "Junior Software Engineer & IT Support Specialist",
-    description: "Aspiring Full-Stack Developer and IT Support Specialist transitioning from a background in technical education. Former Programming Instructor (Python, C++, C#) with a knack for breaking down complex technical concepts. I bring strong troubleshooting skills honed at FedEx and BBH, and a passion for building scalable web tools. Seeking a role where I can apply my analytical mindset and expertise in React, Python, and system diagnostics.",
+    title: "",
+    description: "Aspiring Developer and IT Enthusiast with a strong background in technical education and logistics. Former Programming Instructor (Python, C++, C#) with deep roots in algorithms and debugging. I am a daily Linux (Ubuntu) user with proficiency in Bash scripting and system troubleshooting. Seeking a Junior Developer or IT Support role where I can leverage my analytical mindset and expertise in React, Python, and Linux systems.",
     email: "dawidczerwinskibiznes@gmail.com",
-    heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "SQL", "Git", "Hardware Support"]
+    heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "SQL", "Git", "Linux", "Bash"]
   },
   socials: {
     github: "https://github.com/Gzyms69",
@@ -30,11 +30,11 @@ export const projects: Project[] = [
     title: "WikiGraph Lab",
     pl: {
       description: "Profesjonalna platforma badawcza wykorzystująca Index Jaccarda do analizy semantycznej Wikipedii. Trójwarstwowa architektura (Neo4j, FastAPI, Next.js) łączy wydajność z immersyjną wizualizacją.",
-      fullDescription: "WikiGraph Lab to zaawansowany system inżynierski zaprojektowany zarówno dla badaczy danych, jak i entuzjastów wiedzy. Projekt demonstruje profesjonalne podejście do architektury oprogramowania, integrując wysokowydajną bazę grafową Neo4j, skalowalne API oparte na FastAPI oraz nowoczesny frontend w Next.js. Zamiast prostych metryk, silnik wykorzystuje algorytm Indeksu Jaccarda do precyzyjnego filtrowania szumu semantycznego i identyfikacji istotnych połączeń międzyjęzykowych, przekształcając surowe zrzuty Wikipedii w uporządkowany graf wiedzy.",
+      fullDescription: "WikiGraph Lab to zaawansowany system inżynierski zaprojektowany zarówno dla badaczy danych, jak i entuzjastów wiedzy. Projekt demonstruje profesjonalne podejście do architektury oprogramowania, integrując wysokowydajną bazę grafową Neo4j, skalowalne API oparte na FastAPI oraz nowoczesny frontend w Next.js. Silnik wykorzystuje algorytm Indeksu Jaccarda do precyzyjnego filtrowania szumu semantycznego i identyfikacji istotnych połączeń międzyjęzykowych, przekształcając surowe zrzuty Wikipedii w uporządkowany graf wiedzy.",
     },
     en: {
       description: "Research-grade platform leveraging Jaccard Index for semantic analysis of Wikipedia. Three-tier architecture (Neo4j, FastAPI, Next.js) combines performance with immersive visualization.",
-      fullDescription: "WikiGraph Lab is an advanced engineering system designed for both data researchers and knowledge enthusiasts. The project demonstrates a professional approach to software architecture, integrating a high-performance Neo4j graph database, a scalable FastAPI-based API, and a modern Next.js frontend. Moving beyond basic metrics, the engine employs the Jaccard Index algorithm to precisely filter semantic noise and identify meaningful cross-lingual connections, transforming raw Wikipedia dumps into a structured knowledge graph.",
+      fullDescription: "WikiGraph Lab is an advanced engineering system designed for both data researchers and knowledge enthusiasts. The project demonstrates a professional approach to software architecture, integrating a high-performance Neo4j graph database, a scalable FastAPI-based API, and a modern Next.js frontend. The engine employs the Jaccard Index algorithm to precisely filter semantic noise and identify meaningful cross-lingual connections, transforming raw Wikipedia dumps into a structured knowledge graph.",
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
     techStack: ["Python", "FastAPI", "Neo4j", "Next.js", "TypeScript", "Docker", "Graph Data Science"],
@@ -45,7 +45,7 @@ export const projects: Project[] = [
   {
     title: "Rust Polyglot Creator",
     pl: {
-      description: "Cyfrowa alchemia. Twórz pliki-kameleony, które są jednocześnie poprawnymi obrazami PNG i działającymi archiwami ZIP.",
+      description: "Twórz pliki-kameleony, które są jednocześnie poprawnymi obrazami PNG i działającymi archiwami ZIP.",
       fullDescription: "Eksploruj dziwne zakamarki formatów binarnych. To narzędzie CLI w języku Rust pozwala tworzyć pliki 'poligloci'—pojedyncze binaria, które są poprawne w wielu formatach jednocześnie. Ukryj archiwum ZIP w zdjęciu z wakacji lub zaszyj plik WAV w dokumencie. To głębokie zanurzenie w manipulację bajtami i specyfikacje struktur plików.",
     },
     en: {
@@ -124,38 +124,28 @@ export const cvData: Record<Language, CVData> = {
           "Szkolenie nowych pracowników z obsługi oprogramowania celnego",
           "Bezpośredni kontakt z klientem w sprawach technicznych i proceduralnych"
         ],
-      },
-      {
-        title: "Serwisant GSM / Sprzedawca",
-        company: "Atelkom & Puls GSM",
-        location: "Kielce / Kraków",
-        period: "2018 - 2022 (Różne okresy)",
-        responsibilities: [
-          "Diagnoza i naprawa usterek sprzętowych (smartfony, laptopy)",
-          "Instalacja i konfiguracja oprogramowania systemowego",
-          "Doradztwo techniczne dla klientów indywidualnych"
-        ],
       }
     ],
     education: [
       {
         school: "Politechnika Krakowska",
-        degree: "Studia Inżynierskie (Absolutorium)",
+        degree: "Studia Inżynierskie",
         field: "Matematyka Stosowana",
         years: "2020-2022",
       },
       {
         school: "Akademia Górniczo-Hutnicza (AGH)",
-        degree: "Studia Inżynierskie (Absolutorium)",
+        degree: "Studia Inżynierskie",
         field: "Elektronika i Telekomunikacja",
         years: "2019-2020",
       },
     ],
     skills: {
       general: ["Rozwiązywanie problemów", "Analityczne myślenie", "Obsługa klienta IT", "Szkolenia techniczne"],
-      tools: ["Git", "Docker", "VS Code", "Jira/Trello", "Linux (Bash)", "Pakiet Office"],
+      tools: ["Git", "Docker", "VS Code", "Jira/Trello", "Linux (Ubuntu/Bash)", "Pakiet Office"],
       programming: ["Python (FastAPI)", "React", "TypeScript", "JavaScript", "SQL", "C++", "C#"],
-    }
+    },
+    languages: ["Polski (Ojczysty)", "Angielski (C1/C2 - Zaawansowany)", "Niemiecki (Podstawowy)", "Rosyjski (Podstawowy)"]
   },
   en: {
     experiences: [
@@ -204,17 +194,6 @@ export const cvData: Record<Language, CVData> = {
           "Trained new team members on proprietary customs software",
           "Provided technical guidance to customers regarding customs procedures"
         ],
-      },
-      {
-        title: "GSM Technician / Sales Assistant",
-        company: "Atelkom & Puls GSM",
-        location: "Kielce / Kraków",
-        period: "2018 - 2022 (Various)",
-        responsibilities: [
-          "Diagnosed and repaired hardware/software issues (Mobile/PC)",
-          "Installed and configured operating systems and applications",
-          "Provided technical advice and solutions to retail customers"
-        ],
       }
     ],
     education: [
@@ -233,8 +212,9 @@ export const cvData: Record<Language, CVData> = {
     ],
     skills: {
       general: ["Technical Problem Solving", "Analytical Thinking", "IT Customer Support", "Technical Training"],
-      tools: ["Git", "Docker", "VS Code", "Jira/Trello", "Linux (Bash)", "MS Office"],
+      tools: ["Git", "Docker", "VS Code", "Jira/Trello", "Linux (Ubuntu/Bash)", "MS Office"],
       programming: ["Python (FastAPI)", "React", "TypeScript", "JavaScript", "SQL", "C++", "C#"],
-    }
+    },
+    languages: ["Polish (Native)", "English (C1/C2 - Advanced Professional)", "German (Elementary)", "Russian (Elementary)"]
   }
 };

@@ -27,6 +27,9 @@ export const techColors: Record<string, { bg: string; text: string; border: stri
   CLI: { bg: "bg-zinc-500/20", text: "text-zinc-300", border: "border-zinc-500/40", hover: "hover:bg-zinc-500/30", icon: "powershell", hex: "d1d5db" },
   "Systems Programming": { bg: "bg-emerald-700/20", text: "text-emerald-400", border: "border-emerald-700/40", hover: "hover:bg-emerald-700/30", icon: "cpp", hex: "34d399" },
   "Binary Manipulation": { bg: "bg-rose-700/20", text: "text-rose-400", border: "border-rose-700/40", hover: "hover:bg-rose-700/30", icon: "c", hex: "fb7185" },
+  Git: { bg: "bg-orange-600/20", text: "text-orange-400", border: "border-orange-600/40", hover: "hover:bg-orange-600/30", icon: "git", hex: "f05032" },
+  Linux: { bg: "bg-yellow-600/20", text: "text-yellow-400", border: "border-yellow-600/40", hover: "hover:bg-yellow-600/30", icon: "linux", hex: "fcc624" },
+  Bash: { bg: "bg-zinc-700/20", text: "text-zinc-300", border: "border-zinc-700/40", hover: "hover:bg-zinc-700/30", icon: "bash", hex: "4eaa25" },
 };
 
 export const getTechColor = (tech: string) => techColors[tech] || { bg: "bg-white/10", text: "text-medium", border: "border-white/20", hover: "hover:bg-white/15", icon: "", hex: "ffffff" };

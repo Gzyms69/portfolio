@@ -42,6 +42,7 @@ export interface CVData {
   experiences: Experience[];
   education: Education[];
   skills: Skills;
+  languages: string[];
 }
 
 export interface PortfolioConfig {

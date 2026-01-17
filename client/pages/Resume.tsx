@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Download, Mail, Github, Linkedin, MapPin } from "lucide-react";
 
 export default function Resume() {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const content = portfolioConfig[language];
-  const { experiences, education, skills } = cvData[language];
+  const { experiences, education, skills, languages } = cvData[language];
 
   useEffect(() => {
     document.title = `${content.name} - Resume`;
@@ -27,16 +27,15 @@ export default function Resume() {
             className="shadow-xl bg-black text-white hover:bg-gray-800 gap-2 rounded-full px-6 h-12"
           >
             <Download className="w-4 h-4" />
-            Download PDF
+            {t('resume_download')}
           </Button>
         </div>
 
         {/* Header */}
-        <header className="border-b-2 border-black pb-6 mb-8">
-          <h1 className="text-4xl font-bold uppercase tracking-tight mb-2">{content.name}</h1>
-          <p className="text-xl text-gray-600 mb-6">{content.title}</p>
+        <header className="border-b-2 border-black pb-6 mb-8 text-center sm:text-left">
+          <h1 className="text-4xl font-bold uppercase tracking-tight mb-4">{content.name}</h1>
           
-          <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+          <div className="flex flex-wrap justify-center sm:justify-start gap-6 text-sm text-gray-600">
             <div className="flex items-center gap-1.5">
               <Mail className="w-4 h-4" />
               <a href={`mailto:${content.email}`} className="hover:underline">{content.email}</a>
@@ -51,20 +50,20 @@ export default function Resume() {
               <div className="flex items-center gap-1.5">
                 <Linkedin className="w-4 h-4" />
                 <a href={portfolioConfig.socials.linkedin} target="_blank" rel="noreferrer" className="hover:underline">
-                  LinkedIn Profile
+                  LinkedIn
                 </a>
               </div>
             )}
             <div className="flex items-center gap-1.5">
               <MapPin className="w-4 h-4" />
-              <span>Poland / Remote</span>
+              <span>{t('resume_location')}</span>
             </div>
           </div>
         </header>
 
         {/* Summary */}
         <section className="mb-8">
-          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-3">Professional Summary</h2>
+          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-3">{t('resume_summary')}</h2>
           <p className="text-sm leading-relaxed text-gray-700 text-justify">
             {content.description}
           </p>
@@ -72,7 +71,7 @@ export default function Resume() {
 
         {/* Key Projects */}
         <section className="mb-8">
-          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">Key Projects</h2>
+          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">{t('resume_projects')}</h2>
           <div className="space-y-4">
             {projects.map((proj, idx) => (
               <div key={idx}>
@@ -87,7 +86,7 @@ export default function Resume() {
                 </p>
                 <div className="flex flex-wrap gap-1">
                   {proj.techStack.map((tech, tIdx) => (
-                    <span key={tIdx} className="text-xs bg-gray-100 px-1.5 py-0.5 rounded text-gray-600">
+                    <span key={tIdx} className="text-[10px] bg-gray-100 px-1.5 py-0.5 rounded text-gray-600 border border-gray-200">
                       {tech}
                     </span>
                   ))}
@@ -99,7 +98,7 @@ export default function Resume() {
 
         {/* Experience */}
         <section className="mb-8">
-          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">Experience</h2>
+          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">{t('resume_experience')}</h2>
           <div className="space-y-6">
             {experiences.map((exp, idx) => (
               <div key={idx}>
@@ -124,22 +123,22 @@ export default function Resume() {
 
         {/* Skills */}
         <section className="mb-8">
-          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">Technical Skills</h2>
+          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">{t('resume_skills')}</h2>
           <div className="grid grid-cols-1 gap-4">
             <div>
-              <span className="font-bold text-sm block mb-1">Programming Languages & Core:</span>
+              <span className="font-bold text-sm block mb-1">{t('resume_skills_core')}</span>
               <p className="text-sm text-gray-700">
                 {skills.programming.join(", ")}
               </p>
             </div>
             <div>
-              <span className="font-bold text-sm block mb-1">Tools & Technologies:</span>
+              <span className="font-bold text-sm block mb-1">{t('resume_skills_tools')}</span>
               <p className="text-sm text-gray-700">
                 {skills.tools.join(", ")}
               </p>
             </div>
             <div>
-              <span className="font-bold text-sm block mb-1">General Competencies:</span>
+              <span className="font-bold text-sm block mb-1">{t('resume_skills_general')}</span>
               <p className="text-sm text-gray-700">
                 {skills.general.join(", ")}
               </p>
@@ -149,7 +148,7 @@ export default function Resume() {
 
         {/* Education */}
         <section className="mb-8">
-          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">Education</h2>
+          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">{t('resume_education')}</h2>
           <div className="space-y-4">
             {education.map((edu, idx) => (
               <div key={idx}>
@@ -167,10 +166,11 @@ export default function Resume() {
 
         {/* Languages */}
         <section>
-          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">Languages</h2>
+          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">{t('resume_languages')}</h2>
           <ul className="list-disc list-outside ml-4 text-sm text-gray-700">
-            <li>Polish (Native)</li>
-            <li>English (C1/C2 - Advanced Professional)</li>
+            {languages.map((langStr, idx) => (
+              <li key={idx}>{langStr}</li>
+            ))}
           </ul>
         </section>
 

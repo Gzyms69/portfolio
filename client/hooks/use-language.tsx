@@ -61,7 +61,19 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         clearance_level: "POZIOM DOSTĘPU:",
         hardcopy: "GENERUJ KOPIĘ FIZYCZNĄ",
         tech_specs: "SPECJALIZACJE",
-        edu_protocol: "EDUKACJA"
+        edu_protocol: "EDUKACJA",
+        // Resume labels
+        resume_summary: "PODSUMOWANIE ZAWODOWE",
+        resume_projects: "KLUCZOWE PROJEKTY",
+        resume_experience: "DOŚWIADCZENIE",
+        resume_skills: "UMIEJĘTNOŚCI TECHNICZNE",
+        resume_education: "WYKSZTAŁCENIE",
+        resume_languages: "JĘZYKI",
+        resume_download: "POBIERZ PDF",
+        resume_location: "Polska / Zdalnie",
+        resume_skills_core: "Języki programowania:",
+        resume_skills_tools: "Narzędzia i technologie:",
+        resume_skills_general: "Kompetencje ogólne:"
       },
       en: {
         projects: "PROJECTS",
@@ -73,7 +85,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         linkedin: "MY LINKEDIN",
         lang: "Language",
         snake: "SNAKE",
-        console: "CONSOLE",
+        console: "KONSOLA",
         confirm_snake: "ARE YOU SURE?",
         view_github: "View GitHub",
         execute: "Open Repository",
@@ -110,7 +122,19 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         clearance_level: "CLEARANCE LEVEL:",
         hardcopy: "GENERATE HARDCOPY",
         tech_specs: "SPECIALIZATIONS",
-        edu_protocol: "EDUCATION"
+        edu_protocol: "EDUCATION",
+        // Resume labels
+        resume_summary: "PROFESSIONAL SUMMARY",
+        resume_projects: "KEY PROJECTS",
+        resume_experience: "EXPERIENCE",
+        resume_skills: "TECHNICAL SKILLS",
+        resume_education: "EDUCATION",
+        resume_languages: "LANGUAGES",
+        resume_download: "DOWNLOAD PDF",
+        resume_location: "Poland / Remote",
+        resume_skills_core: "Programming Languages & Core:",
+        resume_skills_tools: "Tools & Technologies:",
+        resume_skills_general: "General Competencies:"
       }
     };
     return uiStrings[language][key] || key;
