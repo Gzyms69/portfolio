@@ -155,12 +155,19 @@ export default function Resume() {
         </section>
 
         {/* Languages */}
-        <section>
+        <section className="mb-8">
           <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-2 text-gray-800">{t('resume_languages')}</h2>
           <div className="text-xs text-gray-700">
             {languages.join(" • ")}
           </div>
         </section>
+
+        {/* Footnote */}
+        <footer className="mt-auto pt-8">
+          <p className="text-[8px] leading-tight text-gray-400 text-justify">
+            {t('resume_gdpr')}
+          </p>
+        </footer>
 
       </div>
     </div>

@@ -73,7 +73,8 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         resume_location: "Polska / Zdalnie",
         resume_skills_core: "Języki programowania:",
         resume_skills_tools: "Narzędzia i technologie:",
-        resume_skills_general: "Kompetencje ogólne:"
+        resume_skills_general: "Kompetencje ogólne:",
+        resume_gdpr: "Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu rekrutacji zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO)."
       },
       en: {
         projects: "PROJECTS",
@@ -134,7 +135,8 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         resume_location: "Poland / Remote",
         resume_skills_core: "Programming Languages & Core:",
         resume_skills_tools: "Tools & Technologies:",
-        resume_skills_general: "General Competencies:"
+        resume_skills_general: "General Competencies:",
+        resume_gdpr: "I hereby give consent for my personal data to be processed for the purposes of recruitment under the Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)."
       }
     };
     return uiStrings[language][key] || key;
