@@ -1,6 +1,6 @@
 import "./global.css";
 import { createRoot } from "react-dom/client";
-import { HashRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
@@ -50,27 +50,23 @@ const AnimatedRoutes = () => {
 
 const DossierApp = () => {
   const { viewMode } = useBackground();
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  const activeTab = location.pathname === '/' ? 'home' : location.pathname.substring(1).split('/')[0];
-
-  const handleTabChange = (tabId: string) => {
-    const path = tabId === 'home' ? '/' : `/${tabId}`;
-    navigate(path);
-  };
+  const [activeTab, setActiveTab] = useState('home');
 
   if (viewMode !== 'dossier') return null;
 
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'home': return <Index isDossier />;
+      case 'projects': return <DossierProjects />;
+      case 'contact': return <Contact isDossier />;
+      case 'cv': return <CV isDossier />;
+      default: return <Index isDossier />;
+    }
+  };
+
   return (
-    <DossierView activeTab={activeTab} onTabChange={handleTabChange}>
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Index isDossier />} />
-        <Route path="/projects" element={<DossierProjects />} />
-        <Route path="/contact" element={<Contact isDossier />} />
-        <Route path="/cv" element={<CV isDossier />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+    <DossierView activeTab={activeTab} onTabChange={setActiveTab}>
+      {renderContent()}
     </DossierView>
   );
 };

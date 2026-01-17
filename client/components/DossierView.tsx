@@ -107,11 +107,11 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
             <AnimatePresence mode="wait">
               <motion.div
                 key={`${activeTab}-${language}`}
-                initial={{ opacity: 0, x: 20, filter: 'brightness(3)' }}
-                animate={{ opacity: 1, x: 0, filter: 'brightness(1)' }}
-                exit={{ opacity: 0, x: -20, filter: 'brightness(0)' }}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="h-full overflow-y-auto pr-4 scrollbar-hide"
+                className="h-full overflow-y-auto pr-4 scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
               >
                 <div className="mb-8 border-b border-primary/10 pb-4 flex justify-between items-end">
                   <div>
