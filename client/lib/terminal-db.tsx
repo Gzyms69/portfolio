@@ -4,16 +4,16 @@ import { Project, CVData, GlobalConfig, Language } from "@shared/types";
 export const portfolioConfig: GlobalConfig = {
   pl: {
     name: "Dawid Czerwiński",
-    title: "Junior Software Engineer & IT Support Specialist",
-    description: "Programista i Specjalista IT łączący umiejętności techniczne z doświadczeniem w edukacji i logistyce. Jako były instruktor programowania (Python, C++, C#) posiadam solidne fundamenty w algorytmice i debugowaniu. Wyróżniam się analitycznym podejściem do rozwiązywania problemów, zdobytym m.in. w FedEx i BBH. Obecnie poszukuję roli Junior Developera lub Wsparcia Technicznego, gdzie mogę wykorzystać moją wiedzę z zakresu React, Python i systemów IT.",
-    email: "davidczerwinskibiznes@gmail.com",
+    title: "Junior Software Engineer & pasjonat IT",
+    description: "Programista i pasjonat IT łączący umiejętności techniczne z doświadczeniem w edukacji i logistyce. Jako były instruktor programowania (Python, C++, C#) posiadam solidne fundamenty w algorytmice i debugowaniu. Wyróżniam się analitycznym podejściem do rozwiązywania problemów, zdobytym m.in. w FedEx i BBH. Obecnie poszukuję roli Junior Developera lub Wsparcia Technicznego, gdzie mogę wykorzystać moją wiedzę z zakresu Reacta, Pythona i systemów IT.",
+    email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "SQL", "Git", "Hardware Support"]
   },
   en: {
     name: "Dawid Czerwiński",
     title: "Junior Software Engineer & IT Support Specialist",
     description: "Aspiring Full-Stack Developer and IT Support Specialist transitioning from a background in technical education. Former Programming Instructor (Python, C++, C#) with a knack for breaking down complex technical concepts. I bring strong troubleshooting skills honed at FedEx and BBH, and a passion for building scalable web tools. Seeking a role where I can apply my analytical mindset and expertise in React, Python, and system diagnostics.",
-    email: "davidczerwinskibiznes@gmail.com",
+    email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "SQL", "Git", "Hardware Support"]
   },
   socials: {
