@@ -5,14 +5,14 @@ export const portfolioConfig: GlobalConfig = {
   pl: {
     name: "Dawid Czerwiński",
     title: "",
-    description: "Programista i pasjonat IT łączący umiejętności techniczne z doświadczeniem w edukacji i logistyce. Jako były instruktor programowania (Python, C++, C#) posiadam solidne fundamenty w algorytmice i debugowaniu. Wyróżniam się analitycznym podejściem do rozwiązywania problemów oraz biegłością w pracy z systemami Linux (codzienne użytkowanie Ubuntu i Bash). Obecnie poszukuję roli Junior Developera lub Wsparcia Technicznego, gdzie mogę wykorzystać moją wiedzę z zakresu Reacta, Pythona i systemów IT.",
+    description: "Junior Full-Stack Developer z doświadczeniem w edukacji technicznej. Łączę praktyczną znajomość Pythona (FastAPI), React i TypeScript z analitycznym myśleniem oraz biegłością w systemach Linux (Ubuntu/Bash). Poszukuję roli, w której będę mógł rozwijać swoje umiejętności programistyczne i wspierać zespół techniczny.",
     email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "SQL", "Git", "Linux", "Bash"]
   },
   en: {
     name: "Dawid Czerwiński",
     title: "",
-    description: "Aspiring Developer and IT Enthusiast with a strong background in technical education and logistics. Former Programming Instructor (Python, C++, C#) with deep roots in algorithms and debugging. I am a daily Linux (Ubuntu) user with proficiency in Bash scripting and system troubleshooting. Seeking a Junior Developer or IT Support role where I can leverage my analytical mindset and expertise in React, Python, and Linux systems.",
+    description: "Junior Full-Stack Developer with a background in technical education. I combine practical expertise in Python (FastAPI), React, and TypeScript with strong analytical skills and Linux (Ubuntu/Bash) proficiency. Seeking a role to leverage my coding skills and technical aptitude in a professional environment.",
     email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "SQL", "Git", "Linux", "Bash"]
   },
@@ -29,11 +29,11 @@ export const projects: Project[] = [
   {
     title: "WikiGraph Lab",
     pl: {
-      description: "Profesjonalna platforma badawcza wykorzystująca Index Jaccarda do analizy semantycznej Wikipedii. Trójwarstwowa architektura (Neo4j, FastAPI, Next.js) łączy wydajność z immersyjną wizualizacją.",
+      description: "Platforma badawcza do analizy semantycznej Wikipedii (Index Jaccarda). Stack: FastAPI (Python), Next.js, Neo4j, Docker.",
       fullDescription: "WikiGraph Lab to zaawansowany system inżynierski zaprojektowany zarówno dla badaczy danych, jak i entuzjastów wiedzy. Projekt demonstruje profesjonalne podejście do architektury oprogramowania, integrując wysokowydajną bazę grafową Neo4j, skalowalne API oparte na FastAPI oraz nowoczesny frontend w Next.js. Silnik wykorzystuje algorytm Indeksu Jaccarda do precyzyjnego filtrowania szumu semantycznego i identyfikacji istotnych połączeń międzyjęzykowych, przekształcając surowe zrzuty Wikipedii w uporządkowany graf wiedzy.",
     },
     en: {
-      description: "Research-grade platform leveraging Jaccard Index for semantic analysis of Wikipedia. Three-tier architecture (Neo4j, FastAPI, Next.js) combines performance with immersive visualization.",
+      description: "Research platform for semantic Wikipedia analysis (Jaccard Index). Stack: FastAPI (Python), Next.js, Neo4j, Docker.",
       fullDescription: "WikiGraph Lab is an advanced engineering system designed for both data researchers and knowledge enthusiasts. The project demonstrates a professional approach to software architecture, integrating a high-performance Neo4j graph database, a scalable FastAPI-based API, and a modern Next.js frontend. The engine employs the Jaccard Index algorithm to precisely filter semantic noise and identify meaningful cross-lingual connections, transforming raw Wikipedia dumps into a structured knowledge graph.",
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
@@ -45,11 +45,11 @@ export const projects: Project[] = [
   {
     title: "Rust Polyglot Creator",
     pl: {
-      description: "Twórz pliki-kameleony, które są jednocześnie poprawnymi obrazami PNG i działającymi archiwami ZIP.",
+      description: "Narzędzie CLI tworzące pliki-poligloci (prawidłowe PNG i ZIP jednocześnie). Eksploracja formatów binarnych i manipulacji bajtami.",
       fullDescription: "Eksploruj dziwne zakamarki formatów binarnych. To narzędzie CLI w języku Rust pozwala tworzyć pliki 'poligloci'—pojedyncze binaria, które są poprawne w wielu formatach jednocześnie. Ukryj archiwum ZIP w zdjęciu z wakacji lub zaszyj plik WAV w dokumencie. To głębokie zanurzenie w manipulację bajtami i specyfikacje struktur plików.",
     },
     en: {
-      description: "File alchemy in practice. Create 'chameleon' files that are valid PNG images and functioning ZIP archives at the same time.",
+      description: "CLI tool creating polyglot files (valid PNG and ZIP simultaneously). Exploration of binary formats and byte manipulation.",
       fullDescription: "Explore the weird edges of binary formats. This Rust-based CLI tool lets you craft 'polyglot' files—single binaries that are valid in multiple formats simultaneously. Hide a ZIP archive inside a vacation photo, or embed a WAV file in a document. It's a deep dive into byte manipulation and file structure specifications.",
     },
     githubUrl: "https://github.com/Gzyms69/rust-polyglot",
@@ -61,11 +61,11 @@ export const projects: Project[] = [
   {
     title: "Portfolio Website",
     pl: {
-      description: "Interaktywny interfejs terminalowy zbudowany w oparciu o React, Framer Motion i nowoczesne standardy UX.",
+      description: "Interaktywny interfejs terminalowy w React 18 i Vite. Zaawansowane animacje (Framer Motion) i responsywny design.",
       fullDescription: "Wysoko wydajna platforma portfolio wykorzystująca React 18 i Vite. Projekt skupia się na dostarczaniu unikalnych wrażeń wizualnych poprzez płynne przejścia, responsywny design i autorską estetykę terminala. Zaimplementowano zaawansowane animacje oparte na fizyce sprężyn oraz zoptymalizowane renderowanie 3D.",
     },
     en: {
-      description: "Interactive terminal interface built with React, Framer Motion, and modern UX standards.",
+      description: "Interactive terminal interface built with React 18 and Vite. Advanced animations (Framer Motion) and responsive design.",
       fullDescription: "A high-performance portfolio platform utilizing React 18 and Vite. The project focuses on delivering unique visual experiences through seamless transitions, responsive design, and custom terminal aesthetics. Implemented advanced spring-physics animations and optimized 3D rendering.",
     },
     githubUrl: "https://github.com/Gzyms69/portfolio",
@@ -80,14 +80,13 @@ export const cvData: Record<Language, CVData> = {
   pl: {
     experiences: [
       {
-        title: "Pracownik Projektowy (Sektor Logistyki i Produkcji)",
+        title: "Pracownik Projektowy",
         company: "AB Midden Nederland",
         location: "Holandia",
         period: "02.2025 - 10.2025",
         responsibilities: [
-          "Praca z wykorzystaniem wewnętrznego oprogramowania do zarządzania logistyką",
-          "Realizacja zadań pod presją czasu w dynamicznym środowisku produkcyjnym",
-          "Efektywna komunikacja i współpraca w międzynarodowym zespole (język angielski)"
+          "Obsługa oprogramowania logistycznego i realizacja zadań w dynamicznym środowisku produkcyjnym.",
+          "Praca w międzynarodowym zespole (język angielski)."
         ],
       },
       {
@@ -96,33 +95,28 @@ export const cvData: Record<Language, CVData> = {
         location: "Kielce / Zdalnie",
         period: "01.2024 - 06.2025",
         responsibilities: [
-          "Prowadzenie zaawansowanych kursów z programowania obiektowego i tworzenia gier",
-          "Debugowanie i naprawa kodu w projektach uczniowskich (VS Code, Unity Editor)",
-          "Zarządzanie społecznością uczniów i wsparcie techniczne poprzez Discord",
-          "Tłumaczenie skomplikowanych zagadnień (algorytmy, struktury danych) na język zrozumiały dla początkujących"
+          "Prowadzenie zaawansowanych kursów (OOP, Game Dev); debugowanie projektów uczniowskich w VS Code/Unity.",
+          "Tłumaczenie złożonych zagadnień (algorytmy) oraz wsparcie techniczne via Discord."
         ],
       },
       {
-        title: "Specjalista ds. Operacji (Operations Specialist)",
+        title: "Specjalista ds. Operacji",
         company: "Brown Brothers Harriman",
         location: "Kraków",
         period: "09.2023 - 12.2023",
         responsibilities: [
-          "Obsługa płatności funduszy inwestycyjnych i działań korporacyjnych",
-          "Analiza danych finansowych i weryfikacja zgodności z procedurami",
-          "Praca z systemami bankowymi i raportowanie błędów operacyjnych"
+          "Obsługa płatności funduszy i analiza danych finansowych.",
+          "Praca z systemami bankowymi i raportowanie błędów operacyjnych."
         ],
       },
       {
-        title: "Specjalista ds. Odpraw Celnych (Clearance Broker)",
+        title: "Specjalista ds. Odpraw Celnych",
         company: "FedEx Express Europe",
         location: "Kraków",
         period: "03.2022 - 07.2023",
         responsibilities: [
-          "Rozwiązywanie problemów z dokumentacją celną i zatrzymanymi przesyłkami",
-          "Optymalizacja przepływu pracy w systemach wewnętrznych FedEx",
-          "Szkolenie nowych pracowników z obsługi oprogramowania celnego",
-          "Bezpośredni kontakt z klientem w sprawach technicznych i proceduralnych"
+          "Rozwiązywanie problemów z odprawami celnymi i optymalizacja przepływu pracy.",
+          "Szkolenie pracowników i wsparcie techniczne dla klientów."
         ],
       }
     ],
@@ -141,7 +135,7 @@ export const cvData: Record<Language, CVData> = {
       },
     ],
     skills: {
-      general: ["Rozwiązywanie problemów", "Analityczne myślenie", "Obsługa klienta IT", "Szkolenia techniczne"],
+      general: ["Rozwiązywanie problemów", "Analityczne myślenie", "Komunikacja techniczna", "Obsługa klienta"],
       tools: ["Git", "Docker", "VS Code", "Jira/Trello", "Linux (Ubuntu/Bash)", "Pakiet Office"],
       programming: ["Python (FastAPI)", "React", "TypeScript", "JavaScript", "SQL", "C++", "C#"],
     },
@@ -150,14 +144,13 @@ export const cvData: Record<Language, CVData> = {
   en: {
     experiences: [
       {
-        title: "Project Worker (Logistics & Production)",
+        title: "Project Worker",
         company: "AB Midden Nederland",
         location: "Netherlands",
         period: "Feb 2025 - Oct 2025",
         responsibilities: [
-          "Operated internal logistics management software for production workflows",
-          "Executed time-sensitive tasks in a fast-paced environment",
-          "Collaborated effectively within a diverse, international team (English working language)"
+          "Operated logistics software and executed time-sensitive tasks in production environment.",
+          "Collaborated in an international, English-speaking team."
         ],
       },
       {
@@ -166,10 +159,8 @@ export const cvData: Record<Language, CVData> = {
         location: "Kielce / Remote",
         period: "Jan 2024 - Jun 2025",
         responsibilities: [
-          "Delivered advanced courses in OOP and Game Development to HS students",
-          "Diagnosed and debugged code issues in real-time (VS Code, Unity)",
-          "Provided technical support and mentorship via Discord community",
-          "Translated complex technical concepts into accessible, actionable knowledge"
+          "Delivered advanced courses (OOP, Game Dev); debugged student projects in VS Code/Unity.",
+          "Translated complex concepts for beginners and provided technical support via Discord."
         ],
       },
       {
@@ -178,9 +169,8 @@ export const cvData: Record<Language, CVData> = {
         location: "Kraków",
         period: "Sep 2023 - Dec 2023",
         responsibilities: [
-          "Managed investment fund payments and corporate actions",
-          "Analyzed financial data for compliance and accuracy",
-          "Operated banking systems and reported operational discrepancies"
+          "Managed fund payments and analyzed financial data for compliance.",
+          "Operated banking systems and reported operational discrepancies."
         ],
       },
       {
@@ -189,10 +179,8 @@ export const cvData: Record<Language, CVData> = {
         location: "Kraków",
         period: "Mar 2022 - Jul 2023",
         responsibilities: [
-          "Troubleshooted clearance bottlenecks and documentation errors",
-          "Optimized internal workflows using digital tools",
-          "Trained new team members on proprietary customs software",
-          "Provided technical guidance to customers regarding customs procedures"
+          "Troubleshooted clearance bottlenecks and optimized workflows.",
+          "Trained team members and provided technical guidance to customers."
         ],
       }
     ],
@@ -211,7 +199,7 @@ export const cvData: Record<Language, CVData> = {
       },
     ],
     skills: {
-      general: ["Technical Problem Solving", "Analytical Thinking", "IT Customer Support", "Technical Training"],
+      general: ["Technical Problem Solving", "Analytical Thinking", "Technical Communication", "Client Support"],
       tools: ["Git", "Docker", "VS Code", "Jira/Trello", "Linux (Ubuntu/Bash)", "MS Office"],
       programming: ["Python (FastAPI)", "React", "TypeScript", "JavaScript", "SQL", "C++", "C#"],
     },

@@ -32,86 +32,102 @@ export default function Resume() {
         </div>
 
         {/* Header */}
-        <header className="border-b-2 border-black pb-6 mb-8 text-center sm:text-left">
-          <h1 className="text-4xl font-bold uppercase tracking-tight mb-4">{content.name}</h1>
+        <header className="border-b-2 border-black pb-4 mb-4 flex flex-col sm:flex-row justify-between items-start">
+          <div>
+            <h1 className="text-3xl font-bold uppercase tracking-tight mb-1">{content.name}</h1>
+            <p className="text-lg text-gray-700 font-medium">{content.title}</p>
+          </div>
           
-          <div className="flex flex-wrap justify-center sm:justify-start gap-6 text-sm text-gray-600">
-            <div className="flex items-center gap-1.5">
-              <Mail className="w-4 h-4" />
+          <div className="flex flex-col gap-1 text-xs text-gray-600 sm:text-right mt-2 sm:mt-0">
+            <div className="flex items-center sm:justify-end gap-1.5">
+              <Mail className="w-3 h-3" />
               <a href={`mailto:${content.email}`} className="hover:underline">{content.email}</a>
             </div>
-            <div className="flex items-center gap-1.5">
-              <Github className="w-4 h-4" />
+            <div className="flex items-center sm:justify-end gap-1.5">
+              <Github className="w-3 h-3" />
               <a href={portfolioConfig.socials.github} target="_blank" rel="noreferrer" className="hover:underline">
                 github.com/{portfolioConfig.socials.github.split('/').pop()}
               </a>
             </div>
             {portfolioConfig.socials.linkedin && (
-              <div className="flex items-center gap-1.5">
-                <Linkedin className="w-4 h-4" />
+              <div className="flex items-center sm:justify-end gap-1.5">
+                <Linkedin className="w-3 h-3" />
                 <a href={portfolioConfig.socials.linkedin} target="_blank" rel="noreferrer" className="hover:underline">
                   LinkedIn
                 </a>
               </div>
             )}
-            <div className="flex items-center gap-1.5">
-              <MapPin className="w-4 h-4" />
+            <div className="flex items-center sm:justify-end gap-1.5">
+              <MapPin className="w-3 h-3" />
               <span>{t('resume_location')}</span>
             </div>
           </div>
         </header>
 
         {/* Summary */}
-        <section className="mb-8">
-          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-3">{t('resume_summary')}</h2>
-          <p className="text-sm leading-relaxed text-gray-700 text-justify">
+        <section className="mb-4">
+          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-2 text-gray-800">{t('resume_summary')}</h2>
+          <p className="text-xs leading-relaxed text-gray-700 text-justify">
             {content.description}
           </p>
         </section>
 
+        {/* Skills */}
+        <section className="mb-4">
+          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-2 text-gray-800">{t('resume_skills')}</h2>
+          <div className="grid grid-cols-[140px_1fr] gap-y-1 gap-x-2 text-xs">
+            <span className="font-bold text-gray-800">{t('resume_skills_core')}</span>
+            <span className="text-gray-700">{skills.programming.join(", ")}</span>
+            
+            <span className="font-bold text-gray-800">{t('resume_skills_tools')}</span>
+            <span className="text-gray-700">{skills.tools.join(", ")}</span>
+            
+            <span className="font-bold text-gray-800">{t('resume_skills_general')}</span>
+            <span className="text-gray-700">{skills.general.join(", ")}</span>
+          </div>
+        </section>
+
         {/* Key Projects */}
-        <section className="mb-8">
-          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">{t('resume_projects')}</h2>
-          <div className="space-y-4">
+        <section className="mb-4">
+          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-2 text-gray-800">{t('resume_projects')}</h2>
+          <div className="space-y-2">
             {projects.map((proj, idx) => (
               <div key={idx}>
-                <div className="flex justify-between items-baseline mb-1">
-                  <h3 className="font-bold text-base">{proj.title}</h3>
-                  <a href={proj.githubUrl} target="_blank" rel="noreferrer" className="text-xs text-gray-500 hover:underline">
-                    {proj.githubUrl.replace('https://', '')}
+                <div className="flex justify-between items-baseline">
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-bold text-sm text-gray-900">{proj.title}</h3>
+                    <span className="text-[10px] text-gray-500 font-mono">
+                      [{proj.techStack.join(", ")}]
+                    </span>
+                  </div>
+                  <a href={proj.githubUrl} target="_blank" rel="noreferrer" className="text-[10px] text-gray-400 hover:underline">
+                    source code
                   </a>
                 </div>
-                <p className="text-sm text-gray-700 mb-1">
+                <p className="text-xs text-gray-700 mt-0.5">
                   {proj[language].description}
                 </p>
-                <div className="flex flex-wrap gap-1">
-                  {proj.techStack.map((tech, tIdx) => (
-                    <span key={tIdx} className="text-[10px] bg-gray-100 px-1.5 py-0.5 rounded text-gray-600 border border-gray-200">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
               </div>
             ))}
           </div>
         </section>
 
         {/* Experience */}
-        <section className="mb-8">
-          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">{t('resume_experience')}</h2>
-          <div className="space-y-6">
+        <section className="mb-4">
+          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-2 text-gray-800">{t('resume_experience')}</h2>
+          <div className="space-y-3">
             {experiences.map((exp, idx) => (
               <div key={idx}>
-                <div className="flex justify-between items-baseline mb-1">
-                  <h3 className="font-bold text-base">{exp.title}</h3>
-                  <span className="text-sm text-gray-500 font-medium">{exp.period}</span>
+                <div className="flex justify-between items-baseline mb-0.5">
+                  <div className="flex items-baseline gap-2">
+                    <h3 className="font-bold text-sm text-gray-900">{exp.title}</h3>
+                    <span className="text-xs text-gray-600">| {exp.company}, {exp.location}</span>
+                  </div>
+                  <span className="text-xs text-gray-500 font-medium whitespace-nowrap">{exp.period}</span>
                 </div>
-                <div className="text-sm text-gray-600 mb-2 font-medium">
-                  {exp.company} | {exp.location}
-                </div>
-                <ul className="list-disc list-outside ml-4 space-y-1">
+                <ul className="list-disc list-outside ml-3 space-y-0.5">
                   {exp.responsibilities.map((resp, rIdx) => (
-                    <li key={rIdx} className="text-sm text-gray-700 pl-1">
+                    <li key={rIdx} className="text-xs text-gray-700 pl-1 leading-snug">
                       {resp}
                     </li>
                   ))}
@@ -121,44 +137,18 @@ export default function Resume() {
           </div>
         </section>
 
-        {/* Skills */}
-        <section className="mb-8">
-          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">{t('resume_skills')}</h2>
-          <div className="grid grid-cols-1 gap-4">
-            <div>
-              <span className="font-bold text-sm block mb-1">{t('resume_skills_core')}</span>
-              <p className="text-sm text-gray-700">
-                {skills.programming.join(", ")}
-              </p>
-            </div>
-            <div>
-              <span className="font-bold text-sm block mb-1">{t('resume_skills_tools')}</span>
-              <p className="text-sm text-gray-700">
-                {skills.tools.join(", ")}
-              </p>
-            </div>
-            <div>
-              <span className="font-bold text-sm block mb-1">{t('resume_skills_general')}</span>
-              <p className="text-sm text-gray-700">
-                {skills.general.join(", ")}
-              </p>
-            </div>
-          </div>
-        </section>
-
         {/* Education */}
-        <section className="mb-8">
-          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">{t('resume_education')}</h2>
-          <div className="space-y-4">
+        <section className="mb-4">
+          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-2 text-gray-800">{t('resume_education')}</h2>
+          <div className="space-y-1">
             {education.map((edu, idx) => (
-              <div key={idx}>
-                <div className="flex justify-between items-baseline mb-1">
-                  <h3 className="font-bold text-base">{edu.school}</h3>
-                  <span className="text-sm text-gray-500 font-medium">{edu.years}</span>
+              <div key={idx} className="flex justify-between items-baseline text-xs">
+                <div>
+                  <span className="font-bold text-gray-900">{edu.school}</span>
+                  <span className="text-gray-600 mx-1">-</span>
+                  <span className="text-gray-700">{edu.degree} ({edu.field})</span>
                 </div>
-                <div className="text-sm text-gray-700">
-                  {edu.degree} - {edu.field}
-                </div>
+                <span className="text-gray-500">{edu.years}</span>
               </div>
             ))}
           </div>
@@ -166,12 +156,10 @@ export default function Resume() {
 
         {/* Languages */}
         <section>
-          <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">{t('resume_languages')}</h2>
-          <ul className="list-disc list-outside ml-4 text-sm text-gray-700">
-            {languages.map((langStr, idx) => (
-              <li key={idx}>{langStr}</li>
-            ))}
-          </ul>
+          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-2 text-gray-800">{t('resume_languages')}</h2>
+          <div className="text-xs text-gray-700">
+            {languages.join(" • ")}
+          </div>
         </section>
 
       </div>
