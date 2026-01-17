@@ -14,6 +14,8 @@ What began as a simple dark mode toggle evolved into a full 3D environment to be
 - Dual Language Support: Full support for both English and Polish
 - Retro Aesthetics: Custom CRT effects, scanlines, and vintage typography
 - 3D Environment: An immersive view for project details and dossiers
+- Dossier Mode: A classified-style alternative view with local navigation (decoupled from URL routing for immersion)
+- Printable Resume: Dedicated /resume page generating a clean, A4-optimized PDF version of the CV
 - Responsive Design: Optimized for both desktop and mobile performance
 
 ## Tech Stack

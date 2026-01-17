@@ -38,6 +38,11 @@
   }
 }
 
+/* Professional font for Resume */
+.resume-page, .resume-page * {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { @apply bg-muted; }

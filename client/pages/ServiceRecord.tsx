@@ -12,41 +12,12 @@ import { GlitchText } from "@/components/GlitchText";
 import { TypewriterText } from "@/components/TypewriterText";
 
 export default function ServiceRecord({ isDossier = false }: { isDossier?: boolean }) {
-  const { experiences, education, skills } = cvData;
   const { language, t } = useLanguage();
+  const { experiences, education, skills } = cvData[language];
   const content = portfolioConfig[language];
 
   const handleDownloadCV = () => {
-    const cvText = `
-${content.name.toUpperCase()}
-${content.title.toUpperCase()}
-
-${t('cv_experience').toUpperCase()}
-${experiences.map(exp => `
-${exp.title}
-${exp.company} | ${exp.location} | ${exp.period}
-${exp.responsibilities.map(r => `- ${r}`).join('\n')}
-`).join('\n')}
-
-${t('cv_education').toUpperCase()}
-${education.map(edu => `
-${edu.school}
-${edu.degree} - ${edu.field} (${edu.years})
-`).join('\n')}
-
-${t('cv_skills').toUpperCase()}
-${t('cv_skills_general')}: ${skills.general.join(', ')}
-${t('cv_skills_tools')}: ${skills.tools.join(', ')}
-${t('cv_skills_programming')}: ${skills.programming.join(', ')}
-    `;
-
-    const element = document.createElement("a");
-    element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(cvText));
-    element.setAttribute("download", `Dawid_Czerwinski_CV_${language}.txt`);
-    element.style.display = "none";
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
+    window.open('#/resume', '_blank');
   };
 
   if (isDossier) {
@@ -177,7 +148,7 @@ ${t('cv_skills_programming')}: ${skills.programming.join(', ')}
                     <div className="flex flex-col gap-2 border-b border-primary/10 pb-6">
                       <div className="flex items-center gap-2 text-[10px] font-mono text-primary/40 uppercase tracking-widest mb-2">
                         <TerminalIcon className="h-3 w-3" />
-                        <span>{t('dossier_id')} DA-2112</span>
+                        <span>{t('dossier_id')} DA-2137</span>
                       </div>
                       <GlitchText
                         text={content.name}

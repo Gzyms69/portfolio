@@ -1,24 +1,24 @@
 import { Zap, Share2 } from "lucide-react";
-import { Project, CVData, GlobalConfig } from "@shared/types";
+import { Project, CVData, GlobalConfig, Language } from "@shared/types";
 
 export const portfolioConfig: GlobalConfig = {
   pl: {
     name: "Dawid Czerwiński",
-    title: "Software Engineer & Instruktor Programowania. Łączę pasję do edukacji technicznej z nowoczesnym developmentem.",
-    description: "Były instruktor programowania (C++, Python, Unity) z inżynierskim wykształceniem (AGH, PK). Wykorzystuję analityczne podejście zdobyte w logistyce i edukacji do budowy wydajnych systemów webowych. Moje portfolio to dowód przejścia od nauczania architektury kodu do praktycznego tworzenia skalowalnych rozwiązań w React, TypeScript i FastAPI.",
-    email: "dawidekczerwinski@gmail.com",
-    heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "Node.js", "Docker", "Tailwind CSS", "SQL"]
+    title: "Junior Software Engineer & IT Support Specialist",
+    description: "Programista i Specjalista IT łączący umiejętności techniczne z doświadczeniem w edukacji i logistyce. Jako były instruktor programowania (Python, C++, C#) posiadam solidne fundamenty w algorytmice i debugowaniu. Wyróżniam się analitycznym podejściem do rozwiązywania problemów, zdobytym m.in. w FedEx i BBH. Obecnie poszukuję roli Junior Developera lub Wsparcia Technicznego, gdzie mogę wykorzystać moją wiedzę z zakresu React, Python i systemów IT.",
+    email: "davidczerwinskibiznes@gmail.com",
+    heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "SQL", "Git", "Hardware Support"]
   },
   en: {
     name: "Dawid Czerwiński",
-    title: "Software Engineer & Technical Educator. Bridging the gap between tech education and modern engineering.",
-    description: "Former programming instructor (C++, Python, Unity) with a solid engineering foundation (AGH, PK). I leverage analytical skills honed in logistics and education to build robust, high-performance web systems. My portfolio reflects a strategic transition from teaching code to architecting scalable full-stack solutions using React, TypeScript, and FastAPI.",
-    email: "dawidekczerwinski@gmail.com",
-    heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "Node.js", "Docker", "Tailwind CSS", "SQL"]
+    title: "Junior Software Engineer & IT Support Specialist",
+    description: "Aspiring Full-Stack Developer and IT Support Specialist transitioning from a background in technical education. Former Programming Instructor (Python, C++, C#) with a knack for breaking down complex technical concepts. I bring strong troubleshooting skills honed at FedEx and BBH, and a passion for building scalable web tools. Seeking a role where I can apply my analytical mindset and expertise in React, Python, and system diagnostics.",
+    email: "davidczerwinskibiznes@gmail.com",
+    heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "SQL", "Git", "Hardware Support"]
   },
   socials: {
     github: "https://github.com/Gzyms69",
-    linkedin: "https://www.linkedin.com/in/dawid-czerwiński-baa6b5149",
+    linkedin: "https://www.linkedin.com/in/david-czerwinski-baa6b5149",
   },
   contact: {
     formspreeId: "mnnjpjez", 
@@ -76,59 +76,165 @@ export const projects: Project[] = [
   }
 ];
 
-export const cvData: CVData = {
-  experiences: [
-    {
-      title: "Przerwa w karierze (Career Break)",
-      company: "Randstad i okolice, Holandia",
-      location: "Netherlands",
-      period: "2025.02 - 2025.10",
-      responsibilities: [
-        "Przeprowadzka do Holandii i praca za pośrednictwem agencji w sektorach produkcji oraz logistyki",
-        "Relocation to the Netherlands and working via job agencies in production and logistics",
-      ],
-    },
-    {
-      title: "Instruktor Programowania",
-      company: "Giganci Programowania",
-      location: "Kielce / Mińsk Mazowiecki",
-      period: "2024.01 - 2025.02",
-      responsibilities: [
-        "Przygotowywanie uczniów szkół średnich do egzaminu maturalnego z informatyki",
-        "Prowadzenie zajęć z programowania gier (Unity) oraz języków C++, C# i Python (poziom podstawowy i zaawansowany)",
-        "Mentoring i wsparcie merytoryczne dla uczniów poprzez platformę Discord",
-      ],
-    },
-    {
-      title: "Specjalista ds. Odpraw Celnych (Clearance Broker)",
-      company: "FedEx Express Europe",
-      location: "Kraków",
-      period: "2022.03 - 2023.07",
-      responsibilities: [
-        "Gromadzenie i weryfikacja dokumentacji do celów odprawy celnej (Collecting paperwork for clearance purposes)",
-        "Profesjonalna obsługa klienta w zakresie procedur celnych",
-        "Zarządzanie dokumentacją celną, fakturami i listami przewozowymi",
-        "Monitorowanie statusu przesyłek i raportowanie postępów",
-      ],
-    },
-  ],
-  education: [
-    {
-      school: "Akademia Górniczo-Hutnicza (AGH) w Krakowie",
-      degree: "Inżynier",
-      field: "Elektronika i Telekomunikacja",
-      years: "2019-2020",
-    },
-    {
-      school: "Politechnika Krakowska",
-      degree: "Inżynier",
-      field: "Matematyka Stosowana",
-      years: "2020-2022",
-    },
-  ],
-  skills: {
-    general: ["Marketing", "Analiza danych", "Web Design"],
-    tools: ["Pakiet Microsoft Office", "Narzędzia Adobe", "Język angielski (poziom C1/C2)"],
-    programming: ["C++", "Python", "C", "JavaScript"],
+export const cvData: Record<Language, CVData> = {
+  pl: {
+    experiences: [
+      {
+        title: "Pracownik Projektowy (Sektor Logistyki i Produkcji)",
+        company: "AB Midden Nederland",
+        location: "Holandia",
+        period: "02.2025 - 10.2025",
+        responsibilities: [
+          "Praca z wykorzystaniem wewnętrznego oprogramowania do zarządzania logistyką",
+          "Realizacja zadań pod presją czasu w dynamicznym środowisku produkcyjnym",
+          "Efektywna komunikacja i współpraca w międzynarodowym zespole (język angielski)"
+        ],
+      },
+      {
+        title: "Nauczyciel Programowania (C++, Python, C#, Unity)",
+        company: "Giganci Programowania",
+        location: "Kielce / Zdalnie",
+        period: "01.2024 - 06.2025",
+        responsibilities: [
+          "Prowadzenie zaawansowanych kursów z programowania obiektowego i tworzenia gier",
+          "Debugowanie i naprawa kodu w projektach uczniowskich (VS Code, Unity Editor)",
+          "Zarządzanie społecznością uczniów i wsparcie techniczne poprzez Discord",
+          "Tłumaczenie skomplikowanych zagadnień (algorytmy, struktury danych) na język zrozumiały dla początkujących"
+        ],
+      },
+      {
+        title: "Specjalista ds. Operacji (Operations Specialist)",
+        company: "Brown Brothers Harriman",
+        location: "Kraków",
+        period: "09.2023 - 12.2023",
+        responsibilities: [
+          "Obsługa płatności funduszy inwestycyjnych i działań korporacyjnych",
+          "Analiza danych finansowych i weryfikacja zgodności z procedurami",
+          "Praca z systemami bankowymi i raportowanie błędów operacyjnych"
+        ],
+      },
+      {
+        title: "Specjalista ds. Odpraw Celnych (Clearance Broker)",
+        company: "FedEx Express Europe",
+        location: "Kraków",
+        period: "03.2022 - 07.2023",
+        responsibilities: [
+          "Rozwiązywanie problemów z dokumentacją celną i zatrzymanymi przesyłkami",
+          "Optymalizacja przepływu pracy w systemach wewnętrznych FedEx",
+          "Szkolenie nowych pracowników z obsługi oprogramowania celnego",
+          "Bezpośredni kontakt z klientem w sprawach technicznych i proceduralnych"
+        ],
+      },
+      {
+        title: "Serwisant GSM / Sprzedawca",
+        company: "Atelkom & Puls GSM",
+        location: "Kielce / Kraków",
+        period: "2018 - 2022 (Różne okresy)",
+        responsibilities: [
+          "Diagnoza i naprawa usterek sprzętowych (smartfony, laptopy)",
+          "Instalacja i konfiguracja oprogramowania systemowego",
+          "Doradztwo techniczne dla klientów indywidualnych"
+        ],
+      }
+    ],
+    education: [
+      {
+        school: "Politechnika Krakowska",
+        degree: "Studia Inżynierskie (Absolutorium)",
+        field: "Matematyka Stosowana",
+        years: "2020-2022",
+      },
+      {
+        school: "Akademia Górniczo-Hutnicza (AGH)",
+        degree: "Studia Inżynierskie (Absolutorium)",
+        field: "Elektronika i Telekomunikacja",
+        years: "2019-2020",
+      },
+    ],
+    skills: {
+      general: ["Rozwiązywanie problemów", "Analityczne myślenie", "Obsługa klienta IT", "Szkolenia techniczne"],
+      tools: ["Git", "Docker", "VS Code", "Jira/Trello", "Linux (Bash)", "Pakiet Office"],
+      programming: ["Python (FastAPI)", "React", "TypeScript", "JavaScript", "SQL", "C++", "C#"],
+    }
+  },
+  en: {
+    experiences: [
+      {
+        title: "Project Worker (Logistics & Production)",
+        company: "AB Midden Nederland",
+        location: "Netherlands",
+        period: "Feb 2025 - Oct 2025",
+        responsibilities: [
+          "Operated internal logistics management software for production workflows",
+          "Executed time-sensitive tasks in a fast-paced environment",
+          "Collaborated effectively within a diverse, international team (English working language)"
+        ],
+      },
+      {
+        title: "Programming Teacher (C++, Python, C#, Unity)",
+        company: "Giganci Programowania",
+        location: "Kielce / Remote",
+        period: "Jan 2024 - Jun 2025",
+        responsibilities: [
+          "Delivered advanced courses in OOP and Game Development to HS students",
+          "Diagnosed and debugged code issues in real-time (VS Code, Unity)",
+          "Provided technical support and mentorship via Discord community",
+          "Translated complex technical concepts into accessible, actionable knowledge"
+        ],
+      },
+      {
+        title: "Operations Specialist",
+        company: "Brown Brothers Harriman",
+        location: "Kraków",
+        period: "Sep 2023 - Dec 2023",
+        responsibilities: [
+          "Managed investment fund payments and corporate actions",
+          "Analyzed financial data for compliance and accuracy",
+          "Operated banking systems and reported operational discrepancies"
+        ],
+      },
+      {
+        title: "Clearance Broker",
+        company: "FedEx Express Europe",
+        location: "Kraków",
+        period: "Mar 2022 - Jul 2023",
+        responsibilities: [
+          "Troubleshooted clearance bottlenecks and documentation errors",
+          "Optimized internal workflows using digital tools",
+          "Trained new team members on proprietary customs software",
+          "Provided technical guidance to customers regarding customs procedures"
+        ],
+      },
+      {
+        title: "GSM Technician / Sales Assistant",
+        company: "Atelkom & Puls GSM",
+        location: "Kielce / Kraków",
+        period: "2018 - 2022 (Various)",
+        responsibilities: [
+          "Diagnosed and repaired hardware/software issues (Mobile/PC)",
+          "Installed and configured operating systems and applications",
+          "Provided technical advice and solutions to retail customers"
+        ],
+      }
+    ],
+    education: [
+      {
+        school: "Cracow University of Technology",
+        degree: "Engineering Coursework",
+        field: "Applied Mathematics",
+        years: "2020-2022",
+      },
+      {
+        school: "AGH University of Science and Technology",
+        degree: "Engineering Coursework",
+        field: "Electronics and Telecommunications",
+        years: "2019-2020",
+      },
+    ],
+    skills: {
+      general: ["Technical Problem Solving", "Analytical Thinking", "IT Customer Support", "Technical Training"],
+      tools: ["Git", "Docker", "VS Code", "Jira/Trello", "Linux (Bash)", "MS Office"],
+      programming: ["Python (FastAPI)", "React", "TypeScript", "JavaScript", "SQL", "C++", "C#"],
+    }
   }
 };

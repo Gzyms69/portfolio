@@ -23,6 +23,7 @@ import Contact from "./pages/CommsUplink";
 import CV from "./pages/ServiceRecord";
 import NotFound from "./pages/NotFound";
 import { DossierProjects } from "./pages/DossierProjects";
+import Resume from "./pages/Resume";
 
 // Hooks
 import { BackgroundProvider, useBackground } from "@/hooks/use-background";
@@ -72,36 +73,28 @@ const DossierApp = () => {
 };
 
 const AppContent = () => {
-
   const { isTransitioning, viewMode, toggleBackground } = useBackground();
-
+  const location = useLocation();
   const [isReady, setIsReady] = useState(false);
 
-
+  // Resume Route - Clean Render
+  if (location.pathname === '/resume') {
+    return <Resume />;
+  }
 
   return (
-
     <div
       className="relative w-full min-h-screen"
       onDoubleClick={toggleBackground}
     >
-
       <DebugOverlay />
 
-
-
       {/* 1. Main Content - Always in DOM */}
-
       <div className={`w-full min-h-screen ${isReady ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-
         <TVPowerTransition isTransitioning={isTransitioning}>
-
           <Toaster />
-
           <Sonner />
-
           <ScrollProgress />
-
           <InteractiveBackground />
 
           {viewMode === 'standard' ? (
@@ -117,29 +110,15 @@ const AppContent = () => {
               <DossierApp />
             </>
           )}
-
         </TVPowerTransition>
-
       </div>
 
-
-
       {/* 2. Loader Overlay - Unmounts when ready */}
-
       {!isReady && (
-
-        <TerminalLoader onComplete={() => {
-
-          setIsReady(true);
-
-        }} />
-
+        <TerminalLoader onComplete={() => setIsReady(true)} />
       )}
-
     </div>
-
   );
-
 };
 
 
