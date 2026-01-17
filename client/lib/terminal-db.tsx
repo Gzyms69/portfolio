@@ -18,7 +18,7 @@ export const portfolioConfig: GlobalConfig = {
   },
   socials: {
     github: "https://github.com/Gzyms69",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/dawid-czerwiński-baa6b5149",
   },
   contact: {
     formspreeId: "mnnjpjez", 

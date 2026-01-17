@@ -1,4 +1,4 @@
-import { Home, Github, Briefcase, Boxes, Terminal, Activity, Worm, Command, Languages, X, FileText, Settings } from "lucide-react";
+import { Home, Github, Briefcase, Boxes, Terminal, Activity, Worm, Command, Languages, X, FileText, Settings, Linkedin } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useBackground } from "@/hooks/use-background";
 import { useLanguage } from "@/hooks/use-language";
@@ -190,8 +190,9 @@ export const Navigation = () => {
                   <NavButton onClick={toggleLanguage} icon={<span className="text-sm font-bold font-mono">{language === 'pl' ? 'PL' : 'EN'}</span>} label={t('lang')} isMenuOpen={isMenuOpen} />
                   <div className="h-px bg-primary/20 mx-2 w-full" />
                   <NavButton onClick={() => handleExternalLink(portfolioConfig.socials.github)} label={t('repo')} icon={<Github className="h-6 w-6" />} isMenuOpen={isMenuOpen} />
+                  <NavButton onClick={() => handleExternalLink(portfolioConfig.socials.linkedin)} label={t('linkedin')} icon={<Linkedin className="h-6 w-6" />} isMenuOpen={isMenuOpen} />
                   <div className="h-px bg-primary/20 mx-2 w-full" />
-                  <NavButton onClick={handleSnakeClick} label={t('snake')} icon={<Worm className="h-6 w-6" />} active={isSnakeGameOpen} isMenuOpen={isMenuOpen} />
+                  <NavButton onClick={handleSnakeClick} label={t('snake')} icon={< Worm className="h-6 w-6" />} active={isSnakeGameOpen} isMenuOpen={isMenuOpen} />
                 </div>
               </div>
             </motion.div>
@@ -300,6 +301,22 @@ export const Navigation = () => {
                   <span className="text-xs">{language.toUpperCase()}</span>
                 </button>
               </div>
+
+              <button 
+                onClick={() => handleExternalLink(portfolioConfig.socials.github)}
+                className="flex items-center gap-6 p-4 border border-primary/10 bg-primary/5 rounded-lg text-primary text-xl font-mono uppercase transition-all active:bg-primary active:text-black"
+              >
+                <Github className="w-6 h-6" />
+                <span>{t('repo')}</span>
+              </button>
+
+              <button 
+                onClick={() => handleExternalLink(portfolioConfig.socials.linkedin)}
+                className="flex items-center gap-6 p-4 border border-primary/10 bg-primary/5 rounded-lg text-primary text-xl font-mono uppercase transition-all active:bg-primary active:text-black"
+              >
+                <Linkedin className="w-6 h-6" />
+                <span>{t('linkedin')}</span>
+              </button>
 
               <button 
                 onClick={handleSnakeClick}
