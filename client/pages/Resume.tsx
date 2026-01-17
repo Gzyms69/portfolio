@@ -34,11 +34,13 @@ export default function Resume() {
         {/* Header */}
         <header className="border-b-2 border-black pb-4 mb-4 flex flex-col sm:flex-row justify-between items-start gap-4">
           <div className="flex items-center gap-4">
-            <img 
-              src="/portfolio/profile.jpg"
-              alt={content.name}
-              className="w-16 h-16 rounded-full border border-gray-300 object-cover"
-            />
+            <div className="w-16 h-16 rounded-full border border-gray-300 overflow-hidden flex-shrink-0">
+              <img 
+                src="/portfolio/profile.jpg"
+                alt={content.name}
+                className="w-full h-full object-cover scale-[1.15]"
+              />
+            </div>
             <div>
               <h1 className="text-3xl font-bold uppercase tracking-tight mb-1">{content.name}</h1>
               <p className="text-lg text-gray-700 font-medium">{content.title}</p>
