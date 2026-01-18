@@ -145,8 +145,9 @@ export const cvData: Record<Language, CVData> = {
         location: "Kielce / Remote",
         period: "Jan 2024 - Jun 2025",
         responsibilities: [
-          "Delivered advanced courses (OOP, Game Dev); debugged student projects in VS Code/Unity.",
-          "Translated complex concepts for beginners and provided technical support via Discord."
+          "Delivered comprehensive programming curriculum from basics to Matura level: algorithms, data structures, variables, SQL, and Python/C++.",
+          "Conducted weekly Code Reviews and Live Debugging sessions (VS Code, Unity), mentoring students on SOLID principles, clean code, and performance optimization.",
+          "Managed remote learning environment via Discord, introducing version control workflows with Git and GitHub."
         ],
       },
       {
