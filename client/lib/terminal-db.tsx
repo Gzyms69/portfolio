@@ -43,22 +43,6 @@ export const projects: Project[] = [
     imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop"
   },
   {
-    title: "Rust Polyglot Creator",
-    pl: {
-      description: "Narzędzie CLI tworzące pliki-poligloci (prawidłowe PNG i ZIP jednocześnie). Eksploracja formatów binarnych i manipulacji bajtami.",
-      fullDescription: "Eksploruj dziwne zakamarki formatów binarnych. To narzędzie CLI w języku Rust pozwala tworzyć pliki 'poligloci'—pojedyncze binaria, które są poprawne w wielu formatach jednocześnie. Ukryj archiwum ZIP w zdjęciu z wakacji lub zaszyj plik WAV w dokumencie. To głębokie zanurzenie w manipulację bajtami i specyfikacje struktur plików.",
-    },
-    en: {
-      description: "CLI tool creating polyglot files (valid PNG and ZIP simultaneously). Exploration of binary formats and byte manipulation.",
-      fullDescription: "Explore the weird edges of binary formats. This Rust-based CLI tool lets you craft 'polyglot' files—single binaries that are valid in multiple formats simultaneously. Hide a ZIP archive inside a vacation photo, or embed a WAV file in a document. It's a deep dive into byte manipulation and file structure specifications.",
-    },
-    githubUrl: "https://github.com/Gzyms69/rust-polyglot",
-    techStack: ["Rust", "CLI", "Systems Programming", "Binary Manipulation"],
-    variant: "design",
-    icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
-    imageUrl: "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg"
-  },
-  {
     title: "Portfolio Website",
     pl: {
       description: "Interaktywny interfejs terminalowy w React 18 i Vite. Zaawansowane animacje (Framer Motion) i responsywny design.",
@@ -95,7 +79,7 @@ export const cvData: Record<Language, CVData> = {
         location: "Kielce / Zdalnie",
         period: "01.2024 - 06.2025",
         responsibilities: [
-          "Realizacja pełnego programu maturalnego z Informatyki: algorytmika (sortowanie, grafy), struktury danych (listy, drzewa BST), SQL oraz Python/C++.",
+          "Realizacja pełnego programu nauki programowania od podstaw do poziomu matury: algorytmika, struktury danych, zmienne, SQL oraz Python/C++.",
           "Przeprowadzanie regularnych Code Review i sesji Live Debugging (VS Code, Unity), ucząc dobrych praktyk (SOLID, Clean Code) i optymalizacji kodu.",
           "Zarządzanie zdalnym nauczaniem via Discord i tworzenie środowiska projektowego z wykorzystaniem Git i GitHub.",
           "Tłumaczenie złożonych zagadnień (OOP, wzorce projektowe) na praktyczne zadania programistyczne."
