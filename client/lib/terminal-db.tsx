@@ -95,8 +95,10 @@ export const cvData: Record<Language, CVData> = {
         location: "Kielce / Zdalnie",
         period: "01.2024 - 06.2025",
         responsibilities: [
-          "Prowadzenie zaawansowanych kursów (OOP, Game Dev); debugowanie projektów uczniowskich w VS Code/Unity.",
-          "Tłumaczenie złożonych zagadnień (algorytmy) oraz wsparcie techniczne via Discord."
+          "Realizacja pełnego programu maturalnego z Informatyki: algorytmika (sortowanie, grafy), struktury danych (listy, drzewa BST), SQL oraz Python/C++.",
+          "Przeprowadzanie regularnych Code Review i sesji Live Debugging (VS Code, Unity), ucząc dobrych praktyk (SOLID, Clean Code) i optymalizacji kodu.",
+          "Zarządzanie zdalnym nauczaniem via Discord i tworzenie środowiska projektowego z wykorzystaniem Git i GitHub.",
+          "Tłumaczenie złożonych zagadnień (OOP, wzorce projektowe) na praktyczne zadania programistyczne."
         ],
       },
       {
