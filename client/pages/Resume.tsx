@@ -103,7 +103,7 @@ export default function Resume() {
         <section className="mb-3">
           <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_projects')}</h2>
           <div className="space-y-2">
-            {projects.map((proj, idx) => (
+            {projects.filter(p => !p.hideFromResume).map((proj, idx) => (
               <div key={idx}>
                 <div className="flex justify-between items-baseline">
                   <div className="flex items-center gap-2">

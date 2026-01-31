@@ -15,6 +15,7 @@ export interface Project {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon?: any;
   imageUrl?: string;
+  hideFromResume?: boolean;
 }
 
 export interface Experience {

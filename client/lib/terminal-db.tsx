@@ -1,4 +1,4 @@
-import { Share2, Wrench } from "lucide-react";
+import { Share2, Wrench, Zap } from "lucide-react";
 import { Project, CVData, GlobalConfig, Language } from "@shared/types";
 
 export const portfolioConfig: GlobalConfig = {
@@ -57,6 +57,40 @@ export const projects: Project[] = [
     variant: "design",
     icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop"
+  },
+  {
+    title: "ROMHub",
+    pl: {
+      description: "Platforma do zarządzania obrazami systemowymi (ROMów) dla urządzeń mobilnych. Integracja z zewnętrznymi API.",
+      fullDescription: "Kompleksowa platforma ułatwiająca dostęp do oprogramowania systemowego dla smartfonów. System automatyzuje proces wyszukiwania i pobierania aktualizacji, agregując dane z wielu źródeł.",
+    },
+    en: {
+      description: "Platform for managing system images (ROMs) for mobile devices. Integration with external APIs.",
+      fullDescription: "A comprehensive platform for managing mobile system software. The system automates the search and download process for updates, aggregating data from multiple sources.",
+    },
+    githubUrl: "https://github.com/Gzyms69/romhub",
+    techStack: ["React", "Node.js", "Express", "API Integration"],
+    variant: "code",
+    icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
+    imageUrl: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
+    hideFromResume: true
+  },
+  {
+    title: "Portfolio Website",
+    pl: {
+      description: "Interaktywne portfolio w estetyce terminala. Wykorzystuje React, Framer Motion i Three.js.",
+      fullDescription: "Wysoko wydajna platforma portfolio wykorzystująca React 18 i Vite. Projekt skupia się na dostarczaniu unikalnych wrażeń wizualnych poprzez płynne przejścia, responsywny design i autorską estetykę terminala.",
+    },
+    en: {
+      description: "Interactive terminal-style portfolio. Built with React, Framer Motion, and Three.js.",
+      fullDescription: "High-performance portfolio platform utilizing React 18 and Vite. Focuses on delivering unique visual experiences through seamless transitions and custom terminal aesthetics.",
+    },
+    githubUrl: "https://github.com/Gzyms69/portfolio",
+    techStack: ["React", "TypeScript", "Three.js", "Framer Motion", "TailwindCSS"],
+    variant: "design",
+    icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
+    imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
+    hideFromResume: true
   }
 ];
 
@@ -112,7 +146,7 @@ export const cvData: Record<Language, CVData> = {
     ],
     skills: {
       general: ["Technical Support", "Incident Management", "SLA", "Problem Solving", "AI-Augmented Workflow"],
-      tools: ["Linux (Ubuntu/Bash)", "SQL", "Docker", "Git", "Jira", "VS Code", "Excel"],
+      tools: ["Linux (Ubuntu/Bash)", "SQL", "Docker", "Git", "VS Code", "Excel"],
       programming: ["Python (Scripting)", "Bash", "JavaScript", "SQL", "C++"],
     },
     languages: ["Polski (Ojczysty)", "Angielski (C1/C2 - Zaawansowany Professional)", "Niemiecki (Podstawowy)", "Rosyjski (Podstawowy)"]
@@ -168,7 +202,7 @@ export const cvData: Record<Language, CVData> = {
     ],
     skills: {
       general: ["Technical Support", "Incident Management", "SLA", "Problem Solving", "AI-Augmented Workflow"],
-      tools: ["Linux (Ubuntu/Bash)", "SQL", "Docker", "Git", "Jira", "VS Code", "Excel"],
+      tools: ["Linux (Ubuntu/Bash)", "SQL", "Docker", "Git", "VS Code", "Excel"],
       programming: ["Python (Scripting)", "Bash", "JavaScript", "SQL", "C++"],
     },
     languages: ["Polish (Native)", "English (C1/C2 - Advanced Professional)", "German (Elementary)", "Russian (Elementary)"]
