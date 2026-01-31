@@ -61,18 +61,18 @@ export const projects: Project[] = [
   {
     title: "ROMHub",
     pl: {
-      description: "Platforma do zarządzania obrazami systemowymi (ROMów) dla urządzeń mobilnych. Integracja z zewnętrznymi API.",
-      fullDescription: "Kompleksowa platforma ułatwiająca dostęp do oprogramowania systemowego dla smartfonów. System automatyzuje proces wyszukiwania i pobierania aktualizacji, agregując dane z wielu źródeł.",
+      description: "Emulator N64 w przeglądarce (Client-side). Przetwarzanie lokalne, brak przesyłania plików na serwer.",
+      fullDescription: "Eksperymentalny emulator konsoli Nintendo 64 działający całkowicie po stronie klienta. Umożliwia ładowanie ROMów z dysku i grę w przeglądarce. Wykorzystuje LocalStorage do zapisu postępów.",
     },
     en: {
-      description: "Platform for managing system images (ROMs) for mobile devices. Integration with external APIs.",
-      fullDescription: "A comprehensive platform for managing mobile system software. The system automates the search and download process for updates, aggregating data from multiple sources.",
+      description: "Browser-based N64 emulator (Client-side). Local processing, no server uploads, persistent saves.",
+      fullDescription: "Experimental Nintendo 64 emulator running entirely in the browser. Supports local ROM loading and gameplay without server-side processing. Uses LocalStorage for save persistence.",
     },
     githubUrl: "https://github.com/Gzyms69/romhub",
-    techStack: ["React", "Node.js", "Express", "API Integration"],
+    techStack: ["JavaScript", "Emulation", "Client-side", "Local Storage"],
     variant: "code",
     icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
-    imageUrl: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop",
     hideFromResume: true
   },
   {
