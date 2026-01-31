@@ -5,14 +5,14 @@ export const portfolioConfig: GlobalConfig = {
   pl: {
     name: "Dawid Czerwiński",
     title: "Technical Support Engineer | Application Support Specialist",
-    description: "Specjalista IT z technicznym zapleczem (Python, SQL, Linux) i doświadczeniem operacyjnym w międzynarodowych korporacjach (FedEx). Posiadam praktyczne umiejętności diagnozowania błędów (Live Debugging), pracy z systemami zgłoszeniowymi (SLA) oraz automatyzacji zadań. Szukam roli w Technical Support, gdzie wykorzystam umiejętności skryptowe do usprawniania procesów.",
+    description: "Specjalista IT łączący techniczne umiejętności (Python, Linux, SQL) z doświadczeniem w pracy z ludźmi. Jako Mentor IT i pracownik operacyjny (FedEx) nauczyłem się skutecznie diagnozować problemy i tłumaczyć skomplikowane zagadnienia językiem zrozumiałym dla użytkownika. Szukam roli w Technical Support, gdzie będę mógł wykorzystać moją wiedzę programistyczną do automatyzacji zadań i sprawnego rozwiązywania zgłoszeń.",
     email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git"]
   },
   en: {
     name: "Dawid Czerwiński",
     title: "Technical Support Engineer | Application Support Specialist",
-    description: "IT Specialist with technical background (Python, SQL, Linux) and operational experience in international corporations (FedEx). Skilled in diagnosing errors (Live Debugging), working with ticket systems (SLA), and task automation. Seeking a Technical Support role to utilize scripting skills for process improvement.",
+    description: "IT Specialist combining technical skills (Python, Linux, SQL) with people-oriented experience. As an IT Mentor and Operational Worker (FedEx), I learned to effectively diagnose problems and explain complex concepts in user-friendly language. Seeking a Technical Support role where I can utilize my programming knowledge to automate tasks and efficiently resolve tickets.",
     email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git"]
   },
@@ -45,11 +45,11 @@ export const projects: Project[] = [
   {
     title: "WikiGraph Lab",
     pl: {
-      description: "System ETL (Python/Docker). AI Workflow: Wykorzystanie agentów AI do analizy logów i optymalizacji zapytań Neo4j.",
+      description: "Projektowanie pipeline'ów ETL (Python/Docker). Wykorzystanie AI do automatycznej analizy logów i optymalizacji zapytań bazodanowych (Neo4j).",
       fullDescription: "Zaprojektowanie i wdrożenie hybrydowej architektury bazy danych (Graph + SQL) do przetwarzania dużych zbiorów danych. Stworzenie zautomatyzowanego pipeline'u ETL w Pythonie, odpornego na błędy danych. Wykorzystanie metodyki AI-Augmented Development do akceleracji procesu debugowania i weryfikacji architektury (40% szybsze wdrożenie).",
     },
     en: {
-      description: "ETL System (Python/Docker). AI Workflow: Used AI agents for log analysis and Neo4j query optimization.",
+      description: "ETL Pipeline Design (Python/Docker). Used AI for automated log analysis and database query optimization (Neo4j).",
       fullDescription: "Designed and deployed a hybrid database architecture (Graph + SQL) for large dataset processing. Created an automated Python ETL pipeline with robust error handling. Leveraged AI-Augmented Development methodology to accelerate debugging and architectural verification (40% faster deployment).",
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
@@ -98,14 +98,14 @@ export const cvData: Record<Language, CVData> = {
   pl: {
     experiences: [
       {
-        title: "IT Mentor & Technical Support",
+        title: "IT Mentor / Instruktor Techniczny",
         company: "Giganci Programowania",
         location: "Kielce / Zdalnie",
         period: "01.2024 - 06.2025",
         responsibilities: [
-          "Przeprowadzanie Live Debuggingu i analiza błędów w kodzie w czasie rzeczywistym (Python, C++, C#).",
-          "Diagnozowanie problemów ze środowiskiem programistycznym (VS Code, Unity, Git) na stacjach roboczych użytkowników.",
-          "Tłumaczenie złożonych zagadnień technicznych osobom nietechnicznym (Support Level 1/2)."
+          "Prowadzenie kursów programowania: Realizacja kompleksowych szkoleń z języków Python, C++ i C# (od podstaw po poziom maturalny). Odpowiedzialność za postępy uczniów i weryfikację kodu.",
+          "Live Debugging i Wsparcie Techniczne: Bieżące diagnozowanie i naprawianie błędów w kodzie uczniów oraz rozwiązywanie problemów konfiguracyjnych środowisk (VS Code, Visual Studio, Unity) podczas zajęć online.",
+          "Asynchroniczna obsługa zgłoszeń (Discord): Zdalne wsparcie techniczne dla kursantów poza godzinami zajęć – rozwiązywanie problemów z zadaniami i instalacją oprogramowania na prywatnych komputerach użytkowników."
         ],
       },
       {
@@ -125,7 +125,7 @@ export const cvData: Record<Language, CVData> = {
         period: "03.2022 - 07.2023",
         responsibilities: [
           "Zarządzanie incydentami operacyjnymi w wewnętrznym systemie zgłoszeniowym (Ticket-based workflow).",
-          "Praca pod presją czasu (Operational SLA) przy odprawach celnych – priorytetyzacja zadań krytycznych.",
+          "Praca w reżimie ścisłych terminów (SLA) przy odprawach celnych – priorytetyzacja zadań krytycznych w celu zachowania ciągłości operacyjnej.",
           "Współpraca z działami technicznymi przy rozwiązywaniu problemów z dokumentacją elektroniczną."
         ],
       }
@@ -133,13 +133,13 @@ export const cvData: Record<Language, CVData> = {
     education: [
       {
         school: "Politechnika Krakowska",
-        degree: "Studia Inżynierskie (3 lata)",
+        degree: "Kierunek: Matematyka Stosowana (2 lata studiów)",
         field: "Matematyka Stosowana",
         years: "2020-2022",
       },
       {
         school: "Akademia Górniczo-Hutnicza (AGH)",
-        degree: "Studia Inżynierskie (1 rok)",
+        degree: "Kierunek: Elektronika i Telekomunikacja (1 rok studiów)",
         field: "Elektronika i Telekomunikacja",
         years: "2019-2020",
       },
@@ -154,14 +154,14 @@ export const cvData: Record<Language, CVData> = {
   en: {
     experiences: [
       {
-        title: "IT Mentor & Technical Support",
+        title: "IT Mentor / Technical Instructor",
         company: "Giganci Programowania",
         location: "Kielce / Remote",
         period: "Jan 2024 - Jun 2025",
         responsibilities: [
-          "Conducted Live Debugging and real-time code error analysis (Python, C++, C#).",
-          "Diagnosed development environment issues (VS Code, Unity, Git) on user workstations.",
-          "Translated complex technical concepts to non-technical users (Support Level 1/2)."
+          "Course Instruction: Delivered comprehensive training in Python, C++, and C# (from basics to advanced level). Responsible for student progress and code verification.",
+          "Live Debugging & Technical Support: Real-time diagnosis and fixing of code errors, plus resolving environment configuration issues (VS Code, Visual Studio, Unity) during online sessions.",
+          "Async Ticket Support (Discord): Remote technical support for students outside class hours – troubleshooting assignment issues and software installation on personal user devices."
         ],
       },
       {
@@ -181,7 +181,7 @@ export const cvData: Record<Language, CVData> = {
         period: "Mar 2022 - Jul 2023",
         responsibilities: [
           "Managed operational incidents in internal ticketing system (Ticket-based workflow).",
-          "Worked under time pressure (Operational SLA) on customs clearance – prioritizing critical tasks.",
+          "Worked under strict deadline regime (SLA) on customs clearance – prioritizing critical tasks to maintain operational continuity.",
           "Collaborated with technical departments to resolve electronic documentation issues."
         ],
       }
@@ -189,13 +189,13 @@ export const cvData: Record<Language, CVData> = {
     education: [
       {
         school: "Cracow University of Technology",
-        degree: "Engineering Coursework (3 years)",
+        degree: "Field: Applied Mathematics (2 years of study)",
         field: "Applied Mathematics",
         years: "2020-2022",
       },
       {
         school: "AGH University of Science and Technology",
-        degree: "Engineering Coursework (1 year)",
+        degree: "Field: Electronics and Telecommunications (1 year of study)",
         field: "Electronics and Telecommunications",
         years: "2019-2020",
       },
