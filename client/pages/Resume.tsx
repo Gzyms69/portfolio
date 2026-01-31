@@ -32,9 +32,9 @@ export default function Resume() {
         </div>
 
         {/* Header */}
-        <header className="border-b-2 border-black pb-4 mb-4 flex flex-col sm:flex-row justify-between items-start gap-4">
+        <header className="border-b-2 border-black pb-3 mb-3 flex flex-col sm:flex-row justify-between items-start gap-4">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-full border border-gray-300 overflow-hidden flex-shrink-0">
+            <div className="w-14 h-14 rounded-full border border-gray-300 overflow-hidden flex-shrink-0">
               <img 
                 src="/portfolio/profile.jpg"
                 alt={content.name}
@@ -42,12 +42,12 @@ export default function Resume() {
               />
             </div>
             <div>
-              <h1 className="text-3xl font-bold uppercase tracking-tight mb-1">{content.name}</h1>
-              <p className="text-lg text-gray-700 font-medium">{content.title}</p>
+              <h1 className="text-3xl font-bold uppercase tracking-tight mb-0.5">{content.name}</h1>
+              <p className="text-base text-gray-700 font-medium leading-tight max-w-[400px]">{content.title}</p>
             </div>
           </div>
           
-          <div className="flex flex-col gap-1 text-xs text-gray-600 sm:text-right mt-2 sm:mt-0">
+          <div className="flex flex-col gap-0.5 text-xs text-gray-600 sm:text-right mt-2 sm:mt-0">
             <div className="flex items-center sm:justify-end gap-1.5">
               <Mail className="w-3 h-3" />
               <a href={`mailto:${content.email}`} className="hover:underline">{content.email}</a>
@@ -74,17 +74,17 @@ export default function Resume() {
         </header>
 
         {/* Summary */}
-        <section className="mb-4">
-          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-2 text-gray-800">{t('resume_summary')}</h2>
+        <section className="mb-3">
+          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_summary')}</h2>
           <p className="text-xs leading-relaxed text-gray-700 text-justify">
             {content.description}
           </p>
         </section>
 
         {/* Skills */}
-        <section className="mb-4">
-          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-2 text-gray-800">{t('resume_skills')}</h2>
-          <div className="grid grid-cols-[140px_1fr] gap-y-1 gap-x-2 text-xs">
+        <section className="mb-3">
+          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_skills')}</h2>
+          <div className="grid grid-cols-[140px_1fr] gap-y-0.5 gap-x-2 text-xs">
             <span className="font-bold text-gray-800">{t('resume_skills_core')}</span>
             <span className="text-gray-700">{skills.programming.join(", ")}</span>
             
@@ -100,8 +100,8 @@ export default function Resume() {
         </section>
 
         {/* Key Projects */}
-        <section className="mb-4">
-          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-2 text-gray-800">{t('resume_projects')}</h2>
+        <section className="mb-3">
+          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_projects')}</h2>
           <div className="space-y-2">
             {projects.map((proj, idx) => (
               <div key={idx}>
@@ -116,7 +116,7 @@ export default function Resume() {
                     source code
                   </a>
                 </div>
-                <p className="text-xs text-gray-700 mt-0.5">
+                <p className="text-xs text-gray-700 mt-0.5 leading-snug">
                   {proj[language].description}
                 </p>
               </div>
@@ -125,9 +125,9 @@ export default function Resume() {
         </section>
 
         {/* Experience */}
-        <section className="mb-4">
-          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-2 text-gray-800">{t('resume_experience')}</h2>
-          <div className="space-y-3">
+        <section className="mb-3">
+          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_experience')}</h2>
+          <div className="space-y-2.5">
             {experiences.map((exp, idx) => (
               <div key={idx}>
                 <div className="flex justify-between items-baseline mb-0.5">
@@ -150,8 +150,8 @@ export default function Resume() {
         </section>
 
         {/* Education */}
-        <section className="mb-4">
-          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-2 text-gray-800">{t('resume_education')}</h2>
+        <section className="mb-2">
+          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_education')}</h2>
           <div className="space-y-1">
             {education.map((edu, idx) => (
               <div key={idx} className="flex justify-between items-baseline text-xs">
@@ -167,8 +167,8 @@ export default function Resume() {
         </section>
 
         {/* Footnote */}
-        <footer className="mt-auto pt-4">
-          <p className="text-[8px] leading-tight text-gray-400 text-justify">
+        <footer className="pt-2">
+          <p className="text-[7px] leading-tight text-gray-400 text-justify">
             {t('resume_gdpr')}
           </p>
         </footer>
