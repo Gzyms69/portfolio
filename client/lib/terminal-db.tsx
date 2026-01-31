@@ -1,20 +1,20 @@
-import { Zap, Share2 } from "lucide-react";
+import { Share2, Wrench } from "lucide-react";
 import { Project, CVData, GlobalConfig, Language } from "@shared/types";
 
 export const portfolioConfig: GlobalConfig = {
   pl: {
     name: "Dawid Czerwiński",
-    title: "",
-    description: "Junior Full-Stack Developer z doświadczeniem w edukacji technicznej. Łączę praktyczną znajomość Pythona (FastAPI), React i TypeScript z analitycznym myśleniem oraz biegłością w systemach Linux (Ubuntu/Bash). Poszukuję roli, w której będę mógł rozwijać swoje umiejętności programistyczne i wspierać zespół techniczny.",
+    title: "Technical Support Engineer | Application Support Specialist",
+    description: "Specjalista IT z technicznym zapleczem (Python, SQL, Linux) i doświadczeniem operacyjnym w międzynarodowych korporacjach (FedEx, BBH). Posiadam praktyczne umiejętności diagnozowania błędów (Live Debugging), pracy z systemami zgłoszeniowymi (SLA) oraz automatyzacji zadań. Szukam roli w Technical Support, gdzie wykorzystam umiejętności skryptowe do usprawniania procesów.",
     email: "dawidczerwinskibiznes@gmail.com",
-    heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "SQL", "Git", "Linux", "Bash"]
+    heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "Jira"]
   },
   en: {
     name: "Dawid Czerwiński",
-    title: "",
-    description: "Junior Full-Stack Developer with a background in technical education. I combine practical expertise in Python (FastAPI), React, and TypeScript with strong analytical skills and Linux (Ubuntu/Bash) proficiency. Seeking a role to leverage my coding skills and technical aptitude in a professional environment.",
+    title: "Technical Support Engineer | Application Support Specialist",
+    description: "IT Specialist with technical background (Python, SQL, Linux) and operational experience in international corporations (FedEx, BBH). Skilled in diagnosing errors (Live Debugging), working with ticket systems (SLA), and task automation. Seeking a Technical Support role to utilize scripting skills for process improvement.",
     email: "dawidczerwinskibiznes@gmail.com",
-    heroTechStack: ["Python", "React", "TypeScript", "FastAPI", "SQL", "Git", "Linux", "Bash"]
+    heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "Jira"]
   },
   socials: {
     github: "https://github.com/Gzyms69",
@@ -27,36 +27,36 @@ export const portfolioConfig: GlobalConfig = {
 
 export const projects: Project[] = [
   {
-    title: "WikiGraph Lab",
+    title: "DeepSeek Folder Organizer",
     pl: {
-      description: "Platforma badawcza do analizy semantycznej Wikipedii (Index Jaccarda). Stack: FastAPI (Python), Next.js, Neo4j, Docker.",
-      fullDescription: "WikiGraph Lab to zaawansowany system inżynierski zaprojektowany zarówno dla badaczy danych, jak i entuzjastów wiedzy. Projekt demonstruje profesjonalne podejście do architektury oprogramowania, integrując wysokowydajną bazę grafową Neo4j, skalowalne API oparte na FastAPI oraz nowoczesny frontend w Next.js. Silnik wykorzystuje algorytm Indeksu Jaccarda do precyzyjnego filtrowania szumu semantycznego i identyfikacji istotnych połączeń międzyjęzykowych, przekształcając surowe zrzuty Wikipedii w uporządkowany graf wiedzy.",
+      description: "Skrypt (JavaScript/Tampermonkey) naprawiający brak funkcjonalności folderów w aplikacji DeepSeek. Implementacja poprzez bezpośrednią manipulację DOM.",
+      fullDescription: "Rozwiązanie problemu UX/UI w narzędziu codziennej pracy. Skrypt wstrzykuje brakującą funkcjonalność zarządzania folderami do interfejsu webowego DeepSeek, wykorzystując UserScripts i API przeglądarki. Demonstruje umiejętność samodzielnego naprawiania narzędzi i poprawy produktywności.",
     },
     en: {
-      description: "Research platform for semantic Wikipedia analysis (Jaccard Index). Stack: FastAPI (Python), Next.js, Neo4j, Docker.",
-      fullDescription: "WikiGraph Lab is an advanced engineering system designed for both data researchers and knowledge enthusiasts. The project demonstrates a professional approach to software architecture, integrating a high-performance Neo4j graph database, a scalable FastAPI-based API, and a modern Next.js frontend. The engine employs the Jaccard Index algorithm to precisely filter semantic noise and identify meaningful cross-lingual connections, transforming raw Wikipedia dumps into a structured knowledge graph.",
+      description: "Script (JavaScript/Tampermonkey) fixing missing folder functionality in DeepSeek app. Implemented via direct DOM manipulation.",
+      fullDescription: "UX/UI fix for a daily driver tool. The script injects missing folder management functionality into the DeepSeek web interface using UserScripts and Browser APIs. Demonstrates the ability to self-diagnose tool limitations and implement productivity fixes.",
+    },
+    githubUrl: "https://github.com/Gzyms69/DeepSeek-Folder-Organizer",
+    techStack: ["JavaScript", "Tampermonkey", "DOM Manipulation", "Automation"],
+    variant: "design",
+    icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />,
+    imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"
+  },
+  {
+    title: "WikiGraph Lab",
+    pl: {
+      description: "System przetwarzania danych (ETL) z wykorzystaniem Docker i Linux. Pobieranie i czyszczenie dużych zbiorów danych (Wikipedia Dumps), diagnozowanie błędów integracji (Python/Neo4j).",
+      fullDescription: "WikiGraph Lab to zaawansowany system inżynierski. Projekt demonstruje profesjonalne podejście do architektury oprogramowania, integrując wysokowydajną bazę grafową Neo4j, skalowalne API oparte na FastAPI oraz konteneryzację Docker. Skupienie na backendzie i przepływie danych.",
+    },
+    en: {
+      description: "Data processing system (ETL) using Docker and Linux. Ingesting and cleaning large datasets (Wikipedia Dumps), diagnosing integration errors (Python/Neo4j).",
+      fullDescription: "WikiGraph Lab is an advanced engineering system. The project demonstrates a professional approach to software architecture, integrating a high-performance Neo4j graph database, a scalable FastAPI-based API, and Docker containerization. Focus on backend and data flow.",
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
-    techStack: ["Python", "FastAPI", "Neo4j", "Next.js", "TypeScript", "Docker", "Graph Data Science"],
+    techStack: ["Python", "Docker", "Linux", "Neo4j", "ETL", "FastAPI"],
     variant: "design",
     icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop"
-  },
-  {
-    title: "Portfolio Website",
-    pl: {
-      description: "Interaktywny interfejs terminalowy w React 18 i Vite. Zaawansowane animacje (Framer Motion) i responsywny design.",
-      fullDescription: "Wysoko wydajna platforma portfolio wykorzystująca React 18 i Vite. Projekt skupia się na dostarczaniu unikalnych wrażeń wizualnych poprzez płynne przejścia, responsywny design i autorską estetykę terminala. Zaimplementowano zaawansowane animacje oparte na fizyce sprężyn oraz zoptymalizowane renderowanie 3D.",
-    },
-    en: {
-      description: "Interactive terminal interface built with React 18 and Vite. Advanced animations (Framer Motion) and responsive design.",
-      fullDescription: "A high-performance portfolio platform utilizing React 18 and Vite. The project focuses on delivering unique visual experiences through seamless transitions, responsive design, and custom terminal aesthetics. Implemented advanced spring-physics animations and optimized 3D rendering.",
-    },
-    githubUrl: "https://github.com/Gzyms69/portfolio",
-    techStack: ["React", "TypeScript", "Vite", "TailwindCSS", "Express", "Node.js", "Radix UI"],
-    variant: "design",
-    icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
-    imageUrl: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg"
   }
 ];
 
@@ -69,40 +69,40 @@ export const cvData: Record<Language, CVData> = {
         location: "Holandia",
         period: "02.2025 - 10.2025",
         responsibilities: [
-          "Obsługa oprogramowania logistycznego i realizacja zadań w dynamicznym środowisku produkcyjnym.",
+          "Realizacja zadań w dynamicznym środowisku produkcyjnym pod presją czasu.",
           "Praca w międzynarodowym zespole (język angielski)."
         ],
       },
       {
-        title: "Nauczyciel Programowania (C++, Python, C#, Unity)",
+        title: "IT Mentor & Technical Support",
         company: "Giganci Programowania",
         location: "Kielce / Zdalnie",
         period: "01.2024 - 06.2025",
         responsibilities: [
-          "Realizacja pełnego programu nauki programowania od podstaw do poziomu matury: algorytmika, struktury danych, zmienne, SQL oraz Python/C++.",
-          "Przeprowadzanie regularnych Code Review i sesji Live Debugging (VS Code, Unity), ucząc dobrych praktyk (SOLID, Clean Code) i optymalizacji kodu.",
-          "Zarządzanie zdalnym nauczaniem via Discord i tworzenie środowiska projektowego z wykorzystaniem Git i GitHub.",
-          "Tłumaczenie złożonych zagadnień (OOP, wzorce projektowe) na praktyczne zadania programistyczne."
+          "Przeprowadzanie Live Debuggingu i analiza błędów w kodzie w czasie rzeczywistym (Python, C++, C#).",
+          "Diagnozowanie problemów ze środowiskiem programistycznym (VS Code, Unity, Git) na stacjach roboczych użytkowników.",
+          "Tłumaczenie złożonych zagadnień technicznych osobom nietechnicznym (Support Level 1/2)."
         ],
       },
       {
-        title: "Specjalista ds. Operacji",
+        title: "Operations Specialist",
         company: "Brown Brothers Harriman",
         location: "Kraków",
         period: "09.2023 - 12.2023",
         responsibilities: [
-          "Obsługa płatności funduszy i analiza danych finansowych.",
-          "Praca z systemami bankowymi i raportowanie błędów operacyjnych."
+          "Eskalowanie incydentów i raportowanie błędów systemowych do działów IT w środowisku bankowym Enterprise.",
+          "Analiza danych finansowych i weryfikacja zgodności z procedurami."
         ],
       },
       {
-        title: "Specjalista ds. Odpraw Celnych",
+        title: "Operations Specialist / Technical Resolution",
         company: "FedEx Express Europe",
         location: "Kraków",
         period: "03.2022 - 07.2023",
         responsibilities: [
-          "Rozwiązywanie problemów z odprawami celnymi i optymalizacja przepływu pracy.",
-          "Szkolenie pracowników i wsparcie techniczne dla klientów."
+          "Zarządzanie incydentami operacyjnymi w wewnętrznym systemie zgłoszeniowym (Ticket-based workflow).",
+          "Praca pod presją czasu (Operational SLA) przy odprawach celnych – priorytetyzacja zadań krytycznych.",
+          "Współpraca z działami technicznymi przy rozwiązywaniu problemów z dokumentacją elektroniczną."
         ],
       }
     ],
@@ -121,9 +121,9 @@ export const cvData: Record<Language, CVData> = {
       },
     ],
     skills: {
-      general: ["Rozwiązywanie problemów", "Analityczne myślenie", "Komunikacja techniczna", "Obsługa klienta"],
-      tools: ["Git", "Docker", "VS Code", "Jira/Trello", "Linux (Ubuntu/Bash)", "Pakiet Office"],
-      programming: ["Python (FastAPI)", "React", "TypeScript", "JavaScript", "SQL", "C++", "C#"],
+      general: ["Technical Support", "Incident Management", "SLA", "English (C1/C2)", "Problem Solving"],
+      tools: ["Linux (Ubuntu/Bash)", "SQL", "Docker", "Git", "Jira (Ticketing)", "VS Code", "Excel"],
+      programming: ["Python (Scripting)", "Bash", "JavaScript", "SQL", "C++"],
     },
     languages: ["Polski (Ojczysty)", "Angielski (C1/C2 - Zaawansowany)", "Niemiecki (Podstawowy)", "Rosyjski (Podstawowy)"]
   },
@@ -135,19 +135,19 @@ export const cvData: Record<Language, CVData> = {
         location: "Netherlands",
         period: "Feb 2025 - Oct 2025",
         responsibilities: [
-          "Operated logistics software and executed time-sensitive tasks in production environment.",
+          "Executed time-sensitive tasks in a fast-paced production environment.",
           "Collaborated in an international, English-speaking team."
         ],
       },
       {
-        title: "Programming Teacher (C++, Python, C#, Unity)",
+        title: "IT Mentor & Technical Support",
         company: "Giganci Programowania",
         location: "Kielce / Remote",
         period: "Jan 2024 - Jun 2025",
         responsibilities: [
-          "Delivered comprehensive programming curriculum from basics to Matura level: algorithms, data structures, variables, SQL, and Python/C++.",
-          "Conducted weekly Code Reviews and Live Debugging sessions (VS Code, Unity), mentoring students on SOLID principles, clean code, and performance optimization.",
-          "Managed remote learning environment via Discord, introducing version control workflows with Git and GitHub."
+          "Conducted Live Debugging and real-time code error analysis (Python, C++, C#).",
+          "Diagnosed development environment issues (VS Code, Unity, Git) on user workstations.",
+          "Translated complex technical concepts to non-technical users (Support Level 1/2)."
         ],
       },
       {
@@ -156,18 +156,19 @@ export const cvData: Record<Language, CVData> = {
         location: "Kraków",
         period: "Sep 2023 - Dec 2023",
         responsibilities: [
-          "Managed fund payments and analyzed financial data for compliance.",
-          "Operated banking systems and reported operational discrepancies."
+          "Escalated incidents and reported system errors to IT departments in an Enterprise banking environment.",
+          "Analyzed financial data for compliance and accuracy."
         ],
       },
       {
-        title: "Clearance Broker",
+        title: "Operations Specialist / Technical Resolution",
         company: "FedEx Express Europe",
         location: "Kraków",
         period: "Mar 2022 - Jul 2023",
         responsibilities: [
-          "Troubleshooted clearance bottlenecks and optimized workflows.",
-          "Trained team members and provided technical guidance to customers."
+          "Managed operational incidents in internal ticketing system (Ticket-based workflow).",
+          "Worked under time pressure (Operational SLA) on customs clearance – prioritizing critical tasks.",
+          "Collaborated with technical departments to resolve electronic documentation issues."
         ],
       }
     ],
@@ -186,9 +187,9 @@ export const cvData: Record<Language, CVData> = {
       },
     ],
     skills: {
-      general: ["Technical Problem Solving", "Analytical Thinking", "Technical Communication", "Client Support"],
-      tools: ["Git", "Docker", "VS Code", "Jira/Trello", "Linux (Ubuntu/Bash)", "MS Office"],
-      programming: ["Python (FastAPI)", "React", "TypeScript", "JavaScript", "SQL", "C++", "C#"],
+      general: ["Technical Support", "Incident Management", "SLA", "English (C1/C2)", "Problem Solving"],
+      tools: ["Linux (Ubuntu/Bash)", "SQL", "Docker", "Git", "Jira (Ticketing)", "VS Code", "Excel"],
+      programming: ["Python (Scripting)", "Bash", "JavaScript", "SQL", "C++"],
     },
     languages: ["Polish (Native)", "English (C1/C2 - Advanced Professional)", "German (Elementary)", "Russian (Elementary)"]
   }
