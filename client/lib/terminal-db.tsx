@@ -5,16 +5,16 @@ export const portfolioConfig: GlobalConfig = {
   pl: {
     name: "Dawid Czerwiński",
     title: "Technical Support Engineer | Application Support Specialist",
-    description: "Specjalista IT z technicznym zapleczem (Python, SQL, Linux) i doświadczeniem operacyjnym w międzynarodowych korporacjach (FedEx, BBH). Posiadam praktyczne umiejętności diagnozowania błędów (Live Debugging), pracy z systemami zgłoszeniowymi (SLA) oraz automatyzacji zadań. Szukam roli w Technical Support, gdzie wykorzystam umiejętności skryptowe do usprawniania procesów.",
+    description: "Specjalista IT z technicznym zapleczem (Python, SQL, Linux) i doświadczeniem operacyjnym w międzynarodowych korporacjach (FedEx). Posiadam praktyczne umiejętności diagnozowania błędów (Live Debugging), pracy z systemami zgłoszeniowymi (SLA) oraz automatyzacji zadań. Szukam roli w Technical Support, gdzie wykorzystam umiejętności skryptowe do usprawniania procesów.",
     email: "dawidczerwinskibiznes@gmail.com",
-    heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "Jira"]
+    heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git"]
   },
   en: {
     name: "Dawid Czerwiński",
     title: "Technical Support Engineer | Application Support Specialist",
-    description: "IT Specialist with technical background (Python, SQL, Linux) and operational experience in international corporations (FedEx, BBH). Skilled in diagnosing errors (Live Debugging), working with ticket systems (SLA), and task automation. Seeking a Technical Support role to utilize scripting skills for process improvement.",
+    description: "IT Specialist with technical background (Python, SQL, Linux) and operational experience in international corporations (FedEx). Skilled in diagnosing errors (Live Debugging), working with ticket systems (SLA), and task automation. Seeking a Technical Support role to utilize scripting skills for process improvement.",
     email: "dawidczerwinskibiznes@gmail.com",
-    heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "Jira"]
+    heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git"]
   },
   socials: {
     github: "https://github.com/Gzyms69",
@@ -29,15 +29,15 @@ export const projects: Project[] = [
   {
     title: "DeepSeek Folder Organizer",
     pl: {
-      description: "Skrypt (JavaScript/Tampermonkey) naprawiający brak funkcjonalności folderów w aplikacji DeepSeek. Implementacja poprzez bezpośrednią manipulację DOM.",
-      fullDescription: "Rozwiązanie problemu UX/UI w narzędziu codziennej pracy. Skrypt wstrzykuje brakującą funkcjonalność zarządzania folderami do interfejsu webowego DeepSeek, wykorzystując UserScripts i API przeglądarki. Demonstruje umiejętność samodzielnego naprawiania narzędzi i poprawy produktywności.",
+      description: "Skrypt (JavaScript/Tampermonkey) naprawiający brak funkcjonalności folderów. Reverse Engineering DOM i wstrzykiwanie UI.",
+      fullDescription: "Stworzenie skryptu typu UserScript naprawiającego braki w interfejsie webowym popularnego narzędzia AI. Implementacja 'Reverse Engineering' struktury DOM strony w celu wstrzyknięcia własnych elementów UI (Folderów). Rozwiązanie realnego problemu braku organizacji pracy – narzędzie zwiększające produktywność.",
     },
     en: {
-      description: "Script (JavaScript/Tampermonkey) fixing missing folder functionality in DeepSeek app. Implemented via direct DOM manipulation.",
-      fullDescription: "UX/UI fix for a daily driver tool. The script injects missing folder management functionality into the DeepSeek web interface using UserScripts and Browser APIs. Demonstrates the ability to self-diagnose tool limitations and implement productivity fixes.",
+      description: "UserScript (JS/Tampermonkey) fixing missing folder functionality. Reverse-engineered DOM structure to inject UI elements.",
+      fullDescription: "Created a UserScript to fix UX gaps in a daily driver AI tool. Implemented reverse engineering of the DOM structure to inject custom UI elements (Folders). Solved a real-world productivity issue through direct code intervention.",
     },
     githubUrl: "https://github.com/Gzyms69/DeepSeek-Folder-Organizer",
-    techStack: ["JavaScript", "Tampermonkey", "DOM Manipulation", "Automation"],
+    techStack: ["JavaScript", "Tampermonkey", "DOM Manipulation", "Automation", "Reverse Engineering"],
     variant: "design",
     icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"
@@ -45,15 +45,15 @@ export const projects: Project[] = [
   {
     title: "WikiGraph Lab",
     pl: {
-      description: "System przetwarzania danych (ETL) z wykorzystaniem Docker i Linux. Pobieranie i czyszczenie dużych zbiorów danych (Wikipedia Dumps), diagnozowanie błędów integracji (Python/Neo4j).",
-      fullDescription: "WikiGraph Lab to zaawansowany system inżynierski. Projekt demonstruje profesjonalne podejście do architektury oprogramowania, integrując wysokowydajną bazę grafową Neo4j, skalowalne API oparte na FastAPI oraz konteneryzację Docker. Skupienie na backendzie i przepływie danych.",
+      description: "System ETL (Python/Docker). AI Workflow: Wykorzystanie agentów AI do analizy logów i optymalizacji zapytań Neo4j.",
+      fullDescription: "Zaprojektowanie i wdrożenie hybrydowej architektury bazy danych (Graph + SQL) do przetwarzania dużych zbiorów danych. Stworzenie zautomatyzowanego pipeline'u ETL w Pythonie, odpornego na błędy danych. Wykorzystanie metodyki AI-Augmented Development do akceleracji procesu debugowania i weryfikacji architektury (40% szybsze wdrożenie).",
     },
     en: {
-      description: "Data processing system (ETL) using Docker and Linux. Ingesting and cleaning large datasets (Wikipedia Dumps), diagnosing integration errors (Python/Neo4j).",
-      fullDescription: "WikiGraph Lab is an advanced engineering system. The project demonstrates a professional approach to software architecture, integrating a high-performance Neo4j graph database, a scalable FastAPI-based API, and Docker containerization. Focus on backend and data flow.",
+      description: "ETL System (Python/Docker). AI Workflow: Used AI agents for log analysis and Neo4j query optimization.",
+      fullDescription: "Designed and deployed a hybrid database architecture (Graph + SQL) for large dataset processing. Created an automated Python ETL pipeline with robust error handling. Leveraged AI-Augmented Development methodology to accelerate debugging and architectural verification (40% faster deployment).",
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
-    techStack: ["Python", "Docker", "Linux", "Neo4j", "ETL", "FastAPI"],
+    techStack: ["Python", "Docker", "Linux", "Neo4j", "ETL", "AI-Augmented Workflow"],
     variant: "design",
     icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop"
@@ -63,16 +63,6 @@ export const projects: Project[] = [
 export const cvData: Record<Language, CVData> = {
   pl: {
     experiences: [
-      {
-        title: "Pracownik Projektowy",
-        company: "AB Midden Nederland",
-        location: "Holandia",
-        period: "02.2025 - 10.2025",
-        responsibilities: [
-          "Realizacja zadań w dynamicznym środowisku produkcyjnym pod presją czasu.",
-          "Praca w międzynarodowym zespole (język angielski)."
-        ],
-      },
       {
         title: "IT Mentor & Technical Support",
         company: "Giganci Programowania",
@@ -85,13 +75,13 @@ export const cvData: Record<Language, CVData> = {
         ],
       },
       {
-        title: "Operations Specialist",
-        company: "Brown Brothers Harriman",
-        location: "Kraków",
-        period: "09.2023 - 12.2023",
+        title: "Pracownik Projektowy",
+        company: "AB Midden Nederland",
+        location: "Holandia",
+        period: "02.2025 - 10.2025",
         responsibilities: [
-          "Eskalowanie incydentów i raportowanie błędów systemowych do działów IT w środowisku bankowym Enterprise.",
-          "Analiza danych finansowych i weryfikacja zgodności z procedurami."
+          "Realizacja zadań w dynamicznym środowisku produkcyjnym pod presją czasu.",
+          "Praca w międzynarodowym zespole (język angielski)."
         ],
       },
       {
@@ -109,36 +99,26 @@ export const cvData: Record<Language, CVData> = {
     education: [
       {
         school: "Politechnika Krakowska",
-        degree: "Studia Inżynierskie",
+        degree: "Studia Inżynierskie (3 lata)",
         field: "Matematyka Stosowana",
         years: "2020-2022",
       },
       {
         school: "Akademia Górniczo-Hutnicza (AGH)",
-        degree: "Studia Inżynierskie",
+        degree: "Studia Inżynierskie (1 rok)",
         field: "Elektronika i Telekomunikacja",
         years: "2019-2020",
       },
     ],
     skills: {
-      general: ["Technical Support", "Incident Management", "SLA", "English (C1/C2)", "Problem Solving"],
-      tools: ["Linux (Ubuntu/Bash)", "SQL", "Docker", "Git", "Jira (Ticketing)", "VS Code", "Excel"],
+      general: ["Technical Support", "Incident Management", "SLA", "Problem Solving", "AI-Augmented Workflow"],
+      tools: ["Linux (Ubuntu/Bash)", "SQL", "Docker", "Git", "Jira", "VS Code", "Excel"],
       programming: ["Python (Scripting)", "Bash", "JavaScript", "SQL", "C++"],
     },
-    languages: ["Polski (Ojczysty)", "Angielski (C1/C2 - Zaawansowany)", "Niemiecki (Podstawowy)", "Rosyjski (Podstawowy)"]
+    languages: ["Polski (Ojczysty)", "Angielski (C1/C2 - Zaawansowany Professional)", "Niemiecki (Podstawowy)", "Rosyjski (Podstawowy)"]
   },
   en: {
     experiences: [
-      {
-        title: "Project Worker",
-        company: "AB Midden Nederland",
-        location: "Netherlands",
-        period: "Feb 2025 - Oct 2025",
-        responsibilities: [
-          "Executed time-sensitive tasks in a fast-paced production environment.",
-          "Collaborated in an international, English-speaking team."
-        ],
-      },
       {
         title: "IT Mentor & Technical Support",
         company: "Giganci Programowania",
@@ -151,13 +131,13 @@ export const cvData: Record<Language, CVData> = {
         ],
       },
       {
-        title: "Operations Specialist",
-        company: "Brown Brothers Harriman",
-        location: "Kraków",
-        period: "Sep 2023 - Dec 2023",
+        title: "Project Worker",
+        company: "AB Midden Nederland",
+        location: "Netherlands",
+        period: "Feb 2025 - Oct 2025",
         responsibilities: [
-          "Escalated incidents and reported system errors to IT departments in an Enterprise banking environment.",
-          "Analyzed financial data for compliance and accuracy."
+          "Executed time-sensitive tasks in a fast-paced production environment.",
+          "Collaborated in an international, English-speaking team."
         ],
       },
       {
@@ -175,20 +155,20 @@ export const cvData: Record<Language, CVData> = {
     education: [
       {
         school: "Cracow University of Technology",
-        degree: "Engineering Coursework",
+        degree: "Engineering Coursework (3 years)",
         field: "Applied Mathematics",
         years: "2020-2022",
       },
       {
         school: "AGH University of Science and Technology",
-        degree: "Engineering Coursework",
+        degree: "Engineering Coursework (1 year)",
         field: "Electronics and Telecommunications",
         years: "2019-2020",
       },
     ],
     skills: {
-      general: ["Technical Support", "Incident Management", "SLA", "English (C1/C2)", "Problem Solving"],
-      tools: ["Linux (Ubuntu/Bash)", "SQL", "Docker", "Git", "Jira (Ticketing)", "VS Code", "Excel"],
+      general: ["Technical Support", "Incident Management", "SLA", "Problem Solving", "AI-Augmented Workflow"],
+      tools: ["Linux (Ubuntu/Bash)", "SQL", "Docker", "Git", "Jira", "VS Code", "Excel"],
       programming: ["Python (Scripting)", "Bash", "JavaScript", "SQL", "C++"],
     },
     languages: ["Polish (Native)", "English (C1/C2 - Advanced Professional)", "German (Elementary)", "Russian (Elementary)"]
