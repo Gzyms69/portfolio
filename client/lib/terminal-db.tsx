@@ -119,14 +119,14 @@ export const cvData: Record<Language, CVData> = {
         ],
       },
       {
-        title: "Operations Specialist / Technical Resolution",
+        title: "Clearance Broker / Operations Specialist",
         company: "FedEx Express Europe",
-        location: "Kraków",
+        location: "Irlandia (Zdalnie, Kraków)",
         period: "03.2022 - 07.2023",
         responsibilities: [
+          "Analiza dokumentacji i zapewnienie zgodności z procesem odpraw celnych (Customs Compliance).",
           "Zarządzanie incydentami operacyjnymi w wewnętrznym systemie zgłoszeniowym (Ticket-based workflow).",
-          "Praca w reżimie ścisłych terminów (SLA) przy odprawach celnych – priorytetyzacja zadań krytycznych w celu zachowania ciągłości operacyjnej.",
-          "Współpraca z działami technicznymi przy rozwiązywaniu problemów z dokumentacją elektroniczną."
+          "Praca w reżimie ścisłych terminów (SLA) w międzynarodowym zespole – priorytetyzacja zadań krytycznych."
         ],
       }
     ],
@@ -175,14 +175,14 @@ export const cvData: Record<Language, CVData> = {
         ],
       },
       {
-        title: "Operations Specialist / Technical Resolution",
+        title: "Clearance Broker / Operations Specialist",
         company: "FedEx Express Europe",
-        location: "Kraków",
+        location: "Ireland (Remote, Krakow)",
         period: "Mar 2022 - Jul 2023",
         responsibilities: [
-          "Managed operational incidents in internal ticketing system (Ticket-based workflow).",
-          "Worked under strict deadline regime (SLA) on customs clearance – prioritizing critical tasks to maintain operational continuity.",
-          "Collaborated with technical departments to resolve electronic documentation issues."
+          "Documentation analysis and ensuring compliance with customs clearance processes (Customs Compliance).",
+          "Operational incident management within an internal ticketing system (Ticket-based workflow).",
+          "Worked under strict deadlines (SLA) in an international team – prioritizing critical tasks."
         ],
       }
     ],
