@@ -4,6 +4,7 @@ import { Terminal as TerminalIcon, X } from "lucide-react";
 import { useLanguage } from "@/hooks/use-language";
 import { FalloutTerminalParser } from "@/lib/terminal-logic";
 import { DocumentReveal } from "./DocumentReveal";
+import { useNavigate } from "react-router-dom";
 
 interface TerminalConsoleProps {
   isOpen: boolean;
@@ -25,6 +26,7 @@ export const TerminalConsole = ({ isOpen, onClose }: TerminalConsoleProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const controls = useAnimation();
+  const navigate = useNavigate();
   
   const parser = useMemo(() => new FalloutTerminalParser(language), [language]);
 
@@ -84,6 +86,13 @@ export const TerminalConsole = ({ isOpen, onClose }: TerminalConsoleProps) => {
 
     const currentInput = input.trim();
     setHistory(prev => [...prev, { text: `> ${currentInput}`, type: 'input' }]);
+    
+    // Hidden Resume Command
+    if (currentInput.toLowerCase() === 'resume' || currentInput.toLowerCase() === 'cv') {
+      onClose();
+      navigate('/resume');
+      return;
+    }
     
     const response = parser.parse(currentInput);
     
