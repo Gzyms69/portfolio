@@ -30,17 +30,17 @@ const supportProjects: Project[] = [
     icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
   {
-    title: "DeepSeek Folder Organizer",
+    title: "LeadFinder & Katalog: Automated Sales Pipeline",
     pl: { 
-      description: "Skrypt (JavaScript/Tampermonkey) naprawiający brak funkcjonalności UI. Reverse Engineering DOM w celu wstrzyknięcia brakujących elementów interfejsu.", 
+      description: "Automatyzacja procesu (Process Automation): Narzędzie Python (End-to-End) do generowania leadów, ekstrakcji danych i walidacji domen do Google Sheets. Tooling: System 'Magic Link' generujący spersonalizowane strony demo (redukcja czasu pracy o 99%). Troubleshooting: Naprawa logiki zliczania recenzji w zewnętrznej bibliotece scrapującej.", 
       fullDescription: "..." 
     },
     en: { 
-      description: "UserScript (JS/Tampermonkey) fixing missing UI functionality. Reverse Engineering DOM to inject missing interface elements.", 
+      description: "Process Automation: End-to-end Python tool for lead generation, data extraction, and validation into Google Sheets. Tooling & Integration: 'Magic Link' system for dynamic demo website generation, reducing manual prep time by 99%. Troubleshooting: Diagnosed and patched broken review-counting logic in scraping library.", 
       fullDescription: "..." 
     },
-    githubUrl: "https://github.com/Gzyms69/DeepSeek-Folder-Organizer",
-    techStack: ["JavaScript", "Tampermonkey", "DOM Manipulation", "Troubleshooting"],
+    githubUrl: "https://github.com/Gzyms69",
+    techStack: ["Python Automation", "ETL", "Google Workspace Integration"],
     variant: "design",
     icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
@@ -198,11 +198,17 @@ const devProjects: Project[] = [
     icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
   {
-    title: "DeepSeek Folder Organizer",
-    pl: { description: "Manipulacja DOM i wstrzykiwanie JS. Inżynieria wsteczna UI w celu naprawy brakującej funkcjonalności.", fullDescription: "..." },
-    en: { description: "DOM Manipulation & JS Injection. UI Reverse Engineering to fix missing functionality.", fullDescription: "..." },
-    githubUrl: "https://github.com/Gzyms69/DeepSeek-Folder-Organizer",
-    techStack: ["JavaScript", "DOM Manipulation", "Automation", "Reverse Engineering"],
+    title: "LeadFinder & Katalog Ecosystem",
+    pl: { 
+      description: "Automated Lead Gen Pipeline: Silnik w Pythonie identyfikujący biznesy z lukami cyfrowymi (filtrowanie po dostępności WWW i recenzjach). Integracja z Google Sheets API. Modern Template Marketplace: Next.js 15 Monorepo (Turborepo) z 6+ szablonami. Dynamic Sales Architecture ('Magic Links'). Open Source: Poprawa błędów w Google Maps Scraper.", 
+      fullDescription: "..." 
+    },
+    en: { 
+      description: "Automated Lead Gen Pipeline: Python-based scraping engine identifying businesses with digital gaps (filtering by website availability & review count). Integrated with Google Sheets API. Modern Template Marketplace: Next.js 15 Monorepo (Turborepo) with 6+ templates & 'Magic Links'. Open Source Contribution: Patched Google Maps Scraper logic.", 
+      fullDescription: "..." 
+    },
+    githubUrl: "https://github.com/Gzyms69",
+    techStack: ["Python", "Next.js 15", "Turborepo", "Google Sheets API"],
     variant: "code",
     icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />
   }

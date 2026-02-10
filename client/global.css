@@ -49,6 +49,21 @@
 ::-webkit-scrollbar-thumb { @apply bg-muted-foreground/50 rounded; }
 ::-webkit-scrollbar-thumb:hover { @apply bg-muted-foreground/70; }
 
+@media print {
+  @page { margin: 0; }
+  body { 
+    margin: 0; 
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+  }
+  .resume-page {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+  }
+}
+
 @layer components {
   .text-strong { @apply text-foreground; }
   .text-medium { @apply text-muted-foreground; }
