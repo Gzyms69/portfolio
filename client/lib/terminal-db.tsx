@@ -1,4 +1,4 @@
-import { Share2, Wrench, Zap, FileText } from "lucide-react";
+import { Share2, Wrench, Zap } from "lucide-react";
 import { Project, CVData, PortfolioConfig, ResumeProfile, ResumeVariant, GlobalConfig } from "@shared/types";
 
 const commonSocials = {
@@ -11,49 +11,57 @@ const commonContact = {
 };
 
 // ============================================================================
-// PROFILE: SUPPORT (Default)
+// PROFILE: SUPPORT (Technical Support Engineer)
 // ============================================================================
 const supportProjects: Project[] = [
   {
-    title: "DeepSeek Folder Organizer",
-    pl: { description: "Skrypt (JavaScript/Tampermonkey) naprawiający brak funkcjonalności folderów. Reverse Engineering DOM i wstrzykiwanie UI.", fullDescription: "..." },
-    en: { description: "UserScript (JS/Tampermonkey) fixing missing folder functionality. Reverse-engineered DOM structure to inject UI elements.", fullDescription: "..." },
-    githubUrl: "https://github.com/Gzyms69/DeepSeek-Folder-Organizer",
-    techStack: ["JavaScript", "Tampermonkey", "DOM Manipulation", "Automation", "Reverse Engineering"],
-    variant: "design",
-    icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />,
-    imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"
+    title: "WikiGraph Lab",
+    pl: { 
+      description: "Diagnostyka i utrzymanie złożonego pipeline'u ETL (Python/Docker). Zarządzanie bazą grafową Neo4j i relacyjną SQLite. Rozwiązywanie problemów z wydajnością zapytań i integracją API.", 
+      fullDescription: "..." 
+    },
+    en: { 
+      description: "Diagnosis and maintenance of a complex ETL pipeline (Python/Docker). Management of Neo4j graph and SQLite relational databases. Troubleshooting query performance and API integration issues.", 
+      fullDescription: "..." 
+    },
+    githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
+    techStack: ["Python", "Neo4j", "Docker", "ETL Debugging", "Database Management"],
+    variant: "code",
+    icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
   {
-    title: "WikiGraph Lab",
-    pl: { description: "Projektowanie pipeline'ów ETL (Python/Docker). Wykorzystanie AI do automatycznej analizy logów i optymalizacji zapytań bazodanowych (Neo4j).", fullDescription: "..." },
-    en: { description: "ETL Pipeline Design (Python/Docker). Used AI for automated log analysis and database query optimization (Neo4j).", fullDescription: "..." },
-    githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
-    techStack: ["Python", "Docker", "Linux", "Neo4j", "ETL", "AI-Augmented Workflow"],
+    title: "DeepSeek Folder Organizer",
+    pl: { 
+      description: "Skrypt (JavaScript/Tampermonkey) naprawiający brak funkcjonalności UI. Reverse Engineering DOM w celu wstrzyknięcia brakujących elementów interfejsu.", 
+      fullDescription: "..." 
+    },
+    en: { 
+      description: "UserScript (JS/Tampermonkey) fixing missing UI functionality. Reverse Engineering DOM to inject missing interface elements.", 
+      fullDescription: "..." 
+    },
+    githubUrl: "https://github.com/Gzyms69/DeepSeek-Folder-Organizer",
+    techStack: ["JavaScript", "Tampermonkey", "DOM Manipulation", "Troubleshooting"],
     variant: "design",
-    icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />,
-    imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop"
+    icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
   {
     title: "ROMHub",
-    pl: { description: "Emulator N64 w przeglądarce (Client-side). Przetwarzanie lokalne, brak przesyłania plików na serwer.", fullDescription: "..." },
-    en: { description: "Browser-based N64 emulator (Client-side). Local processing, no server uploads, persistent saves.", fullDescription: "..." },
+    pl: { description: "Emulator N64 w przeglądarce. Diagnozowanie problemów z kompatybilnością WASM i wydajnością renderowania.", fullDescription: "..." },
+    en: { description: "Browser-based N64 emulator. Diagnosing WASM compatibility and rendering performance issues.", fullDescription: "..." },
     githubUrl: "https://github.com/Gzyms69/romhub",
-    techStack: ["JavaScript", "Emulation", "Client-side", "Local Storage"],
+    techStack: ["Emulation", "WASM", "Client-side Debugging"],
     variant: "code",
     icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
-    imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop",
     hideFromResume: true
   },
   {
     title: "Portfolio Website",
-    pl: { description: "Interaktywne portfolio w estetyce terminala. Wykorzystuje React, Framer Motion i Three.js.", fullDescription: "..." },
-    en: { description: "Interactive terminal-style portfolio. Built with React, Framer Motion, and Three.js.", fullDescription: "..." },
+    pl: { description: "Interaktywne portfolio. Rozwiązywanie problemów z responsywnością i wydajnością animacji (Framer Motion/Three.js).", fullDescription: "..." },
+    en: { description: "Interactive portfolio. Troubleshooting responsiveness and animation performance (Framer Motion/Three.js).", fullDescription: "..." },
     githubUrl: "https://github.com/Gzyms69/portfolio",
-    techStack: ["React", "TypeScript", "Three.js", "Framer Motion", "TailwindCSS"],
+    techStack: ["React", "Performance Optimization", "Three.js"],
     variant: "design",
     icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
-    imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
     hideFromResume: true
   }
 ];
@@ -84,7 +92,7 @@ const supportData: Record<string, CVData> = {
         location: "Kielce / Zdalnie",
         period: "01.2024 - 06.2025",
         responsibilities: [
-          "Prowadzenie kursów programowania: Realizacja kompleksowych szkoleń z języków Python, C++ i C# (od podstaw po poziom maturalny).",
+          "Prowadzenie kursów programowania: Realizacja kompleksowych szkoleń z języków Python, C++ i C#.",
           "Live Debugging i Wsparcie Techniczne: Bieżące diagnozowanie i naprawianie błędów w kodzie uczniów oraz rozwiązywanie problemów konfiguracyjnych środowisk (VS Code, Unity).",
           "Asynchroniczna obsługa zgłoszeń (Discord): Zdalne wsparcie techniczne dla kursantów poza godzinami zajęć."
         ]
@@ -101,7 +109,7 @@ const supportData: Record<string, CVData> = {
       },
       {
         title: "Clearance Broker / Operations Specialist",
-        company: "FedEx Express Europe",
+        company: "FedEx Express Ireland",
         location: "Irlandia (Zdalnie, Kraków)",
         period: "03.2022 - 07.2023",
         responsibilities: [
@@ -147,7 +155,7 @@ const supportData: Record<string, CVData> = {
       },
       {
         title: "Clearance Broker / Operations Specialist",
-        company: "FedEx Express Europe",
+        company: "FedEx Express Ireland",
         location: "Ireland (Remote, Krakow)",
         period: "Mar 2022 - Jul 2023",
         responsibilities: [
@@ -171,22 +179,28 @@ const supportData: Record<string, CVData> = {
 };
 
 // ============================================================================
-// PROFILE: DEVELOPER
+// PROFILE: DEVELOPER (Junior Software Engineer)
 // ============================================================================
 const devProjects: Project[] = [
   {
     title: "WikiGraph Lab",
-    pl: { description: "Offline-first Knowledge Engine (Python/Neo4j). Hybrydowe wyszukiwanie (FTS5 + Vector), własne algorytmy grafowe (BFS, PageRank). Architektura Serverless.", fullDescription: "..." },
-    en: { description: "Offline-first Knowledge Engine (Python/Neo4j). Hybrid Search (FTS5 + Vector), custom graph algorithms (BFS, PageRank). Optimized for local deployment.", fullDescription: "..." },
+    pl: { 
+      description: "Hybrydowa architektura (Offline Core + Online Modules). Implementacja znanych algorytmów grafowych (BFS, PageRank, Jaccard Index) w Pythonie, udostępnionych przez własne API. Konfiguracja JIT przez Wikipedia API oraz planowany moduł LLM API (Hybrid AI).", 
+      fullDescription: "..." 
+    },
+    en: { 
+      description: "Hybrid Architecture (Offline Core + Online Modules). Implementation of standard graph algorithms (BFS, PageRank, Jaccard Index) in Python via custom API. JIT configuration via Wikipedia API and planned LLM API module (Hybrid AI).", 
+      fullDescription: "..." 
+    },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
-    techStack: ["Python", "Neo4j", "Docker", "Vector DB", "Algorithms", "Backend"],
+    techStack: ["Python", "Neo4j", "Docker", "Graph Algorithms", "Backend API"],
     variant: "code",
     icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
   {
     title: "DeepSeek Folder Organizer",
-    pl: { description: "DOM Manipulation & JS Injection. Reverse Engineering UI w celu naprawy brakującej funkcjonalności.", fullDescription: "..." },
-    en: { description: "DOM Manipulation & JS Injection. Reverse Engineering UI to fix missing functionality.", fullDescription: "..." },
+    pl: { description: "Manipulacja DOM i wstrzykiwanie JS. Inżynieria wsteczna UI w celu naprawy brakującej funkcjonalności.", fullDescription: "..." },
+    en: { description: "DOM Manipulation & JS Injection. UI Reverse Engineering to fix missing functionality.", fullDescription: "..." },
     githubUrl: "https://github.com/Gzyms69/DeepSeek-Folder-Organizer",
     techStack: ["JavaScript", "DOM Manipulation", "Automation", "Reverse Engineering"],
     variant: "code",
@@ -230,14 +244,14 @@ const devData: Record<string, CVData> = {
         company: "AB Midden Nederland",
         location: "Holandia",
         period: "02.2025 - 10.2025",
-        responsibilities: ["Operational experience & work ethic reinforcement in international environment."]
+        responsibilities: ["Doświadczenie operacyjne i wzmacnianie etyki pracy w środowisku międzynarodowym."]
       },
       {
         title: "Operations Specialist",
-        company: "FedEx Express Europe",
+        company: "FedEx Express Ireland",
         location: "Kraków",
         period: "03.2022 - 07.2023",
-        responsibilities: ["Business Domain Awareness & International Team Collaboration (English C1/C2)."]
+        responsibilities: ["Świadomość domeny biznesowej i współpraca w zespole międzynarodowym (Angielski C1/C2)."]
       }
     ],
     education: supportData.pl.education,
@@ -270,7 +284,7 @@ const devData: Record<string, CVData> = {
       },
       {
         title: "Operations Specialist",
-        company: "FedEx Express Europe",
+        company: "FedEx Express Ireland",
         location: "Krakow",
         period: "Mar 2022 - Jul 2023",
         responsibilities: ["Business Domain Awareness & International Team Collaboration (English C1/C2)."]
@@ -287,31 +301,21 @@ const devData: Record<string, CVData> = {
 };
 
 // ============================================================================
-// PROFILE: OFFICE
+// PROFILE: OFFICE (Operations Specialist)
 // ============================================================================
-const officeProjects: Project[] = [
-  {
-    title: "Automatyzacja Przetwarzania Danych",
-    pl: { description: "Narzędzie do automatycznego porządkowania i wyszukiwania informacji w dużych zbiorach danych tekstowych.", fullDescription: "..." },
-    en: { description: "Tool for automated organization and retrieval of information in large text datasets.", fullDescription: "..." },
-    githubUrl: "https://github.com/Gzyms69", // Generic link
-    techStack: ["Automation", "Data Processing", "Excel Integration"],
-    variant: "code",
-    icon: <FileText className="h-8 w-8 text-gray-600 flex-shrink-0" />
-  }
-];
+const officeProjects: Project[] = []; // Empty as requested
 
 const officeConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
-    title: "Office Specialist | Data Administration | English C1/C2",
+    title: "Operations Specialist / Data Administration",
     description: "Skrupulatny specjalista ds. administracji z doświadczeniem w międzynarodowej korporacji (FedEx). Biegły w języku angielskim (C1/C2) i obsłudze pakietu MS Office (Excel). Posiadam doświadczenie w pracy z dokumentacją, procedurami oraz obsłudze klienta. Cechuje mnie dokładność, terminowość i wysoka kultura pracy.",
     email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["English C1/C2", "Excel", "MS Office", "Data Entry", "Administration"]
   },
   en: {
     name: "Dawid Czerwiński",
-    title: "Office Specialist | Data Administration | English C1/C2",
+    title: "Operations Specialist / Data Administration",
     description: "Meticulous administration specialist with experience in an international corporation (FedEx). Fluent in English (C1/C2) and proficient in MS Office (Excel). Experienced in documentation, procedures, and customer service. Characterized by accuracy, punctuality, and high work ethics.",
     email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["English C1/C2", "Excel", "MS Office", "Data Entry", "Administration"]
@@ -322,12 +326,23 @@ const officeData: Record<string, CVData> = {
   pl: {
     experiences: [
       {
+        title: "Pracownik Projektowy (Logistyka)",
+        company: "AB Midden Nederland",
+        location: "Holandia",
+        period: "02.2025 - 10.2025",
+        responsibilities: [
+          "Realizacja planów operacyjnych w środowisku magazynowym/produkcyjnym.",
+          "Praca fizyczna wymagająca dokładności i dyscypliny.",
+          "Codzienna współpraca w języku angielskim."
+        ]
+      },
+      {
         title: "Specjalista ds. Operacji / Administracja",
-        company: "FedEx Express Europe",
+        company: "FedEx Express Ireland",
         location: "Kraków",
         period: "03.2022 - 07.2023",
         responsibilities: [
-          "Weryfikacja dokumentacji i zapewnienie zgodności z procedurami celnymi.",
+          "Weryfikacja dokumentacji celnej i zapewnienie zgodności z procedurami (Compliance).",
           "Raportowanie i praca z systemami wewnętrznymi pod presją czasu (SLA).",
           "Kontakt z klientem zagranicznym i współpraca w zespole międzynarodowym."
         ]
@@ -342,35 +357,36 @@ const officeData: Record<string, CVData> = {
           "Raportowanie postępów uczestników i komunikacja z klientami (rodzicami).",
           "Dbałość o wysoką jakość obsługi klienta i wizerunek firmy."
         ]
-      },
-      {
-        title: "Freelancer / Tłumacz",
-        company: "Fiverr",
-        location: "Zdalnie",
-        period: "2020 - 2023",
-        responsibilities: [
-          "Tłumaczenia dokumentacji biznesowej i technicznej (PL-EN).",
-          "Dbałość o poprawność językową i terminowość zleceń."
-        ]
       }
     ],
     education: supportData.pl.education,
     skills: {
-      general: ["English C1/C2 (Professional Fluent)", "Attention to Detail", "Time Management", "Teamwork", "Fast Learner"],
-      tools: ["Advanced Excel (Automatyzacja)", "MS Office (Word, PowerPoint)", "Google Workspace", "Outlook"],
-      programming: [] // Removed technical stack
+      general: ["Dokładność w analizie dokumentacji", "Compliance & Procedures", "Realizacja planów operacyjnych", "Współpraca w zespole", "Kultura osobista"],
+      tools: ["Excel", "MS Office (Word, PowerPoint)", "Outlook", "Systemy wewnętrzne (ERP/CRM)", "Google Workspace"],
+      programming: [] 
     },
     languages: supportData.pl.languages
   },
   en: {
     experiences: [
       {
+        title: "Project Worker (Logistics)",
+        company: "AB Midden Nederland",
+        location: "Netherlands",
+        period: "Feb 2025 - Oct 2025",
+        responsibilities: [
+          "Execution of operational plans in a warehouse/production environment.",
+          "Physical work requiring accuracy and discipline.",
+          "Daily collaboration in English."
+        ]
+      },
+      {
         title: "Operations Specialist / Administration",
-        company: "FedEx Express Europe",
+        company: "FedEx Express Ireland",
         location: "Krakow",
         period: "Mar 2022 - Jul 2023",
         responsibilities: [
-          "Verification of documentation and ensuring compliance with procedures.",
+          "Verification of customs documentation and ensuring compliance with procedures.",
           "Reporting and working with internal systems under time pressure (SLA).",
           "Contact with international clients and collaboration within a global team."
         ]
@@ -385,22 +401,12 @@ const officeData: Record<string, CVData> = {
           "Reporting participant progress and communicating with clients.",
           "Ensuring high quality customer service and company image."
         ]
-      },
-      {
-        title: "Freelancer / Translator",
-        company: "Fiverr",
-        location: "Remote",
-        period: "2020 - 2023",
-        responsibilities: [
-          "Translation of business and technical documentation (PL-EN).",
-          "Ensuring linguistic correctness and punctuality of orders."
-        ]
       }
     ],
     education: supportData.en.education,
     skills: {
-      general: ["English C1/C2 (Professional Fluent)", "Attention to Detail", "Time Management", "Teamwork", "Fast Learner"],
-      tools: ["Advanced Excel (Automation)", "MS Office (Word, PowerPoint)", "Google Workspace", "Outlook"],
+      general: ["Documentation Accuracy", "Compliance & Procedures", "Operational Plan Execution", "Team Collaboration", "Work Ethics"],
+      tools: ["Excel", "MS Office (Word, PowerPoint)", "Outlook", "Internal Systems (ERP/CRM)", "Google Workspace"],
       programming: []
     },
     languages: supportData.en.languages

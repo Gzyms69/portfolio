@@ -1,65 +1,206 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { resumeProfiles, portfolioConfig } from "@/lib/terminal-db";
-import { useLanguage } from "@/hooks/use-language";
+import { useLanguage } from "@/hooks/use-language"; // We'll use this for initial state but override locally
 import { Button } from "@/components/ui/button";
-import { Download, Mail, Github, Linkedin, MapPin, RefreshCw } from "lucide-react";
+import { Download, Mail, Github, Linkedin, MapPin, Settings, Check, ChevronUp, FileDown, Globe, Briefcase } from "lucide-react";
 import { ResumeVariant, Project, Experience, Education } from "@shared/types";
+import { motion, AnimatePresence } from "framer-motion";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Resume() {
-  const { language, t } = useLanguage();
+  const { language: globalLang } = useLanguage();
   const [searchParams] = useSearchParams();
+  const { toast } = useToast();
   
-  // Default to 'support', but allow override via URL query param ?v=...
+  // State
   const initialVariant = (searchParams.get("v") as ResumeVariant) || "support";
   const [variant, setVariant] = useState<ResumeVariant>(initialVariant);
+  const [lang, setLang] = useState<"pl" | "en">(globalLang as "pl" | "en");
+  
+  // Menu Visibility
+  const [showConfigMenu, setShowConfigMenu] = useState(false);
+  const [showDownloadMenu, setShowDownloadMenu] = useState(false);
 
+  // Derived Data
   const profile = resumeProfiles[variant] || resumeProfiles["support"];
-  const content = profile.config[language];
-  const { experiences, education, skills, languages } = profile.data[language];
+  const content = profile.config[lang];
+  const { experiences, education, skills, languages } = profile.data[lang];
   const projects = profile.projects;
 
+  // Sync title
   useEffect(() => {
-    document.title = `${content.name} - Resume (${variant})`;
-  }, [content.name, variant]);
+    document.title = `${content.name} - Resume`; // Removed (${variant}) as requested
+  }, [content.name, variant, lang]);
+
+  // Handle click outside to close menus
+  useEffect(() => {
+    const handleClick = () => {
+      // Simple implementation: relying on z-index and click handlers on buttons to stop propagation
+    };
+    window.addEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleClick);
+  }, []);
 
   const handlePrint = () => {
     window.print();
+    setShowDownloadMenu(false);
   };
 
-  const toggleVariant = () => {
-    const variants: ResumeVariant[] = ["support", "developer", "office"];
-    const currentIndex = variants.indexOf(variant);
-    const nextIndex = (currentIndex + 1) % variants.length;
-    setVariant(variants[nextIndex]);
+  const handleDownloadAll = (_targetLang: 'pl' | 'en') => {
+    toast({
+      title: "Feature Not Available",
+      description: "Please download each profile individually via the print dialog.",
+      variant: "destructive"
+    });
+    setShowDownloadMenu(false);
   };
 
   return (
-    <div className="resume-page min-h-screen bg-white text-black font-sans selection:bg-gray-200 selection:text-black print:p-0 p-8 flex justify-center">
-      <div className="max-w-[210mm] w-full bg-white relative">
-        {/* Print/Download Button - Hidden in Print Mode */}
-        <div className="fixed bottom-8 right-8 print:hidden z-50 flex gap-2">
+    <div className="resume-page min-h-screen bg-white text-black font-sans selection:bg-gray-200 selection:text-black print:p-0 p-8 flex justify-center" onClick={() => { setShowConfigMenu(false); setShowDownloadMenu(false); }}>
+      <div className="max-w-[210mm] w-full bg-white relative" onClick={(e) => e.stopPropagation()}>
+        
+        {/* =====================================================================================
+            BOTTOM RIGHT: DOWNLOAD MENU
+           ===================================================================================== */}
+        <div className="fixed bottom-8 right-8 print:hidden z-50 flex flex-col items-end gap-2">
+          <AnimatePresence>
+            {showDownloadMenu && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                className="bg-white border border-gray-200 rounded-lg shadow-xl p-2 mb-2 w-56 flex flex-col gap-1"
+              >
+                <button 
+                  onClick={handlePrint}
+                  className="flex items-center gap-3 w-full px-3 py-2 text-sm text-left hover:bg-gray-100 rounded-md transition-colors"
+                >
+                  <Download className="w-4 h-4 text-gray-600" />
+                  <div className="flex flex-col">
+                    <span className="font-medium text-gray-900">Download Current</span>
+                    <span className="text-[10px] text-gray-500">PDF ({lang.toUpperCase()})</span>
+                  </div>
+                </button>
+                <div className="h-px bg-gray-100 my-1" />
+                <button 
+                  onClick={() => handleDownloadAll('en')}
+                  className="flex items-center gap-3 w-full px-3 py-2 text-sm text-left hover:bg-gray-100 rounded-md transition-colors opacity-60"
+                >
+                  <FileDown className="w-4 h-4 text-gray-600" />
+                  <div className="flex flex-col">
+                    <span className="font-medium text-gray-900">Download All (EN)</span>
+                    <span className="text-[10px] text-gray-500">ZIP Package</span>
+                  </div>
+                </button>
+                <button 
+                  onClick={() => handleDownloadAll('pl')}
+                  className="flex items-center gap-3 w-full px-3 py-2 text-sm text-left hover:bg-gray-100 rounded-md transition-colors opacity-60"
+                >
+                  <FileDown className="w-4 h-4 text-gray-600" />
+                  <div className="flex flex-col">
+                    <span className="font-medium text-gray-900">Download All (PL)</span>
+                    <span className="text-[10px] text-gray-500">ZIP Package</span>
+                  </div>
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           <Button 
-            onClick={handlePrint}
+            onClick={(e) => { e.stopPropagation(); setShowDownloadMenu(!showDownloadMenu); setShowConfigMenu(false); }}
             className="shadow-xl bg-black text-white hover:bg-gray-800 gap-2 rounded-full px-6 h-12"
           >
             <Download className="w-4 h-4" />
-            {t('resume_download')}
+            <span>Download</span>
+            <ChevronUp className={`w-3 h-3 transition-transform ${showDownloadMenu ? 'rotate-180' : ''}`} />
           </Button>
         </div>
 
-        {/* Hidden Switcher Button - Bottom Left */}
-        <div className="fixed bottom-8 left-8 print:hidden z-50 opacity-0 hover:opacity-100 transition-opacity duration-300">
+        {/* =====================================================================================
+            BOTTOM LEFT: CONFIG MENU (Switcher) - Hidden by default, appears on hover area
+           ===================================================================================== */}
+        <div className="fixed bottom-8 left-8 print:hidden z-50 flex flex-col items-start gap-2 group">
+           <AnimatePresence>
+            {showConfigMenu && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                className="bg-white border border-gray-200 rounded-lg shadow-xl p-3 mb-2 w-64 flex flex-col gap-4"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Variant Selector */}
+                <div className="flex flex-col gap-2">
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1">
+                    <Briefcase className="w-3 h-3" /> Profile Variant
+                  </span>
+                  <div className="flex flex-col gap-1">
+                    {(['support', 'developer', 'office'] as const).map((v) => (
+                      <button
+                        key={v}
+                        onClick={() => setVariant(v)}
+                        className={`flex items-center justify-between px-3 py-2 rounded text-xs font-medium transition-all ${
+                          variant === v 
+                            ? "bg-black text-white shadow-md" 
+                            : "bg-gray-50 text-gray-600 hover:bg-gray-100"
+                        }`}
+                      >
+                        <span className="capitalize">{v}</span>
+                        {variant === v && <Check className="w-3 h-3" />}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Language Selector */}
+                <div className="flex flex-col gap-2">
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1">
+                    <Globe className="w-3 h-3" /> Language
+                  </span>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => setLang('pl')}
+                      className={`flex items-center justify-center gap-2 px-3 py-2 rounded text-xs font-medium transition-all ${
+                        lang === 'pl' 
+                          ? "bg-black text-white shadow-md" 
+                          : "bg-gray-50 text-gray-600 hover:bg-gray-100"
+                      }`}
+                    >
+                      PL
+                    </button>
+                    <button
+                      onClick={() => setLang('en')}
+                      className={`flex items-center justify-center gap-2 px-3 py-2 rounded text-xs font-medium transition-all ${
+                        lang === 'en' 
+                          ? "bg-black text-white shadow-md" 
+                          : "bg-gray-50 text-gray-600 hover:bg-gray-100"
+                      }`}
+                    >
+                      EN
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           <Button 
-            onClick={toggleVariant}
+            onClick={(e) => { e.stopPropagation(); setShowConfigMenu(!showConfigMenu); setShowDownloadMenu(false); }}
             variant="outline"
-            className="bg-white/50 backdrop-blur-sm border-gray-200 text-gray-400 hover:text-black gap-2 h-8 text-xs"
+            className={`bg-white/80 backdrop-blur-sm border-gray-200 text-gray-600 hover:text-black gap-2 h-10 px-4 transition-all ${!showConfigMenu ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}
           >
-            <RefreshCw className="w-3 h-3" />
-            {variant.toUpperCase()}
+            <Settings className="w-4 h-4" />
+            <span className="text-xs font-medium">
+              {variant.toUpperCase()} / {lang.toUpperCase()}
+            </span>
           </Button>
         </div>
 
+        {/* =====================================================================================
+            RESUME CONTENT
+           ===================================================================================== */}
+        
         {/* Header */}
         <header className="border-b-2 border-black pb-3 mb-3 flex flex-col sm:flex-row justify-between items-start gap-4">
           <div className="flex items-center gap-4">
@@ -97,14 +238,16 @@ export default function Resume() {
             )}
             <div className="flex items-center sm:justify-end gap-1.5">
               <MapPin className="w-3 h-3" />
-              <span>{t('resume_location')}</span>
+              <span>{lang === 'pl' ? 'Kraków, Polska / Zdalnie' : 'Krakow, Poland / Remote'}</span>
             </div>
           </div>
         </header>
 
         {/* Summary */}
         <section className="mb-3">
-          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_summary')}</h2>
+          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">
+            {lang === 'pl' ? 'Podsumowanie Zawodowe' : 'Professional Summary'}
+          </h2>
           <p className="text-xs leading-relaxed text-gray-700 text-justify">
             {content.description}
           </p>
@@ -112,22 +255,32 @@ export default function Resume() {
 
         {/* Skills */}
         <section className="mb-3">
-          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_skills')}</h2>
+          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">
+            {lang === 'pl' ? 'Umiejętności' : 'Technical Skills'}
+          </h2>
           <div className="grid grid-cols-[140px_1fr] gap-y-0.5 gap-x-2 text-xs">
             {skills.programming.length > 0 && (
               <>
-                <span className="font-bold text-gray-800">{t('resume_skills_core')}</span>
+                <span className="font-bold text-gray-800">
+                  {lang === 'pl' ? 'Języki Programowania' : 'Programming Languages'}
+                </span>
                 <span className="text-gray-700">{skills.programming.join(", ")}</span>
               </>
             )}
             
-            <span className="font-bold text-gray-800">{t('resume_skills_tools')}</span>
+            <span className="font-bold text-gray-800">
+              {lang === 'pl' ? 'Narzędzia i Systemy' : 'Tools & Systems'}
+            </span>
             <span className="text-gray-700">{skills.tools.join(", ")}</span>
             
-            <span className="font-bold text-gray-800">{t('resume_skills_general')}</span>
+            <span className="font-bold text-gray-800">
+              {lang === 'pl' ? 'Kompetencje Miękkie' : 'Soft Skills'}
+            </span>
             <span className="text-gray-700">{skills.general.join(", ")}</span>
 
-            <span className="font-bold text-gray-800">{t('resume_languages')}</span>
+            <span className="font-bold text-gray-800">
+              {lang === 'pl' ? 'Języki Obce' : 'Languages'}
+            </span>
             <span className="text-gray-700">{languages.join(" • ")}</span>
           </div>
         </section>
@@ -135,7 +288,9 @@ export default function Resume() {
         {/* Key Projects */}
         {projects.length > 0 && (
           <section className="mb-3">
-            <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_projects')}</h2>
+            <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">
+              {lang === 'pl' ? 'Kluczowe Projekty' : 'Key Projects'}
+            </h2>
             <div className="space-y-2">
               {projects.filter((p: Project) => !p.hideFromResume).map((proj: Project, idx: number) => (
                 <div key={idx}>
@@ -151,7 +306,7 @@ export default function Resume() {
                     </a>
                   </div>
                   <p className="text-xs text-gray-700 mt-0.5 leading-snug">
-                    {proj[language].description}
+                    {proj[lang].description}
                   </p>
                 </div>
               ))}
@@ -161,7 +316,9 @@ export default function Resume() {
 
         {/* Experience */}
         <section className="mb-3">
-          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_experience')}</h2>
+          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">
+            {lang === 'pl' ? 'Doświadczenie Zawodowe' : 'Work Experience'}
+          </h2>
           <div className="space-y-2.5">
             {experiences.map((exp: Experience, idx: number) => (
               <div key={idx}>
@@ -186,7 +343,9 @@ export default function Resume() {
 
         {/* Education */}
         <section className="mb-2">
-          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_education')}</h2>
+          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">
+            {lang === 'pl' ? 'Edukacja' : 'Education'}
+          </h2>
           <div className="space-y-1">
             {education.map((edu: Education, idx: number) => (
               <div key={idx} className="flex justify-between items-baseline text-xs">
@@ -204,7 +363,9 @@ export default function Resume() {
         {/* Footnote */}
         <footer className="pt-2">
           <p className="text-[7px] leading-tight text-gray-400 text-justify">
-            {t('resume_gdpr')}
+            {lang === 'pl' 
+              ? "Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu rekrutacji (zgodnie z ustawą z dnia 10 maja 2018 roku o ochronie danych osobowych (Dz. Ustaw z 2018, poz. 1000) oraz zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO))." 
+              : "I hereby consent to my personal data being processed by for the purpose of considering my application for the vacancy advertised under the Data Protection Act 2018 (Act) and Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)."}
           </p>
         </footer>
 
