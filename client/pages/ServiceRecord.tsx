@@ -1,8 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Download, Terminal as TerminalIcon, Award, BookOpen, Cpu } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Reveal, StaggerContainer, StaggerItem } from "@/components/Reveal";
+import { Terminal as TerminalIcon, Award, BookOpen, Cpu } from "lucide-react";
+import { StaggerContainer, StaggerItem } from "@/components/Reveal";
 import { PageTransition } from "@/components/PageTransition";
 import { cvData, portfolioConfig } from "@/lib/terminal-db";
 import { useLanguage } from "@/hooks/use-language";
@@ -15,10 +14,6 @@ export default function ServiceRecord({ isDossier = false }: { isDossier?: boole
   const { language, t } = useLanguage();
   const { experiences, education, skills } = cvData[language];
   const content = portfolioConfig[language];
-
-  const handleDownloadCV = () => {
-    window.open('#/resume', '_blank');
-  };
 
   if (isDossier) {
     return (
@@ -114,16 +109,6 @@ export default function ServiceRecord({ isDossier = false }: { isDossier?: boole
             </div>
           </div>
         </DossierItem>
-
-        <DossierItem>
-          <button
-            onClick={handleDownloadCV}
-            className="flex items-center gap-3 px-6 py-3 bg-primary/10 border border-primary/30 hover:bg-primary/20 text-primary font-mono text-xl uppercase transition-all"
-          >
-            <Download className="w-5 h-5" />
-            <span>{t('hardcopy')}</span>
-          </button>
-        </DossierItem>
       </DossierContent>
     );
   }
@@ -160,16 +145,6 @@ export default function ServiceRecord({ isDossier = false }: { isDossier?: boole
                       <p className="font-mono text-xl sm:text-2xl text-primary/80 leading-relaxed max-w-2xl uppercase tracking-wide">
                         {content.title}
                       </p>
-                      <Reveal delay={0.3}>
-                        <Button 
-                          onClick={handleDownloadCV} 
-                          variant="outline" 
-                          className="gap-3 px-6 font-mono text-xl border-primary/30 text-primary hover:bg-primary/10 uppercase"
-                        >
-                          <Download className="h-5 w-5" />
-                          <span>{t('cv_download')}</span>
-                        </Button>
-                      </Reveal>
                     </div>
                   </div>
                 </div>
