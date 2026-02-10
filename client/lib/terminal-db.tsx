@@ -198,7 +198,7 @@ const devProjects: Project[] = [
     icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
   {
-    title: "LeadFinder & Katalog Ecosystem",
+    title: "LeadFinder & Katalog: Automated Sales Pipeline",
     pl: { 
       description: "Automated Lead Gen Pipeline: Silnik w Pythonie identyfikujący biznesy z lukami cyfrowymi (filtrowanie po dostępności WWW i recenzjach). Integracja z Google Sheets API. Modern Template Marketplace: Next.js 15 Monorepo (Turborepo) z 6+ szablonami. Dynamic Sales Architecture ('Magic Links'). Open Source: Poprawa błędów w Google Maps Scraper.", 
       fullDescription: "..." 
