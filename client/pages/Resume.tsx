@@ -1,33 +1,62 @@
-import { useEffect } from "react";
-import { cvData, portfolioConfig, projects } from "@/lib/terminal-db";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { resumeProfiles, portfolioConfig } from "@/lib/terminal-db";
 import { useLanguage } from "@/hooks/use-language";
 import { Button } from "@/components/ui/button";
-import { Download, Mail, Github, Linkedin, MapPin } from "lucide-react";
+import { Download, Mail, Github, Linkedin, MapPin, RefreshCw } from "lucide-react";
+import { ResumeVariant } from "@shared/types";
 
 export default function Resume() {
   const { language, t } = useLanguage();
-  const content = portfolioConfig[language];
-  const { experiences, education, skills, languages } = cvData[language];
+  const [searchParams] = useSearchParams();
+  
+  // Default to 'support', but allow override via URL query param ?v=...
+  const initialVariant = (searchParams.get("v") as ResumeVariant) || "support";
+  const [variant, setVariant] = useState<ResumeVariant>(initialVariant);
+
+  const profile = resumeProfiles[variant] || resumeProfiles["support"];
+  const content = profile.config[language];
+  const { experiences, education, skills, languages } = profile.data[language];
+  const projects = profile.projects;
 
   useEffect(() => {
-    document.title = `${content.name} - Resume`;
-  }, [content.name]);
+    document.title = `${content.name} - Resume (${variant})`;
+  }, [content.name, variant]);
 
   const handlePrint = () => {
     window.print();
+  };
+
+  const toggleVariant = () => {
+    const variants: ResumeVariant[] = ["support", "developer", "office"];
+    const currentIndex = variants.indexOf(variant);
+    const nextIndex = (currentIndex + 1) % variants.length;
+    setVariant(variants[nextIndex]);
   };
 
   return (
     <div className="resume-page min-h-screen bg-white text-black font-sans selection:bg-gray-200 selection:text-black print:p-0 p-8 flex justify-center">
       <div className="max-w-[210mm] w-full bg-white relative">
         {/* Print/Download Button - Hidden in Print Mode */}
-        <div className="fixed bottom-8 right-8 print:hidden z-50">
+        <div className="fixed bottom-8 right-8 print:hidden z-50 flex gap-2">
           <Button 
             onClick={handlePrint}
             className="shadow-xl bg-black text-white hover:bg-gray-800 gap-2 rounded-full px-6 h-12"
           >
             <Download className="w-4 h-4" />
             {t('resume_download')}
+          </Button>
+        </div>
+
+        {/* Hidden Switcher Button - Bottom Left */}
+        <div className="fixed bottom-8 left-8 print:hidden z-50 opacity-0 hover:opacity-100 transition-opacity duration-300">
+          <Button 
+            onClick={toggleVariant}
+            variant="outline"
+            className="bg-white/50 backdrop-blur-sm border-gray-200 text-gray-400 hover:text-black gap-2 h-8 text-xs"
+          >
+            <RefreshCw className="w-3 h-3" />
+            {variant.toUpperCase()}
           </Button>
         </div>
 
@@ -85,8 +114,12 @@ export default function Resume() {
         <section className="mb-3">
           <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_skills')}</h2>
           <div className="grid grid-cols-[140px_1fr] gap-y-0.5 gap-x-2 text-xs">
-            <span className="font-bold text-gray-800">{t('resume_skills_core')}</span>
-            <span className="text-gray-700">{skills.programming.join(", ")}</span>
+            {skills.programming.length > 0 && (
+              <>
+                <span className="font-bold text-gray-800">{t('resume_skills_core')}</span>
+                <span className="text-gray-700">{skills.programming.join(", ")}</span>
+              </>
+            )}
             
             <span className="font-bold text-gray-800">{t('resume_skills_tools')}</span>
             <span className="text-gray-700">{skills.tools.join(", ")}</span>
@@ -100,29 +133,31 @@ export default function Resume() {
         </section>
 
         {/* Key Projects */}
-        <section className="mb-3">
-          <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_projects')}</h2>
-          <div className="space-y-2">
-            {projects.filter(p => !p.hideFromResume).map((proj, idx) => (
-              <div key={idx}>
-                <div className="flex justify-between items-baseline">
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-bold text-sm text-gray-900">{proj.title}</h3>
-                    <span className="text-[10px] text-gray-500 font-mono">
-                      [{proj.techStack.join(", ")}]
-                    </span>
+        {projects.length > 0 && (
+          <section className="mb-3">
+            <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_projects')}</h2>
+            <div className="space-y-2">
+              {projects.filter(p => !p.hideFromResume).map((proj, idx) => (
+                <div key={idx}>
+                  <div className="flex justify-between items-baseline">
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-bold text-sm text-gray-900">{proj.title}</h3>
+                      <span className="text-[10px] text-gray-500 font-mono">
+                        [{proj.techStack.join(", ")}]
+                      </span>
+                    </div>
+                    <a href={proj.githubUrl} target="_blank" rel="noreferrer" className="text-[10px] text-gray-400 hover:underline">
+                      source code
+                    </a>
                   </div>
-                  <a href={proj.githubUrl} target="_blank" rel="noreferrer" className="text-[10px] text-gray-400 hover:underline">
-                    source code
-                  </a>
+                  <p className="text-xs text-gray-700 mt-0.5 leading-snug">
+                    {proj[language].description}
+                  </p>
                 </div>
-                <p className="text-xs text-gray-700 mt-0.5 leading-snug">
-                  {proj[language].description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Experience */}
         <section className="mb-3">
