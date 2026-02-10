@@ -72,3 +72,11 @@ export interface FileSystemItem {
   content?: string | string[];
   children?: Record<string, FileSystemItem>;
 }
+
+export type ResumeVariant = 'support' | 'developer' | 'office';
+
+export interface ResumeProfile {
+  config: Record<Language, PortfolioConfig>;
+  data: Record<Language, CVData>;
+  projects: Project[]; // Projects might differ per variant (e.g. descriptions)
+}

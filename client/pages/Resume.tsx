@@ -4,7 +4,7 @@ import { resumeProfiles, portfolioConfig } from "@/lib/terminal-db";
 import { useLanguage } from "@/hooks/use-language";
 import { Button } from "@/components/ui/button";
 import { Download, Mail, Github, Linkedin, MapPin, RefreshCw } from "lucide-react";
-import { ResumeVariant } from "@shared/types";
+import { ResumeVariant, Project, Experience, Education } from "@shared/types";
 
 export default function Resume() {
   const { language, t } = useLanguage();
@@ -137,7 +137,7 @@ export default function Resume() {
           <section className="mb-3">
             <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_projects')}</h2>
             <div className="space-y-2">
-              {projects.filter(p => !p.hideFromResume).map((proj, idx) => (
+              {projects.filter((p: Project) => !p.hideFromResume).map((proj: Project, idx: number) => (
                 <div key={idx}>
                   <div className="flex justify-between items-baseline">
                     <div className="flex items-center gap-2">
@@ -163,7 +163,7 @@ export default function Resume() {
         <section className="mb-3">
           <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_experience')}</h2>
           <div className="space-y-2.5">
-            {experiences.map((exp, idx) => (
+            {experiences.map((exp: Experience, idx: number) => (
               <div key={idx}>
                 <div className="flex justify-between items-baseline mb-0.5">
                   <div className="flex items-baseline gap-2">
@@ -173,7 +173,7 @@ export default function Resume() {
                   <span className="text-xs text-gray-500 font-medium whitespace-nowrap">{exp.period}</span>
                 </div>
                 <ul className="list-disc list-outside ml-3 space-y-0.5">
-                  {exp.responsibilities.map((resp, rIdx) => (
+                  {exp.responsibilities.map((resp: string, rIdx: number) => (
                     <li key={rIdx} className="text-xs text-gray-700 pl-1 leading-snug">
                       {resp}
                     </li>
@@ -188,7 +188,7 @@ export default function Resume() {
         <section className="mb-2">
           <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">{t('resume_education')}</h2>
           <div className="space-y-1">
-            {education.map((edu, idx) => (
+            {education.map((edu: Education, idx: number) => (
               <div key={idx} className="flex justify-between items-baseline text-xs">
                 <div>
                   <span className="font-bold text-gray-900">{edu.school}</span>

@@ -1,7 +1,64 @@
-import { Share2, Wrench, Zap } from "lucide-react";
-import { Project, CVData, GlobalConfig, Language } from "@shared/types";
+import { Share2, Wrench, Zap, FileText } from "lucide-react";
+import { Project, CVData, PortfolioConfig, ResumeProfile, ResumeVariant, GlobalConfig } from "@shared/types";
 
-export const portfolioConfig: GlobalConfig = {
+const commonSocials = {
+  github: "https://github.com/Gzyms69",
+  linkedin: "https://www.linkedin.com/in/david-czerwinski-baa6b5149",
+};
+
+const commonContact = {
+  formspreeId: "mnnjpjez",
+};
+
+// ============================================================================
+// PROFILE: SUPPORT (Default)
+// ============================================================================
+const supportProjects: Project[] = [
+  {
+    title: "DeepSeek Folder Organizer",
+    pl: { description: "Skrypt (JavaScript/Tampermonkey) naprawiający brak funkcjonalności folderów. Reverse Engineering DOM i wstrzykiwanie UI.", fullDescription: "..." },
+    en: { description: "UserScript (JS/Tampermonkey) fixing missing folder functionality. Reverse-engineered DOM structure to inject UI elements.", fullDescription: "..." },
+    githubUrl: "https://github.com/Gzyms69/DeepSeek-Folder-Organizer",
+    techStack: ["JavaScript", "Tampermonkey", "DOM Manipulation", "Automation", "Reverse Engineering"],
+    variant: "design",
+    icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />,
+    imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"
+  },
+  {
+    title: "WikiGraph Lab",
+    pl: { description: "Projektowanie pipeline'ów ETL (Python/Docker). Wykorzystanie AI do automatycznej analizy logów i optymalizacji zapytań bazodanowych (Neo4j).", fullDescription: "..." },
+    en: { description: "ETL Pipeline Design (Python/Docker). Used AI for automated log analysis and database query optimization (Neo4j).", fullDescription: "..." },
+    githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
+    techStack: ["Python", "Docker", "Linux", "Neo4j", "ETL", "AI-Augmented Workflow"],
+    variant: "design",
+    icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />,
+    imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop"
+  },
+  {
+    title: "ROMHub",
+    pl: { description: "Emulator N64 w przeglądarce (Client-side). Przetwarzanie lokalne, brak przesyłania plików na serwer.", fullDescription: "..." },
+    en: { description: "Browser-based N64 emulator (Client-side). Local processing, no server uploads, persistent saves.", fullDescription: "..." },
+    githubUrl: "https://github.com/Gzyms69/romhub",
+    techStack: ["JavaScript", "Emulation", "Client-side", "Local Storage"],
+    variant: "code",
+    icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
+    imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop",
+    hideFromResume: true
+  },
+  {
+    title: "Portfolio Website",
+    pl: { description: "Interaktywne portfolio w estetyce terminala. Wykorzystuje React, Framer Motion i Three.js.", fullDescription: "..." },
+    en: { description: "Interactive terminal-style portfolio. Built with React, Framer Motion, and Three.js.", fullDescription: "..." },
+    githubUrl: "https://github.com/Gzyms69/portfolio",
+    techStack: ["React", "TypeScript", "Three.js", "Framer Motion", "TailwindCSS"],
+    variant: "design",
+    icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
+    imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
+    hideFromResume: true
+  }
+];
+
+const supportConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
     title: "Technical Support Engineer | Application Support Specialist",
@@ -15,86 +72,10 @@ export const portfolioConfig: GlobalConfig = {
     description: "IT Specialist combining technical skills (Python, Linux, SQL) with people-oriented experience. As an IT Mentor and Operational Worker (FedEx), I learned to effectively diagnose problems and explain complex concepts in user-friendly language. Seeking a Technical Support role where I can utilize my programming knowledge to automate tasks and efficiently resolve tickets.",
     email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git"]
-  },
-  socials: {
-    github: "https://github.com/Gzyms69",
-    linkedin: "https://www.linkedin.com/in/david-czerwinski-baa6b5149",
-  },
-  contact: {
-    formspreeId: "mnnjpjez", 
   }
 };
 
-export const projects: Project[] = [
-  {
-    title: "DeepSeek Folder Organizer",
-    pl: {
-      description: "Skrypt (JavaScript/Tampermonkey) naprawiający brak funkcjonalności folderów. Reverse Engineering DOM i wstrzykiwanie UI.",
-      fullDescription: "Stworzenie skryptu typu UserScript naprawiającego braki w interfejsie webowym popularnego narzędzia AI. Implementacja 'Reverse Engineering' struktury DOM strony w celu wstrzyknięcia własnych elementów UI (Folderów). Rozwiązanie realnego problemu braku organizacji pracy – narzędzie zwiększające produktywność.",
-    },
-    en: {
-      description: "UserScript (JS/Tampermonkey) fixing missing folder functionality. Reverse-engineered DOM structure to inject UI elements.",
-      fullDescription: "Created a UserScript to fix UX gaps in a daily driver AI tool. Implemented reverse engineering of the DOM structure to inject custom UI elements (Folders). Solved a real-world productivity issue through direct code intervention.",
-    },
-    githubUrl: "https://github.com/Gzyms69/DeepSeek-Folder-Organizer",
-    techStack: ["JavaScript", "Tampermonkey", "DOM Manipulation", "Automation", "Reverse Engineering"],
-    variant: "design",
-    icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />,
-    imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"
-  },
-  {
-    title: "WikiGraph Lab",
-    pl: {
-      description: "Projektowanie pipeline'ów ETL (Python/Docker). Wykorzystanie AI do automatycznej analizy logów i optymalizacji zapytań bazodanowych (Neo4j).",
-      fullDescription: "Zaprojektowanie i wdrożenie hybrydowej architektury bazy danych (Graph + SQL) do przetwarzania dużych zbiorów danych. Stworzenie zautomatyzowanego pipeline'u ETL w Pythonie, odpornego na błędy danych. Wykorzystanie metodyki AI-Augmented Development do akceleracji procesu debugowania i weryfikacji architektury (40% szybsze wdrożenie).",
-    },
-    en: {
-      description: "ETL Pipeline Design (Python/Docker). Used AI for automated log analysis and database query optimization (Neo4j).",
-      fullDescription: "Designed and deployed a hybrid database architecture (Graph + SQL) for large dataset processing. Created an automated Python ETL pipeline with robust error handling. Leveraged AI-Augmented Development methodology to accelerate debugging and architectural verification (40% faster deployment).",
-    },
-    githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
-    techStack: ["Python", "Docker", "Linux", "Neo4j", "ETL", "AI-Augmented Workflow"],
-    variant: "design",
-    icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />,
-    imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop"
-  },
-  {
-    title: "ROMHub",
-    pl: {
-      description: "Emulator N64 w przeglądarce (Client-side). Przetwarzanie lokalne, brak przesyłania plików na serwer.",
-      fullDescription: "Eksperymentalny emulator konsoli Nintendo 64 działający całkowicie po stronie klienta. Umożliwia ładowanie ROMów z dysku i grę w przeglądarce. Wykorzystuje LocalStorage do zapisu postępów.",
-    },
-    en: {
-      description: "Browser-based N64 emulator (Client-side). Local processing, no server uploads, persistent saves.",
-      fullDescription: "Experimental Nintendo 64 emulator running entirely in the browser. Supports local ROM loading and gameplay without server-side processing. Uses LocalStorage for save persistence.",
-    },
-    githubUrl: "https://github.com/Gzyms69/romhub",
-    techStack: ["JavaScript", "Emulation", "Client-side", "Local Storage"],
-    variant: "code",
-    icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
-    imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop",
-    hideFromResume: true
-  },
-  {
-    title: "Portfolio Website",
-    pl: {
-      description: "Interaktywne portfolio w estetyce terminala. Wykorzystuje React, Framer Motion i Three.js.",
-      fullDescription: "Wysoko wydajna platforma portfolio wykorzystująca React 18 i Vite. Projekt skupia się na dostarczaniu unikalnych wrażeń wizualnych poprzez płynne przejścia, responsywny design i autorską estetykę terminala.",
-    },
-    en: {
-      description: "Interactive terminal-style portfolio. Built with React, Framer Motion, and Three.js.",
-      fullDescription: "High-performance portfolio platform utilizing React 18 and Vite. Focuses on delivering unique visual experiences through seamless transitions and custom terminal aesthetics.",
-    },
-    githubUrl: "https://github.com/Gzyms69/portfolio",
-    techStack: ["React", "TypeScript", "Three.js", "Framer Motion", "TailwindCSS"],
-    variant: "design",
-    icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
-    imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
-    hideFromResume: true
-  }
-];
-
-export const cvData: Record<Language, CVData> = {
+const supportData: Record<string, CVData> = {
   pl: {
     experiences: [
       {
@@ -103,10 +84,10 @@ export const cvData: Record<Language, CVData> = {
         location: "Kielce / Zdalnie",
         period: "01.2024 - 06.2025",
         responsibilities: [
-          "Prowadzenie kursów programowania: Realizacja kompleksowych szkoleń z języków Python, C++ i C# (od podstaw po poziom maturalny). Odpowiedzialność za postępy uczniów i weryfikację kodu.",
-          "Live Debugging i Wsparcie Techniczne: Bieżące diagnozowanie i naprawianie błędów w kodzie uczniów oraz rozwiązywanie problemów konfiguracyjnych środowisk (VS Code, Visual Studio, Unity) podczas zajęć online.",
-          "Asynchroniczna obsługa zgłoszeń (Discord): Zdalne wsparcie techniczne dla kursantów poza godzinami zajęć – rozwiązywanie problemów z zadaniami i instalacją oprogramowania na prywatnych komputerach użytkowników."
-        ],
+          "Prowadzenie kursów programowania: Realizacja kompleksowych szkoleń z języków Python, C++ i C# (od podstaw po poziom maturalny).",
+          "Live Debugging i Wsparcie Techniczne: Bieżące diagnozowanie i naprawianie błędów w kodzie uczniów oraz rozwiązywanie problemów konfiguracyjnych środowisk (VS Code, Unity).",
+          "Asynchroniczna obsługa zgłoszeń (Discord): Zdalne wsparcie techniczne dla kursantów poza godzinami zajęć."
+        ]
       },
       {
         title: "Pracownik Projektowy",
@@ -116,7 +97,7 @@ export const cvData: Record<Language, CVData> = {
         responsibilities: [
           "Realizacja zadań w dynamicznym środowisku produkcyjnym pod presją czasu.",
           "Praca w międzynarodowym zespole (język angielski)."
-        ],
+        ]
       },
       {
         title: "Clearance Broker / Operations Specialist",
@@ -126,28 +107,18 @@ export const cvData: Record<Language, CVData> = {
         responsibilities: [
           "Analiza dokumentacji i zapewnienie zgodności z procesem odpraw celnych (Customs Compliance).",
           "Zarządzanie incydentami operacyjnymi w wewnętrznym systemie zgłoszeniowym (Ticket-based workflow).",
-          "Praca w reżimie ścisłych terminów (SLA) w międzynarodowym zespole – priorytetyzacja zadań krytycznych."
-        ],
+          "Praca w reżimie ścisłych terminów (SLA) w międzynarodowym zespole."
+        ]
       }
     ],
     education: [
-      {
-        school: "Politechnika Krakowska",
-        degree: "Kierunek: Matematyka Stosowana (2 lata studiów)",
-        field: "Matematyka Stosowana",
-        years: "2020-2022",
-      },
-      {
-        school: "Akademia Górniczo-Hutnicza (AGH)",
-        degree: "Kierunek: Elektronika i Telekomunikacja (1 rok studiów)",
-        field: "Elektronika i Telekomunikacja",
-        years: "2019-2020",
-      },
+      { school: "Politechnika Krakowska", degree: "Kierunek: Matematyka Stosowana (2 lata studiów)", field: "Matematyka Stosowana", years: "2020-2022" },
+      { school: "Akademia Górniczo-Hutnicza (AGH)", degree: "Kierunek: Elektronika i Telekomunikacja (1 rok studiów)", field: "Elektronika i Telekomunikacja", years: "2019-2020" }
     ],
     skills: {
       general: ["Technical Support", "Incident Management", "SLA", "Problem Solving", "AI-Augmented Workflow"],
       tools: ["Linux (Ubuntu/Bash)", "SQL", "Docker", "Git", "VS Code", "Excel"],
-      programming: ["Python (Scripting)", "Bash", "JavaScript", "SQL", "C++"],
+      programming: ["Python (Scripting)", "Bash", "JavaScript", "SQL", "C++"]
     },
     languages: ["Polski (Ojczysty)", "Angielski (C1/C2 - Zaawansowany Professional)", "Niemiecki (Podstawowy)", "Rosyjski (Podstawowy)"]
   },
@@ -159,10 +130,10 @@ export const cvData: Record<Language, CVData> = {
         location: "Kielce / Remote",
         period: "Jan 2024 - Jun 2025",
         responsibilities: [
-          "Course Instruction: Delivered comprehensive training in Python, C++, and C# (from basics to advanced level). Responsible for student progress and code verification.",
-          "Live Debugging & Technical Support: Real-time diagnosis and fixing of code errors, plus resolving environment configuration issues (VS Code, Visual Studio, Unity) during online sessions.",
-          "Async Ticket Support (Discord): Remote technical support for students outside class hours – troubleshooting assignment issues and software installation on personal user devices."
-        ],
+          "Course Instruction: Delivered comprehensive training in Python, C++, and C#. Responsible for student progress.",
+          "Live Debugging & Technical Support: Real-time diagnosis/fixing of code errors and environment configuration (VS Code, Unity).",
+          "Async Ticket Support (Discord): Remote technical support for students outside class hours."
+        ]
       },
       {
         title: "Project Worker",
@@ -172,7 +143,7 @@ export const cvData: Record<Language, CVData> = {
         responsibilities: [
           "Executed time-sensitive tasks in a fast-paced production environment.",
           "Collaborated in an international, English-speaking team."
-        ],
+        ]
       },
       {
         title: "Clearance Broker / Operations Specialist",
@@ -182,29 +153,277 @@ export const cvData: Record<Language, CVData> = {
         responsibilities: [
           "Documentation analysis and ensuring compliance with customs clearance processes (Customs Compliance).",
           "Operational incident management within an internal ticketing system (Ticket-based workflow).",
-          "Worked under strict deadlines (SLA) in an international team – prioritizing critical tasks."
-        ],
+          "Worked under strict deadlines (SLA) in an international team."
+        ]
       }
     ],
     education: [
-      {
-        school: "Cracow University of Technology",
-        degree: "Field: Applied Mathematics (2 years of study)",
-        field: "Applied Mathematics",
-        years: "2020-2022",
-      },
-      {
-        school: "AGH University of Science and Technology",
-        degree: "Field: Electronics and Telecommunications (1 year of study)",
-        field: "Electronics and Telecommunications",
-        years: "2019-2020",
-      },
+      { school: "Cracow University of Technology", degree: "Field: Applied Mathematics (2 years of study)", field: "Applied Mathematics", years: "2020-2022" },
+      { school: "AGH University of Science and Technology", degree: "Field: Electronics and Telecommunications (1 year of study)", field: "Electronics and Telecommunications", years: "2019-2020" }
     ],
     skills: {
       general: ["Technical Support", "Incident Management", "SLA", "Problem Solving", "AI-Augmented Workflow"],
       tools: ["Linux (Ubuntu/Bash)", "SQL", "Docker", "Git", "VS Code", "Excel"],
-      programming: ["Python (Scripting)", "Bash", "JavaScript", "SQL", "C++"],
+      programming: ["Python (Scripting)", "Bash", "JavaScript", "SQL", "C++"]
     },
     languages: ["Polish (Native)", "English (C1/C2 - Advanced Professional)", "German (Elementary)", "Russian (Elementary)"]
   }
 };
+
+// ============================================================================
+// PROFILE: DEVELOPER
+// ============================================================================
+const devProjects: Project[] = [
+  {
+    title: "WikiGraph Lab",
+    pl: { description: "Offline-first Knowledge Engine (Python/Neo4j). Hybrydowe wyszukiwanie (FTS5 + Vector), własne algorytmy grafowe (BFS, PageRank). Architektura Serverless.", fullDescription: "..." },
+    en: { description: "Offline-first Knowledge Engine (Python/Neo4j). Hybrid Search (FTS5 + Vector), custom graph algorithms (BFS, PageRank). Optimized for local deployment.", fullDescription: "..." },
+    githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
+    techStack: ["Python", "Neo4j", "Docker", "Vector DB", "Algorithms", "Backend"],
+    variant: "code",
+    icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />
+  },
+  {
+    title: "DeepSeek Folder Organizer",
+    pl: { description: "DOM Manipulation & JS Injection. Reverse Engineering UI w celu naprawy brakującej funkcjonalności.", fullDescription: "..." },
+    en: { description: "DOM Manipulation & JS Injection. Reverse Engineering UI to fix missing functionality.", fullDescription: "..." },
+    githubUrl: "https://github.com/Gzyms69/DeepSeek-Folder-Organizer",
+    techStack: ["JavaScript", "DOM Manipulation", "Automation", "Reverse Engineering"],
+    variant: "code",
+    icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />
+  }
+];
+
+const devConfig: Record<string, PortfolioConfig> = {
+  pl: {
+    name: "Dawid Czerwiński",
+    title: "Junior Software Engineer | Python & C++ Developer | Backend Enthusiast",
+    description: "Ambitny programista z 10-letnią ekspozycją na C++ (background akademicki AGH/PK) i biegłością w Pythonie. Twórca architektury 'WikiGraph' (system RAG/Graph ETL). Specjalizuję się w backendzie, algorytmice i optymalizacji zapytań. Szukam roli Junior Developer, gdzie wykorzystam znajomość Linuxa, Dockera i struktur danych.",
+    email: "dawidczerwinskibiznes@gmail.com",
+    heroTechStack: ["Python", "C++", "SQL", "Docker", "Linux", "Neo4j"]
+  },
+  en: {
+    name: "Dawid Czerwiński",
+    title: "Junior Software Engineer | Python & C++ Developer | Backend Enthusiast",
+    description: "Ambitious programmer with 10 years of exposure to C++ (AGH/PK academic background) and proficiency in Python. Creator of 'WikiGraph' architecture (RAG/Graph ETL). Specializing in backend, algorithms, and query optimization. Seeking a Junior Developer role to leverage Linux, Docker, and Data Structures knowledge.",
+    email: "dawidczerwinskibiznes@gmail.com",
+    heroTechStack: ["Python", "C++", "SQL", "Docker", "Linux", "Neo4j"]
+  }
+};
+
+const devData: Record<string, CVData> = {
+  pl: {
+    experiences: [
+      {
+        title: "C++ & Python Technical Mentor",
+        company: "Giganci Programowania",
+        location: "Zdalnie",
+        period: "01.2024 - 06.2025",
+        responsibilities: [
+          "Analiza i debugowanie kodu 50+ uczniów tygodniowo (Code Review).",
+          "Tłumaczenie zaawansowanych konceptów: wskaźniki, referencje, rekurencja, programowanie obiektowe.",
+          "Weryfikacja projektów pod kątem optymalizacji pamięci i złożoności obliczeniowej."
+        ]
+      },
+      {
+        title: "Operational Staff",
+        company: "AB Midden Nederland",
+        location: "Holandia",
+        period: "02.2025 - 10.2025",
+        responsibilities: ["Operational experience & work ethic reinforcement in international environment."]
+      },
+      {
+        title: "Operations Specialist",
+        company: "FedEx Express Europe",
+        location: "Kraków",
+        period: "03.2022 - 07.2023",
+        responsibilities: ["Business Domain Awareness & International Team Collaboration (English C1/C2)."]
+      }
+    ],
+    education: supportData.pl.education,
+    skills: {
+      general: ["Algorithms & Data Structures", "Memory Management", "Graph Theory", "Backend Architecture"],
+      tools: ["Docker", "Linux (Bash)", "Git (Flow)", "Neo4j (Cypher)", "Vector DB", "VS Code"],
+      programming: ["Python (FastAPI)", "C++ (STL, Pointers)", "SQL (PostgreSQL)", "JavaScript"]
+    },
+    languages: supportData.pl.languages
+  },
+  en: {
+    experiences: [
+      {
+        title: "C++ & Python Technical Mentor",
+        company: "Giganci Programowania",
+        location: "Remote",
+        period: "Jan 2024 - Jun 2025",
+        responsibilities: [
+          "Analysis and debugging of code for 50+ students weekly (Code Review).",
+          "Teaching advanced concepts: pointers, references, recursion, OOP.",
+          "Verifying projects for memory optimization and computational complexity."
+        ]
+      },
+      {
+        title: "Operational Staff",
+        company: "AB Midden Nederland",
+        location: "Netherlands",
+        period: "Feb 2025 - Oct 2025",
+        responsibilities: ["Operational experience & work ethic reinforcement in international environment."]
+      },
+      {
+        title: "Operations Specialist",
+        company: "FedEx Express Europe",
+        location: "Krakow",
+        period: "Mar 2022 - Jul 2023",
+        responsibilities: ["Business Domain Awareness & International Team Collaboration (English C1/C2)."]
+      }
+    ],
+    education: supportData.en.education,
+    skills: {
+      general: ["Algorithms & Data Structures", "Memory Management", "Graph Theory", "Backend Architecture"],
+      tools: ["Docker", "Linux (Bash)", "Git (Flow)", "Neo4j (Cypher)", "Vector DB", "VS Code"],
+      programming: ["Python (FastAPI)", "C++ (STL, Pointers)", "SQL (PostgreSQL)", "JavaScript"]
+    },
+    languages: supportData.en.languages
+  }
+};
+
+// ============================================================================
+// PROFILE: OFFICE
+// ============================================================================
+const officeProjects: Project[] = [
+  {
+    title: "Automatyzacja Przetwarzania Danych",
+    pl: { description: "Narzędzie do automatycznego porządkowania i wyszukiwania informacji w dużych zbiorach danych tekstowych.", fullDescription: "..." },
+    en: { description: "Tool for automated organization and retrieval of information in large text datasets.", fullDescription: "..." },
+    githubUrl: "https://github.com/Gzyms69", // Generic link
+    techStack: ["Automation", "Data Processing", "Excel Integration"],
+    variant: "code",
+    icon: <FileText className="h-8 w-8 text-gray-600 flex-shrink-0" />
+  }
+];
+
+const officeConfig: Record<string, PortfolioConfig> = {
+  pl: {
+    name: "Dawid Czerwiński",
+    title: "Office Specialist | Data Administration | English C1/C2",
+    description: "Skrupulatny specjalista ds. administracji z doświadczeniem w międzynarodowej korporacji (FedEx). Biegły w języku angielskim (C1/C2) i obsłudze pakietu MS Office (Excel). Posiadam doświadczenie w pracy z dokumentacją, procedurami oraz obsłudze klienta. Cechuje mnie dokładność, terminowość i wysoka kultura pracy.",
+    email: "dawidczerwinskibiznes@gmail.com",
+    heroTechStack: ["English C1/C2", "Excel", "MS Office", "Data Entry", "Administration"]
+  },
+  en: {
+    name: "Dawid Czerwiński",
+    title: "Office Specialist | Data Administration | English C1/C2",
+    description: "Meticulous administration specialist with experience in an international corporation (FedEx). Fluent in English (C1/C2) and proficient in MS Office (Excel). Experienced in documentation, procedures, and customer service. Characterized by accuracy, punctuality, and high work ethics.",
+    email: "dawidczerwinskibiznes@gmail.com",
+    heroTechStack: ["English C1/C2", "Excel", "MS Office", "Data Entry", "Administration"]
+  }
+};
+
+const officeData: Record<string, CVData> = {
+  pl: {
+    experiences: [
+      {
+        title: "Specjalista ds. Operacji / Administracja",
+        company: "FedEx Express Europe",
+        location: "Kraków",
+        period: "03.2022 - 07.2023",
+        responsibilities: [
+          "Weryfikacja dokumentacji i zapewnienie zgodności z procedurami celnymi.",
+          "Raportowanie i praca z systemami wewnętrznymi pod presją czasu (SLA).",
+          "Kontakt z klientem zagranicznym i współpraca w zespole międzynarodowym."
+        ]
+      },
+      {
+        title: "Instruktor Szkoleń / Mentor",
+        company: "Giganci Programowania",
+        location: "Zdalnie",
+        period: "01.2024 - 06.2025",
+        responsibilities: [
+          "Prowadzenie szkoleń online i przygotowywanie materiałów dydaktycznych.",
+          "Raportowanie postępów uczestników i komunikacja z klientami (rodzicami).",
+          "Dbałość o wysoką jakość obsługi klienta i wizerunek firmy."
+        ]
+      },
+      {
+        title: "Freelancer / Tłumacz",
+        company: "Fiverr",
+        location: "Zdalnie",
+        period: "2020 - 2023",
+        responsibilities: [
+          "Tłumaczenia dokumentacji biznesowej i technicznej (PL-EN).",
+          "Dbałość o poprawność językową i terminowość zleceń."
+        ]
+      }
+    ],
+    education: supportData.pl.education,
+    skills: {
+      general: ["English C1/C2 (Professional Fluent)", "Attention to Detail", "Time Management", "Teamwork", "Fast Learner"],
+      tools: ["Advanced Excel (Automatyzacja)", "MS Office (Word, PowerPoint)", "Google Workspace", "Outlook"],
+      programming: [] // Removed technical stack
+    },
+    languages: supportData.pl.languages
+  },
+  en: {
+    experiences: [
+      {
+        title: "Operations Specialist / Administration",
+        company: "FedEx Express Europe",
+        location: "Krakow",
+        period: "Mar 2022 - Jul 2023",
+        responsibilities: [
+          "Verification of documentation and ensuring compliance with procedures.",
+          "Reporting and working with internal systems under time pressure (SLA).",
+          "Contact with international clients and collaboration within a global team."
+        ]
+      },
+      {
+        title: "Training Instructor / Mentor",
+        company: "Giganci Programowania",
+        location: "Remote",
+        period: "Jan 2024 - Jun 2025",
+        responsibilities: [
+          "Conducting online training and preparing educational materials.",
+          "Reporting participant progress and communicating with clients.",
+          "Ensuring high quality customer service and company image."
+        ]
+      },
+      {
+        title: "Freelancer / Translator",
+        company: "Fiverr",
+        location: "Remote",
+        period: "2020 - 2023",
+        responsibilities: [
+          "Translation of business and technical documentation (PL-EN).",
+          "Ensuring linguistic correctness and punctuality of orders."
+        ]
+      }
+    ],
+    education: supportData.en.education,
+    skills: {
+      general: ["English C1/C2 (Professional Fluent)", "Attention to Detail", "Time Management", "Teamwork", "Fast Learner"],
+      tools: ["Advanced Excel (Automation)", "MS Office (Word, PowerPoint)", "Google Workspace", "Outlook"],
+      programming: []
+    },
+    languages: supportData.en.languages
+  }
+};
+
+// ============================================================================
+// EXPORTS
+// ============================================================================
+
+export const resumeProfiles: Record<ResumeVariant, ResumeProfile> = {
+  support: { config: supportConfig, data: supportData, projects: supportProjects },
+  developer: { config: devConfig, data: devData, projects: devProjects },
+  office: { config: officeConfig, data: officeData, projects: officeProjects }
+};
+
+// Default exports for backward compatibility (defaults to Support profile)
+export const portfolioConfig: GlobalConfig = {
+  pl: supportConfig.pl,
+  en: supportConfig.en,
+  socials: commonSocials,
+  contact: commonContact
+};
+
+export const projects = supportProjects;
+export const cvData = supportData;
