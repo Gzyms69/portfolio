@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, CheckCircle2, AlertCircle, Loader2, Download } from 'lucide-react';
+import { Terminal, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { useLanguage } from '@/hooks/use-language';
 import { portfolioConfig } from '@/lib/terminal-db';
 import type { ContactRequest } from '@shared/api';
@@ -17,10 +17,6 @@ export const ContactForm = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleDownloadCV = () => {
-    window.open('#/resume', '_blank');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -157,17 +153,6 @@ export const ContactForm = () => {
               ) : (
                 t('send_button')
               )}
-            </motion.button>
-
-            <motion.button
-              type="button"
-              onClick={handleDownloadCV}
-              whileHover={{ scale: 1.02, backgroundColor: 'rgba(0,255,65,0.05)' }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full border border-primary/20 text-primary/60 text-sm uppercase py-2 rounded tracking-widest flex items-center justify-center gap-2 mt-2 transition-all"
-            >
-              <Download className="h-4 w-4" />
-              <span>{t('cv_download')}</span>
             </motion.button>
 
             <AnimatePresence>
