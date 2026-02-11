@@ -30,17 +30,18 @@ const supportProjects: Project[] = [
     icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
   {
-    title: "LeadFinder & Katalog: Automated Sales Pipeline",
+    title: "LeadFinder & Katalog Ecosystem",
     pl: { 
-      description: "Automatyzacja procesu (Process Automation): Narzędzie Python (End-to-End) do generowania leadów, ekstrakcji danych i walidacji domen do Google Sheets. Tooling: System 'Magic Link' generujący spersonalizowane strony demo (redukcja czasu pracy o 99%). Troubleshooting: Naprawa logiki zliczania recenzji w zewnętrznej bibliotece scrapującej.", 
-      fullDescription: "..." 
+      description: "Kompleksowy pipeline automatyzacji sprzedaży i marketplace szablonów. Pipeline (Python): Zautomatyzowany silnik scrapujący (LeadFinder) identyfikujący firmy z lukami cyfrowymi, walidujący domeny i synchronizujący leady bezpośrednio z Google Sheets API. Marketplace (Next.js 15): Wydajne Monorepo (Turborepo) z Dynamiczną Architekturą Sprzedaży generującą spersonalizowane strony demo ('Magic Links') poprzez parametry URL.", 
+      fullDescription: "Contribution: Forked and patched a third-party Google Maps scraper to fix critical logic errors in review counting. Ensuring data integrity with Playwright-based RPC-to-Browser fallback." 
     },
     en: { 
-      description: "Process Automation: End-to-end Python tool for lead generation, data extraction, and validation into Google Sheets. Tooling & Integration: 'Magic Link' system for dynamic demo website generation, reducing manual prep time by 99%. Troubleshooting: Diagnosed and patched broken review-counting logic in scraping library.", 
-      fullDescription: "..." 
+      description: "An end-to-end sales automation pipeline and template marketplace. Pipeline (Python): Automated scraping engine that identifies businesses with digital gaps, validates domains, and syncs leads directly to Google Sheets API. Marketplace (Next.js 15): A high-performance Monorepo built with Turborepo. Features a Dynamic Sales Architecture that generates personalized demo websites ('Magic Links') via URL parameters.", 
+      fullDescription: "Contribution: Forked and patched a third-party Google Maps scraper to fix critical logic errors in review counting. Ensuring data integrity with Playwright-based RPC-to-Browser fallback." 
     },
-    githubUrl: "https://github.com/Gzyms69",
-    techStack: ["Python Automation", "ETL", "Google Workspace Integration"],
+    githubUrl: "https://github.com/Gzyms69/LeadFinder",
+    techStack: ["Python", "Next.js 15", "Turborepo", "Google Sheets API", "Playwright"],
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
     variant: "design",
     icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
@@ -69,17 +70,17 @@ const supportProjects: Project[] = [
 const supportConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
-    title: "Technical Support Engineer | Application Support Specialist",
-    description: "Specjalista IT łączący techniczne umiejętności (Python, Linux, SQL) z doświadczeniem w pracy z ludźmi. Jako Mentor IT i pracownik operacyjny (FedEx) nauczyłem się skutecznie diagnozować problemy i tłumaczyć skomplikowane zagadnienia językiem zrozumiałym dla użytkownika. Szukam roli w Technical Support, gdzie będę mógł wykorzystać moją wiedzę programistyczną do automatyzacji zadań i sprawnego rozwiązywania zgłoszeń.",
+    title: "Technical Support | Full Stack Developer",
+    description: "Programista i Specjalista Operacyjny łączący inżynierię oprogramowania z infrastrukturą IT. Łączę 10+ lat styczności z C++ (zaplecze akademickie) z praktycznym doświadczeniem operacyjnym w FedEx oraz rolą Mentora IT w Giganci Programowania. Koncentruję się na architekturze offline-first, automatyzacji procesów biznesowych i optymalizacji przetwarzania danych.",
     email: "dawidczerwinskibiznes@gmail.com",
-    heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git"]
+    heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "C++"]
   },
   en: {
     name: "Dawid Czerwiński",
-    title: "Technical Support Engineer | Application Support Specialist",
-    description: "IT Specialist combining technical skills (Python, Linux, SQL) with people-oriented experience. As an IT Mentor and Operational Worker (FedEx), I learned to effectively diagnose problems and explain complex concepts in user-friendly language. Seeking a Technical Support role where I can utilize my programming knowledge to automate tasks and efficiently resolve tickets.",
+    title: "Technical Support | Full Stack Developer",
+    description: "Developer and Operations Specialist bridging the gap between software engineering and IT infrastructure. Combining 10+ years of C++ exposure (academic background) with practical operational experience at FedEx and IT Mentorship experience at Giganci Programowania. Focused on building offline-first architectures, automating business workflows, and optimizing data pipelines.",
     email: "dawidczerwinskibiznes@gmail.com",
-    heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git"]
+    heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "C++"]
   }
 };
 
@@ -198,17 +199,18 @@ const devProjects: Project[] = [
     icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
   {
-    title: "LeadFinder & Katalog: Automated Sales Pipeline",
+    title: "LeadFinder & Katalog Ecosystem",
     pl: { 
-      description: "Automated Lead Gen Pipeline: Silnik w Pythonie identyfikujący biznesy z lukami cyfrowymi (filtrowanie po dostępności WWW i recenzjach). Integracja z Google Sheets API. Modern Template Marketplace: Next.js 15 Monorepo (Turborepo) z 6+ szablonami. Dynamic Sales Architecture ('Magic Links'). Open Source: Poprawa błędów w Google Maps Scraper.", 
-      fullDescription: "..." 
+      description: "Kompleksowy pipeline automatyzacji sprzedaży i marketplace szablonów. Pipeline (Python): Zautomatyzowany silnik scrapujący (LeadFinder) identyfikujący firmy z lukami cyfrowymi, walidujący domeny i synchronizujący leady bezpośrednio z Google Sheets API. Marketplace (Next.js 15): Wydajne Monorepo (Turborepo) z Dynamiczną Architekturą Sprzedaży generującą spersonalizowane strony demo ('Magic Links') poprzez parametry URL.", 
+      fullDescription: "Contribution: Forked and patched a third-party Google Maps scraper to fix critical logic errors in review counting. Ensuring data integrity with Playwright-based RPC-to-Browser fallback." 
     },
     en: { 
-      description: "Automated Lead Gen Pipeline: Python-based scraping engine identifying businesses with digital gaps (filtering by website availability & review count). Integrated with Google Sheets API. Modern Template Marketplace: Next.js 15 Monorepo (Turborepo) with 6+ templates & 'Magic Links'. Open Source Contribution: Patched Google Maps Scraper logic.", 
-      fullDescription: "..." 
+      description: "An end-to-end sales automation pipeline and template marketplace. Pipeline (Python): Automated scraping engine that identifies businesses with digital gaps, validates domains, and syncs leads directly to Google Sheets API. Marketplace (Next.js 15): A high-performance Monorepo built with Turborepo. Features a Dynamic Sales Architecture that generates personalized demo websites ('Magic Links') via URL parameters.", 
+      fullDescription: "Contribution: Forked and patched a third-party Google Maps scraper to fix critical logic errors in review counting. Ensuring data integrity with Playwright-based RPC-to-Browser fallback." 
     },
-    githubUrl: "https://github.com/Gzyms69",
-    techStack: ["Python", "Next.js 15", "Turborepo", "Google Sheets API"],
+    githubUrl: "https://github.com/Gzyms69/LeadFinder",
+    techStack: ["Python", "Next.js 15", "Turborepo", "Google Sheets API", "Playwright"],
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
     variant: "code",
     icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />
   }
