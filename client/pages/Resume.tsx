@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { resumeProfiles, portfolioConfig } from "@/lib/terminal-db";
-import { useLanguage } from "@/hooks/use-language"; // We'll use this for initial state but override locally
+import { useLanguage } from "@/hooks/use-language";
 import { Button } from "@/components/ui/button";
 import { Download, Mail, Github, Linkedin, MapPin, Settings, Check, ChevronUp, FileDown, Globe, Briefcase } from "lucide-react";
 import { ResumeVariant, Project, Experience, Education } from "@shared/types";
@@ -13,36 +13,23 @@ export default function Resume() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { toast } = useToast();
   
-  // State initialization from URL parameters, falling back to global settings
-  const urlVariant = searchParams.get("v") as ResumeVariant;
-  const urlLang = searchParams.get("lang") as "pl" | "en";
-  
-  const [variant, setVariant] = useState<ResumeVariant>(urlVariant || "support");
-  const [lang, setLang] = useState<"pl" | "en">(urlLang || (globalLang as "pl" | "en") || "en");
-  
-  // Sync state with URL changes (important for automated generation)
-  useEffect(() => {
-    const v = searchParams.get("v") as ResumeVariant;
-    const l = searchParams.get("lang") as "pl" | "en";
-    if (v && v !== variant) setVariant(v);
-    if (l && l !== lang) setLang(l);
-  }, [searchParams, variant, lang]);
+  // URL is the single source of truth for variant and lang
+  const variant = (searchParams.get("v") as ResumeVariant) || "support";
+  const lang = (searchParams.get("lang") as "pl" | "en") || (globalLang as "pl" | "en") || "en";
 
   // Update URL when user manually switches
   const handleVariantChange = (v: ResumeVariant) => {
-    setVariant(v);
     setSearchParams(prev => {
       prev.set("v", v);
       return prev;
-    });
+    }, { replace: true });
   };
 
   const handleLangChange = (l: "pl" | "en") => {
-    setLang(l);
     setSearchParams(prev => {
       prev.set("lang", l);
       return prev;
-    });
+    }, { replace: true });
   };
 
   // Menu Visibility
@@ -57,13 +44,13 @@ export default function Resume() {
 
   // Sync title
   useEffect(() => {
-    document.title = `${content.name} - Resume`; // Removed (${variant}) as requested
-  }, [content.name, variant, lang]);
+    document.title = `${content.name} - Resume`;
+  }, [content.name]);
 
   // Handle click outside to close menus
   useEffect(() => {
     const handleClick = () => {
-      // Simple implementation: relying on z-index and click handlers on buttons to stop propagation
+      // Menus close on backdrop click handled by parent div
     };
     window.addEventListener('click', handleClick);
     return () => window.removeEventListener('click', handleClick);
@@ -85,7 +72,7 @@ export default function Resume() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-      }, index * 500); // Stagger to prevent browser blocking
+      }, index * 500);
     });
 
     toast({
@@ -139,7 +126,7 @@ export default function Resume() {
                   <FileDown className="w-4 h-4 text-gray-600" />
                   <div className="flex flex-col">
                     <span className="font-medium text-gray-900">Download All (PL)</span>
-                    <span className="text-[10px] text-gray-500">ZIP Package</span>
+                    <span className="text-[10px] text-gray-500">3 PDF Versions</span>
                   </div>
                 </button>
               </motion.div>
@@ -157,7 +144,7 @@ export default function Resume() {
         </div>
 
         {/* =====================================================================================
-            BOTTOM LEFT: CONFIG MENU (Switcher) - Hidden by default, appears on hover area
+            BOTTOM LEFT: CONFIG MENU (Switcher)
            ===================================================================================== */}
         <div className="fixed bottom-8 left-8 print:hidden z-50 flex flex-col items-start gap-2 group">
            <AnimatePresence>
