@@ -10,14 +10,41 @@ import { useToast } from "@/hooks/use-toast";
 
 export default function Resume() {
   const { language: globalLang } = useLanguage();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { toast } = useToast();
   
-  // State
-  const initialVariant = (searchParams.get("v") as ResumeVariant) || "support";
-  const [variant, setVariant] = useState<ResumeVariant>(initialVariant);
-  const [lang, setLang] = useState<"pl" | "en">(globalLang as "pl" | "en");
+  // State initialization from URL parameters, falling back to global settings
+  const urlVariant = searchParams.get("v") as ResumeVariant;
+  const urlLang = searchParams.get("lang") as "pl" | "en";
   
+  const [variant, setVariant] = useState<ResumeVariant>(urlVariant || "support");
+  const [lang, setLang] = useState<"pl" | "en">(urlLang || (globalLang as "pl" | "en") || "en");
+  
+  // Sync state with URL changes (important for automated generation)
+  useEffect(() => {
+    const v = searchParams.get("v") as ResumeVariant;
+    const l = searchParams.get("lang") as "pl" | "en";
+    if (v && v !== variant) setVariant(v);
+    if (l && l !== lang) setLang(l);
+  }, [searchParams, variant, lang]);
+
+  // Update URL when user manually switches
+  const handleVariantChange = (v: ResumeVariant) => {
+    setVariant(v);
+    setSearchParams(prev => {
+      prev.set("v", v);
+      return prev;
+    });
+  };
+
+  const handleLangChange = (l: "pl" | "en") => {
+    setLang(l);
+    setSearchParams(prev => {
+      prev.set("lang", l);
+      return prev;
+    });
+  };
+
   // Menu Visibility
   const [showConfigMenu, setShowConfigMenu] = useState(false);
   const [showDownloadMenu, setShowDownloadMenu] = useState(false);
@@ -286,7 +313,7 @@ export default function Resume() {
             <span className="text-gray-700">{skills.tools.join(", ")}</span>
             
             <span className="font-bold text-gray-800">
-              {lang === 'pl' ? 'Kompetencje Miękkie' : 'Soft Skills'}
+              {lang === 'pl' ? 'Kompetencje' : 'Skills'}
             </span>
             <span className="text-gray-700">{skills.general.join(", ")}</span>
 

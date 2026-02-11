@@ -41,7 +41,7 @@ const supportProjects: Project[] = [
       fullDescription: "A dual-system ecosystem designed to automate the sales lifecycle.\n\n1. Pipeline (Python): A custom scraping engine that identifies businesses with digital gaps, validates domains, and syncs leads directly to Google Sheets. Includes a custom-patched Google Maps scraper using Playwright to fix review counting logic.\n\n2. Marketplace (Next.js 15): A high-performance Monorepo (Turborepo) featuring a 'Dynamic Sales Architecture'. This allows for the instant generation of personalized demo websites ('Magic Links') via URL parameters, reducing manual sales preparation time by 99%." 
     },
     githubUrl: "https://github.com/Gzyms69/LeadFinder",
-    techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "Excel"],
+    techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "MS Office"],
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
     variant: "design",
     icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />
@@ -141,7 +141,7 @@ const supportData: Record<string, CVData> = {
     ],
     skills: {
       general: ["Linux (Ubuntu CLI)", "Enterprise Ticketing Systems (SLA)", "Incident Management", "Problem Solving"],
-      tools: ["Python (Scripting)", "Google Workspace API", "Excel", "VS Code"],
+      tools: ["Python (Scripting)", "Google Workspace API", "MS Office", "Git (CI/CD GitHub Actions)", "VS Code"],
       programming: ["Bash Automation", "SQL (Podstawy)", "Sieci (TCP/IP / DNS)"]
     },
     languages: ["Polski (Ojczysty)", "Angielski (C1/C2 - Zaawansowany Professional)"]
@@ -187,7 +187,7 @@ const supportData: Record<string, CVData> = {
     ],
     skills: {
       general: ["Linux (Ubuntu CLI)", "Enterprise Ticketing Systems (SLA)", "Incident Management", "Problem Solving"],
-      tools: ["Python (Scripting)", "Google Workspace API", "Excel", "VS Code"],
+      tools: ["Python (Scripting)", "Google Workspace API", "MS Office", "Git (CI/CD GitHub Actions)", "VS Code"],
       programming: ["Bash Automation", "SQL (Basics)", "Networking (TCP/IP / DNS)"]
     },
     languages: ["Polish (Native)", "English (C1/C2 - Advanced Professional)"]
@@ -225,7 +225,7 @@ const devProjects: Project[] = [
       fullDescription: "A dual-system ecosystem designed to automate the sales lifecycle.\n\n1. Pipeline (Python): A custom scraping engine that identifies businesses with digital gaps, validates domains, and syncs leads directly to Google Sheets. Includes a custom-patched Google Maps scraper using Playwright to fix review counting logic.\n\n2. Marketplace (Next.js 15): A high-performance Monorepo (Turborepo) featuring a 'Dynamic Sales Architecture'. This allows for the instant generation of personalized demo websites ('Magic Links') via URL parameters, reducing manual sales preparation time by 99%." 
     },
     githubUrl: "https://github.com/Gzyms69/LeadFinder",
-    techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "Excel"],
+    techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "MS Office"],
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
     variant: "code",
     icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />
@@ -315,8 +315,8 @@ const devData: Record<string, CVData> = {
     education: supportData.pl.education,
     skills: {
       general: ["Grafowe Bazy Danych (Neo4j)", "Architektura Backend", "Algorytmy i Struktury Danych", "Docker"],
-      tools: ["Git (Flow)", "Linux Environment", "VS Code", "Postman"],
-      programming: ["Python (FastAPI)", "C++ (STL/Pointers)", "REST API Design", "SQL (PostgreSQL)"]
+      tools: ["Git (CI/CD GitHub Actions)", "Linux Environment", "VS Code"],
+      programming: ["Python (FastAPI, Pandas)", "C++ (STL/Pointers)", "REST API Design", "SQL (PostgreSQL)"]
     },
     languages: supportData.pl.languages
   },
@@ -351,8 +351,8 @@ const devData: Record<string, CVData> = {
     education: supportData.en.education,
     skills: {
       general: ["Graph Databases (Neo4j)", "Backend Architecture", "Algorithms & Data Structures", "Docker"],
-      tools: ["Git (Flow)", "Linux Environment", "VS Code", "Postman"],
-      programming: ["Python (FastAPI)", "C++ (STL/Pointers)", "REST API Design", "SQL (PostgreSQL)"]
+      tools: ["Git (CI/CD GitHub Actions)", "Linux Environment", "VS Code"],
+      programming: ["Python (FastAPI, Pandas)", "C++ (STL/Pointers)", "REST API Design", "SQL (PostgreSQL)"]
     },
     languages: supportData.en.languages
   }
@@ -367,16 +367,16 @@ const officeConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
     title: "Operations Specialist / Data Administration",
-    description: "Skrupulatny specjalista ds. administracji z doświadczeniem w międzynarodowej korporacji (FedEx). Biegły w języku angielskim (C1/C2) i obsłudze pakietu MS Office (Excel). Posiadam doświadczenie w pracy z dokumentacją, procedurami oraz obsłudze klienta. Cechuje mnie dokładność, terminowość i wysoka kultura pracy.",
+    description: "Skrupulatny specjalista ds. administracji z doświadczeniem w międzynarodowej korporacji (FedEx). Biegły w języku angielskim (C1/C2) i obsłudze pakietu MS Office. Posiadam doświadczenie w pracy z dokumentacją, procedurami oraz obsłudze klienta. Cechuje mnie dokładność, terminowość i wysoka kultura pracy.",
     email: "dawidczerwinskibiznes@gmail.com",
-    heroTechStack: ["English C1/C2", "Excel", "MS Office", "Data Entry", "Administration"]
+    heroTechStack: ["English C1/C2", "MS Office", "Data Entry", "Administration"]
   },
   en: {
     name: "Dawid Czerwiński",
     title: "Operations Specialist / Data Administration",
-    description: "Meticulous administration specialist with experience in an international corporation (FedEx). Fluent in English (C1/C2) and proficient in MS Office (Excel). Experienced in documentation, procedures, and customer service. Characterized by accuracy, punctuality, and high work ethics.",
+    description: "Meticulous administration specialist with experience in an international corporation (FedEx). Fluent in English (C1/C2) and proficient in MS Office. Experienced in documentation, procedures, and customer service. Characterized by accuracy, punctuality, and high work ethics.",
     email: "dawidczerwinskibiznes@gmail.com",
-    heroTechStack: ["English C1/C2", "Excel", "MS Office", "Data Entry", "Administration"]
+    heroTechStack: ["English C1/C2", "MS Office", "Data Entry", "Administration"]
   }
 };
 
@@ -420,7 +420,7 @@ const officeData: Record<string, CVData> = {
     education: supportData.pl.education,
     skills: {
       general: ["Dokładność w analizie dokumentacji", "Compliance & Procedures", "Realizacja planów operacyjnych", "Współpraca w zespole", "Kultura osobista"],
-      tools: ["Excel", "MS Office (Word, PowerPoint)", "Outlook", "Systemy wewnętrzne (ERP/CRM)", "Google Workspace"],
+      tools: ["MS Office", "Outlook", "Systemy wewnętrzne (ERP/CRM)", "Google Workspace"],
       programming: [] 
     },
     languages: supportData.pl.languages
@@ -464,7 +464,7 @@ const officeData: Record<string, CVData> = {
     education: supportData.en.education,
     skills: {
       general: ["Documentation Accuracy", "Compliance & Procedures", "Operational Plan Execution", "Team Collaboration", "Work Ethics"],
-      tools: ["Excel", "MS Office (Word, PowerPoint)", "Outlook", "Internal Systems (ERP/CRM)", "Google Workspace"],
+      tools: ["MS Office", "Outlook", "Internal Systems (ERP/CRM)", "Google Workspace"],
       programming: []
     },
     languages: supportData.en.languages
