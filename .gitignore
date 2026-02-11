@@ -142,6 +142,5 @@ dist
 .config/
 
 # Local/Temporary files
-mobile_verify/
+verify_*.png
 todo.md
-Linkedin_files/

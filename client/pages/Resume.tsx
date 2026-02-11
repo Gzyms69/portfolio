@@ -47,18 +47,30 @@ export default function Resume() {
     setShowDownloadMenu(false);
   };
 
-  const handleDownloadAll = (_targetLang: 'pl' | 'en') => {
+  const handleDownloadAll = (targetLang: 'pl' | 'en') => {
+    const variants: ResumeVariant[] = ['support', 'developer', 'office'];
+    
+    variants.forEach((v, index) => {
+      setTimeout(() => {
+        const link = document.createElement('a');
+        link.href = `/portfolio/resumes/resume-${v}-${targetLang}.pdf`;
+        link.download = `Dawid_Czerwinski_Resume_${v}_${targetLang.toUpperCase()}.pdf`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, index * 500); // Stagger to prevent browser blocking
+    });
+
     toast({
-      title: "Feature Not Available",
-      description: "Please download each profile individually via the print dialog.",
-      variant: "destructive"
+      title: "Bulk Download Started",
+      description: `Downloading 3 versions in ${targetLang.toUpperCase()}.`,
     });
     setShowDownloadMenu(false);
   };
 
   return (
     <div className="resume-page min-h-screen bg-white text-black font-sans selection:bg-gray-200 selection:text-black print:p-0 p-8 flex justify-center" onClick={() => { setShowConfigMenu(false); setShowDownloadMenu(false); }}>
-      <div className="max-w-[210mm] w-full bg-white relative" onClick={(e) => e.stopPropagation()}>
+      <div className="max-w-[210mm] w-full bg-white relative px-10 print:px-10" onClick={(e) => e.stopPropagation()}>
         
         {/* =====================================================================================
             BOTTOM RIGHT: DOWNLOAD MENU
@@ -90,7 +102,7 @@ export default function Resume() {
                   <FileDown className="w-4 h-4 text-gray-600" />
                   <div className="flex flex-col">
                     <span className="font-medium text-gray-900">Download All (EN)</span>
-                    <span className="text-[10px] text-gray-500">ZIP Package</span>
+                    <span className="text-[10px] text-gray-500">3 PDF Versions</span>
                   </div>
                 </button>
                 <button 

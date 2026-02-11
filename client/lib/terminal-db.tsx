@@ -85,15 +85,15 @@ const supportProjects: Project[] = [
 const supportConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
-    title: "Technical Support | Full Stack Developer",
-    description: "Programista i Specjalista Operacyjny łączący inżynierię oprogramowania z infrastrukturą IT. Łączę 10+ lat styczności z C++ (zaplecze akademickie) z praktycznym doświadczeniem operacyjnym w FedEx oraz rolą Mentora IT w Giganci Programowania. Koncentruję się na architekturze offline-first, automatyzacji procesów biznesowych i optymalizacji przetwarzania danych.",
+    title: "Technical Support Engineer | L2 Ops Specialist",
+    description: "Specjalista IT łączący techniczne umiejętności (Python, Linux, SQL) z doświadczeniem operacyjnym (FedEx). Skutecznie diagnozuję problemy (Troubleshooting) i dbam o dotrzymywanie terminów (SLA). Wykorzystuję skrypty do automatyzacji powtarzalnych zadań.",
     email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "C++"]
   },
   en: {
     name: "Dawid Czerwiński",
-    title: "Technical Support | Full Stack Developer",
-    description: "Developer and Operations Specialist bridging the gap between software engineering and IT infrastructure. Combining 10+ years of C++ exposure (academic background) with practical operational experience at FedEx and IT Mentorship experience at Giganci Programowania. Focused on building offline-first architectures, automating business workflows, and optimizing data pipelines.",
+    title: "Technical Support Engineer | L2 Ops Specialist",
+    description: "IT Specialist combining technical skills (Python, Linux, SQL) with operational experience (FedEx). I effectively diagnose problems (Troubleshooting) and ensure SLA compliance. I leverage scripting to automate repetitive tasks.",
     email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "C++"]
   }
@@ -136,15 +136,15 @@ const supportData: Record<string, CVData> = {
       }
     ],
     education: [
-      { school: "Politechnika Krakowska", degree: "Kierunek: Matematyka Stosowana (2 lata studiów)", field: "Matematyka Stosowana", years: "2020-2022" },
-      { school: "Akademia Górniczo-Hutnicza (AGH)", degree: "Kierunek: Elektronika i Telekomunikacja (1 rok studiów)", field: "Elektronika i Telekomunikacja", years: "2019-2020" }
+      { school: "Politechnika Krakowska", degree: "Kierunek: Matematyka Stosowana", field: "Matematyka Stosowana", years: "2020-2022" },
+      { school: "Akademia Górniczo-Hutnicza (AGH)", degree: "Kierunek: Elektronika i Telekomunikacja", field: "Elektronika i Telekomunikacja", years: "2019-2020" }
     ],
     skills: {
-      general: ["Technical Support", "Incident Management", "SLA", "Problem Solving", "AI-Augmented Workflow"],
-      tools: ["Linux (Ubuntu/Bash)", "SQL", "Docker", "Git", "VS Code", "Excel"],
-      programming: ["Python (Scripting)", "Bash", "JavaScript", "SQL", "C++"]
+      general: ["Linux (Ubuntu CLI)", "Enterprise Ticketing Systems (SLA)", "Incident Management", "Problem Solving"],
+      tools: ["Python (Scripting)", "Google Workspace API", "Excel", "VS Code"],
+      programming: ["Bash Automation", "SQL (Podstawy)", "Sieci (TCP/IP / DNS)"]
     },
-    languages: ["Polski (Ojczysty)", "Angielski (C1/C2 - Zaawansowany Professional)", "Niemiecki (Podstawowy)", "Rosyjski (Podstawowy)"]
+    languages: ["Polski (Ojczysty)", "Angielski (C1/C2 - Zaawansowany Professional)"]
   },
   en: {
     experiences: [
@@ -182,15 +182,15 @@ const supportData: Record<string, CVData> = {
       }
     ],
     education: [
-      { school: "Cracow University of Technology", degree: "Field: Applied Mathematics (2 years of study)", field: "Applied Mathematics", years: "2020-2022" },
-      { school: "AGH University of Science and Technology", degree: "Field: Electronics and Telecommunications (1 year of study)", field: "Electronics and Telecommunications", years: "2019-2020" }
+      { school: "Cracow University of Technology", degree: "Field: Applied Mathematics", field: "Applied Mathematics", years: "2020-2022" },
+      { school: "AGH University of Science and Technology", degree: "Field: Electronics and Telecommunications", field: "Electronics and Telecommunications", years: "2019-2020" }
     ],
     skills: {
-      general: ["Technical Support", "Incident Management", "SLA", "Problem Solving", "AI-Augmented Workflow"],
-      tools: ["Linux (Ubuntu/Bash)", "SQL", "Docker", "Git", "VS Code", "Excel"],
-      programming: ["Python (Scripting)", "Bash", "JavaScript", "SQL", "C++"]
+      general: ["Linux (Ubuntu CLI)", "Enterprise Ticketing Systems (SLA)", "Incident Management", "Problem Solving"],
+      tools: ["Python (Scripting)", "Google Workspace API", "Excel", "VS Code"],
+      programming: ["Bash Automation", "SQL (Basics)", "Networking (TCP/IP / DNS)"]
     },
-    languages: ["Polish (Native)", "English (C1/C2 - Advanced Professional)", "German (Elementary)", "Russian (Elementary)"]
+    languages: ["Polish (Native)", "English (C1/C2 - Advanced Professional)"]
   }
 };
 
@@ -269,15 +269,15 @@ const devProjects: Project[] = [
 const devConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
-    title: "Junior Software Engineer | Python & C++ Developer | Backend Enthusiast",
-    description: "Ambitny programista z 10-letnią ekspozycją na C++ (background akademicki AGH/PK) i biegłością w Pythonie. Twórca architektury 'WikiGraph' (system RAG/Graph ETL). Specjalizuję się w backendzie, algorytmice i optymalizacji zapytań. Szukam roli Junior Developer, gdzie wykorzystam znajomość Linuxa, Dockera i struktur danych.",
+    title: "Junior Software Engineer | Python & C++ Developer",
+    description: "Ambitny programista z solidnym zapleczem akademickim (AGH/PK) i biegłością w Pythonie. Twórca architektury 'WikiGraph' (Graph ETL). Specjalizuję się w backendzie (FastAPI), algorytmice i optymalizacji zapytań. Szukam wyzwań inżynierskich.",
     email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["Python", "C++", "SQL", "Docker", "Linux", "Neo4j"]
   },
   en: {
     name: "Dawid Czerwiński",
-    title: "Junior Software Engineer | Python & C++ Developer | Backend Enthusiast",
-    description: "Ambitious programmer with 10 years of exposure to C++ (AGH/PK academic background) and proficiency in Python. Creator of 'WikiGraph' architecture (RAG/Graph ETL). Specializing in backend, algorithms, and query optimization. Seeking a Junior Developer role to leverage Linux, Docker, and Data Structures knowledge.",
+    title: "Junior Software Engineer | Python & C++ Developer",
+    description: "Ambitious programmer with a solid academic background (AGH/PK) and proficiency in Python. Creator of 'WikiGraph' architecture (Graph ETL). Specializing in backend (FastAPI), algorithms, and query optimization. Seeking engineering challenges.",
     email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["Python", "C++", "SQL", "Docker", "Linux", "Neo4j"]
   }
@@ -314,9 +314,9 @@ const devData: Record<string, CVData> = {
     ],
     education: supportData.pl.education,
     skills: {
-      general: ["Algorithms & Data Structures", "Memory Management", "Graph Theory", "Backend Architecture"],
-      tools: ["Docker", "Linux (Bash)", "Git (Flow)", "Neo4j (Cypher)", "Vector DB", "VS Code"],
-      programming: ["Python (FastAPI)", "C++ (STL, Pointers)", "SQL (PostgreSQL)", "JavaScript"]
+      general: ["Grafowe Bazy Danych (Neo4j)", "Architektura Backend", "Algorytmy i Struktury Danych", "Docker"],
+      tools: ["Git (Flow)", "Linux Environment", "VS Code", "Postman"],
+      programming: ["Python (FastAPI)", "C++ (STL/Pointers)", "REST API Design", "SQL (PostgreSQL)"]
     },
     languages: supportData.pl.languages
   },
@@ -350,9 +350,9 @@ const devData: Record<string, CVData> = {
     ],
     education: supportData.en.education,
     skills: {
-      general: ["Algorithms & Data Structures", "Memory Management", "Graph Theory", "Backend Architecture"],
-      tools: ["Docker", "Linux (Bash)", "Git (Flow)", "Neo4j (Cypher)", "Vector DB", "VS Code"],
-      programming: ["Python (FastAPI)", "C++ (STL, Pointers)", "SQL (PostgreSQL)", "JavaScript"]
+      general: ["Graph Databases (Neo4j)", "Backend Architecture", "Algorithms & Data Structures", "Docker"],
+      tools: ["Git (Flow)", "Linux Environment", "VS Code", "Postman"],
+      programming: ["Python (FastAPI)", "C++ (STL/Pointers)", "REST API Design", "SQL (PostgreSQL)"]
     },
     languages: supportData.en.languages
   }
