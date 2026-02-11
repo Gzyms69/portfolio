@@ -71,5 +71,3 @@ The project includes specialized utilities in scripts/:
 ## Architecture
 The project follows an Offline-First philosophy where data is strictly separated from UI components in client/lib/terminal-db.tsx, allowing the entire "OS" to function instantly without database latency.
 
----
-**Vault-Tec OS v4.0** | *Better Living Through Technology*
