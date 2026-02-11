@@ -45,6 +45,8 @@ export const techColors: Record<string, { bg: string; text: string; border: stri
   Excel: { bg: "bg-green-700/20", text: "text-green-400", border: "border-green-700/40", hover: "hover:bg-green-700/30", icon: "microsoftexcel", hex: "217346" },
   "API Integration": { bg: "bg-gray-500/20", text: "text-gray-300", border: "border-gray-500/40", hover: "hover:bg-gray-500/30", icon: "postman", hex: "ff6c37" },
   "Three.js": { bg: "bg-white/20", text: "text-white", border: "border-white/40", hover: "hover:bg-white/30", icon: "threejs", hex: "ffffff" },
+  "Next.js": { bg: "bg-zinc-900/20", text: "text-zinc-100", border: "border-zinc-700/40", hover: "hover:bg-zinc-800/30", icon: "nextjs", hex: "000000" },
+  Playwright: { bg: "bg-green-500/20", text: "text-green-300", border: "border-green-500/40", hover: "hover:bg-green-500/30", icon: "playwright", hex: "2EAD33" },
 };
 
 export const getTechColor = (tech: string) => techColors[tech] || { bg: "bg-white/10", text: "text-medium", border: "border-white/20", hover: "hover:bg-white/15", icon: "", hex: "ffffff" };

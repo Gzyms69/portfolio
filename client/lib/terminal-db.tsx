@@ -17,50 +17,65 @@ const supportProjects: Project[] = [
   {
     title: "WikiGraph Lab",
     pl: { 
-      description: "Diagnostyka i utrzymanie złożonego pipeline'u ETL (Python/Docker). Zarządzanie bazą grafową Neo4j i relacyjną SQLite. Rozwiązywanie problemów z wydajnością zapytań i integracją API.", 
-      fullDescription: "..." 
+      description: "Silnik Grafu Wiedzy (Knowledge Graph) przetwarzający Wikipedię w ujednoliconą strukturę topologiczną.", 
+      fullDescription: "A hybrid database architecture designed for large-scale graph analysis. Features a unified FastAPI backend federating queries across isolated language containers. Utilizes Neo4j for topological analysis (PageRank, Jaccard Similarity) and SQLite for sub-millisecond full-text search (FTS5). Includes a Just-In-Time (JIT) configuration system for parsing any Wikipedia language." 
     },
     en: { 
-      description: "Diagnosis and maintenance of a complex ETL pipeline (Python/Docker). Management of Neo4j graph and SQLite relational databases. Troubleshooting query performance and API integration issues.", 
-      fullDescription: "..." 
+      description: "Language-agnostic Knowledge Graph engine processing Wikipedia into a unified Neo4j + SQLite structure.", 
+      fullDescription: "A hybrid database architecture designed for large-scale graph analysis. Features a unified FastAPI backend federating queries across isolated language containers. Utilizes Neo4j for topological analysis (PageRank, Jaccard Similarity) and SQLite for sub-millisecond full-text search (FTS5). Includes a Just-In-Time (JIT) configuration system for parsing any Wikipedia language." 
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
-    techStack: ["Python", "Neo4j", "Docker", "ETL Debugging", "Database Management"],
+    techStack: ["Python", "Neo4j", "Docker", "SQL", "FastAPI"],
+    imageUrl: "https://images.unsplash.com/photo-1558494949-ef526b0042a0?w=800&q=80",
     variant: "code",
     icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
   {
     title: "LeadFinder & Katalog Ecosystem",
     pl: { 
-      description: "Kompleksowy pipeline automatyzacji sprzedaży i marketplace szablonów. Pipeline (Python): Zautomatyzowany silnik scrapujący (LeadFinder) identyfikujący firmy z lukami cyfrowymi, walidujący domeny i synchronizujący leady bezpośrednio z Google Sheets API. Marketplace (Next.js 15): Wydajne Monorepo (Turborepo) z Dynamiczną Architekturą Sprzedaży generującą spersonalizowane strony demo ('Magic Links') poprzez parametry URL.", 
-      fullDescription: "Contribution: Forked and patched a third-party Google Maps scraper to fix critical logic errors in review counting. Ensuring data integrity with Playwright-based RPC-to-Browser fallback." 
+      description: "Kompleksowy system automatyzacji sprzedaży i marketplace szablonów. Łączy scraping leadów (Python) z generowaniem stron demo (Next.js).", 
+      fullDescription: "A dual-system ecosystem designed to automate the sales lifecycle.\n\n1. Pipeline (Python): A custom scraping engine that identifies businesses with digital gaps, validates domains, and syncs leads directly to Google Sheets. Includes a custom-patched Google Maps scraper using Playwright to fix review counting logic.\n\n2. Marketplace (Next.js 15): A high-performance Monorepo (Turborepo) featuring a 'Dynamic Sales Architecture'. This allows for the instant generation of personalized demo websites ('Magic Links') via URL parameters, reducing manual sales preparation time by 99%." 
     },
     en: { 
-      description: "An end-to-end sales automation pipeline and template marketplace. Pipeline (Python): Automated scraping engine that identifies businesses with digital gaps, validates domains, and syncs leads directly to Google Sheets API. Marketplace (Next.js 15): A high-performance Monorepo built with Turborepo. Features a Dynamic Sales Architecture that generates personalized demo websites ('Magic Links') via URL parameters.", 
-      fullDescription: "Contribution: Forked and patched a third-party Google Maps scraper to fix critical logic errors in review counting. Ensuring data integrity with Playwright-based RPC-to-Browser fallback." 
+      description: "End-to-end sales automation pipeline and template marketplace. Features automated lead scraping and dynamic 'Magic Link' demo generation.", 
+      fullDescription: "A dual-system ecosystem designed to automate the sales lifecycle.\n\n1. Pipeline (Python): A custom scraping engine that identifies businesses with digital gaps, validates domains, and syncs leads directly to Google Sheets. Includes a custom-patched Google Maps scraper using Playwright to fix review counting logic.\n\n2. Marketplace (Next.js 15): A high-performance Monorepo (Turborepo) featuring a 'Dynamic Sales Architecture'. This allows for the instant generation of personalized demo websites ('Magic Links') via URL parameters, reducing manual sales preparation time by 99%." 
     },
     githubUrl: "https://github.com/Gzyms69/LeadFinder",
-    techStack: ["Python", "Next.js 15", "Turborepo", "Google Sheets API", "Playwright"],
+    techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "Excel"],
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
     variant: "design",
     icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
   {
     title: "ROMHub",
-    pl: { description: "Emulator N64 w przeglądarce. Diagnozowanie problemów z kompatybilnością WASM i wydajnością renderowania.", fullDescription: "..." },
-    en: { description: "Browser-based N64 emulator. Diagnosing WASM compatibility and rendering performance issues.", fullDescription: "..." },
+    pl: { 
+      description: "Emulator N64 działający w przeglądarce (Client-side) dzięki technologii WebAssembly.", 
+      fullDescription: "A privacy-focused emulator that runs entirely on the client side using WebAssembly. ROMs are processed locally and never uploaded to a server. Features persistent local storage for game saves, custom controller mapping, and a modular architecture designed for future core expansions." 
+    },
+    en: { 
+      description: "Client-side N64 emulator running entirely in the browser via WebAssembly (WASM).", 
+      fullDescription: "A privacy-focused emulator that runs entirely on the client side using WebAssembly. ROMs are processed locally and never uploaded to a server. Features persistent local storage for game saves, custom controller mapping, and a modular architecture designed for future core expansions." 
+    },
     githubUrl: "https://github.com/Gzyms69/romhub",
-    techStack: ["Emulation", "WASM", "Client-side Debugging"],
+    techStack: ["JavaScript", "Emulation", "Local Storage"],
+    imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80",
     variant: "code",
     icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     hideFromResume: true
   },
   {
     title: "Portfolio Website",
-    pl: { description: "Interaktywne portfolio. Rozwiązywanie problemów z responsywnością i wydajnością animacji (Framer Motion/Three.js).", fullDescription: "..." },
-    en: { description: "Interactive portfolio. Troubleshooting responsiveness and animation performance (Framer Motion/Three.js).", fullDescription: "..." },
+    pl: { 
+      description: "Interfejs terminala w stylu retro-futurystycznym, zbudowany w oparciu o React i Three.js.", 
+      fullDescription: "An immersive 'OS' simulation exploring glassmorphism and mechanical aesthetics. Features a fully interactive CLI, a 3D environment (Three.js) for dossier viewing, and a dedicated print-optimized resume generator. Built with a focus on high-contrast readability, 'offline-first' responsiveness, and a strict separation of data and UI." 
+    },
+    en: { 
+      description: "Retro-futuristic terminal interface built with React, Three.js, and Framer Motion.", 
+      fullDescription: "An immersive 'OS' simulation exploring glassmorphism and mechanical aesthetics. Features a fully interactive CLI, a 3D environment (Three.js) for dossier viewing, and a dedicated print-optimized resume generator. Built with a focus on high-contrast readability, 'offline-first' responsiveness, and a strict separation of data and UI." 
+    },
     githubUrl: "https://github.com/Gzyms69/portfolio",
-    techStack: ["React", "Performance Optimization", "Three.js"],
+    techStack: ["React", "Three.js", "TypeScript", "Tailwind CSS"],
+    imageUrl: "/portfolio-website.png",
     variant: "design",
     icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     hideFromResume: true
@@ -186,33 +201,68 @@ const devProjects: Project[] = [
   {
     title: "WikiGraph Lab",
     pl: { 
-      description: "Hybrydowa architektura (Offline Core + Online Modules). Implementacja znanych algorytmów grafowych (BFS, PageRank, Jaccard Index) w Pythonie, udostępnionych przez własne API. Konfiguracja JIT przez Wikipedia API oraz planowany moduł LLM API (Hybrid AI).", 
-      fullDescription: "..." 
+      description: "Silnik Grafu Wiedzy (Knowledge Graph) przetwarzający Wikipedię w ujednoliconą strukturę topologiczną.", 
+      fullDescription: "A hybrid database architecture designed for large-scale graph analysis. Features a unified FastAPI backend federating queries across isolated language containers. Utilizes Neo4j for topological analysis (PageRank, Jaccard Similarity) and SQLite for sub-millisecond full-text search (FTS5). Includes a Just-In-Time (JIT) configuration system for parsing any Wikipedia language." 
     },
     en: { 
-      description: "Hybrid Architecture (Offline Core + Online Modules). Implementation of standard graph algorithms (BFS, PageRank, Jaccard Index) in Python via custom API. JIT configuration via Wikipedia API and planned LLM API module (Hybrid AI).", 
-      fullDescription: "..." 
+      description: "Language-agnostic Knowledge Graph engine processing Wikipedia into a unified Neo4j + SQLite structure.", 
+      fullDescription: "A hybrid database architecture designed for large-scale graph analysis. Features a unified FastAPI backend federating queries across isolated language containers. Utilizes Neo4j for topological analysis (PageRank, Jaccard Similarity) and SQLite for sub-millisecond full-text search (FTS5). Includes a Just-In-Time (JIT) configuration system for parsing any Wikipedia language." 
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
-    techStack: ["Python", "Neo4j", "Docker", "Graph Algorithms", "Backend API"],
+    techStack: ["Python", "Neo4j", "Docker", "SQL", "FastAPI"],
+    imageUrl: "https://images.unsplash.com/photo-1558494949-ef526b0042a0?w=800&q=80",
     variant: "code",
     icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
   {
     title: "LeadFinder & Katalog Ecosystem",
     pl: { 
-      description: "Kompleksowy pipeline automatyzacji sprzedaży i marketplace szablonów. Pipeline (Python): Zautomatyzowany silnik scrapujący (LeadFinder) identyfikujący firmy z lukami cyfrowymi, walidujący domeny i synchronizujący leady bezpośrednio z Google Sheets API. Marketplace (Next.js 15): Wydajne Monorepo (Turborepo) z Dynamiczną Architekturą Sprzedaży generującą spersonalizowane strony demo ('Magic Links') poprzez parametry URL.", 
-      fullDescription: "Contribution: Forked and patched a third-party Google Maps scraper to fix critical logic errors in review counting. Ensuring data integrity with Playwright-based RPC-to-Browser fallback." 
+      description: "Kompleksowy system automatyzacji sprzedaży i marketplace szablonów. Łączy scraping leadów (Python) z generowaniem stron demo (Next.js).", 
+      fullDescription: "A dual-system ecosystem designed to automate the sales lifecycle.\n\n1. Pipeline (Python): A custom scraping engine that identifies businesses with digital gaps, validates domains, and syncs leads directly to Google Sheets. Includes a custom-patched Google Maps scraper using Playwright to fix review counting logic.\n\n2. Marketplace (Next.js 15): A high-performance Monorepo (Turborepo) featuring a 'Dynamic Sales Architecture'. This allows for the instant generation of personalized demo websites ('Magic Links') via URL parameters, reducing manual sales preparation time by 99%." 
     },
     en: { 
-      description: "An end-to-end sales automation pipeline and template marketplace. Pipeline (Python): Automated scraping engine that identifies businesses with digital gaps, validates domains, and syncs leads directly to Google Sheets API. Marketplace (Next.js 15): A high-performance Monorepo built with Turborepo. Features a Dynamic Sales Architecture that generates personalized demo websites ('Magic Links') via URL parameters.", 
-      fullDescription: "Contribution: Forked and patched a third-party Google Maps scraper to fix critical logic errors in review counting. Ensuring data integrity with Playwright-based RPC-to-Browser fallback." 
+      description: "End-to-end sales automation pipeline and template marketplace. Features automated lead scraping and dynamic 'Magic Link' demo generation.", 
+      fullDescription: "A dual-system ecosystem designed to automate the sales lifecycle.\n\n1. Pipeline (Python): A custom scraping engine that identifies businesses with digital gaps, validates domains, and syncs leads directly to Google Sheets. Includes a custom-patched Google Maps scraper using Playwright to fix review counting logic.\n\n2. Marketplace (Next.js 15): A high-performance Monorepo (Turborepo) featuring a 'Dynamic Sales Architecture'. This allows for the instant generation of personalized demo websites ('Magic Links') via URL parameters, reducing manual sales preparation time by 99%." 
     },
     githubUrl: "https://github.com/Gzyms69/LeadFinder",
-    techStack: ["Python", "Next.js 15", "Turborepo", "Google Sheets API", "Playwright"],
+    techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "Excel"],
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
     variant: "code",
     icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />
+  },
+  {
+    title: "ROMHub",
+    pl: { 
+      description: "Emulator N64 działający w przeglądarce (Client-side) dzięki technologii WebAssembly.", 
+      fullDescription: "A privacy-focused emulator that runs entirely on the client side using WebAssembly. ROMs are processed locally and never uploaded to a server. Features persistent local storage for game saves, custom controller mapping, and a modular architecture designed for future core expansions." 
+    },
+    en: { 
+      description: "Client-side N64 emulator running entirely in the browser via WebAssembly (WASM).", 
+      fullDescription: "A privacy-focused emulator that runs entirely on the client side using WebAssembly. ROMs are processed locally and never uploaded to a server. Features persistent local storage for game saves, custom controller mapping, and a modular architecture designed for future core expansions." 
+    },
+    githubUrl: "https://github.com/Gzyms69/romhub",
+    techStack: ["JavaScript", "Emulation", "Local Storage"],
+    imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80",
+    variant: "code",
+    icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
+    hideFromResume: true
+  },
+  {
+    title: "Portfolio Website",
+    pl: { 
+      description: "Interfejs terminala w stylu retro-futurystycznym, zbudowany w oparciu o React i Three.js.", 
+      fullDescription: "An immersive 'OS' simulation exploring glassmorphism and mechanical aesthetics. Features a fully interactive CLI, a 3D environment (Three.js) for dossier viewing, and a dedicated print-optimized resume generator. Built with a focus on high-contrast readability, 'offline-first' responsiveness, and a strict separation of data and UI." 
+    },
+    en: { 
+      description: "Retro-futuristic terminal interface built with React, Three.js, and Framer Motion.", 
+      fullDescription: "An immersive 'OS' simulation exploring glassmorphism and mechanical aesthetics. Features a fully interactive CLI, a 3D environment (Three.js) for dossier viewing, and a dedicated print-optimized resume generator. Built with a focus on high-contrast readability, 'offline-first' responsiveness, and a strict separation of data and UI." 
+    },
+    githubUrl: "https://github.com/Gzyms69/portfolio",
+    techStack: ["React", "Three.js", "TypeScript", "Tailwind CSS"],
+    imageUrl: "/portfolio-website.png",
+    variant: "design",
+    icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
+    hideFromResume: true
   }
 ];
 
