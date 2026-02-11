@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Terminal, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { useLanguage } from '@/hooks/use-language';
-import { portfolioConfig } from '@/lib/terminal-db';
 import type { ContactRequest } from '@shared/api';
 
 export const ContactForm = () => {
@@ -23,14 +22,24 @@ export const ContactForm = () => {
     e.preventDefault();
     setStatus('loading');
 
+    const formDataToSend = new FormData();
+    formDataToSend.append("access_key", "cb347f7c-19bb-45d8-b8bb-5079a0beb9d8");
+    formDataToSend.append("name", formData.name);
+    formDataToSend.append("email", formData.email);
+    formDataToSend.append("message", formData.message);
+    if (formData.subject) {
+      formDataToSend.append("subject", formData.subject);
+    }
+
     try {
-      const response = await fetch(`https://formspree.io/f/${portfolioConfig.contact.formspreeId}`, {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: formDataToSend,
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (data.success) {
         setStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
         setTimeout(() => setStatus('idle'), 5000);
