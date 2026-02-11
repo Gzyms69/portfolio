@@ -178,7 +178,7 @@ export default function Resume() {
                     {(['support', 'developer', 'office'] as const).map((v) => (
                       <button
                         key={v}
-                        onClick={() => setVariant(v)}
+                        onClick={() => handleVariantChange(v)}
                         className={`flex items-center justify-between px-3 py-2 rounded text-xs font-medium transition-all ${
                           variant === v 
                             ? "bg-black text-white shadow-md" 
@@ -199,7 +199,7 @@ export default function Resume() {
                   </span>
                   <div className="grid grid-cols-2 gap-2">
                     <button
-                      onClick={() => setLang('pl')}
+                      onClick={() => handleLangChange('pl')}
                       className={`flex items-center justify-center gap-2 px-3 py-2 rounded text-xs font-medium transition-all ${
                         lang === 'pl' 
                           ? "bg-black text-white shadow-md" 
@@ -209,7 +209,7 @@ export default function Resume() {
                       PL
                     </button>
                     <button
-                      onClick={() => setLang('en')}
+                      onClick={() => handleLangChange('en')}
                       className={`flex items-center justify-center gap-2 px-3 py-2 rounded text-xs font-medium transition-all ${
                         lang === 'en' 
                           ? "bg-black text-white shadow-md" 
@@ -261,12 +261,14 @@ export default function Resume() {
               <Mail className="w-3 h-3" />
               <a href={`mailto:${content.email}`} className="hover:underline">{content.email}</a>
             </div>
-            <div className="flex items-center sm:justify-end gap-1.5">
-              <Github className="w-3 h-3" />
-              <a href={portfolioConfig.socials.github} target="_blank" rel="noreferrer" className="hover:underline">
-                github.com/{portfolioConfig.socials.github.split('/').pop()}
-              </a>
-            </div>
+            {variant !== 'office' && (
+              <div className="flex items-center sm:justify-end gap-1.5">
+                <Github className="w-3 h-3" />
+                <a href={portfolioConfig.socials.github} target="_blank" rel="noreferrer" className="hover:underline">
+                  github.com/{portfolioConfig.socials.github.split('/').pop()}
+                </a>
+              </div>
+            )}
             {portfolioConfig.socials.linkedin && (
               <div className="flex items-center sm:justify-end gap-1.5">
                 <Linkedin className="w-3 h-3" />

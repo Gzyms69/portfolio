@@ -302,14 +302,21 @@ const devData: Record<string, CVData> = {
         company: "AB Midden Nederland",
         location: "Holandia",
         period: "02.2025 - 10.2025",
-        responsibilities: ["Doświadczenie operacyjne i wzmacnianie etyki pracy w środowisku międzynarodowym."]
+        responsibilities: [
+          "Praca w dynamicznym środowisku międzynarodowym – szybka adaptacja i praca zespołowa.",
+          "Realizacja zadań pod presją czasu z zachowaniem wysokiej dyscypliny i norm jakościowych."
+        ]
       },
       {
         title: "Operations Specialist",
         company: "FedEx Express Ireland",
         location: "Kraków",
         period: "03.2022 - 07.2023",
-        responsibilities: ["Świadomość domeny biznesowej i współpraca w zespole międzynarodowym (Angielski C1/C2)."]
+        responsibilities: [
+          "Praca w rygorze SLA (Service Level Agreement) i Compliance – dbałość o procedury i terminowość.",
+          "Codzienna komunikacja w języku angielskim (C1/C2) w zespole międzynarodowym.",
+          "Obsługa zgłoszeń i analiza danych w systemach klasy Enterprise (Ticket-based workflow)."
+        ]
       }
     ],
     education: supportData.pl.education,
@@ -338,14 +345,21 @@ const devData: Record<string, CVData> = {
         company: "AB Midden Nederland",
         location: "Netherlands",
         period: "Feb 2025 - Oct 2025",
-        responsibilities: ["Operational experience & work ethic reinforcement in international environment."]
+        responsibilities: [
+          "Working in a dynamic international environment – fast adaptation and teamwork.",
+          "Execution of tasks under time pressure while maintaining high discipline and quality standards."
+        ]
       },
       {
         title: "Operations Specialist",
         company: "FedEx Express Ireland",
         location: "Krakow",
         period: "Mar 2022 - Jul 2023",
-        responsibilities: ["Business Domain Awareness & International Team Collaboration (English C1/C2)."]
+        responsibilities: [
+          "Working under SLA (Service Level Agreement) and Compliance rigor – attention to procedures and deadlines.",
+          "Daily communication in English (C1/C2) within an international team.",
+          "Ticket handling and data analysis in Enterprise-class systems (Ticket-based workflow)."
+        ]
       }
     ],
     education: supportData.en.education,
@@ -367,14 +381,14 @@ const officeConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
     title: "Operations Specialist / Data Administration",
-    description: "Skrupulatny specjalista ds. administracji z doświadczeniem w międzynarodowej korporacji (FedEx). Biegły w języku angielskim (C1/C2) i obsłudze pakietu MS Office. Posiadam doświadczenie w pracy z dokumentacją, procedurami oraz obsłudze klienta. Cechuje mnie dokładność, terminowość i wysoka kultura pracy.",
+    description: "Skrupulatny Specjalista ds. Administracji i Operacji z 3-letnim doświadczeniem w środowisku międzynarodowym (FedEx, AB Midden). Biegły w języku angielskim (C1/C2) i zaawansowanej obsłudze pakietu MS Office (Excel - raportowanie, analiza danych). Posiadam praktyczne doświadczenie w weryfikacji dokumentacji (Compliance), pracy z procedurami oraz obsłudze klienta zagranicznego. Cechuje mnie wysoka terminowość, umiejętność szybkiego uczenia się systemów wewnętrznych oraz analityczne podejście do rozwiązywania problemów.",
     email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["English C1/C2", "MS Office", "Data Entry", "Administration"]
   },
   en: {
     name: "Dawid Czerwiński",
     title: "Operations Specialist / Data Administration",
-    description: "Meticulous administration specialist with experience in an international corporation (FedEx). Fluent in English (C1/C2) and proficient in MS Office. Experienced in documentation, procedures, and customer service. Characterized by accuracy, punctuality, and high work ethics.",
+    description: "Meticulous Administration and Operations Specialist with 3 years of experience in an international environment (FedEx, AB Midden). Fluent in English (C1/C2) and proficient in advanced MS Office (Excel - reporting, data analysis). I have practical experience in documentation verification (Compliance), working with procedures, and international customer service. Characterized by high punctuality, the ability to quickly learn internal systems, and an analytical approach to problem-solving.",
     email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["English C1/C2", "MS Office", "Data Entry", "Administration"]
   }
@@ -384,43 +398,44 @@ const officeData: Record<string, CVData> = {
   pl: {
     experiences: [
       {
-        title: "Pracownik Projektowy (Logistyka)",
-        company: "AB Midden Nederland",
-        location: "Holandia",
-        period: "02.2025 - 10.2025",
-        responsibilities: [
-          "Realizacja planów operacyjnych w środowisku magazynowym/produkcyjnym.",
-          "Praca fizyczna wymagająca dokładności i dyscypliny.",
-          "Codzienna współpraca w języku angielskim."
-        ]
-      },
-      {
         title: "Specjalista ds. Operacji / Administracja",
         company: "FedEx Express Ireland",
         location: "Kraków",
         period: "03.2022 - 07.2023",
         responsibilities: [
-          "Weryfikacja dokumentacji celnej i zapewnienie zgodności z procedurami (Compliance).",
-          "Raportowanie i praca z systemami wewnętrznymi pod presją czasu (SLA).",
-          "Kontakt z klientem zagranicznym i współpraca w zespole międzynarodowym."
+          "Weryfikacja i procesowanie dokumentacji: Analiza poprawności dokumentów celnych i przewozowych (dbałość o detale i zgodność z procedurami Compliance).",
+          "Obsługa systemów klasy Enterprise: Praca na dużych zbiorach danych w wewnętrznych systemach operacyjnych oraz pakiecie MS Office.",
+          "Praca pod presją czasu (SLA): Terminowa realizacja zgłoszeń i priorytetyzacja zadań w dynamicznym środowisku korporacyjnym.",
+          "Komunikacja w języku angielskim (C1/C2): Codzienna współpraca z zagranicznymi oddziałami oraz rozwiązywanie problemów operacyjnych drogą mailową i telefoniczną."
         ]
       },
       {
-        title: "Instruktor Szkoleń / Mentor",
+        title: "Koordynator Szkoleń / Mentor IT",
         company: "Giganci Programowania",
         location: "Zdalnie",
         period: "01.2024 - 06.2025",
         responsibilities: [
-          "Prowadzenie szkoleń online i przygotowywanie materiałów dydaktycznych.",
-          "Raportowanie postępów uczestników i komunikacja z klientami (rodzicami).",
-          "Dbałość o wysoką jakość obsługi klienta i wizerunek firmy."
+          "Zarządzanie harmonogramem i dokumentacją: Organizacja cyklu szkoleniowego, prowadzenie ewidencji obecności i raportowanie postępów w systemie CRM.",
+          "Obsługa klienta i komunikacja: Bieżący kontakt z klientami (rodzicami kursantów), wyjaśnianie kwestii technicznych i organizacyjnych.",
+          "Przygotowywanie raportów i materiałów: Tworzenie podsumowań okresowych oraz dbałość o wysoką jakość procesów edukacyjnych."
+        ]
+      },
+      {
+        title: "Wsparcie Operacyjne / Logistyka",
+        company: "AB Midden Nederland",
+        location: "Holandia",
+        period: "02.2025 - 10.2025",
+        responsibilities: [
+          "Wsparcie procesów logistycznych: Realizacja zadań operacyjnych w międzynarodowym środowisku pracy.",
+          "Współpraca w języku angielskim: Codzienna komunikacja w zespole wielokulturowym, wymagająca elastyczności i umiejętności adaptacji.",
+          "Dbałość o normy jakościowe: Praca wymagająca wysokiej dyscypliny, punktualności i przestrzegania procedur BHP."
         ]
       }
     ],
     education: supportData.pl.education,
     skills: {
-      general: ["Dokładność w analizie dokumentacji", "Compliance & Procedures", "Realizacja planów operacyjnych", "Współpraca w zespole", "Kultura osobista"],
-      tools: ["MS Office", "Outlook", "Systemy wewnętrzne (ERP/CRM)", "Google Workspace"],
+      general: ["Doskonała organizacja pracy własnej i zarządzanie czasem", "Wysoka kultura osobista i komunikatywność", "Umiejętność pracy z poufnymi danymi (RODO/Data Privacy)"],
+      tools: ["MS Excel: Tabele przestawne, wyszukiwanie danych (VLOOKUP), filtrowanie, formatowanie warunkowe.", "Obsługa biura: Outlook (zarządzanie kalendarzem), Word (redagowanie pism), PowerPoint.", "Systemy: Doświadczenie w pracy z systemami CRM / ERP oraz Google Workspace."],
       programming: [] 
     },
     languages: supportData.pl.languages
@@ -428,43 +443,44 @@ const officeData: Record<string, CVData> = {
   en: {
     experiences: [
       {
-        title: "Project Worker (Logistics)",
-        company: "AB Midden Nederland",
-        location: "Netherlands",
-        period: "Feb 2025 - Oct 2025",
-        responsibilities: [
-          "Execution of operational plans in a warehouse/production environment.",
-          "Physical work requiring accuracy and discipline.",
-          "Daily collaboration in English."
-        ]
-      },
-      {
         title: "Operations Specialist / Administration",
         company: "FedEx Express Ireland",
         location: "Krakow",
         period: "Mar 2022 - Jul 2023",
         responsibilities: [
-          "Verification of customs documentation and ensuring compliance with procedures.",
-          "Reporting and working with internal systems under time pressure (SLA).",
-          "Contact with international clients and collaboration within a global team."
+          "Documentation verification and processing: Analysis of customs and shipping documents correctness (attention to detail and compliance with procedures).",
+          "Enterprise system operation: Working with large data sets in internal operating systems and MS Office suite.",
+          "Working under time pressure (SLA): Timely ticket fulfillment and task prioritization in a dynamic corporate environment.",
+          "Communication in English (C1/C2): Daily collaboration with international branches and solving operational problems via email and phone."
         ]
       },
       {
-        title: "Training Instructor / Mentor",
+        title: "Training Coordinator / IT Mentor",
         company: "Giganci Programowania",
         location: "Remote",
         period: "Jan 2024 - Jun 2025",
         responsibilities: [
-          "Conducting online training and preparing educational materials.",
-          "Reporting participant progress and communicating with clients.",
-          "Ensuring high quality customer service and company image."
+          "Schedule and documentation management: Organizing training cycles, maintaining attendance records, and progress reporting in the CRM system.",
+          "Customer service and communication: Ongoing contact with clients (students' parents), explaining technical and organizational matters.",
+          "Reporting and materials preparation: Creating periodic summaries and ensuring high quality of educational processes."
+        ]
+      },
+      {
+        title: "Operational Support / Logistics",
+        company: "AB Midden Nederland",
+        location: "Netherlands",
+        period: "Feb 2025 - Oct 2025",
+        responsibilities: [
+          "Logistics process support: Execution of operational tasks in an international work environment.",
+          "Collaboration in English: Daily communication in a multicultural team, requiring flexibility and adaptability.",
+          "Attention to quality standards: Work requiring high discipline, punctuality, and compliance with health and safety procedures."
         ]
       }
     ],
     education: supportData.en.education,
     skills: {
-      general: ["Documentation Accuracy", "Compliance & Procedures", "Operational Plan Execution", "Team Collaboration", "Work Ethics"],
-      tools: ["MS Office", "Outlook", "Internal Systems (ERP/CRM)", "Google Workspace"],
+      general: ["Excellent self-organization and time management", "High personal culture and communication skills", "Ability to work with confidential data (GDPR/Data Privacy)"],
+      tools: ["MS Excel: Pivot tables, data lookup (VLOOKUP), filtering, conditional formatting.", "Office support: Outlook (calendar management), Word (letter drafting), PowerPoint.", "Systems: Experience working with CRM / ERP systems and Google Workspace."],
       programming: []
     },
     languages: supportData.en.languages
