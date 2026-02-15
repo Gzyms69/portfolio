@@ -139,8 +139,8 @@ export const Navigation = () => {
 
   return (
     <>
-      {/* Desktop Menu Trigger */}
-      <div className="fixed left-8 top-8 z-[110] hidden sm:block">
+      {/* Desktop Menu Triggers */}
+      <div className="fixed left-8 top-8 z-[110] hidden sm:flex flex-col gap-4">
         <Magnetic strength={0.3}>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -152,10 +152,22 @@ export const Navigation = () => {
             </span>
           </button>
         </Magnetic>
+
+        <Magnetic strength={0.3}>
+          <button
+            onClick={toggleViewMode}
+            className="relative flex items-center justify-center w-12 h-12 rounded-full bg-[#0a0f0a] border-2 border-primary/30 shadow-[0_0_15px_rgba(0,255,65,0.2)] text-primary/40 hover:text-primary hover:border-primary/60 hover:shadow-[0_0_25px_rgba(0,255,65,0.4)] transition-all duration-300 group"
+          >
+            <FileText className="h-6 w-6" />
+            <span className="absolute left-16 opacity-0 group-hover:opacity-100 transition-all duration-300 font-mono text-xl text-primary bg-[#0a0f0a] border border-primary/30 px-3 py-1 rounded-sm pointer-events-none whitespace-nowrap uppercase z-[120] translate-x-[-10px] group-hover:translate-x-0">
+              [ <GlitchText text={t('view_toggle')} className="font-mono" /> ]
+            </span>
+          </button>
+        </Magnetic>
       </div>
 
       {/* Desktop Sidebar Nav */}
-      <nav className="fixed left-8 top-24 hidden flex-col gap-4 z-[100] sm:flex">
+      <nav className="fixed left-8 top-40 hidden flex-col gap-4 z-[100] sm:flex">
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
@@ -181,7 +193,6 @@ export const Navigation = () => {
                   <NavButton onClick={handleProjectsScroll} icon={<Briefcase className="h-6 w-6" />} label={t('projects')} isMenuOpen={isMenuOpen} />
                   <div className="h-px bg-primary/20 mx-2 w-full" />
                   <NavButton onClick={() => setIsTerminalOpen(true)} icon={<Terminal className="h-6 w-6" />} label={t('console')} active={isTerminalOpen} isMenuOpen={isMenuOpen} />
-                  <NavButton onClick={toggleViewMode} icon={<FileText className="h-6 w-6" />} label={t('view_toggle')} isMenuOpen={isMenuOpen} />
                   <NavButton onClick={toggleBackground} icon={
                     <motion.div key={bgType} initial={{ rotateY: 90, opacity: 0 }} animate={{ rotateY: 0, opacity: 1 }} transition={{ type: "spring", damping: 12, stiffness: 200 }}>
                       {getBackgroundIcon()}
@@ -210,17 +221,25 @@ export const Navigation = () => {
       </nav>
 
       {/* Mobile Header */}
-      <nav className="fixed inset-x-5 top-5 flex items-center justify-between gap-3 rounded-xl border-2 border-primary/30 bg-[#0a0f0a] p-2 sm:hidden z-[100] overflow-hidden shadow-[0_0_15px_rgba(0,255,65,0.1)]">
+      <nav className="fixed inset-x-4 top-4 flex items-center justify-between gap-2 rounded-xl border-2 border-primary/30 bg-[#0a0f0a] p-1.5 sm:hidden z-[100] overflow-hidden shadow-[0_0_15px_rgba(0,255,65,0.1)]">
         <div className="absolute inset-0 opacity-30 pointer-events-none">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.05)_50%)] bg-[length:100%_4px]" />
         </div>
-        <div className="relative z-10 flex gap-2">
-          <button onClick={handleHomeScroll} className="p-2 border border-primary/20 rounded text-primary hover:bg-primary/10 transition-colors"><Home className="h-5 w-5" /></button>
-          <button onClick={handleProjectsScroll} className="p-2 border border-primary/20 rounded text-primary hover:bg-primary/10 transition-colors"><Briefcase className="h-5 w-5" /></button>
+        
+        <div className="relative z-10 flex gap-1.5">
+          <button onClick={handleHomeScroll} className="p-2 border border-primary/20 rounded text-primary/60 hover:text-primary transition-colors"><Home className="h-5 w-5" /></button>
+          <button onClick={handleProjectsScroll} className="p-2 border border-primary/20 rounded text-primary/60 hover:text-primary transition-colors"><Briefcase className="h-5 w-5" /></button>
         </div>
-        <div className="relative z-10 font-mono text-primary text-lg tracking-widest uppercase">VAULT_OS</div>
-        <div className="relative z-10 flex gap-2">
-          <button onClick={() => setIsTerminalOpen(true)} className="p-2 border border-primary/20 rounded text-primary hover:bg-primary/10 transition-colors"><Terminal className="h-5 w-5" /></button>
+
+        <div className="relative z-10 font-mono text-primary text-sm tracking-[0.2em] uppercase font-bold">VAULT_OS</div>
+
+        <div className="relative z-10 flex gap-1.5">
+          <button 
+            onClick={toggleViewMode} 
+            className="p-2 border border-primary/20 rounded text-primary/60 hover:text-primary transition-colors"
+          >
+            <FileText className="h-5 w-5" />
+          </button>
           <button 
             onClick={() => setIsMobileMenuOpen(true)}
             className="p-2 border-2 border-primary/40 rounded bg-primary/10 text-primary animate-pulse shadow-[0_0_10px_rgba(0,255,65,0.2)]"
