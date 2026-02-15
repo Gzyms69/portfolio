@@ -80,9 +80,7 @@ export const ContactForm = () => {
             </h2>
           </div>
 
-          <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <input type="hidden" name="form-name" value="contact" />
-            
+          <form name="contact" onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div>
               <label htmlFor="name" className="block text-primary/60 text-sm mb-1 uppercase">
                 {t('name_label')}
