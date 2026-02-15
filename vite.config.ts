@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
-      outDir: "../dist",
+      outDir: "../dist/spa",
       emptyOutDir: true,
     },
     plugins: [
