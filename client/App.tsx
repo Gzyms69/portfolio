@@ -1,7 +1,7 @@
 import "./global.css";
 import { createRoot } from "react-dom/client";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 // UI Components

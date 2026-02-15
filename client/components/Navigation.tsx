@@ -296,11 +296,11 @@ export const Navigation = () => {
               </button>
 
               <button 
-                onClick={() => { toggleViewMode(); setIsMobileMenuOpen(false); }}
+                onClick={() => { setIsTerminalOpen(true); setIsMobileMenuOpen(false); }}
                 className="flex items-center gap-6 p-4 border border-primary/10 bg-primary/5 rounded-lg text-primary text-xl font-mono uppercase transition-all active:bg-primary active:text-black"
               >
-                <FileText className="w-6 h-6" />
-                <span>{t('view_toggle')}</span>
+                <Terminal className="w-6 h-6" />
+                <span>{t('console')}</span>
               </button>
 
               <div className="grid grid-cols-2 gap-4">
