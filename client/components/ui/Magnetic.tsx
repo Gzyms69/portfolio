@@ -10,9 +10,9 @@ interface MagneticProps {
 export const Magnetic = ({ children, strength = 0.5, className = "" }: MagneticProps) => {
   const ref = useRef<HTMLDivElement>(null);
   
-  // Use springs for smooth, physical motion
-  const x = useSpring(useMotionValue(0), { stiffness: 150, damping: 15, mass: 0.1 });
-  const y = useSpring(useMotionValue(0), { stiffness: 150, damping: 15, mass: 0.1 });
+  // Use springs with higher stiffness and lower damping for instant reaction
+  const x = useSpring(useMotionValue(0), { stiffness: 350, damping: 25 });
+  const y = useSpring(useMotionValue(0), { stiffness: 350, damping: 25 });
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current) return;

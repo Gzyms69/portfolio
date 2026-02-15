@@ -26,13 +26,47 @@
     --radius: 0.5rem;
   }
 
+  /* Force hide scrollbars globally for cleaner retro-UI */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 255, 65, 0.2) transparent;
+  }
+
+  /* Chrome/Safari specific scrollbar removal to stop white rectangles */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #030712;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 65, 0.2);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 65, 0.4);
+  }
+
+  /* Specific fix for elements that often show white bars in 3D */
+  .perspective-1000, .perspective-2000 {
+    scrollbar-width: none !important;
+  }
+  
+  .perspective-1000::-webkit-scrollbar, .perspective-2000::-webkit-scrollbar {
+    display: none !important;
+  }
+
   body {
     @apply bg-background text-foreground font-mono;
     font-family: 'VT323', monospace;
     position: relative;
+    overflow-x: hidden;
   }
 
-  /* Universal font enforcement without !important to avoid breaking layout */
   *, ::before, ::after {
     font-family: 'VT323', monospace !important;
   }
@@ -41,27 +75,6 @@
 /* Professional font for Resume */
 .resume-page, .resume-page * {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { @apply bg-muted; }
-::-webkit-scrollbar-thumb { @apply bg-muted-foreground/50 rounded; }
-::-webkit-scrollbar-thumb:hover { @apply bg-muted-foreground/70; }
-
-@media print {
-  @page { margin: 0; }
-  body { 
-    margin: 0; 
-    padding: 0;
-    -webkit-print-color-adjust: exact;
-  }
-  .resume-page {
-    padding: 0 !important;
-    margin: 0 !important;
-    height: 100vh !important;
-    overflow: hidden !important;
-  }
 }
 
 @layer components {
@@ -87,35 +100,30 @@
     height: 100%;
     background: inherit;
     pointer-events: none;
+    mix-blend-mode: screen;
   }
 
   .animate-glitch-1 {
     animation: glitch-anim-1 0.4s infinite linear alternate-reverse;
-    color: rgba(0, 255, 65, 0.3);
+    color: rgba(0, 255, 65, 0.6);
     z-index: -1;
   }
 
   .animate-glitch-2 {
-    animation: glitch-anim-2 0.4s infinite linear alternate-reverse;
-    color: rgba(255, 170, 0, 0.3);
+    animation: glitch-anim-2 0.3s infinite linear alternate-reverse;
+    color: rgba(255, 170, 0, 0.6);
     z-index: -2;
   }
 
   @keyframes glitch-anim-1 {
-    0% { transform: translate(2px, -1px); clip-path: inset(10% 0 30% 0); }
-    20% { transform: translate(-2px, 1px); clip-path: inset(40% 0 10% 0); }
-    40% { transform: translate(1px, -2px); clip-path: inset(70% 0 5% 0); }
-    60% { transform: translate(-1px, 2px); clip-path: inset(5% 0 80% 0); }
-    80% { transform: translate(2px, 1px); clip-path: inset(25% 0 45% 0); }
-    100% { transform: translate(-2px, -1px); clip-path: inset(50% 0 20% 0); }
+    0% { transform: translate(1px, -1px); clip-path: inset(10% 0 30% 0); }
+    50% { transform: translate(-1px, 1px); clip-path: inset(40% 0 10% 0); }
+    100% { transform: translate(1px, 0px); clip-path: inset(70% 0 5% 0); }
   }
 
   @keyframes glitch-anim-2 {
-    0% { transform: translate(-2px, 1px); clip-path: inset(50% 0 20% 0); }
-    20% { transform: translate(2px, -1px); clip-path: inset(25% 0 45% 0); }
-    40% { transform: translate(-1px, 2px); clip-path: inset(5% 0 80% 0); }
-    60% { transform: translate(1px, -2px); clip-path: inset(70% 0 5% 0); }
-    80% { transform: translate(-2px, 1px); clip-path: inset(40% 0 10% 0); }
-    100% { transform: translate(2px, -1px); clip-path: inset(10% 0 30% 0); }
+    0% { transform: translate(-1px, 1px); clip-path: inset(50% 0 20% 0); }
+    50% { transform: translate(1px, -1px); clip-path: inset(25% 0 45% 0); }
+    100% { transform: translate(-1px, 0px); clip-path: inset(10% 0 30% 0); }
   }
 }

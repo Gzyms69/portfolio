@@ -37,8 +37,8 @@ export const ProjectCard = ({
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
 
-  const springX = useSpring(mouseX, { stiffness: 150, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 150, damping: 20 });
+  const springX = useSpring(mouseX, { stiffness: 350, damping: 25 });
+  const springY = useSpring(mouseY, { stiffness: 350, damping: 25 });
 
   const rotateX = useTransform(springY, [0, 1], [5, -5]);
   const rotateY = useTransform(springX, [0, 1], [-5, 5]);

@@ -49,7 +49,7 @@ export const GlitchText = memo(({ text, className = "", triggerInView = false }:
       );
 
       if (iteration < text.length) {
-        iteration += 1 / 3; // Speed control
+        iteration += 1 / 2; // Increased speed for snappier feel
         frameRef.current = requestAnimationFrame(update);
       }
     };
@@ -66,7 +66,6 @@ export const GlitchText = memo(({ text, className = "", triggerInView = false }:
 
   useEffect(() => {
     if (!triggerInView) {
-      // Initial scramble on mount only if not view-triggered
       scramble();
     }
     return () => {
@@ -90,10 +89,15 @@ export const GlitchText = memo(({ text, className = "", triggerInView = false }:
       
       {isHovered && (
         <>
-          <span className="glitch-layer animate-glitch-1 opacity-50" aria-hidden="true">
+          {/* Enhanced Color Split Layers for WOW factor */}
+          <span className="glitch-layer animate-glitch-1 opacity-80" aria-hidden="true">
             {displayText}
           </span>
-          <span className="glitch-layer animate-glitch-2 opacity-50" aria-hidden="true">
+          <span className="glitch-layer animate-glitch-2 opacity-80" aria-hidden="true">
+            {displayText}
+          </span>
+          {/* Third layer for extra chromatic aberration */}
+          <span className="glitch-layer absolute inset-0 text-cyan-500/30 -z-30 translate-x-[2px] blur-[1px] animate-pulse pointer-events-none" aria-hidden="true">
             {displayText}
           </span>
         </>
