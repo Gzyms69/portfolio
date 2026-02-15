@@ -5,43 +5,39 @@ import { createServer } from "./server/index";
 import { visualizer } from "rollup-plugin-visualizer";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
-  const isGithubPages = process.env.GITHUB_PAGES === 'true';
-
-  return {
-    base: isGithubPages ? '/portfolio/' : '/', 
-    root: "client",
-    publicDir: "../public",
-    envDir: "..",
-    server: {
-      host: "::",
-      port: 8080,
-      watch: {
-        usePolling: true,
-        interval: 100,
-      },
-      fs: {
-        allow: [".."],
-        deny: ["../.env", "../.env.*", "../**/.git/**", "../server/**"],
-      },
+export default defineConfig(({ mode }) => ({
+  base: '/portfolio/', 
+  root: "client",
+  publicDir: "../public",
+  envDir: "..",
+  server: {
+    host: "::",
+    port: 8080,
+    watch: {
+      usePolling: true,
+      interval: 100,
     },
-    build: {
-      outDir: "../dist/spa",
-      emptyOutDir: true,
+    fs: {
+      allow: [".."],
+      deny: ["../.env", "../.env.*", "../**/.git/**", "../server/**"],
     },
-    plugins: [
-      react(),
-      expressPlugin(),
-      ...(mode === "analyze" ? [visualizer({ open: true, filename: "../dist/stats.html" })] : [])
-    ],
-    resolve: {
-      alias: {
-        "@": path.resolve(__dirname, "./client"),
-        "@shared": path.resolve(__dirname, "./shared"),
-      },
+  },
+  build: {
+    outDir: "../dist/spa",
+    emptyOutDir: true,
+  },
+  plugins: [
+    react(),
+    expressPlugin(),
+    ...(mode === "analyze" ? [visualizer({ open: true, filename: "../dist/stats.html" })] : [])
+  ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./client"),
+      "@shared": path.resolve(__dirname, "./shared"),
     },
-  };
-});
+  },
+}));
 
 function expressPlugin(): Plugin {
   return {
