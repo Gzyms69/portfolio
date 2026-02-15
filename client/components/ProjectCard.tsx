@@ -79,7 +79,7 @@ export const ProjectCard = ({
           rotateY: isDossier ? 0 : rotateY, 
           transformStyle: "preserve-3d" 
         }}
-        className={`relative z-10 bg-[#0a0f0a] border-2 rounded-lg overflow-hidden transition-all duration-300 shadow-[0_0_15px_rgba(0,255,65,0.05)] ${
+        className={`relative z-10 bg-[#0a0f0a] border-2 rounded-lg overflow-hidden transition-colors transition-shadow duration-300 shadow-[0_0_15px_rgba(0,255,65,0.05)] ${
           isHovered ? 'border-primary/60 shadow-[0_0_30px_rgba(0,255,65,0.2)]' : 'border-primary/20'
         } ${isDossier ? 'p-4 sm:p-6' : 'p-6 sm:p-8'}`}
       >
