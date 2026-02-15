@@ -25,7 +25,7 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
   const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
   const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
 
-  // Map mouse position to rotation (Minimal intensity to avoid any stretching/clipping)
+  // Map mouse position to rotation (Minimal intensity to avoid stretching/clipping)
   const rotateX = useTransform(springY, [-0.5, 0.5], [1, -1]);
   const rotateY = useTransform(springX, [-0.5, 0.5], [-1, 1]);
 
@@ -150,6 +150,7 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
                 exit={{ opacity: 0, x: -10 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
                 className="flex-1 overflow-y-auto pr-1 sm:pr-4 touch-pan-y scroll-smooth scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent"
+                style={{ transform: "translateZ(0)" }} // Fix rendering artifacts
               >
                 <div className="mb-4 sm:mb-8 border-b border-primary/10 pb-2 sm:pb-4 flex justify-between items-end sticky top-0 bg-[#0d0d0d] z-10">
                   <div>

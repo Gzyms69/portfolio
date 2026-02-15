@@ -2,7 +2,6 @@ import { Github, ExternalLink, Terminal, ChevronDown, ChevronUp } from "lucide-r
 import { Button } from "./ui/button";
 import { TechTag } from "./ui/TechTag";
 import { GlitchText } from "./GlitchText";
-import { TypewriterText } from "./TypewriterText";
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 
@@ -146,7 +145,7 @@ export const ProjectCard = ({
                     transition={{ duration: 0.2 }}
                   >
                     {isDossier ? (
-                      <TypewriterText text={fullDescription || description} speed={5} cursor={false} />
+                      <p>{fullDescription || description}</p>
                     ) : (
                       fullDescription || description
                     )}
@@ -160,7 +159,7 @@ export const ProjectCard = ({
                     transition={{ duration: 0.2 }}
                   >
                     {isDossier ? (
-                      <TypewriterText text={description} speed={10} cursor={false} />
+                      <p>{description}</p>
                     ) : (
                       description
                     )}
