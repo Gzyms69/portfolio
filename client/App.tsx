@@ -118,6 +118,19 @@ const AppContent = () => {
     return <Resume />;
   }
 
+  // Determine content based on view mode
+  const content = viewMode === 'standard' ? (
+    <SmoothScroll>
+      <GlobalEffects />
+      <AnimatedRoutes />
+    </SmoothScroll>
+  ) : (
+    <>
+      <GlobalEffects />
+      <DossierApp />
+    </>
+  );
+
   return (
     <div
       className="relative w-full min-h-screen overflow-hidden bg-black"
@@ -136,21 +149,7 @@ const AppContent = () => {
             <Sonner />
             <ScrollProgress />
             <InteractiveBackground />
-
-            {viewMode === 'standard' ? (
-              <>
-                <GlobalEffects />
-                <SmoothScroll>
-                  <AnimatedRoutes />
-                </SmoothScroll>
-              </>
-            ) : (
-              <>
-                <GlobalEffects />
-                <DossierApp />
-              </>
-            )
-            }
+            {content}
           </TVPowerTransition>
         </ViewTilt>
       </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, ReactNode, useRef } from "react";
+import { useState, useEffect, useCallback, ReactNode, useRef, memo } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 
 interface GlitchTextProps {
@@ -21,17 +21,23 @@ interface GlitchButtonProps {
   onMouseLeave?: () => void;
 }
 
-export const GLITCH_CHARS = "!<>-_/[]{}—=+*^?#________";
+const GLITCH_CHARS = "!<>-_/[]{}—=+*^?#________";
 
-export const GlitchText = ({ text, className = "", triggerInView = false }: GlitchTextProps) => {
+// Optimized Scramble Glitch
+// Uses requestAnimationFrame for performance but keeps the original "Matrix" look
+export const GlitchText = memo(({ text, className = "", triggerInView = false }: GlitchTextProps) => {
   const [displayText, setDisplayText] = useState(text);
   const [isHovered, setIsHovered] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
+  
+  // Animation ref to cancel on unmount
+  const frameRef = useRef<number>();
 
   const scramble = useCallback(() => {
     let iteration = 0;
-    const interval = setInterval(() => {
+    
+    const update = () => {
       setDisplayText(() =>
         text
           .split("")
@@ -42,10 +48,14 @@ export const GlitchText = ({ text, className = "", triggerInView = false }: Glit
           .join("")
       );
 
-      if (iteration >= text.length) clearInterval(interval);
-      iteration += 1 / 4; 
-    }, 30); 
-    return () => clearInterval(interval);
+      if (iteration < text.length) {
+        iteration += 1 / 3; // Speed control
+        frameRef.current = requestAnimationFrame(update);
+      }
+    };
+
+    if (frameRef.current) cancelAnimationFrame(frameRef.current);
+    frameRef.current = requestAnimationFrame(update);
   }, [text]);
 
   useEffect(() => {
@@ -55,119 +65,53 @@ export const GlitchText = ({ text, className = "", triggerInView = false }: Glit
   }, [isInView, triggerInView, scramble]);
 
   useEffect(() => {
-    if (!triggerInView) scramble();
+    if (!triggerInView) {
+      // Initial scramble on mount only if not view-triggered
+      scramble();
+    }
+    return () => {
+      if (frameRef.current) cancelAnimationFrame(frameRef.current);
+    };
   }, [scramble, triggerInView]);
 
   return (
     <span 
       ref={ref}
-      className={`relative inline-block cursor-default group ${className}`}
+      className={`glitch-text-wrapper group cursor-default inline-block relative ${className}`}
       onMouseEnter={() => {
         setIsHovered(true);
         scramble();
       }}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* 1. Main Text */}
-      <span className={`relative z-10 block ${className} ${isHovered ? 'opacity-90' : ''}`}>
+      <span className="relative z-10 block">
         {displayText}
       </span>
       
       {isHovered && (
         <>
-          {/* 3. Terminal Palette Split Layers (Green/Amber instead of RGB) */}
-          <span className={`absolute left-0 top-0 -z-10 w-full text-primary/30 animate-glitch-1 ${className}`}>
+          <span className="glitch-layer animate-glitch-1 opacity-50" aria-hidden="true">
             {displayText}
           </span>
-          <span className={`absolute left-0 top-0 -z-20 w-full text-[#ffaa00]/30 animate-glitch-2 ${className}`}>
-            {displayText}
-          </span>
-
-          {/* 4. Scanline Slices */}
-          <span className={`absolute left-0 top-0 z-20 w-full animate-slice-1 ${className} opacity-30 clip-slice-1`}>
-            {displayText}
-          </span>
-          <span className={`absolute left-0 top-0 z-20 w-full animate-slice-2 ${className} opacity-30 clip-slice-2`}>
+          <span className="glitch-layer animate-glitch-2 opacity-50" aria-hidden="true">
             {displayText}
           </span>
         </>
       )}
-
-      {/* SVG Definitions */}
-      <svg className="fixed h-0 w-0 pointer-events-none">
-        <defs>
-          <filter id="simpleGlow">
-            <feGaussianBlur stdDeviation="1" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-        </defs>
-      </svg>
-
-      <style dangerouslySetInnerHTML={{ __html: `
-        .clip-slice-1 { clip-path: inset(25% 0 45% 0); }
-        .clip-slice-2 { clip-path: inset(60% 0 20% 0); }
-
-        .animate-glitch-1 { animation: glitch-anim-1 0.4s infinite linear alternate-reverse; }
-        .animate-glitch-2 { animation: glitch-anim-2 0.4s infinite linear alternate-reverse; }
-        .animate-slice-1 { animation: slice-anim-1 0.6s infinite steps(2); }
-        .animate-slice-2 { animation: slice-anim-2 0.6s infinite steps(2) reverse; }
-
-        @keyframes glitch-anim-1 {
-          0% { transform: translate(1px, -0.5px); }
-          100% { transform: translate(-1px, 0.5px); }
-        }
-        @keyframes glitch-anim-2 {
-          0% { transform: translate(-1px, 0.5px); }
-          100% { transform: translate(1px, -0.5px); }
-        }
-        @keyframes slice-anim-1 {
-          0% { transform: translateX(-2%); }
-          100% { transform: translateX(2%); }
-        }
-        @keyframes slice-anim-2 {
-          0% { transform: translateX(1.5%); }
-          100% { transform: translateX(-1.5%); }
-        }
-      `}} />
     </span>
   );
-};
+});
+
+GlitchText.displayName = 'GlitchText';
 
 export const GlitchMenu = ({ isOpen, children, className = "" }: GlitchMenuProps) => {
-  const [isGlitchActive, setIsGlitchActive] = useState(false);
-
-  useEffect(() => {
-    let startTimer: NodeJS.Timeout;
-    let endTimer: NodeJS.Timeout;
-    let resetTimer: NodeJS.Timeout;
-
-    if (isOpen) {
-      startTimer = setTimeout(() => {
-        setIsGlitchActive(true);
-      }, 10);
-      endTimer = setTimeout(() => {
-        setIsGlitchActive(false);
-      }, 1500);
-    } else {
-      resetTimer = setTimeout(() => {
-        setIsGlitchActive(false);
-      }, 0);
-    }
-
-    return () => {
-      if (startTimer) clearTimeout(startTimer);
-      if (endTimer) clearTimeout(endTimer);
-      if (resetTimer) clearTimeout(resetTimer);
-    };
-  }, [isOpen]);
-
   return (
     <div className={`relative ${className}`}>
       <AnimatePresence>
-        {isGlitchActive && (
+        {isOpen && (
           <>
             <motion.div
-              className="absolute inset-0 -z-10 text-primary/30"
+              className="absolute inset-0 -z-10 text-primary/30 pointer-events-none"
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.3 }}
               exit={{ opacity: 0 }}
@@ -175,7 +119,7 @@ export const GlitchMenu = ({ isOpen, children, className = "" }: GlitchMenuProps
               {children}
             </motion.div>
             <motion.div
-              className="absolute inset-0 -z-20 text-[#ffaa00]/30"
+              className="absolute inset-0 -z-20 text-[#ffaa00]/30 pointer-events-none"
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.3 }}
               exit={{ opacity: 0 }}
@@ -185,8 +129,7 @@ export const GlitchMenu = ({ isOpen, children, className = "" }: GlitchMenuProps
           </>
         )}
       </AnimatePresence>
-
-      <div>
+      <div className="relative z-10">
         {children}
       </div>
     </div>
@@ -202,33 +145,23 @@ export const GlitchButton = ({
 }: GlitchButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    if (onMouseEnter) onMouseEnter();
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    if (onMouseLeave) onMouseLeave();
-  };
-
   return (
     <div
-      className={`group ${className}`} 
+      className={`relative group ${className} cursor-pointer`} 
       onClick={onClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => { setIsHovered(true); onMouseEnter?.(); }}
+      onMouseLeave={() => { setIsHovered(false); onMouseLeave?.(); }}
     >
-      <div className={`relative z-10 w-full h-full flex items-center justify-center`}>
+      <div className="relative z-10 w-full h-full flex items-center justify-center">
         {children}
       </div>
 
       {isHovered && (
-        <div className="absolute inset-0 pointer-events-none rounded-full">
-          <div className="absolute inset-0 -z-10 text-primary/40 animate-glitch-1 flex items-center justify-center opacity-50">
+        <div className="absolute inset-0 pointer-events-none opacity-50">
+          <div className="absolute inset-0 -z-10 animate-glitch-1 flex items-center justify-center text-primary/40">
             {children}
           </div>
-          <div className="absolute inset-0 -z-20 text-[#ffaa00]/40 animate-glitch-2 flex items-center justify-center opacity-50">
+          <div className="absolute inset-0 -z-20 animate-glitch-2 flex items-center justify-center text-[#ffaa00]/40">
             {children}
           </div>
         </div>
