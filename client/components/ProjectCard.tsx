@@ -31,75 +31,82 @@ export const ProjectCard = ({
   isDossier = false,
 }: ProjectCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  // Mouse tracking for individual card 3D tilt
+  // High-performance springs for instant reaction
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
 
-  const springX = useSpring(mouseX, { stiffness: 350, damping: 25 });
-  const springY = useSpring(mouseY, { stiffness: 350, damping: 25 });
+  const springX = useSpring(mouseX, { stiffness: 400, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 400, damping: 30 });
 
-  const rotateX = useTransform(springY, [0, 1], [5, -5]);
-  const rotateY = useTransform(springX, [0, 1], [-5, 5]);
+  const rotateX = useTransform(springY, [0, 1], [8, -8]);
+  const rotateY = useTransform(springX, [0, 1], [-8, 8]);
+  const brightness = useTransform(springY, [0, 1], [1.1, 0.9]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!cardRef.current || isDossier) return;
     const rect = cardRef.current.getBoundingClientRect();
+    
+    // Smoothly update motion values
     mouseX.set((e.clientX - rect.left) / rect.width);
     mouseY.set((e.clientY - rect.top) / rect.height);
   };
 
+  const handleMouseEnter = () => setIsHovered(true);
+  
   const handleMouseLeave = () => {
+    setIsHovered(false);
     mouseX.set(0.5);
     mouseY.set(0.5);
   };
 
   return (
-    <motion.div 
+    <div 
       ref={cardRef}
       onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={() => setIsExpanded(!isExpanded)}
-      layout="position"
-      style={{ 
-        rotateX: isDossier ? 0 : rotateX, 
-        rotateY: isDossier ? 0 : rotateY, 
-        transformStyle: "preserve-3d" 
-      }}
-      className={`group relative w-full cursor-pointer ${isDossier ? '' : 'perspective-1000'} ${className}`}
+      className={`relative w-full cursor-pointer group ${isDossier ? '' : 'perspective-2000'} ${className}`}
     >
+      {/* Invisible Hitbox padding to ensure hover isn't lost during tilt */}
       <motion.div 
-        layout
-        className={`relative z-10 bg-[#0a0f0a] border-2 border-primary/20 rounded-lg overflow-hidden transition-all duration-500 shadow-[0_0_15px_rgba(0,255,65,0.05)] ${
-          isDossier 
-          ? 'p-4 sm:p-6' 
-          : 'p-6 sm:p-8 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(0,255,65,0.1)]'
-        }`}
+        layout="position"
+        style={{ 
+          rotateX: isDossier ? 0 : rotateX, 
+          rotateY: isDossier ? 0 : rotateY, 
+          filter: isDossier ? 'none' : `brightness(${brightness.get()})`,
+          transformStyle: "preserve-3d" 
+        }}
+        className={`relative z-10 bg-[#0a0f0a] border-2 rounded-lg overflow-hidden transition-border duration-300 shadow-[0_0_15px_rgba(0,255,65,0.05)] ${
+          isHovered ? 'border-primary/60 shadow-[0_0_30px_rgba(0,255,65,0.2)]' : 'border-primary/20'
+        } ${isDossier ? 'p-4 sm:p-6' : 'p-6 sm:p-8'}`}
       >
         
         <div className="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-primary/40 m-1 pointer-events-none" />
         <div className="absolute top-0 right-0 w-4 h-4 border-r-2 border-t-2 border-primary/40 m-1 pointer-events-none" />
         
-        <div className={`flex flex-col ${isDossier ? 'xl:flex-row' : 'lg:flex-row'} gap-4 sm:gap-8`}>
+        <div className={`flex flex-col ${isDossier ? 'xl:flex-row' : 'lg:flex-row'} gap-4 sm:gap-8 pointer-events-none`}>
           <motion.div layout className={`${isDossier ? 'xl:w-1/4' : 'lg:w-1/3'} shrink-0`}>
-            <div className="relative aspect-video rounded border border-primary/10 overflow-hidden bg-black group-hover:border-primary/30 transition-colors">
+            <div className="relative aspect-video rounded border border-primary/10 overflow-hidden bg-black transition-colors duration-500 group-hover:border-primary/40">
               {imageUrl ? (
                 <img 
                   src={imageUrl.startsWith('http') ? imageUrl : `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${imageUrl.replace(/^\//, '')}`} 
                   alt={title} 
-                  className="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none"
+                  className={`w-full h-full object-cover transition-all duration-700 ${isHovered ? 'grayscale-0 opacity-100 scale-105' : 'grayscale opacity-60 scale-100'}`}
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-primary/20 pointer-events-none">
+                <div className="w-full h-full flex items-center justify-center text-primary/20">
                   <Terminal className="w-16 h-16" />
                 </div>
               )}
-              <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] opacity-20" />
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] opacity-20" />
             </div>
           </motion.div>
 
-          <div className="flex-1 flex flex-col gap-3 sm:gap-4 pointer-events-none">
+          <div className="flex-1 flex flex-col gap-3 sm:gap-4">
             <motion.div layout className="flex justify-between items-start">
               <div className="flex flex-col gap-1">
                 <span className="text-[8px] sm:text-[10px] font-mono text-primary/30 uppercase tracking-[0.3em]">Module_Data:</span>
@@ -193,7 +200,8 @@ export const ProjectCard = ({
         </div>
       </motion.div>
 
-      <div className="absolute inset-0 -z-10 bg-primary/0 group-hover:bg-primary/[0.02] blur-3xl transition-all duration-700 pointer-events-none" />
-    </motion.div>
+      {/* Decorative Glow */}
+      <div className={`absolute inset-0 -z-10 bg-primary/0 blur-3xl transition-all duration-700 pointer-events-none ${isHovered ? 'bg-primary/[0.05]' : ''}`} />
+    </div>
   );
 };

@@ -6,13 +6,8 @@ import { useBackground } from '@/hooks/use-background';
 import { COG_LOGO_POINTS } from '@/lib/logo-data';
 
 // --- Sticks Scene logic ---
-// This is the 3D 'background rain' for the Dossier mode.
-// Using instanced meshes here because individual stick components were absolute murder on the frame rate.
 const SticksScene = memo(({ scrollY, isIdle }: { scrollY: MotionValue<number>, isIdle: boolean }) => {
   const meshRef = useRef<THREE.InstancedMesh>(null);
-  
-  // NOTE: I scaled this down from 200 to 120. Desktop handled 200 fine, 
-  // but mobile browsers were essentially a slideshow.
   const count = 120; 
   
   const [data] = useState(() => {
@@ -51,9 +46,6 @@ const SticksScene = memo(({ scrollY, isIdle }: { scrollY: MotionValue<number>, i
       let targetZ = item.position.z;
 
       if (isIdle && i < COG_LOGO_POINTS.length) {
-        // When the user stops moving the mouse for 5s, the sticks 'gravitate' 
-        // towards the logo points defined in logo-data.ts.
-        // The 0.03 lerp factor gives it that slow, magnetic gathering feel.
         const logoPoint = COG_LOGO_POINTS[i];
         const lx = (logoPoint.x - 0.5) * 800;
         const ly = (0.5 - logoPoint.y) * 800;
@@ -90,8 +82,9 @@ export const InteractiveBackground = () => {
   
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+  // Snappier springs for the background glow to feel more responsive
+  const springX = useSpring(mouseX, { stiffness: 200, damping: 25 });
+  const springY = useSpring(mouseY, { stiffness: 200, damping: 25 });
 
   useEffect(() => {
     const resetIdle = () => {
@@ -100,10 +93,15 @@ export const InteractiveBackground = () => {
       idleTimerRef.current = setTimeout(() => setIsIdle(true), 5000);
     };
 
+    // Use requestAnimationFrame for smooth, non-blocking mouse tracking
+    let frameId: number;
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-      resetIdle();
+      if (frameId) cancelAnimationFrame(frameId);
+      frameId = requestAnimationFrame(() => {
+        mouseX.set(e.clientX);
+        mouseY.set(e.clientY);
+        resetIdle();
+      });
     };
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
@@ -112,6 +110,7 @@ export const InteractiveBackground = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+      if (frameId) cancelAnimationFrame(frameId);
     };
   }, [mouseX, mouseY]);
 
