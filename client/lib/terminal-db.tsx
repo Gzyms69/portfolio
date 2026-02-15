@@ -75,7 +75,7 @@ const supportProjects: Project[] = [
     },
     githubUrl: "https://github.com/Gzyms69/portfolio",
     techStack: ["React", "Three.js", "TypeScript", "Tailwind CSS"],
-    imageUrl: "/portfolio/portfolio-website.png",
+    imageUrl: "/portfolio-website.png",
     variant: "design",
     icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     hideFromResume: true
@@ -259,7 +259,7 @@ const devProjects: Project[] = [
     },
     githubUrl: "https://github.com/Gzyms69/portfolio",
     techStack: ["React", "Three.js", "TypeScript", "Tailwind CSS"],
-    imageUrl: "/portfolio/portfolio-website.png",
+    imageUrl: "/portfolio-website.png",
     variant: "design",
     icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     hideFromResume: true

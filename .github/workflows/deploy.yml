@@ -37,7 +37,9 @@ jobs:
         run: pnpm typecheck
 
       - name: Build project
-        run: pnpm run build # This creates the 'dist' folder
+        run: pnpm run build
+        env:
+          GITHUB_PAGES: 'true'
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
