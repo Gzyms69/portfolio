@@ -140,14 +140,14 @@ export const Navigation = () => {
   return (
     <>
       {/* Desktop Menu Triggers */}
-      <div className="fixed left-8 top-8 z-[110] hidden sm:flex flex-col gap-4">
+      <div className="fixed left-8 top-8 z-[110] hidden sm:flex flex-row gap-4 items-center">
         <Magnetic strength={0.3}>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="relative flex items-center justify-center w-12 h-12 rounded-full bg-[#0a0f0a] border-2 border-primary/30 shadow-[0_0_15px_rgba(0,255,65,0.2)] text-primary hover:border-primary/60 hover:shadow-[0_0_25px_rgba(0,255,65,0.4)] transition-all duration-300 group"
           >
             <Settings className={`h-6 w-6 transition-all duration-1000 ease-out ${isMenuOpen ? 'rotate-90 text-primary' : 'animate-[spin_60s_linear_infinite] text-primary/40 hover:text-primary'}`} />
-            <span className="absolute left-16 opacity-0 group-hover:opacity-100 transition-all duration-300 font-mono text-xl text-primary bg-[#0a0f0a] border border-primary/30 px-3 py-1 rounded-sm pointer-events-none whitespace-nowrap uppercase z-[120] translate-x-[-10px] group-hover:translate-x-0">
+            <span className="absolute top-14 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 font-mono text-xl text-primary bg-[#0a0f0a] border border-primary/30 px-3 py-1 rounded-sm pointer-events-none whitespace-nowrap uppercase z-[120] translate-y-[-10px] group-hover:translate-y-0 shadow-[0_0_15px_rgba(0,255,65,0.3)]">
               [ <GlitchText text={isMenuOpen ? 'CLOSE MENU' : 'OPEN MENU'} className="font-mono" /> ]
             </span>
           </button>
@@ -159,7 +159,7 @@ export const Navigation = () => {
             className="relative flex items-center justify-center w-12 h-12 rounded-full bg-[#0a0f0a] border-2 border-primary/30 shadow-[0_0_15px_rgba(0,255,65,0.2)] text-primary/40 hover:text-primary hover:border-primary/60 hover:shadow-[0_0_25px_rgba(0,255,65,0.4)] transition-all duration-300 group"
           >
             <FileText className="h-6 w-6" />
-            <span className="absolute left-16 opacity-0 group-hover:opacity-100 transition-all duration-300 font-mono text-xl text-primary bg-[#0a0f0a] border border-primary/30 px-3 py-1 rounded-sm pointer-events-none whitespace-nowrap uppercase z-[120] translate-x-[-10px] group-hover:translate-x-0">
+            <span className="absolute top-14 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 font-mono text-xl text-primary bg-[#0a0f0a] border border-primary/30 px-3 py-1 rounded-sm pointer-events-none whitespace-nowrap uppercase z-[120] translate-y-[-10px] group-hover:translate-y-0 shadow-[0_0_15px_rgba(0,255,65,0.3)]">
               [ <GlitchText text={t('view_toggle')} className="font-mono" /> ]
             </span>
           </button>
@@ -167,7 +167,7 @@ export const Navigation = () => {
       </div>
 
       {/* Desktop Sidebar Nav */}
-      <nav className="fixed left-8 top-40 hidden flex-col gap-4 z-[100] sm:flex">
+      <nav className="fixed left-8 top-24 hidden flex-col gap-4 z-[100] sm:flex">
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div

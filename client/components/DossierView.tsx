@@ -25,15 +25,15 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
   const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
   const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
 
-  // Map mouse position to rotation (very subtle: -2 to 2 degrees)
-  const rotateX = useTransform(springY, [-0.5, 0.5], [2, -2]);
-  const rotateY = useTransform(springX, [-0.5, 0.5], [-2, 2]);
+  // Map mouse position to rotation (more pronounced: -5 to 5 degrees)
+  const rotateX = useTransform(springY, [-0.5, 0.5], [5, -5]);
+  const rotateY = useTransform(springX, [-0.5, 0.5], [-5, 5]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     
-    // Calculate normalized mouse position (-0.5 to 0.5)
+    // Calculate normalized mouse position relative to the dossier box
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
     
@@ -56,13 +56,11 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
   const toggleLanguage = () => setLanguage(language === 'pl' ? 'en' : 'pl');
 
   return (
-    <div 
-      className="fixed inset-0 z-40 flex items-center justify-center p-4 sm:p-8 pointer-events-none perspective-1000"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div className="fixed inset-0 z-40 flex items-center justify-center p-4 sm:p-8 pointer-events-none perspective-1000">
       <motion.div 
         ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         style={{ 

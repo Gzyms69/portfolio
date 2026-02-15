@@ -1,7 +1,7 @@
 import "./global.css";
 import { createRoot } from "react-dom/client";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 // UI Components
@@ -78,20 +78,24 @@ const ViewTilt = ({ children }: { children: React.ReactNode }) => {
   const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
   const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
 
-  // Extremely subtle tilt for the whole view
-  const rotateX = useTransform(springY, [0, 1], [1, -1]);
-  const rotateY = useTransform(springX, [0, 1], [-1, 1]);
+  // Subtle tilt for the whole view
+  const rotateX = useTransform(springY, [0, 1], [2, -2]);
+  const rotateY = useTransform(springX, [0, 1], [-2, 2]);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    mouseX.set(e.clientX / window.innerWidth);
-    mouseY.set(e.clientY / window.innerHeight);
-  };
+  useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX / window.innerWidth);
+      mouseY.set(e.clientY / window.innerHeight);
+    };
+
+    window.addEventListener('mousemove', handleGlobalMouseMove);
+    return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
+  }, [mouseX, mouseY]);
 
   return (
     <motion.div
-      onMouseMove={handleMouseMove}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className="w-full min-h-screen perspective-1000"
+      className="w-full min-h-screen perspective-1000 origin-center"
     >
       {children}
     </motion.div>
