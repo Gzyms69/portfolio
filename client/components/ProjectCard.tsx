@@ -32,44 +32,46 @@ export const ProjectCard = ({
 }: ProjectCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
-  // High-performance springs for instant reaction
+  // Springs optimized for instant, snappy response
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
 
   const springX = useSpring(mouseX, { stiffness: 400, damping: 30 });
   const springY = useSpring(mouseY, { stiffness: 400, damping: 30 });
 
-  const rotateX = useTransform(springY, [0, 1], [10, -10]);
-  const rotateY = useTransform(springX, [0, 1], [-10, 10]);
+  const rotateX = useTransform(springY, [0, 1], [8, -8]);
+  const rotateY = useTransform(springX, [0, 1], [-8, 8]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!containerRef.current || isDossier) return;
-    const rect = containerRef.current.getBoundingClientRect();
+    if (!rootRef.current || isDossier) return;
+    const rect = rootRef.current.getBoundingClientRect();
     mouseX.set((e.clientX - rect.left) / rect.width);
     mouseY.set((e.clientY - rect.top) / rect.height);
   };
 
-  return (
-    <div 
-      ref={containerRef}
-      className={`relative w-full ${isDossier ? '' : 'perspective-2000'} ${className}`}
-    >
-      {/* 1. THE HITBOX (Event Layer) - Purely static, captures all movement */}
-      <div 
-        onMouseMove={handleMouseMove}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => {
-          setIsHovered(false);
-          mouseX.set(0.5);
-          mouseY.set(0.5);
-        }}
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="absolute inset-0 z-30 cursor-pointer"
-      />
+  const handleMouseEnter = () => setIsHovered(true);
+  
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    mouseX.set(0.5);
+    mouseY.set(0.5);
+  };
 
-      {/* 2. THE VISUALS (Tilting Layer) - No mouse interaction to prevent flicker */}
+  return (
+    // 1. ROOT WRAPPER: The only source of truth for mouse events.
+    // Relative positioning establishes the coordinate system.
+    <div 
+      ref={rootRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={() => setIsExpanded(!isExpanded)}
+      className={`relative w-full cursor-pointer ${className} ${isDossier ? '' : 'perspective-2000'}`}
+    >
+      {/* 2. VISUAL LAYER: Purely reactive, pointer-events-none. 
+          It strictly follows the Root's state. */}
       <motion.div 
         layout="position"
         style={{ 
@@ -77,7 +79,7 @@ export const ProjectCard = ({
           rotateY: isDossier ? 0 : rotateY, 
           transformStyle: "preserve-3d" 
         }}
-        className={`relative z-10 bg-[#0a0f0a] border-2 rounded-lg overflow-hidden transition-colors duration-300 pointer-events-none shadow-[0_0_15px_rgba(0,255,65,0.05)] ${
+        className={`relative z-10 bg-[#0a0f0a] border-2 rounded-lg overflow-hidden transition-all duration-300 pointer-events-none shadow-[0_0_15px_rgba(0,255,65,0.05)] ${
           isHovered ? 'border-primary/60 shadow-[0_0_30px_rgba(0,255,65,0.2)]' : 'border-primary/20'
         } ${isDossier ? 'p-4 sm:p-6' : 'p-6 sm:p-8'}`}
       >
@@ -112,29 +114,8 @@ export const ProjectCard = ({
                 </h3>
               </div>
               
-              {/* 3. THE ACTIONS (Lifted Layer) - Must be clickable */}
-              <div className="flex gap-2 relative z-40 pointer-events-auto">
-                {githubUrl && (
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={(e) => { e.stopPropagation(); window.open(githubUrl, "_blank"); }}
-                    className="text-primary/40 hover:text-primary hover:bg-primary/10 h-8 w-8 sm:h-10 sm:w-10"
-                  >
-                    <Github className="h-4 w-4 sm:h-5 sm:w-5" />
-                  </Button>
-                )}
-                {liveUrl && (
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={(e) => { e.stopPropagation(); window.open(liveUrl, "_blank"); }}
-                    className="text-primary/40 hover:text-primary hover:bg-primary/10 h-8 w-8 sm:h-10 sm:w-10"
-                  >
-                    <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5" />
-                  </Button>
-                )}
-              </div>
+              {/* Note: Buttons are moved out of here to the INTERACTIVE LAYER below */}
+              <div className="h-8 w-20" /> {/* Spacer for buttons */}
             </motion.div>
 
             <motion.div layout className={`${isDossier ? 'text-base sm:text-lg' : 'text-lg sm:text-xl'} text-primary/60 font-mono leading-relaxed lowercase`}>
@@ -198,7 +179,32 @@ export const ProjectCard = ({
         </div>
       </motion.div>
 
-      {/* Decorative Glow */}
+      {/* 3. INTERACTIVE LAYER: Absolutely positioned siblings that sit ON TOP of everything.
+          They are the only children with pointer-events-auto. */}
+      <div className={`absolute top-0 right-0 z-50 p-6 sm:p-8 flex gap-2 pointer-events-none ${isDossier ? 'p-4 sm:p-6' : ''}`}>
+        {githubUrl && (
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={(e) => { e.stopPropagation(); window.open(githubUrl, "_blank"); }}
+            className="text-primary/40 hover:text-primary hover:bg-primary/10 h-8 w-8 sm:h-10 sm:w-10 pointer-events-auto transition-transform hover:scale-110"
+          >
+            <Github className="h-4 w-4 sm:h-5 sm:w-5" />
+          </Button>
+        )}
+        {liveUrl && (
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={(e) => { e.stopPropagation(); window.open(liveUrl, "_blank"); }}
+            className="text-primary/40 hover:text-primary hover:bg-primary/10 h-8 w-8 sm:h-10 sm:w-10 pointer-events-auto transition-transform hover:scale-110"
+          >
+            <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5" />
+          </Button>
+        )}
+      </div>
+
+      {/* Decorative Glow - Purely visual */}
       <div className={`absolute inset-0 -z-10 bg-primary/0 blur-3xl transition-all duration-700 pointer-events-none ${isHovered ? 'bg-primary/[0.05]' : ''}`} />
     </div>
   );
