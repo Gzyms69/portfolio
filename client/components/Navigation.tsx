@@ -101,10 +101,11 @@ export const Navigation = () => {
 
   // Close menu when switching to Dossier mode to prevent overlap
   useEffect(() => {
-    if (viewMode === 'dossier') {
-      setIsMenuOpen(false);
+    if (viewMode === 'dossier' && isMenuOpen) {
+      const timer = setTimeout(() => setIsMenuOpen(false), 0);
+      return () => clearTimeout(timer);
     }
-  }, [viewMode]);
+  }, [viewMode, isMenuOpen]);
 
   const toggleLanguage = () => setLanguage(language === 'pl' ? 'en' : 'pl');
   const handleSnakeClick = () => setIsSnakeConfirmOpen(true);
