@@ -133,7 +133,7 @@ const AppContent = () => {
 
   return (
     <div
-      className="relative w-full min-h-screen overflow-hidden bg-black"
+      className="relative w-full min-h-screen overflow-hidden bg-transparent"
       onDoubleClick={toggleBackground}
     >
       {/* 1. Global Navigation - Fixed to screen, outside tilt */}

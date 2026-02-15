@@ -11,7 +11,7 @@ export const Footer = () => {
   if (type === 'sticks') return null;
 
   return (
-    <footer className="relative mt-40 pb-20 px-4 sm:px-8">
+    <footer className="relative mt-40 pb-20 px-4 sm:px-8 bg-transparent">
       <div className="max-w-7xl mx-auto border-t-2 border-primary/20 pt-10 flex flex-col items-center gap-8 group">
         
         {/* Decorative Technical Row */}
@@ -45,8 +45,8 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* CRT Scanline effect footer bar */}
-        <div className="absolute inset-x-0 bottom-0 h-1 bg-[#0a0f0a] border-t border-primary/20 overflow-hidden opacity-50">
+        {/* CRT Scanline effect footer bar - Transparent */}
+        <div className="absolute inset-x-0 bottom-0 h-1 bg-transparent border-t border-primary/20 overflow-hidden opacity-50">
            <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_2px]" />
         </div>
       </div>

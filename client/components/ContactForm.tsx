@@ -57,13 +57,13 @@ export const ContactForm = () => {
       <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden rounded-xl">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.03)_50%)] bg-[length:100%_4px]" />
         <motion.div 
-          animate={{ opacity: [0, 0.015, 0] }}
+          animate={{ opacity: [0, 0.05, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 bg-white" 
+          className="absolute inset-0 bg-primary/5" 
         />
       </div>
 
-      <div className="relative z-10 bg-[#0a0f0a] border-2 border-primary/30 p-8 rounded-xl shadow-[0_0_20px_rgba(0,255,65,0.1)] overflow-hidden transition-all duration-500 hover:border-primary/60">
+      <div className="relative z-10 bg-[#0a0f0a]/90 border-2 border-primary/30 p-8 rounded-xl shadow-[0_0_20px_rgba(0,255,65,0.1)] overflow-hidden transition-all duration-500 hover:border-primary/60 backdrop-blur-sm">
         <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-primary m-2" />
         <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-primary m-2" />
         <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-primary m-2" />
