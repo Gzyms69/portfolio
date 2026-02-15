@@ -1,8 +1,8 @@
 import "./global.css";
 import { createRoot } from "react-dom/client";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 // UI Components
 import { Toaster } from "@/components/ui/toaster";
@@ -72,6 +72,32 @@ const DossierApp = () => {
   );
 };
 
+const ViewTilt = ({ children }: { children: React.ReactNode }) => {
+  const mouseX = useMotionValue(0.5);
+  const mouseY = useMotionValue(0.5);
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  // Extremely subtle tilt for the whole view
+  const rotateX = useTransform(springY, [0, 1], [1, -1]);
+  const rotateY = useTransform(springX, [0, 1], [-1, 1]);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    mouseX.set(e.clientX / window.innerWidth);
+    mouseY.set(e.clientY / window.innerHeight);
+  };
+
+  return (
+    <motion.div
+      onMouseMove={handleMouseMove}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      className="w-full min-h-screen perspective-1000"
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 const AppContent = () => {
   const { isTransitioning, viewMode, toggleBackground } = useBackground();
   const location = useLocation();
@@ -84,33 +110,36 @@ const AppContent = () => {
 
   return (
     <div
-      className="relative w-full min-h-screen"
+      className="relative w-full min-h-screen overflow-hidden bg-black"
       onDoubleClick={toggleBackground}
     >
       <DebugOverlay />
 
       {/* 1. Main Content - Always in DOM */}
       <div className={`w-full min-h-screen ${isReady ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-        <TVPowerTransition isTransitioning={isTransitioning}>
-          <Toaster />
-          <Sonner />
-          <ScrollProgress />
-          <InteractiveBackground />
+        <ViewTilt>
+          <TVPowerTransition isTransitioning={isTransitioning}>
+            <Toaster />
+            <Sonner />
+            <ScrollProgress />
+            <InteractiveBackground />
 
-          {viewMode === 'standard' ? (
-            <>
-              <GlobalEffects />
-              <SmoothScroll>
-                <AnimatedRoutes />
-              </SmoothScroll>
-            </>
-          ) : (
-            <>
-              <GlobalEffects />
-              <DossierApp />
-            </>
-          )}
-        </TVPowerTransition>
+            {viewMode === 'standard' ? (
+              <>
+                <GlobalEffects />
+                <SmoothScroll>
+                  <AnimatedRoutes />
+                </SmoothScroll>
+              </>
+            ) : (
+              <>
+                <GlobalEffects />
+                <DossierApp />
+              </>
+            )
+            }
+          </TVPowerTransition>
+        </ViewTilt>
       </div>
 
       {/* 2. Loader Overlay - Unmounts when ready */}

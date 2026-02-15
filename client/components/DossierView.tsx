@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useLanguage } from '@/hooks/use-language';
 import { useBackground } from '@/hooks/use-background';
 import { GlitchText } from './GlitchText';
@@ -15,6 +15,36 @@ interface DossierViewProps {
 export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange, children }) => {
   const { t, language, setLanguage } = useLanguage();
   const { toggleViewMode } = useBackground();
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Mouse tracking for subtle 3D tilt
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Smooth springs for tracking
+  const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
+
+  // Map mouse position to rotation (very subtle: -2 to 2 degrees)
+  const rotateX = useTransform(springY, [-0.5, 0.5], [2, -2]);
+  const rotateY = useTransform(springX, [-0.5, 0.5], [-2, 2]);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    
+    // Calculate normalized mouse position (-0.5 to 0.5)
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
 
   const tabs = [
     { id: 'home', label: t('dossier_personnel'), icon: <User className="w-4 h-4" /> },
@@ -26,11 +56,21 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
   const toggleLanguage = () => setLanguage(language === 'pl' ? 'en' : 'pl');
 
   return (
-    <div className="fixed inset-0 z-40 flex items-center justify-center p-4 sm:p-8 pointer-events-none">
+    <div 
+      className="fixed inset-0 z-40 flex items-center justify-center p-4 sm:p-8 pointer-events-none perspective-1000"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       <motion.div 
+        ref={containerRef}
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="relative w-full max-w-6xl h-full max-h-[90vh] bg-[#1a1a1a] border-4 border-[#2a2a2a] shadow-2xl rounded-sm overflow-hidden pointer-events-auto flex flex-col"
+        style={{ 
+          rotateX, 
+          rotateY,
+          transformStyle: "preserve-3d" 
+        }}
+        className="relative w-full max-w-6xl h-full max-h-[90vh] bg-[#1a1a1a] border-4 border-[#2a2a2a] shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-sm overflow-hidden pointer-events-auto flex flex-col"
       >
         {/* Top Secret Red Banner */}
         <div className="h-6 w-full bg-red-600 shadow-[0_0_15px_rgba(220,38,38,0.4)] flex items-center justify-center relative overflow-hidden">
