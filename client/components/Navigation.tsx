@@ -2,7 +2,7 @@ import { Home, Github, Briefcase, Boxes, Terminal, Activity, Worm, Command, Lang
 import { useLocation, useNavigate } from "react-router-dom";
 import { useBackground } from "@/hooks/use-background";
 import { useLanguage } from "@/hooks/use-language";
-import { useState, memo } from "react";
+import { useState, memo, useEffect } from "react";
 import { portfolioConfig } from "@/lib/terminal-db";
 import { motion, AnimatePresence } from "framer-motion";
 import { TerminalDialog } from "@/components/ui/TerminalDialog";
@@ -98,6 +98,13 @@ export const Navigation = () => {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Close menu when switching to Dossier mode to prevent overlap
+  useEffect(() => {
+    if (viewMode === 'dossier') {
+      setIsMenuOpen(false);
+    }
+  }, [viewMode]);
 
   const toggleLanguage = () => setLanguage(language === 'pl' ? 'en' : 'pl');
   const handleSnakeClick = () => setIsSnakeConfirmOpen(true);

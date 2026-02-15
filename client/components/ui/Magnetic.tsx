@@ -20,7 +20,7 @@ export const Magnetic = ({ children, strength = 0.5, className = "" }: MagneticP
     const { clientX, clientY } = e;
     const { left, top, width, height } = ref.current.getBoundingClientRect();
     
-    // Calculate center of element
+    // Calculate center of the STATIC wrapper
     const centerX = left + width / 2;
     const centerY = top + height / 2;
     
@@ -39,14 +39,15 @@ export const Magnetic = ({ children, strength = 0.5, className = "" }: MagneticP
   };
 
   return (
-    <motion.div
+    <div
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ x, y }}
       className={`relative inline-block ${className}`}
     >
-      {children}
-    </motion.div>
+      <motion.div style={{ x, y }}>
+        {children}
+      </motion.div>
+    </div>
   );
 };

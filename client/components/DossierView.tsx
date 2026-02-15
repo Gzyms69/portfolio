@@ -25,9 +25,9 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
   const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
   const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
 
-  // Map mouse position to rotation (Minimal intensity to avoid stretching/clipping)
-  const rotateX = useTransform(springY, [-0.5, 0.5], [1, -1]);
-  const rotateY = useTransform(springX, [-0.5, 0.5], [-1, 1]);
+  // Map mouse position to rotation (Visible but constrained to avoid artifacts)
+  const rotateX = useTransform(springY, [-0.5, 0.5], [2, -2]);
+  const rotateY = useTransform(springX, [-0.5, 0.5], [-2, 2]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!containerRef.current || window.innerWidth < 1024) return;
@@ -56,7 +56,7 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
   const toggleLanguage = () => setLanguage(language === 'pl' ? 'en' : 'pl');
 
   return (
-    <div className="fixed inset-0 z-40 flex items-center justify-center p-1 sm:p-4 md:p-8 pointer-events-none perspective-3000">
+    <div className="fixed inset-0 z-40 flex items-center justify-center p-1 sm:p-4 md:p-8 pointer-events-none perspective-2000">
       <motion.div 
         ref={containerRef}
         onMouseMove={handleMouseMove}
