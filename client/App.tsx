@@ -73,6 +73,7 @@ const DossierApp = () => {
 };
 
 const ViewTilt = ({ children }: { children: React.ReactNode }) => {
+  const { viewMode } = useBackground();
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
   const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
@@ -91,6 +92,11 @@ const ViewTilt = ({ children }: { children: React.ReactNode }) => {
     window.addEventListener('mousemove', handleGlobalMouseMove);
     return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
   }, [mouseX, mouseY]);
+
+  // Disable global tilt in dossier mode to prevent double-perspective bugs
+  if (viewMode === 'dossier') {
+    return <div className="w-full min-h-screen">{children}</div>;
+  }
 
   return (
     <motion.div
