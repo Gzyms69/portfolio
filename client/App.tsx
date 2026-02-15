@@ -136,25 +136,28 @@ const AppContent = () => {
       className="relative w-full min-h-screen overflow-hidden bg-transparent"
       onDoubleClick={toggleBackground}
     >
-      {/* 1. Global Navigation - Fixed to screen, outside tilt */}
+      {/* 1. Global Background - MOVED OUTSIDE ViewTilt to stay truly fixed */}
+      <InteractiveBackground />
+
+      {/* 2. Global Navigation - Fixed to screen, outside tilt */}
       <div className={isReady ? 'opacity-100' : 'opacity-0 pointer-events-none'}>
         <Navigation />
       </div>
 
-      {/* 2. Main Content - Always in DOM */}
+      {/* 3. Main Content - Wrapped in Tilt */}
       <div className={`w-full min-h-screen ${isReady ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         <ViewTilt>
           <TVPowerTransition isTransitioning={isTransitioning}>
             <Toaster />
             <Sonner />
             <ScrollProgress />
-            <InteractiveBackground />
+            {/* Background removed from here */}
             {content}
           </TVPowerTransition>
         </ViewTilt>
       </div>
 
-      {/* 3. Loader Overlay - Unmounts when ready */}
+      {/* 4. Loader Overlay - Unmounts when ready */}
       {!isReady && (
         <TerminalLoader onComplete={() => setIsReady(true)} />
       )}
