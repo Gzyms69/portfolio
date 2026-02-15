@@ -45,7 +45,7 @@ export const Magnetic = ({ children, strength = 0.5, className = "" }: MagneticP
       onMouseLeave={handleMouseLeave}
       className={`relative inline-block ${className}`}
     >
-      <motion.div style={{ x, y }}>
+      <motion.div style={{ x, y }} className="w-full h-full">
         {children}
       </motion.div>
     </div>

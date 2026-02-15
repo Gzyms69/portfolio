@@ -217,7 +217,7 @@ export const InteractiveBackground = () => {
       <motion.div
         animate={{ scale: [1, 1.05, 1], opacity: [0.02, 0.04, 0.02] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute h-[200px] w-[200px] rounded-full bg-primary/10 blur-2xl"
+        className="absolute h-[200px] w-[200px] rounded-full bg-primary/10 blur-2xl pointer-events-none"
         style={{ x: springX, y: springY, translateX: "-50%", translateY: "-50%" }}
       />
     </div>
