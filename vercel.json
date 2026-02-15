@@ -2,8 +2,23 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/portfolio/assets/:path*",
+      "destination": "/assets/:path*"
+    },
+    {
+      "source": "/portfolio",
       "destination": "/index.html"
+    },
+    {
+      "source": "/portfolio/:path*",
+      "destination": "/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/portfolio",
+      "permanent": false
     }
   ]
 }
