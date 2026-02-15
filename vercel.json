@@ -5,6 +5,14 @@
       "destination": "/assets/:path*"
     },
     {
+      "source": "/portfolio/resumes/:path*",
+      "destination": "/resumes/:path*"
+    },
+    {
+      "source": "/portfolio/(.*\\.(?:png|jpg|svg|ico|glb|pdf))",
+      "destination": "/$1"
+    },
+    {
       "source": "/portfolio",
       "destination": "/index.html"
     },
