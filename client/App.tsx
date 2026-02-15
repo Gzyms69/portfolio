@@ -16,6 +16,7 @@ import { CRTOverlay } from "@/components/ui/CRTOverlay";
 import { TerminalLoader } from "@/components/TerminalLoader";
 import { DossierView } from "@/components/DossierView";
 import { DebugOverlay } from "@/components/DebugOverlay";
+import { Navigation } from "@/components/Navigation";
 
 // Pages
 import Index from "./pages/Index";
@@ -119,7 +120,12 @@ const AppContent = () => {
     >
       <DebugOverlay />
 
-      {/* 1. Main Content - Always in DOM */}
+      {/* 1. Global Navigation - Fixed to screen, outside tilt */}
+      <div className={isReady ? 'opacity-100' : 'opacity-0 pointer-events-none'}>
+        <Navigation />
+      </div>
+
+      {/* 2. Main Content - Always in DOM */}
       <div className={`w-full min-h-screen ${isReady ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         <ViewTilt>
           <TVPowerTransition isTransitioning={isTransitioning}>
@@ -146,7 +152,7 @@ const AppContent = () => {
         </ViewTilt>
       </div>
 
-      {/* 2. Loader Overlay - Unmounts when ready */}
+      {/* 3. Loader Overlay - Unmounts when ready */}
       {!isReady && (
         <TerminalLoader onComplete={() => setIsReady(true)} />
       )}

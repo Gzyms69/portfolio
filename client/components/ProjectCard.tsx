@@ -3,8 +3,8 @@ import { Button } from "./ui/button";
 import { TechTag } from "./ui/TechTag";
 import { GlitchText } from "./GlitchText";
 import { TypewriterText } from "./TypewriterText";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 interface ProjectCardProps {
   title: string;
@@ -32,11 +32,42 @@ export const ProjectCard = ({
   isDossier = false,
 }: ProjectCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Mouse tracking for individual card 3D tilt
+  const mouseX = useMotionValue(0.5);
+  const mouseY = useMotionValue(0.5);
+
+  const springX = useSpring(mouseX, { stiffness: 150, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 150, damping: 20 });
+
+  const rotateX = useTransform(springY, [0, 1], [5, -5]);
+  const rotateY = useTransform(springX, [0, 1], [-5, 5]);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    mouseX.set((e.clientX - rect.left) / rect.width);
+    mouseY.set((e.clientY - rect.top) / rect.height);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0.5);
+    mouseY.set(0.5);
+  };
 
   return (
     <motion.div 
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       layout="position"
-      className={`group relative w-full ${className}`}
+      style={{ 
+        rotateX: isDossier ? 0 : rotateX, 
+        rotateY: isDossier ? 0 : rotateY, 
+        transformStyle: "preserve-3d" 
+      }}
+      className={`group relative w-full perspective-1000 ${className}`}
     >
       <motion.div 
         layout

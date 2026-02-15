@@ -1,4 +1,3 @@
-import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Terminal as TerminalIcon } from "lucide-react";
 import { PageTransition } from "@/components/PageTransition";
@@ -26,7 +25,6 @@ export default function Contact({ isDossier = false }: { isDossier?: boolean }) 
   return (
     <PageTransition>
       <div className="min-h-screen bg-[#030712] text-primary font-mono">
-        <Navigation />
 
         <main className="flex w-full justify-center px-4 sm:px-8 md:px-16 lg:px-20">
           <div className="w-full max-w-[90rem] py-8 sm:py-16 md:py-24 lg:py-32">

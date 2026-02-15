@@ -140,7 +140,7 @@ export const Navigation = () => {
   return (
     <>
       {/* Desktop Menu Triggers */}
-      <div className="fixed left-8 top-8 z-[110] hidden sm:flex flex-row gap-4 items-center">
+      <div className="fixed left-8 top-8 z-[200] hidden sm:flex flex-row gap-4 items-center pointer-events-auto">
         <Magnetic strength={0.3}>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -148,7 +148,7 @@ export const Navigation = () => {
           >
             <Settings className={`h-6 w-6 transition-all duration-1000 ease-out ${isMenuOpen ? 'rotate-90 text-primary' : 'animate-[spin_60s_linear_infinite] text-primary/40 hover:text-primary'}`} />
             <span className="absolute top-14 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 font-mono text-xl text-primary bg-[#0a0f0a] border border-primary/30 px-3 py-1 rounded-sm pointer-events-none whitespace-nowrap uppercase z-[120] translate-y-[-10px] group-hover:translate-y-0 shadow-[0_0_15px_rgba(0,255,65,0.3)]">
-              [ <GlitchText text={isMenuOpen ? 'CLOSE MENU' : 'OPEN MENU'} className="font-mono" /> ]
+              [ <GlitchText text={isMenuOpen ? t('close_menu') : t('open_menu')} className="font-mono" /> ]
             </span>
           </button>
         </Magnetic>
@@ -189,7 +189,7 @@ export const Navigation = () => {
                 </div>
 
                 <div className="relative z-10 flex flex-col items-center gap-4 px-2">
-                  <NavButton onClick={handleHomeScroll} icon={<Home className="h-6 w-6" />} label="HOME" active={isActive('/')} isMenuOpen={isMenuOpen} />
+                  <NavButton onClick={handleHomeScroll} icon={<Home className="h-6 w-6" />} label={t('home')} active={isActive('/')} isMenuOpen={isMenuOpen} />
                   <NavButton onClick={handleProjectsScroll} icon={<Briefcase className="h-6 w-6" />} label={t('projects')} isMenuOpen={isMenuOpen} />
                   <div className="h-px bg-primary/20 mx-2 w-full" />
                   <NavButton onClick={() => setIsTerminalOpen(true)} icon={<Terminal className="h-6 w-6" />} label={t('console')} active={isTerminalOpen} isMenuOpen={isMenuOpen} />
@@ -203,7 +203,7 @@ export const Navigation = () => {
                   <NavButton onClick={() => handleExternalLink(portfolioConfig.socials.github)} label={t('repo')} icon={<Github className="h-6 w-6" />} isMenuOpen={isMenuOpen} />
                   <NavButton onClick={() => handleExternalLink(portfolioConfig.socials.linkedin)} label={t('linkedin')} icon={<Linkedin className="h-6 w-6" />} isMenuOpen={isMenuOpen} />
                   <div className="h-px bg-primary/20 mx-2 w-full" />
-                  <NavButton onClick={handleSnakeClick} label={t('snake')} icon={< Worm className="h-6 w-6" />} active={isSnakeGameOpen} isMenuOpen={isMenuOpen} />
+                  <NavButton onClick={handleSnakeClick} label="SNAKE" icon={< Worm className="h-6 w-6" />} active={isSnakeGameOpen} isMenuOpen={isMenuOpen} />
                 </div>
               </div>
             </motion.div>
@@ -221,7 +221,7 @@ export const Navigation = () => {
       </nav>
 
       {/* Mobile Header */}
-      <nav className="fixed inset-x-4 top-4 flex items-center justify-between gap-2 rounded-xl border-2 border-primary/30 bg-[#0a0f0a] p-1.5 sm:hidden z-[100] overflow-hidden shadow-[0_0_15px_rgba(0,255,65,0.1)]">
+      <nav className="fixed inset-x-4 top-4 flex items-center justify-between gap-2 rounded-xl border-2 border-primary/30 bg-[#0a0f0a] p-1.5 sm:hidden z-[500] overflow-hidden shadow-[0_0_15px_rgba(0,255,65,0.1)] pointer-events-auto">
         <div className="absolute inset-0 opacity-30 pointer-events-none">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.05)_50%)] bg-[length:100%_4px]" />
         </div>
@@ -342,7 +342,7 @@ export const Navigation = () => {
                 className="flex items-center justify-center gap-4 p-6 border-2 border-primary/20 bg-primary/10 rounded-lg text-primary text-xl font-mono uppercase transition-all animate-pulse"
               >
                 <Worm className="w-6 h-6" />
-                <span>{t('snake')}</span>
+                <span>SNAKE</span>
               </button>
             </div>
 
@@ -362,7 +362,7 @@ export const Navigation = () => {
         isOpen={isSnakeConfirmOpen} 
         onClose={() => setIsSnakeConfirmOpen(false)} 
         onConfirm={confirmSnakeNavigation} 
-        title={t('snake')} 
+        title="SNAKE" 
         message={t('confirm_snake')} 
         confirmText="CONFIRM" 
         cancelText="CANCEL" 

@@ -46,6 +46,8 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         message_label: "Wiadomość",
         message_placeholder: "Twoja wiadomość",
         send_button: "WYŚLIJ",
+        open_menu: "OTWÓRZ MENU",
+        close_menu: "ZAMKNIJ MENU",
         // Dossier specific
         dossier_id: "Identyfikator:",
         dossier_personnel: "AKTA OSOBOWE",

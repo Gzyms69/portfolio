@@ -1,4 +1,3 @@
-import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Terminal as TerminalIcon, Award, BookOpen, Cpu } from "lucide-react";
 import { StaggerContainer, StaggerItem } from "@/components/Reveal";
@@ -116,7 +115,7 @@ export default function ServiceRecord({ isDossier = false }: { isDossier?: boole
   return (
     <PageTransition>
       <div className="min-h-screen bg-[#030712] text-primary">
-        <Navigation />
+
         <main className="flex w-full justify-center px-4 sm:px-8 md:px-16 lg:px-20">
           <div className="w-full max-w-[90rem] py-8 sm:py-16 md:py-24 lg:py-32">
             

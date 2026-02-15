@@ -12,7 +12,6 @@ import { useLanguage } from "@/hooks/use-language";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { ContactForm } from "@/components/ContactForm";
-import { Navigation } from "@/components/Navigation";
 import { TypewriterText } from "@/components/TypewriterText";
 
 import { DossierContent, DossierItem } from "@/components/DossierContent";
@@ -102,9 +101,8 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
   return (
     <PageTransition>
       <div className="min-h-screen">
-        <Navigation />
-
-        <main className="flex w-full justify-center px-4 sm:px-6 md:px-8">
+  
+        <main className="flex w-full justify-center px-4 sm:px-6 md:px-8 pt-20 sm:pt-0">
           <div className="w-full max-w-[90rem] py-8 sm:py-16 md:py-24 lg:py-32">
             <SectionPowerUp>
               <div className="flex flex-col lg:flex-row gap-16 lg:gap-8 mb-20 sm:mb-32 md:mb-40">
