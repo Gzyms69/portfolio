@@ -41,9 +41,9 @@ export const ProjectCard = ({
   const springX = useSpring(mouseX, { stiffness: 300, damping: 30 });
   const springY = useSpring(mouseY, { stiffness: 300, damping: 30 });
 
-  // Subtle tilt range (Professional standard: ~2-3 degrees)
-  const rotateX = useTransform(springY, [0, 1], [3, -3]);
-  const rotateY = useTransform(springX, [0, 1], [-3, 3]);
+  // Subtle tilt range (Professional standard: ~5 degrees)
+  const rotateX = useTransform(springY, [0, 1], [5, -5]);
+  const rotateY = useTransform(springX, [0, 1], [-5, 5]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!rootRef.current || isDossier) return;

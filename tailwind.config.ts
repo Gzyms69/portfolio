@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import tailwindAnimate from "tailwindcss-animate";
+import plugin from "tailwindcss/plugin";
 
 export default {
   darkMode: ["class"],
@@ -104,5 +105,23 @@ export default {
       },
     },
   },
-  plugins: [tailwindAnimate],
+  plugins: [
+    tailwindAnimate,
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        ".perspective-1000": {
+          perspective: "1000px",
+        },
+        ".perspective-2000": {
+          perspective: "2000px",
+        },
+        ".transform-style-3d": {
+          transformStyle: "preserve-3d",
+        },
+        ".backface-hidden": {
+          backfaceVisibility: "hidden",
+        },
+      });
+    }),
+  ],
 } satisfies Config;
