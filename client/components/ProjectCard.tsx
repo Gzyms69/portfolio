@@ -32,7 +32,7 @@ export const ProjectCard = ({
 }: ProjectCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // High-performance springs for instant reaction
   const mouseX = useMotionValue(0.5);
@@ -41,56 +41,53 @@ export const ProjectCard = ({
   const springX = useSpring(mouseX, { stiffness: 400, damping: 30 });
   const springY = useSpring(mouseY, { stiffness: 400, damping: 30 });
 
-  const rotateX = useTransform(springY, [0, 1], [8, -8]);
-  const rotateY = useTransform(springX, [0, 1], [-8, 8]);
-  const brightness = useTransform(springY, [0, 1], [1.1, 0.9]);
+  const rotateX = useTransform(springY, [0, 1], [10, -10]);
+  const rotateY = useTransform(springX, [0, 1], [-10, 10]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!cardRef.current || isDossier) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    
-    // Smoothly update motion values
+    if (!containerRef.current || isDossier) return;
+    const rect = containerRef.current.getBoundingClientRect();
     mouseX.set((e.clientX - rect.left) / rect.width);
     mouseY.set((e.clientY - rect.top) / rect.height);
   };
 
-  const handleMouseEnter = () => setIsHovered(true);
-  
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    mouseX.set(0.5);
-    mouseY.set(0.5);
-  };
-
   return (
     <div 
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={() => setIsExpanded(!isExpanded)}
-      className={`relative w-full cursor-pointer group ${isDossier ? '' : 'perspective-2000'} ${className}`}
+      ref={containerRef}
+      className={`relative w-full ${isDossier ? '' : 'perspective-2000'} ${className}`}
     >
-      {/* Invisible Hitbox padding to ensure hover isn't lost during tilt */}
+      {/* 1. THE HITBOX (Event Layer) - Purely static, captures all movement */}
+      <div 
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => {
+          setIsHovered(false);
+          mouseX.set(0.5);
+          mouseY.set(0.5);
+        }}
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="absolute inset-0 z-30 cursor-pointer"
+      />
+
+      {/* 2. THE VISUALS (Tilting Layer) - No mouse interaction to prevent flicker */}
       <motion.div 
         layout="position"
         style={{ 
           rotateX: isDossier ? 0 : rotateX, 
           rotateY: isDossier ? 0 : rotateY, 
-          filter: isDossier ? 'none' : `brightness(${brightness.get()})`,
           transformStyle: "preserve-3d" 
         }}
-        className={`relative z-10 bg-[#0a0f0a] border-2 rounded-lg overflow-hidden transition-border duration-300 shadow-[0_0_15px_rgba(0,255,65,0.05)] ${
+        className={`relative z-10 bg-[#0a0f0a] border-2 rounded-lg overflow-hidden transition-colors duration-300 pointer-events-none shadow-[0_0_15px_rgba(0,255,65,0.05)] ${
           isHovered ? 'border-primary/60 shadow-[0_0_30px_rgba(0,255,65,0.2)]' : 'border-primary/20'
         } ${isDossier ? 'p-4 sm:p-6' : 'p-6 sm:p-8'}`}
       >
         
-        <div className="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-primary/40 m-1 pointer-events-none" />
-        <div className="absolute top-0 right-0 w-4 h-4 border-r-2 border-t-2 border-primary/40 m-1 pointer-events-none" />
+        <div className="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-primary/40 m-1" />
+        <div className="absolute top-0 right-0 w-4 h-4 border-r-2 border-t-2 border-primary/40 m-1" />
         
-        <div className={`flex flex-col ${isDossier ? 'xl:flex-row' : 'lg:flex-row'} gap-4 sm:gap-8 pointer-events-none`}>
+        <div className={`flex flex-col ${isDossier ? 'xl:flex-row' : 'lg:flex-row'} gap-4 sm:gap-8`}>
           <motion.div layout className={`${isDossier ? 'xl:w-1/4' : 'lg:w-1/3'} shrink-0`}>
-            <div className="relative aspect-video rounded border border-primary/10 overflow-hidden bg-black transition-colors duration-500 group-hover:border-primary/40">
+            <div className="relative aspect-video rounded border border-primary/10 overflow-hidden bg-black transition-colors duration-500">
               {imageUrl ? (
                 <img 
                   src={imageUrl.startsWith('http') ? imageUrl : `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${imageUrl.replace(/^\//, '')}`} 
@@ -115,7 +112,8 @@ export const ProjectCard = ({
                 </h3>
               </div>
               
-              <div className="flex gap-2 pointer-events-auto">
+              {/* 3. THE ACTIONS (Lifted Layer) - Must be clickable */}
+              <div className="flex gap-2 relative z-40 pointer-events-auto">
                 {githubUrl && (
                   <Button
                     variant="ghost"
