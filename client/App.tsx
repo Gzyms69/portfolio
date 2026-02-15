@@ -15,7 +15,6 @@ import { TVPowerTransition } from "@/components/TVPowerTransition";
 import { CRTOverlay } from "@/components/ui/CRTOverlay";
 import { TerminalLoader } from "@/components/TerminalLoader";
 import { DossierView } from "@/components/DossierView";
-import { DebugOverlay } from "@/components/DebugOverlay";
 import { Navigation } from "@/components/Navigation";
 
 // Pages
@@ -118,8 +117,6 @@ const AppContent = () => {
       className="relative w-full min-h-screen overflow-hidden bg-black"
       onDoubleClick={toggleBackground}
     >
-      <DebugOverlay />
-
       {/* 1. Global Navigation - Fixed to screen, outside tilt */}
       <div className={isReady ? 'opacity-100' : 'opacity-0 pointer-events-none'}>
         <Navigation />

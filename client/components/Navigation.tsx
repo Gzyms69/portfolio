@@ -92,7 +92,7 @@ export const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { language, setLanguage, t } = useLanguage();
-  const { type: bgType, toggleBackground, toggleViewMode } = useBackground();
+  const { type: bgType, viewMode, toggleBackground, toggleViewMode } = useBackground();
   const [isSnakeConfirmOpen, setIsSnakeConfirmOpen] = useState(false);
   const [isSnakeGameOpen, setIsSnakeGameOpen] = useState(false);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -140,7 +140,16 @@ export const Navigation = () => {
   return (
     <>
       {/* Desktop Menu Triggers */}
-      <div className="fixed left-8 top-8 z-[200] hidden sm:flex flex-row gap-4 items-center pointer-events-auto">
+      <motion.div 
+        initial={false}
+        animate={{ 
+          x: viewMode === 'dossier' ? -150 : 0,
+          opacity: viewMode === 'dossier' ? 0 : 1,
+          pointerEvents: viewMode === 'dossier' ? 'none' : 'auto'
+        }}
+        transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+        className="fixed left-8 top-8 z-[200] hidden sm:flex flex-row gap-4 items-center"
+      >
         <Magnetic strength={0.3}>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -164,7 +173,7 @@ export const Navigation = () => {
             </span>
           </button>
         </Magnetic>
-      </div>
+      </motion.div>
 
       {/* Desktop Sidebar Nav */}
       <nav className="fixed left-8 top-24 hidden flex-col gap-4 z-[100] sm:flex">
