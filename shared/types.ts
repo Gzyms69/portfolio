@@ -60,6 +60,7 @@ export interface GlobalConfig {
   socials: {
     github: string;
     linkedin: string;
+    domain?: string;
   };
   contact: {
     formspreeId: string;

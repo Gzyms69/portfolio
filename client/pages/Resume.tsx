@@ -250,6 +250,11 @@ export default function Resume() {
             </div>
             {variant !== 'office' && (
               <div className="flex items-center sm:justify-end gap-1.5">
+                <Globe className="w-3 h-3" />
+                <a href={`https://${portfolioConfig.socials.domain}`} target="_blank" rel="noreferrer" className="hover:underline">
+                  {portfolioConfig.socials.domain}
+                </a>
+                <span className="text-gray-300 mx-0.5">|</span>
                 <Github className="w-3 h-3" />
                 <a href={portfolioConfig.socials.github} target="_blank" rel="noreferrer" className="hover:underline">
                   github.com/{portfolioConfig.socials.github.split('/').pop()}
