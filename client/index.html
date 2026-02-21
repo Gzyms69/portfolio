@@ -34,23 +34,43 @@
         font-display: swap;
       }
       body { background-color: #0a0f0a; margin: 0; overflow: hidden; font-family: 'VT323', monospace; }
-      #boot-sequence {
-        position: fixed; inset: 0; background-color: #0a0f0a; z-index: 10000;
-        display: flex; align-items: center; justify-content: center;
-        color: hsl(142.1 76.2% 36.3%); font-size: 1.25rem; letter-spacing: 0.1em;
-        transition: opacity 0.5s ease-out;
-      }
-      .blink { animation: blink 1s step-end infinite; }
-      @keyframes blink { 50% { opacity: 0; } }
     </style>
   </head>
 
   <body>
-    <div id="boot-sequence">
-      <span>&gt; SYSTEM_STANDBY<span class="blink">_</span></span>
+    <div id="root">
+      <!-- SKELETON HUD (App Shell) -->
+      <div style="background-color: #0a0f0a; min-height: 100vh; display: flex; justify-content: center; padding: 2rem; font-family: 'VT323', monospace; color: hsl(142.1 76.2% 36.3%);">
+        <div style="width: 100%; max-width: 90rem; margin-top: 4rem;">
+          <div style="max-width: 66%; position: relative;">
+            <div style="position: relative; z-index: 10; background-color: rgba(10, 15, 10, 0.9); border: 2px solid hsla(142.1, 76.2%, 36.3%, 0.3); padding: 3rem; border-radius: 0.75rem; box-shadow: 0 0 20px rgba(0, 255, 65, 0.1); overflow: hidden;">
+              <!-- Corner HUD markers -->
+              <div style="position: absolute; top: 0; left: 0; width: 1.5rem; height: 1.5rem; border-left: 2px solid hsl(142.1 76.2% 36.3%); border-top: 2px solid hsl(142.1 76.2% 36.3%); margin: 0.5rem;"></div>
+              <div style="position: absolute; top: 0; right: 0; width: 1.5rem; height: 1.5rem; border-right: 2px solid hsl(142.1 76.2% 36.3%); border-top: 2px solid hsl(142.1 76.2% 36.3%); margin: 0.5rem;"></div>
+              <div style="position: absolute; bottom: 0; left: 0; width: 1.5rem; height: 1.5rem; border-left: 2px solid hsl(142.1 76.2% 36.3%); border-bottom: 2px solid hsl(142.1 76.2% 36.3%); margin: 0.5rem;"></div>
+              <div style="position: absolute; bottom: 0; right: 0; width: 1.5rem; height: 1.5rem; border-right: 2px solid hsl(142.1 76.2% 36.3%); border-bottom: 2px solid hsl(142.1 76.2% 36.3%); margin: 0.5rem;"></div>
+              
+              <!-- Scanline Overlay -->
+              <div style="position: absolute; inset: 0; z-index: 20; pointer-events: none; background: linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.03) 50%); background-size: 100% 4px;"></div>
+
+              <div style="display: flex; flex-direction: column; gap: 2rem;">
+                <div style="border-bottom: 1px solid rgba(0, 255, 65, 0.1); padding-bottom: 1.5rem;">
+                  <div style="font-size: 12px; color: hsla(142.1, 76.2%, 36.3%, 0.7); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 0.5rem;">
+                    DOSSIER_ID: DA-2137
+                  </div>
+                  <div style="font-size: 4rem; font-weight: bold; color: hsl(142.1 76.2% 36.3%); text-transform: uppercase; line-height: 1;">
+                    DAWID CZERWIŃSKI
+                  </div>
+                </div>
+                <div style="font-size: 1.5rem; color: hsla(142.1, 76.2%, 36.3%, 0.8); line-height: 1.4;">
+                  INITIALIZING_BIOMETRIC_DATA...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div id="root"></div>
 
     <script type="module" src="/App.tsx"></script>
   </body>
