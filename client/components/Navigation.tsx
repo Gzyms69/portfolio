@@ -29,7 +29,7 @@ const NavButton = memo(({ onClick, icon, label, active, isMenuOpen }: NavButtonP
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         aria-label={label}
-        className={`group relative flex h-full w-full flex-col items-center justify-center rounded-lg border transition-all duration-300 ${
+        className={`group relative flex h-full w-full flex-col items-center justify-center rounded-lg border transition-colors duration-300 ${
           active 
           ? 'bg-primary/20 border-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' 
           : 'bg-primary/5 border-primary/20 hover:bg-primary/15 hover:border-primary/40'

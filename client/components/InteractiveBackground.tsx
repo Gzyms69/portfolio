@@ -202,10 +202,10 @@ export const InteractiveBackground = () => {
               antialias: false, 
               alpha: false, 
               stencil: false, 
-              depth: true,
+              depth: false,
               powerPreference: "high-performance"
             }}
-            dpr={1}
+            dpr={[1, 1.5]}
             performance={{ min: 0.5 }}
           >
             <SticksScene scrollY={scrollY} isIdle={isIdle} />

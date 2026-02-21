@@ -2,7 +2,7 @@ import { Github, ExternalLink, Terminal, ChevronDown, ChevronUp } from "lucide-r
 import { Button } from "./ui/button";
 import { TechTag } from "./ui/TechTag";
 import { GlitchText } from "./GlitchText";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 interface ProjectCardProps {
@@ -33,6 +33,24 @@ export const ProjectCard = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const rectRef = useRef<DOMRect | null>(null);
+
+  useEffect(() => {
+    const updateRect = () => {
+      if (rootRef.current) {
+        rectRef.current = rootRef.current.getBoundingClientRect();
+      }
+    };
+
+    updateRect();
+    window.addEventListener('resize', updateRect);
+    window.addEventListener('scroll', updateRect, { passive: true });
+
+    return () => {
+      window.removeEventListener('resize', updateRect);
+      window.removeEventListener('scroll', updateRect);
+    };
+  }, []);
 
   // Springs optimized for subtle, professional feel
   const mouseX = useMotionValue(0.5);
@@ -46,8 +64,8 @@ export const ProjectCard = ({
   const rotateY = useTransform(springX, [0, 1], [-5, 5]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!rootRef.current || isDossier) return;
-    const rect = rootRef.current.getBoundingClientRect();
+    if (!rectRef.current || isDossier) return;
+    const rect = rectRef.current;
     mouseX.set((e.clientX - rect.left) / rect.width);
     mouseY.set((e.clientY - rect.top) / rect.height);
   };
@@ -103,7 +121,7 @@ export const ProjectCard = ({
                   loading="lazy"
                   width="600"
                   height="400"
-                  className={`w-full h-full object-cover transition-all duration-700 ${isHovered ? 'grayscale-0 opacity-100 scale-105' : 'grayscale opacity-60 scale-100'}`}
+                  className={`w-full h-full object-cover transition-transform duration-700 ${isHovered ? 'grayscale-0 opacity-100 scale-105' : 'grayscale opacity-60 scale-100'}`}
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-primary/20">

@@ -71,7 +71,7 @@ export const ContactForm = () => {
 
         <div className="flex flex-col gap-6 font-mono">
           <div className="flex flex-col gap-2 border-b border-primary/10 pb-4">
-            <div className="flex items-center gap-2 text-[10px] text-primary/40 uppercase tracking-widest mb-2">
+            <div className="flex items-center gap-2 text-[10px] text-primary/70 uppercase tracking-widest mb-2">
               <Terminal className="h-3 w-3" />
               <span>{t('contact_system')} // status: active</span>
             </div>
@@ -82,7 +82,7 @@ export const ContactForm = () => {
 
           <form name="contact" onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div>
-              <label htmlFor="name" className="block text-primary/60 text-sm mb-1 uppercase">
+              <label htmlFor="name" className="block text-primary/80 text-sm mb-1 uppercase">
                 {t('name_label')}
               </label>
               <input
@@ -91,14 +91,14 @@ export const ContactForm = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full bg-transparent border-b border-primary/40 text-primary text-lg px-2 py-1 focus:outline-none focus:border-primary/80 transition-colors duration-300 placeholder:text-primary/30"
+                className="w-full bg-transparent border-b border-primary/40 text-primary text-lg px-2 py-1 focus:outline-none focus:border-primary/80 transition-colors duration-300 placeholder:text-primary/50"
                 placeholder={t('name_placeholder')}
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-primary/60 text-sm mb-1 uppercase">
+              <label htmlFor="email" className="block text-primary/80 text-sm mb-1 uppercase">
                 {t('email_label')}
               </label>
               <input
@@ -107,14 +107,14 @@ export const ContactForm = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full bg-transparent border-b border-primary/40 text-primary text-lg px-2 py-1 focus:outline-none focus:border-primary/80 transition-colors duration-300 placeholder:text-primary/30"
+                className="w-full bg-transparent border-b border-primary/40 text-primary text-lg px-2 py-1 focus:outline-none focus:border-primary/80 transition-colors duration-300 placeholder:text-primary/50"
                 placeholder={t('email_placeholder')}
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="subject" className="block text-primary/60 text-sm mb-1 uppercase">
+              <label htmlFor="subject" className="block text-primary/80 text-sm mb-1 uppercase">
                 {t('subject_label')}
               </label>
               <input
@@ -123,14 +123,14 @@ export const ContactForm = () => {
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
-                className="w-full bg-transparent border-b border-primary/40 text-primary text-lg px-2 py-1 focus:outline-none focus:border-primary/80 transition-colors duration-300 placeholder:text-primary/30"
+                className="w-full bg-transparent border-b border-primary/40 text-primary text-lg px-2 py-1 focus:outline-none focus:border-primary/80 transition-colors duration-300 placeholder:text-primary/50"
                 placeholder={t('subject_placeholder')}
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-primary/60 text-sm mb-1 uppercase">
+              <label htmlFor="message" className="block text-primary/80 text-sm mb-1 uppercase">
                 {t('message_label')}
               </label>
               <textarea
@@ -139,7 +139,7 @@ export const ContactForm = () => {
                 value={formData.message}
                 onChange={handleChange}
                 rows={4}
-                className="w-full bg-transparent border border-primary/40 text-primary text-lg px-2 py-1 focus:outline-none focus:border-primary/80 transition-colors duration-300 placeholder:text-primary/30 resize-none"
+                className="w-full bg-transparent border border-primary/40 text-primary text-lg px-2 py-1 focus:outline-none focus:border-primary/80 transition-colors duration-300 placeholder:text-primary/50 resize-none"
                 placeholder={t('message_placeholder')}
                 required
               ></textarea>

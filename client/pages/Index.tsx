@@ -118,7 +118,7 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
 
                       <div className="flex flex-col gap-8">
                         <div className="flex flex-col gap-2 border-b border-primary/10 pb-6">
-                          <div className="flex items-center gap-2 text-[10px] font-mono text-primary/40 uppercase tracking-widest mb-2">
+                          <div className="flex items-center gap-2 text-[10px] font-mono text-primary/70 uppercase tracking-widest mb-2">
                             <TerminalIcon className="h-3 w-3" />
                             <span>{t('dossier_id')} DA-2137</span>
                           </div>
@@ -132,13 +132,13 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
                           <p className="font-mono text-xl sm:text-2xl text-primary/80 leading-relaxed max-w-2xl lowercase tracking-wide">
                             {content.title}
                           </p>
-                          <p className="font-mono text-lg text-primary/50 leading-relaxed max-w-2xl lowercase">
+                          <p className="font-mono text-lg text-primary/70 leading-relaxed max-w-2xl lowercase">
                             {content.description}
                           </p>
                         </div>
                         
                         <div className="flex flex-wrap gap-3 pt-6 border-t border-primary/10">
-                          <span className="w-full text-[10px] font-mono text-primary/30 uppercase tracking-[0.3em] mb-2">{t('cv_skills')}:</span>
+                          <span className="w-full text-[10px] font-mono text-primary/70 uppercase tracking-[0.3em] mb-2">{t('cv_skills')}:</span>
                           {content.heroTechStack.map((tech, index) => (
                             <TechTag key={index} tech={tech} />
                           ))}
