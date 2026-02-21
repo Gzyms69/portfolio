@@ -10,9 +10,27 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ScrollProgress } from "@/components/ScrollProgress";
-// Lazy load InteractiveBackground
-import { Suspense, lazy } from "react";
+// Lazy load InteractiveBackground with artificial delay
+import { Suspense, lazy, useEffect } from "react";
 const InteractiveBackground = lazy(() => import("@/components/InteractiveBackground").then(module => ({ default: module.InteractiveBackground })));
+
+const Delayed3DBackground = () => {
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    // Artificial delay to prioritize LCP content (fonts, text, CSS)
+    const timer = setTimeout(() => setShouldLoad(true), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!shouldLoad) return <div className="fixed inset-0 bg-[#0a0f0a] -z-10" />;
+
+  return (
+    <Suspense fallback={<div className="fixed inset-0 bg-[#0a0f0a] -z-10" />}>
+      <InteractiveBackground />
+    </Suspense>
+  );
+};
 
 import { TVPowerTransition } from "@/components/TVPowerTransition";
 import { CRTOverlay } from "@/components/ui/CRTOverlay";
@@ -104,9 +122,7 @@ const AppContent = () => {
       onDoubleClick={toggleBackground}
     >
       {/* 1. Global Background - Fixed to viewport */}
-      <Suspense fallback={<div className="fixed inset-0 bg-[#0a0f0a] -z-10" />}>
-        <InteractiveBackground />
-      </Suspense>
+      <Delayed3DBackground />
 
       {/* 2. Global Navigation - Always accessible */}
       <div className={isReady ? 'opacity-100' : 'opacity-0 pointer-events-none'}>

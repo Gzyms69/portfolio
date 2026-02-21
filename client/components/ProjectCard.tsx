@@ -101,6 +101,8 @@ export const ProjectCard = ({
                   src={imageUrl.startsWith('http') ? imageUrl : `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${imageUrl.replace(/^\//, '')}`} 
                   alt={title} 
                   loading="lazy"
+                  width="600"
+                  height="400"
                   className={`w-full h-full object-cover transition-all duration-700 ${isHovered ? 'grayscale-0 opacity-100 scale-105' : 'grayscale opacity-60 scale-100'}`}
                 />
               ) : (
@@ -134,6 +136,7 @@ export const ProjectCard = ({
                   <Button
                     variant="ghost"
                     size="icon"
+                    aria-label="View Source Code on GitHub"
                     onClick={(e) => { e.stopPropagation(); window.open(githubUrl, "_blank"); }}
                     className="text-primary/40 hover:text-primary hover:bg-primary/10 h-8 w-8 sm:h-10 sm:w-10 transition-transform hover:scale-110 active:scale-95"
                   >
@@ -144,6 +147,7 @@ export const ProjectCard = ({
                   <Button
                     variant="ghost"
                     size="icon"
+                    aria-label="View Live Project"
                     onClick={(e) => { e.stopPropagation(); window.open(liveUrl, "_blank"); }}
                     className="text-primary/40 hover:text-primary hover:bg-primary/10 h-8 w-8 sm:h-10 sm:w-10 transition-transform hover:scale-110 active:scale-95"
                   >

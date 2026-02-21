@@ -27,7 +27,7 @@ const supportProjects: Project[] = [
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
     techStack: ["Python", "Neo4j", "Docker", "SQL", "FastAPI"],
-    imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&h=400&q=80&fm=webp",
     variant: "code",
     icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
@@ -43,7 +43,7 @@ const supportProjects: Project[] = [
     },
     githubUrl: "https://github.com/Gzyms69/LeadFinder",
     techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "MS Office"],
-    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&q=80&fm=webp",
     variant: "design",
     icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
@@ -59,7 +59,7 @@ const supportProjects: Project[] = [
     },
     githubUrl: "https://github.com/Gzyms69/romhub",
     techStack: ["JavaScript", "Emulation", "Local Storage"],
-    imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=400&q=80&fm=webp",
     variant: "code",
     icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     hideFromResume: true
@@ -211,7 +211,7 @@ const devProjects: Project[] = [
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
     techStack: ["Python", "Neo4j", "Docker", "SQL", "FastAPI"],
-    imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&h=400&q=80&fm=webp",
     variant: "code",
     icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
@@ -227,7 +227,7 @@ const devProjects: Project[] = [
     },
     githubUrl: "https://github.com/Gzyms69/LeadFinder",
     techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "MS Office"],
-    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&q=80&fm=webp",
     variant: "code",
     icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
@@ -243,7 +243,7 @@ const devProjects: Project[] = [
     },
     githubUrl: "https://github.com/Gzyms69/romhub",
     techStack: ["JavaScript", "Emulation", "Local Storage"],
-    imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=400&q=80&fm=webp",
     variant: "code",
     icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     hideFromResume: true

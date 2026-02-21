@@ -20,7 +20,7 @@ export const Footer = () => {
             <div className="h-px w-20 bg-primary/20" />
             <span>Connection_Secure</span>
           </div>
-          <div className="px-4 flex items-center gap-2 text-primary/50 group-hover:text-primary transition-colors duration-500">
+          <div className="px-4 flex items-center gap-2 text-primary/70 group-hover:text-primary transition-colors duration-500">
              <Terminal className="h-3 w-3" />
              <span className="font-['Major_Mono_Display'] text-sm tracking-normal capitalize">portfolio_access_granted</span>
           </div>
