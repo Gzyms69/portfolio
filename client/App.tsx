@@ -111,25 +111,25 @@ const DossierApp = () => {
 const AppContent = () => {
   const { isTransitioning, viewMode, toggleBackground } = useBackground();
   const location = useLocation();
-  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    // Check if the native JS loader is already done
-    if ((window as any).__TERMINAL_BOOTED) {
-      setIsReady(true);
-      const loader = document.getElementById('terminal-loader');
-      if (loader) loader.style.display = 'none';
-    } else {
-      // Wait for it
-      const onBoot = () => {
-        setIsReady(true);
-        const loader = document.getElementById('terminal-loader');
-        if (loader) {
-          loader.style.display = 'none';
-        }
-      };
-      window.addEventListener('TERMINAL_BOOT_COMPLETE', onBoot);
-      return () => window.removeEventListener('TERMINAL_BOOT_COMPLETE', onBoot);
+    // Disable automatic scroll restoration
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    
+    // Force scroll to top on mount
+    window.scrollTo(0, 0);
+
+    // Hide the static boot sequence with a smooth fade
+    const boot = document.getElementById('boot-sequence');
+    if (boot) {
+      // Trigger fade out
+      boot.style.opacity = '0';
+      // Remove from DOM after transition
+      setTimeout(() => {
+        boot.style.display = 'none';
+      }, 500);
     }
   }, []);
 
@@ -160,12 +160,12 @@ const AppContent = () => {
       <Delayed3DBackground />
 
       {/* 2. Global Navigation - Always accessible */}
-      <div className={isReady ? 'opacity-100' : 'opacity-0 pointer-events-none'}>
+      <div className='opacity-100'>
         <Navigation />
       </div>
 
       {/* 3. Main Content - Pure 2D Layout (No Global Tilt) */}
-      <div className={`w-full min-h-screen ${isReady ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`w-full min-h-screen opacity-100 pointer-events-auto`}>
         <TVPowerTransition isTransitioning={isTransitioning}>
           <Toaster />
           <Sonner />

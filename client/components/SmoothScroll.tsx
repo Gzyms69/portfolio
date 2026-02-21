@@ -14,6 +14,8 @@ export const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
       infinite: false,
     });
 
+    lenis.scrollTo(0, { immediate: true });
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);

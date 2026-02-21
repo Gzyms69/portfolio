@@ -1,4 +1,3 @@
-import { Share2, Wrench, Zap } from "lucide-react";
 import { Project, CVData, PortfolioConfig } from "@shared/types";
 import { supportData } from "./support";
 

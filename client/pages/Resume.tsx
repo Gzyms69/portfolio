@@ -22,6 +22,13 @@ export default function Resume() {
   const [profile, setProfile] = useState<ResumeProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Menu Visibility
+  const [showConfigMenu, setShowConfigMenu] = useState(false);
+  const [showDownloadMenu, setShowDownloadMenu] = useState(false);
+
+  // --- HOOKS: ALWAYS CALL THESE ---
+
+  // Load Data Effect
   useEffect(() => {
     const loadData = async () => {
       setIsLoading(true);
@@ -48,7 +55,6 @@ export default function Resume() {
         }
       } catch (e) {
         console.error("Failed to load resume data", e);
-        // Fallback to support if something fails?
       } finally {
         setIsLoading(false);
       }
@@ -56,7 +62,24 @@ export default function Resume() {
     loadData();
   }, [variant]);
 
-  // Update URL when user manually switches
+  // Sync title
+  useEffect(() => {
+    if (profile) {
+        document.title = `${profile.config[lang].name} - Resume`;
+    }
+  }, [profile, lang]);
+
+  // Handle click outside
+  useEffect(() => {
+    const handleClick = () => {
+      // Menus close on backdrop click handled by parent div
+    };
+    window.addEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleClick);
+  }, []);
+
+  // --- DERIVED DATA & HANDLERS ---
+
   const handleVariantChange = (v: ResumeVariant) => {
     setSearchParams(prev => {
       prev.set("v", v);
@@ -70,37 +93,6 @@ export default function Resume() {
       return prev;
     }, { replace: true });
   };
-
-  // Menu Visibility
-  const [showConfigMenu, setShowConfigMenu] = useState(false);
-  const [showDownloadMenu, setShowDownloadMenu] = useState(false);
-
-  // Derived Data (Safe access)
-  if (isLoading || !profile) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
-        <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
-      </div>
-    );
-  }
-
-  const content = profile.config[lang];
-  const { experiences, education, skills, languages } = profile.data[lang];
-  const projects = profile.projects;
-
-  // Sync title
-  useEffect(() => {
-    if (content) document.title = `${content.name} - Resume`;
-  }, [content]);
-
-  // Handle click outside to close menus
-  useEffect(() => {
-    const handleClick = () => {
-      // Menus close on backdrop click handled by parent div
-    };
-    window.addEventListener('click', handleClick);
-    return () => window.removeEventListener('click', handleClick);
-  }, []);
 
   const handlePrint = () => {
     window.print();
@@ -127,6 +119,20 @@ export default function Resume() {
     });
     setShowDownloadMenu(false);
   };
+
+  // --- EARLY RETURN FOR LOADING STATE ---
+  if (isLoading || !profile) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
+      </div>
+    );
+  }
+
+  // --- RENDER CONTENT ---
+  const content = profile.config[lang];
+  const { experiences, education, skills, languages } = profile.data[lang];
+  const projects = profile.projects;
 
   return (
     <div className="resume-page min-h-screen bg-white text-black font-sans selection:bg-gray-200 selection:text-black print:p-0 p-8 flex justify-center" onClick={() => { setShowConfigMenu(false); setShowDownloadMenu(false); }}>

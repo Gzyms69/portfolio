@@ -214,7 +214,7 @@ export const TerminalConsole = ({ isOpen, onClose }: TerminalConsoleProps) => {
                       onChange={(e) => setInput(e.target.value)}
                       onKeyDown={handleKeyDown}
                       className="flex-1 bg-transparent border-none outline-none text-primary caret-primary"
-                      autoFocus
+                      autoFocus={isOpen}
                     />
                   </form>
                 )}

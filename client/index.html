@@ -24,101 +24,32 @@
     <meta property="twitter:description" content="Interactive Terminal Experience & Service Record of Dawid Czerwiński." />
     <meta property="twitter:image" content="https://czerwinskidawid.pl/portfolio/portfolio.png" />
     
-    <link rel="preload" href="/fonts/VT323-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/portfolio/fonts/VT323-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <style>
       @font-face {
         font-family: 'VT323';
-        src: url('/fonts/VT323-Regular.woff2') format('woff2');
+        src: url('/portfolio/fonts/VT323-Regular.woff2') format('woff2');
         font-weight: 400;
         font-style: normal;
         font-display: swap;
       }
       body { background-color: #0a0f0a; margin: 0; overflow: hidden; font-family: 'VT323', monospace; }
-      #terminal-loader {
+      #boot-sequence {
         position: fixed; inset: 0; background-color: #0a0f0a; z-index: 10000;
-        display: flex; flex-direction: column; padding: 2rem; color: hsl(142.1 76.2% 36.3%);
-        overflow: hidden;
+        display: flex; align-items: center; justify-content: center;
+        color: hsl(142.1 76.2% 36.3%); font-size: 1.25rem; letter-spacing: 0.1em;
+        transition: opacity 0.5s ease-out;
       }
-      #terminal-logs { flex: 1; overflow: hidden; opacity: 0.8; font-size: 1.25rem; line-height: 1.4; }
-      #terminal-progress-container { width: 100%; max-width: 36rem; margin: 0 auto 3rem auto; }
-      #terminal-progress-info { display: flex; justify-content: space-between; margin-bottom: 0.25rem; font-size: 0.875rem; opacity: 0.6; letter-spacing: -0.05em; }
-      #terminal-bar-border { position: relative; width: 100%; height: 1.5rem; border: 2px solid rgba(0, 255, 65, 0.4); padding: 0.25rem; display: flex; align-items: center; }
-      #terminal-bar-inner { display: flex; width: 100%; height: 100%; gap: 0.25rem; }
-      .bar-segment { flex: 1; height: 100%; background-color: rgba(0, 255, 65, 0.05); transition: background-color 0.1s; }
-      .bar-segment.active { background-color: hsl(142.1 76.2% 36.3%); box-shadow: 0 0 10px rgba(0,255,65,0.5); }
+      .blink { animation: blink 1s step-end infinite; }
+      @keyframes blink { 50% { opacity: 0; } }
     </style>
   </head>
 
   <body>
-    <div id="terminal-loader">
-      <div id="terminal-logs"></div>
-      <div id="terminal-progress-container">
-        <div id="terminal-progress-info">
-          <span>SYSTEM_LOAD_SEQUENCE</span>
-          <span id="progress-text">0%</span>
-        </div>
-        <div id="terminal-bar-border">
-          <div id="terminal-bar-inner">
-            <!-- JS will fill this -->
-          </div>
-        </div>
-      </div>
+    <div id="boot-sequence">
+      <span>&gt; SYSTEM_STANDBY<span class="blink">_</span></span>
     </div>
-    <script>
-      (function() {
-        const logs = [
-          "> INITIALIZING_VAULT_OS_v4.0.2...", "> PERFORMING_MEMORY_CHECK...", "> 640KB_RAM_DETECTED_-_OK",
-          "> MOUNTING_LOCAL_DRIVES...", "> DRIVE_A:_BOOT_SECTOR_FOUND", "> LOAD_KERNEL_0x0021_SUCCESS",
-          "> ESTABLISHING_ENCRYPTED_UPLINK...", "> SYNCING_GEOMETRIC_VECTORS...", "> LOADING_PHOSPHOR_SHADERS...",
-          "> BRIGHTNESS_CHECK_NOMINAL", "> SYSTEM_INTEGRITY_VERIFIED", "> READY_FOR_OPERATOR_INPUT"
-        ];
-        const logContainer = document.getElementById('terminal-logs');
-        const progressText = document.getElementById('progress-text');
-        const barInner = document.getElementById('terminal-bar-inner');
-        
-        // Init bars
-        for(let i=0; i<20; i++) {
-          const div = document.createElement('div');
-          div.className = 'bar-segment';
-          div.id = 'seg-' + i;
-          barInner.appendChild(div);
-        }
-
-        let logIndex = 0;
-        let progress = 0;
-        const totalDuration = 2000; // 2s total load time
-        const intervalStep = 50;
-        
-        const interval = setInterval(() => {
-          progress += (100 / (totalDuration / intervalStep));
-          if(progress > 100) progress = 100;
-          
-          // Update Text
-          progressText.innerText = Math.floor(progress) + '%';
-          
-          // Update Logs
-          if (logIndex < logs.length && Math.random() > 0.6) {
-            const p = document.createElement('div');
-            p.innerText = logs[logIndex++];
-            logContainer.appendChild(p);
-          }
-
-          // Update Bar
-          const activeSegments = Math.floor((progress / 100) * 20);
-          for(let i=0; i<20; i++) {
-            const seg = document.getElementById('seg-' + i);
-            if (i < activeSegments) seg.classList.add('active');
-          }
-
-          if (progress >= 100) {
-            clearInterval(interval);
-            window.__TERMINAL_BOOTED = true;
-            window.dispatchEvent(new Event('TERMINAL_BOOT_COMPLETE'));
-          }
-        }, intervalStep);
-      })();
-    </script>
-
+    
     <div id="root"></div>
 
     <script type="module" src="/App.tsx"></script>
