@@ -32,22 +32,10 @@ const Delayed3DBackground = () => {
   const [Component, setComponent] = useState<React.ComponentType | null>(null);
 
   useEffect(() => {
-    const handleInteraction = async () => {
-      // Dynamic import ONLY on interaction
-      const module = await import("@/components/InteractiveBackground");
+    // Load 3D background immediately when the component mounts
+    import("@/components/InteractiveBackground").then(module => {
       setComponent(() => module.InteractiveBackground);
-    };
-
-    // Add listeners for interaction
-    window.addEventListener('mousemove', handleInteraction, { once: true, passive: true });
-    window.addEventListener('touchstart', handleInteraction, { once: true, passive: true });
-    window.addEventListener('scroll', handleInteraction, { once: true, passive: true });
-
-    return () => {
-      window.removeEventListener('mousemove', handleInteraction);
-      window.removeEventListener('touchstart', handleInteraction);
-      window.removeEventListener('scroll', handleInteraction);
-    };
+    });
   }, []);
 
   if (!Component) return <div className="fixed inset-0 bg-[#0a0f0a] -z-10" />;
