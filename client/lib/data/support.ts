@@ -1,5 +1,4 @@
 import { Project, CVData, PortfolioConfig } from "@shared/types";
-import { commonSocials, commonContact } from "./common";
 
 export const supportProjects: Project[] = [
   {

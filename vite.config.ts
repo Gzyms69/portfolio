@@ -28,10 +28,7 @@ export default defineConfig(({ mode }) => ({
     modulePreload: false,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-3d': ['three', '@react-three/fiber', '@react-three/drei'],
-          'vendor-ui': ['framer-motion', 'lucide-react', 'clsx', 'tailwind-merge'],
-        },
+        // Let Vite/Rollup split chunks automatically
       },
     },
   },

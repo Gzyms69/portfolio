@@ -15,7 +15,6 @@ export const itSpecialistProjects: Project[] = [
     githubUrl: "https://github.com/Gzyms69",
     techStack: ["Linux", "Docker", "Python", "SQL"],
     variant: "code",
-    icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />
   }
 ];
 

@@ -43,16 +43,10 @@ const Delayed3DBackground = () => {
     window.addEventListener('touchstart', handleInteraction, { once: true, passive: true });
     window.addEventListener('scroll', handleInteraction, { once: true, passive: true });
 
-    // Fallback: If no interaction, load anyway after a delay to ensure it eventually appears
-    const fallbackTimer = setTimeout(() => {
-      handleInteraction();
-    }, 4000);
-
     return () => {
       window.removeEventListener('mousemove', handleInteraction);
       window.removeEventListener('touchstart', handleInteraction);
       window.removeEventListener('scroll', handleInteraction);
-      clearTimeout(fallbackTimer);
     };
   }, []);
 
@@ -121,15 +115,29 @@ const AppContent = () => {
     // Force scroll to top on mount
     window.scrollTo(0, 0);
 
-    // Hide the static boot sequence with a smooth fade
     const boot = document.getElementById('boot-sequence');
     if (boot) {
-      // Trigger fade out
-      boot.style.opacity = '0';
-      // Remove from DOM after transition
-      setTimeout(() => {
-        boot.style.display = 'none';
-      }, 500);
+      // Force a reflow to ensure the initial state (opacity: 1) is registered before transition
+      // void boot.offsetWidth; 
+      
+      // Add a small delay to ensure the transition is visible and smooth, avoiding the "blink"
+      // This also covers the hydration gap.
+      requestAnimationFrame(() => {
+        boot.style.opacity = '0';
+        boot.style.pointerEvents = 'none';
+        
+        // Wait for the CSS transition (500ms) to finish before hiding
+        const handleTransitionEnd = () => {
+          boot.style.display = 'none';
+          boot.removeEventListener('transitionend', handleTransitionEnd);
+        };
+        boot.addEventListener('transitionend', handleTransitionEnd);
+        
+        // Fallback for safety (e.g. if tab is backgrounded)
+        setTimeout(() => {
+           boot.style.display = 'none';
+        }, 600);
+      });
     }
   }, []);
 

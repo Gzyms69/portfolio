@@ -71,10 +71,31 @@
     - Push to `main`. The GitHub Action will automatically build and deploy to `gh-pages`.
     - **Do not** manually edit `dist/`.
 
-## 5. Quick Reference Commands
-- **Check Types**: `npm run typecheck`
-- **Lint**: `npm run lint`
-- **Start Dev**: `npm run dev`
+## 5. Senior Engineering Performance Mandates (CRITICAL)
+
+### A. Zero-Tolerance for Synchronous Layout Queries
+*   **Principle:** Never call `getBoundingClientRect()`, `offsetWidth`, or `clientHeight` inside high-frequency event handlers (`mousemove`, `scroll`).
+*   **Procedure:** Measure dimensions **once** (on mount or resize) and cache them in a `useRef`. Interaction logic must only read from this cache to avoid Forced Reflows and keep TBT at 0ms.
+
+### B. Interaction-Driven Asset Acquisition (The "Hard Gate" Pattern)
+*   **Principle:** Heavy bundles (>100KB, e.g., Three.js) must be invisible to the browser's Preload Scanner during initial load.
+*   **Procedure:** Use interaction-driven dynamic imports. `await import()` heavy modules only inside a `useEffect` triggered by user interaction (scroll, touch, move) or `requestIdleCallback`. This preserves bandwidth for critical fonts and LCP text.
+
+### C. Content-First Pre-rendering (CSR Bypass)
+*   **Principle:** The LCP element must be paintable by the browser without executing any JavaScript.
+*   **Procedure:** Inject a static "App Shell" into `index.html` including the critical text and inline CSS. React should handle hydration and interactivity, not the initial paint.
+
+### D. Data Splitting & Profile Isolation
+*   **Principle:** Hidden or non-essential feature data (e.g., hidden CVs, secondary profiles) must not bloat the main bundle.
+*   **Procedure:** Move all profile-specific objects into separate files in `client/lib/data/`. Load them via dynamic imports only when the specific route or Easter Egg is triggered.
+
+### E. Compositor-Only Animations
+*   **Principle:** Animations must avoid properties that trigger layout/reflow (`top`, `left`, `margin`, `width`).
+*   **Procedure:** Use exclusively `transform` and `opacity`. Avoid `transition: all` on complex elements to prevent main-thread Paint storms.
+
+### F. State-First Scroll Management
+*   **Principle:** The application must explicitly control scroll position during hydration to prevent jumps.
+*   **Procedure:** Set `window.history.scrollRestoration = 'manual'` at the entry point. Force `window.scrollTo(0,0)` before removing the App Shell to override native browser scroll restoration.
 
 ## 6. Architectural Design Principles (SENIOR STANDARDS)
 
