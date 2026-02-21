@@ -117,27 +117,26 @@ const AppContent = () => {
 
     const boot = document.getElementById('boot-sequence');
     if (boot) {
-      // Force a reflow to ensure the initial state (opacity: 1) is registered before transition
-      // void boot.offsetWidth; 
-      
-      // Add a small delay to ensure the transition is visible and smooth, avoiding the "blink"
-      // This also covers the hydration gap.
-      requestAnimationFrame(() => {
-        boot.style.opacity = '0';
-        boot.style.pointerEvents = 'none';
-        
-        // Wait for the CSS transition (500ms) to finish before hiding
-        const handleTransitionEnd = () => {
-          boot.style.display = 'none';
-          boot.removeEventListener('transitionend', handleTransitionEnd);
-        };
-        boot.addEventListener('transitionend', handleTransitionEnd);
-        
-        // Fallback for safety (e.g. if tab is backgrounded)
-        setTimeout(() => {
-           boot.style.display = 'none';
-        }, 600);
-      });
+      // PERFORMANCE-AWARE REMOVAL (The "Grace Period" Logic)
+      // If the app loaded instantly (< 500ms), don't annoy the user with a fade-out.
+      // Just remove the loader immediately to show the UI.
+      if (performance.now() < 500) {
+        boot.style.display = 'none';
+        if (boot.parentNode) boot.parentNode.removeChild(boot);
+      } else {
+        // Slow load detected: Fade out smoothly to mask the hydration delay.
+        requestAnimationFrame(() => {
+          boot.style.opacity = '0';
+          boot.style.pointerEvents = 'none';
+          
+          // Wait for CSS transition (600ms) then remove from DOM
+          setTimeout(() => {
+             if (boot.parentNode) {
+               boot.parentNode.removeChild(boot);
+             }
+          }, 650);
+        });
+      }
     }
   }, []);
 
