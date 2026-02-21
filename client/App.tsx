@@ -10,7 +10,10 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ScrollProgress } from "@/components/ScrollProgress";
-import { InteractiveBackground } from "@/components/InteractiveBackground";
+// Lazy load InteractiveBackground
+import { Suspense, lazy } from "react";
+const InteractiveBackground = lazy(() => import("@/components/InteractiveBackground").then(module => ({ default: module.InteractiveBackground })));
+
 import { TVPowerTransition } from "@/components/TVPowerTransition";
 import { CRTOverlay } from "@/components/ui/CRTOverlay";
 import { TerminalLoader } from "@/components/TerminalLoader";
@@ -101,7 +104,9 @@ const AppContent = () => {
       onDoubleClick={toggleBackground}
     >
       {/* 1. Global Background - Fixed to viewport */}
-      <InteractiveBackground />
+      <Suspense fallback={<div className="fixed inset-0 bg-[#0a0f0a] -z-10" />}>
+        <InteractiveBackground />
+      </Suspense>
 
       {/* 2. Global Navigation - Always accessible */}
       <div className={isReady ? 'opacity-100' : 'opacity-0 pointer-events-none'}>

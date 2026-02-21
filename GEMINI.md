@@ -75,3 +75,21 @@
 - **Check Types**: `npm run typecheck`
 - **Lint**: `npm run lint`
 - **Start Dev**: `npm run dev`
+
+## 6. Architectural Design Principles (SENIOR STANDARDS)
+
+### A. Interaction Stability Principle
+*   **Decouple Events from Motion:** Never attach mouse/touch listeners to elements that undergo 3D transformations (`rotate`, `translateZ`) or heavy animations. 
+*   **The Anchor Pattern:** Always use a static, 2D "Anchor" element to capture input. Drive the "Visual" child element via state/motion values. This prevents "recursive hit-testing loops" where an element moves out from under the cursor during its own animation.
+
+### B. Layering & Stacking Context Integrity
+*   **Root-Relative Backgrounds:** Any global visual effect (particles, shaders, ASCII rain) must exist at the document root level, sibling to the main content, to avoid being trapped in a parent's `transform` context (which breaks `fixed` positioning).
+*   **Transparency over Opaque Overlays:** Avoid solid background colors on layout containers. Use `backdrop-blur` and semi-transparent themed layers to maintain visual depth without creating "dead zones" for the global background.
+
+### C. Animation & Physics Hygiene
+*   **Single Source of Truth for Motion:** Avoid mixing CSS Transitions (`transition: all`) with JavaScript physics engines (Framer Motion, GSAP). CSS transitions must be restricted to non-transform properties (colors, opacity) to prevent "frame-fighting" and stuttering.
+*   **GPU over CPU:** Performance-heavy effects (glitch, scramble) must be offloaded to CSS Keyframes or `requestAnimationFrame`. Never use `setInterval` for visual updates.
+
+### D. 3D Geometry Constraints
+*   **Subtlety is Professionalism:** 3D Tilt effects should never exceed +/- 5 degrees. High angles distort hit-testing and degrade readability.
+*   **Z-Space Hierarchy:** Use `translateZ` explicitly within `preserve-3d` contexts to establish a clear hierarchy of depth, ensuring interactive elements are physically "closer" to the user than decorative backgrounds.

@@ -100,6 +100,7 @@ export const ProjectCard = ({
                 <img 
                   src={imageUrl.startsWith('http') ? imageUrl : `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${imageUrl.replace(/^\//, '')}`} 
                   alt={title} 
+                  loading="lazy"
                   className={`w-full h-full object-cover transition-all duration-700 ${isHovered ? 'grayscale-0 opacity-100 scale-105' : 'grayscale opacity-60 scale-100'}`}
                 />
               ) : (

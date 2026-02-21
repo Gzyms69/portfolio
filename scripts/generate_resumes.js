@@ -7,7 +7,7 @@ import { spawn } from 'child_process';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const variants = ['support', 'developer', 'office'];
+const variants = ['support', 'developer', 'office', 'it-specialist'];
 const languages = ['en', 'pl'];
 // Use a unique port to avoid conflicts with development sessions
 const PORT = 9090;
@@ -64,7 +64,7 @@ const waitForServer = async (url) => {
           // Ensure fonts and animations are settled
           await page.waitForTimeout(3000);
           
-          const fileName = `resume-${v}-${lang}.pdf`;
+          const fileName = `Dawid Czerwiński resume-${v}-${lang}.pdf`;
           const filePath = path.join(outputDir, fileName);
           
           await page.pdf({

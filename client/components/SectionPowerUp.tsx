@@ -24,11 +24,12 @@ export const SectionPowerUp: React.FC<SectionPowerUpProps> = ({ children, classN
 
       <motion.div
 
-        initial={{ top: "-10%", opacity: 0 }}
+        initial={{ y: "-10%", opacity: 0 }}
+        style={{ top: 0 }}
 
         animate={isInView ? { 
 
-          top: ["-10%", "110%"], 
+          y: ["-10%", "110%"], 
 
           opacity: [0, 1, 1, 0] 
 

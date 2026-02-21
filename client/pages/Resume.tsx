@@ -62,13 +62,13 @@ export default function Resume() {
   };
 
   const handleDownloadAll = (targetLang: 'pl' | 'en') => {
-    const variants: ResumeVariant[] = ['support', 'developer', 'office'];
+    const variants: ResumeVariant[] = ['support', 'it-specialist', 'developer', 'office'];
     
     variants.forEach((v, index) => {
       setTimeout(() => {
         const link = document.createElement('a');
-        link.href = `/portfolio/resumes/resume-${v}-${targetLang}.pdf`;
-        link.download = `Dawid_Czerwinski_Resume_${v}_${targetLang.toUpperCase()}.pdf`;
+        link.href = `/portfolio/resumes/Dawid Czerwiński resume-${v}-${targetLang}.pdf`;
+        link.download = `Dawid_Czerwinski_Resume_${v.toUpperCase()}_${targetLang.toUpperCase()}.pdf`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -77,7 +77,7 @@ export default function Resume() {
 
     toast({
       title: "Bulk Download Started",
-      description: `Downloading 3 versions in ${targetLang.toUpperCase()}.`,
+      description: `Downloading 4 versions in ${targetLang.toUpperCase()}.`,
     });
     setShowDownloadMenu(false);
   };
@@ -116,7 +116,7 @@ export default function Resume() {
                   <FileDown className="w-4 h-4 text-gray-600" />
                   <div className="flex flex-col">
                     <span className="font-medium text-gray-900">Download All (EN)</span>
-                    <span className="text-[10px] text-gray-500">3 PDF Versions</span>
+                    <span className="text-[10px] text-gray-500">4 PDF Versions</span>
                   </div>
                 </button>
                 <button 
@@ -126,7 +126,7 @@ export default function Resume() {
                   <FileDown className="w-4 h-4 text-gray-600" />
                   <div className="flex flex-col">
                     <span className="font-medium text-gray-900">Download All (PL)</span>
-                    <span className="text-[10px] text-gray-500">3 PDF Versions</span>
+                    <span className="text-[10px] text-gray-500">4 PDF Versions</span>
                   </div>
                 </button>
               </motion.div>
@@ -162,7 +162,7 @@ export default function Resume() {
                     <Briefcase className="w-3 h-3" /> Profile Variant
                   </span>
                   <div className="flex flex-col gap-1">
-                    {(['support', 'developer', 'office'] as const).map((v) => (
+                    {(['support', 'it-specialist', 'developer', 'office'] as const).map((v) => (
                       <button
                         key={v}
                         onClick={() => handleVariantChange(v)}

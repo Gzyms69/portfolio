@@ -25,6 +25,14 @@ export default defineConfig(({ mode }) => ({
   build: {
     outDir: "../dist/spa",
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-3d': ['three', '@react-three/fiber', '@react-three/drei'],
+          'vendor-ui': ['framer-motion', 'lucide-react', 'clsx', 'tailwind-merge'],
+        },
+      },
+    },
   },
   plugins: [
     react(),

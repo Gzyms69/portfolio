@@ -28,6 +28,7 @@ const NavButton = memo(({ onClick, icon, label, active, isMenuOpen }: NavButtonP
         onClick={onClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        aria-label={label}
         className={`group relative flex h-full w-full flex-col items-center justify-center rounded-lg border transition-all duration-300 ${
           active 
           ? 'bg-primary/20 border-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' 
@@ -161,6 +162,7 @@ export const Navigation = () => {
         <Magnetic strength={0.3}>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? t('close_menu') : t('open_menu')}
             className="relative flex items-center justify-center w-12 h-12 rounded-full bg-[#0a0f0a] border-2 border-primary/30 shadow-[0_0_15px_rgba(0,255,65,0.2)] text-primary hover:border-primary/60 hover:shadow-[0_0_25px_rgba(0,255,65,0.4)] transition-all duration-300 group"
           >
             <Settings className={`h-6 w-6 transition-all duration-1000 ease-out ${isMenuOpen ? 'rotate-90 text-primary' : 'animate-[spin_60s_linear_infinite] text-primary/40 hover:text-primary'}`} />
@@ -173,6 +175,7 @@ export const Navigation = () => {
         <Magnetic strength={0.3}>
           <button
             onClick={toggleViewMode}
+            aria-label={t('view_toggle')}
             className="relative flex items-center justify-center w-12 h-12 rounded-full bg-[#0a0f0a] border-2 border-primary/30 shadow-[0_0_15px_rgba(0,255,65,0.2)] text-primary/40 hover:text-primary hover:border-primary/60 hover:shadow-[0_0_25px_rgba(0,255,65,0.4)] transition-all duration-300 group"
           >
             <FileText className="h-6 w-6" />
@@ -244,8 +247,8 @@ export const Navigation = () => {
         </div>
         
         <div className="relative z-10 flex gap-1.5">
-          <button onClick={handleHomeScroll} className="p-2 border border-primary/20 rounded text-primary/60 hover:text-primary transition-colors"><Home className="h-5 w-5" /></button>
-          <button onClick={handleProjectsScroll} className="p-2 border border-primary/20 rounded text-primary/60 hover:text-primary transition-colors"><Briefcase className="h-5 w-5" /></button>
+          <button onClick={handleHomeScroll} aria-label={t('home')} className="p-2 border border-primary/20 rounded text-primary/60 hover:text-primary transition-colors"><Home className="h-5 w-5" /></button>
+          <button onClick={handleProjectsScroll} aria-label={t('projects')} className="p-2 border border-primary/20 rounded text-primary/60 hover:text-primary transition-colors"><Briefcase className="h-5 w-5" /></button>
         </div>
 
         <div className="relative z-10 font-mono text-primary text-sm tracking-[0.2em] uppercase font-bold">VAULT_OS</div>
@@ -253,12 +256,14 @@ export const Navigation = () => {
         <div className="relative z-10 flex gap-1.5">
           <button 
             onClick={toggleViewMode} 
+            aria-label={t('view_toggle')}
             className="p-2 border border-primary/20 rounded text-primary/60 hover:text-primary transition-colors"
           >
             <FileText className="h-5 w-5" />
           </button>
           <button 
             onClick={() => setIsMobileMenuOpen(true)}
+            aria-label={t('open_menu')}
             className="p-2 border-2 border-primary/40 rounded bg-primary/10 text-primary animate-pulse shadow-[0_0_10px_rgba(0,255,65,0.2)]"
           >
             <Settings className="h-5 w-5" />
@@ -288,6 +293,7 @@ export const Navigation = () => {
               </div>
               <button 
                 onClick={() => setIsMobileMenuOpen(false)}
+                aria-label={t('close_menu')}
                 className="w-12 h-12 border border-primary/30 rounded-full flex items-center justify-center text-primary hover:bg-primary/10 transition-all"
               >
                 <X className="w-6 h-6" />

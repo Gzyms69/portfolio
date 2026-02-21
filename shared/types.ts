@@ -74,7 +74,7 @@ export interface FileSystemItem {
   children?: Record<string, FileSystemItem>;
 }
 
-export type ResumeVariant = 'support' | 'developer' | 'office';
+export type ResumeVariant = 'support' | 'developer' | 'office' | 'it-specialist';
 
 export interface ResumeProfile {
   config: Record<Language, PortfolioConfig>;

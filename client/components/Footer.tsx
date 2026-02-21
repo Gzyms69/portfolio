@@ -15,7 +15,7 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto border-t-2 border-primary/20 pt-10 flex flex-col items-center gap-8 group">
         
         {/* Decorative Technical Row */}
-        <div className="flex w-full justify-between items-center text-[10px] font-mono text-primary/30 uppercase tracking-[0.3em] overflow-hidden">
+        <div className="flex w-full justify-between items-center text-[10px] font-mono text-primary/70 uppercase tracking-[0.3em] overflow-hidden">
           <div className="flex items-center gap-4 shrink-0">
             <div className="h-px w-20 bg-primary/20" />
             <span>Connection_Secure</span>
@@ -32,10 +32,10 @@ export const Footer = () => {
 
         {/* Main Footer Content */}
         <div className="flex flex-col items-center gap-2">
-          <p className="text-[10px] uppercase tracking-[0.2em] text-primary/30">
+          <p className="text-[10px] uppercase tracking-[0.2em] text-primary/70">
             (c) {new Date().getFullYear()} // {portfolioConfig[language].name.toLowerCase()}
           </p>
-          <div className="flex items-center gap-4 text-primary/30 text-[9px] font-mono tracking-widest">
+          <div className="flex items-center gap-4 text-primary/70 text-[9px] font-mono tracking-widest">
             <div className="flex items-center gap-1">
               <Shield className="h-3 w-3" />
               <span>VAULT-TEC_ENCRYPTION_ACTIVE</span>
