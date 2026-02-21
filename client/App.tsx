@@ -1,7 +1,7 @@
 import "./global.css";
 import { createRoot } from "react-dom/client";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
 
 // UI Components
@@ -10,51 +10,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ScrollProgress } from "@/components/ScrollProgress";
-// Lazy load InteractiveBackground with artificial delay
-import { Suspense, lazy, useEffect } from "react";
-const InteractiveBackground = lazy(() => import("@/components/InteractiveBackground").then(module => ({ default: module.InteractiveBackground })));
-
-const Delayed3DBackground = () => {
-  const [shouldLoad, setShouldLoad] = useState(false);
-
-  useEffect(() => {
-    const handleInteraction = () => {
-      setShouldLoad(true);
-    };
-
-    // Add listeners for interaction
-    window.addEventListener('mousemove', handleInteraction, { once: true, passive: true });
-    window.addEventListener('touchstart', handleInteraction, { once: true, passive: true });
-    window.addEventListener('scroll', handleInteraction, { once: true, passive: true });
-
-    // Fallback: If no interaction, load anyway after a delay to ensure it eventually appears
-    // Using a longer delay to prioritize EVERYTHING else (fonts, main bundle, hydration)
-    const fallbackTimer = setTimeout(() => {
-      setShouldLoad(true);
-    }, 3500);
-
-    // Cleanup happens automatically for 'once: true' listeners when they fire, 
-    // but we need to ensure we clean up the timer and remaining listeners if unmounting
-    return () => {
-      window.removeEventListener('mousemove', handleInteraction);
-      window.removeEventListener('touchstart', handleInteraction);
-      window.removeEventListener('scroll', handleInteraction);
-      clearTimeout(fallbackTimer);
-    };
-  }, []);
-
-  if (!shouldLoad) return <div className="fixed inset-0 bg-[#0a0f0a] -z-10" />;
-
-  return (
-    <Suspense fallback={<div className="fixed inset-0 bg-[#0a0f0a] -z-10" />}>
-      <InteractiveBackground />
-    </Suspense>
-  );
-};
 
 import { TVPowerTransition } from "@/components/TVPowerTransition";
 import { CRTOverlay } from "@/components/ui/CRTOverlay";
-import { TerminalLoader } from "@/components/TerminalLoader";
 import { DossierView } from "@/components/DossierView";
 import { Navigation } from "@/components/Navigation";
 
@@ -69,6 +27,43 @@ import Resume from "./pages/Resume";
 // Hooks
 import { BackgroundProvider, useBackground } from "@/hooks/use-background";
 import { LanguageProvider } from "@/hooks/use-language";
+
+const Delayed3DBackground = () => {
+  const [Component, setComponent] = useState<React.ComponentType | null>(null);
+
+  useEffect(() => {
+    const handleInteraction = async () => {
+      // Dynamic import ONLY on interaction
+      const module = await import("@/components/InteractiveBackground");
+      setComponent(() => module.InteractiveBackground);
+    };
+
+    // Add listeners for interaction
+    window.addEventListener('mousemove', handleInteraction, { once: true, passive: true });
+    window.addEventListener('touchstart', handleInteraction, { once: true, passive: true });
+    window.addEventListener('scroll', handleInteraction, { once: true, passive: true });
+
+    // Fallback: If no interaction, load anyway after a delay to ensure it eventually appears
+    const fallbackTimer = setTimeout(() => {
+      handleInteraction();
+    }, 4000);
+
+    return () => {
+      window.removeEventListener('mousemove', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+      window.removeEventListener('scroll', handleInteraction);
+      clearTimeout(fallbackTimer);
+    };
+  }, []);
+
+  if (!Component) return <div className="fixed inset-0 bg-[#0a0f0a] -z-10" />;
+
+  return (
+    <Suspense fallback={<div className="fixed inset-0 bg-[#0a0f0a] -z-10" />}>
+      <Component />
+    </Suspense>
+  );
+};
 
 const GlobalEffects = () => {
   const { type } = useBackground();
@@ -118,6 +113,26 @@ const AppContent = () => {
   const location = useLocation();
   const [isReady, setIsReady] = useState(false);
 
+  useEffect(() => {
+    // Check if the native JS loader is already done
+    if ((window as any).__TERMINAL_BOOTED) {
+      setIsReady(true);
+      const loader = document.getElementById('terminal-loader');
+      if (loader) loader.style.display = 'none';
+    } else {
+      // Wait for it
+      const onBoot = () => {
+        setIsReady(true);
+        const loader = document.getElementById('terminal-loader');
+        if (loader) {
+          loader.style.display = 'none';
+        }
+      };
+      window.addEventListener('TERMINAL_BOOT_COMPLETE', onBoot);
+      return () => window.removeEventListener('TERMINAL_BOOT_COMPLETE', onBoot);
+    }
+  }, []);
+
   // Resume Route - Clean Render
   if (location.pathname === '/resume') {
     return <Resume />;
@@ -158,11 +173,6 @@ const AppContent = () => {
           {content}
         </TVPowerTransition>
       </div>
-
-      {/* 4. Loader Overlay */}
-      {!isReady && (
-        <TerminalLoader onComplete={() => setIsReady(true)} />
-      )}
     </div>
   );
 };

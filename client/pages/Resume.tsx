@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { resumeProfiles, portfolioConfig } from "@/lib/terminal-db";
+// import { resumeProfiles, portfolioConfig } from "@/lib/terminal-db"; // REMOVED
+import { portfolioConfig } from "@/lib/terminal-db"; // Still need config for header/socials defaults
 import { useLanguage } from "@/hooks/use-language";
 import { Button } from "@/components/ui/button";
-import { Download, Mail, Github, Linkedin, MapPin, Settings, Check, ChevronUp, FileDown, Globe, Briefcase } from "lucide-react";
-import { ResumeVariant, Project, Experience, Education } from "@shared/types";
+import { Download, Mail, Github, Linkedin, MapPin, Settings, Check, ChevronUp, FileDown, Globe, Briefcase, Loader2 } from "lucide-react";
+import { ResumeVariant, Project, Experience, Education, ResumeProfile } from "@shared/types";
 import { motion, AnimatePresence } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 
@@ -16,6 +17,44 @@ export default function Resume() {
   // URL is the single source of truth for variant and lang
   const variant = (searchParams.get("v") as ResumeVariant) || "support";
   const lang = (searchParams.get("lang") as "pl" | "en") || (globalLang as "pl" | "en") || "en";
+
+  // State for loaded profile data
+  const [profile, setProfile] = useState<ResumeProfile | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      setIsLoading(true);
+      try {
+        let module;
+        switch (variant) {
+          case 'developer':
+            module = await import("@/lib/data/developer");
+            setProfile({ config: module.devConfig, data: module.devData, projects: module.devProjects });
+            break;
+          case 'office':
+            module = await import("@/lib/data/office");
+            setProfile({ config: module.officeConfig, data: module.officeData, projects: module.officeProjects });
+            break;
+          case 'it-specialist':
+            module = await import("@/lib/data/it-specialist.tsx");
+            setProfile({ config: module.itSpecialistConfig, data: module.itSpecialistData, projects: module.itSpecialistProjects });
+            break;
+          case 'support':
+          default:
+            module = await import("@/lib/data/support");
+            setProfile({ config: module.supportConfig, data: module.supportData, projects: module.supportProjects });
+            break;
+        }
+      } catch (e) {
+        console.error("Failed to load resume data", e);
+        // Fallback to support if something fails?
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    loadData();
+  }, [variant]);
 
   // Update URL when user manually switches
   const handleVariantChange = (v: ResumeVariant) => {
@@ -36,16 +75,23 @@ export default function Resume() {
   const [showConfigMenu, setShowConfigMenu] = useState(false);
   const [showDownloadMenu, setShowDownloadMenu] = useState(false);
 
-  // Derived Data
-  const profile = resumeProfiles[variant] || resumeProfiles["support"];
+  // Derived Data (Safe access)
+  if (isLoading || !profile) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
+      </div>
+    );
+  }
+
   const content = profile.config[lang];
   const { experiences, education, skills, languages } = profile.data[lang];
   const projects = profile.projects;
 
   // Sync title
   useEffect(() => {
-    document.title = `${content.name} - Resume`;
-  }, [content.name]);
+    if (content) document.title = `${content.name} - Resume`;
+  }, [content]);
 
   // Handle click outside to close menus
   useEffect(() => {
