@@ -25,6 +25,7 @@ export default defineConfig(({ mode }) => ({
   build: {
     outDir: "../dist/spa",
     emptyOutDir: true,
+    modulePreload: false,
     rollupOptions: {
       output: {
         manualChunks: {

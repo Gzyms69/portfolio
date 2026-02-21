@@ -18,9 +18,29 @@ const Delayed3DBackground = () => {
   const [shouldLoad, setShouldLoad] = useState(false);
 
   useEffect(() => {
-    // Artificial delay to prioritize LCP content (fonts, text, CSS)
-    const timer = setTimeout(() => setShouldLoad(true), 1000);
-    return () => clearTimeout(timer);
+    const handleInteraction = () => {
+      setShouldLoad(true);
+    };
+
+    // Add listeners for interaction
+    window.addEventListener('mousemove', handleInteraction, { once: true, passive: true });
+    window.addEventListener('touchstart', handleInteraction, { once: true, passive: true });
+    window.addEventListener('scroll', handleInteraction, { once: true, passive: true });
+
+    // Fallback: If no interaction, load anyway after a delay to ensure it eventually appears
+    // Using a longer delay to prioritize EVERYTHING else (fonts, main bundle, hydration)
+    const fallbackTimer = setTimeout(() => {
+      setShouldLoad(true);
+    }, 3500);
+
+    // Cleanup happens automatically for 'once: true' listeners when they fire, 
+    // but we need to ensure we clean up the timer and remaining listeners if unmounting
+    return () => {
+      window.removeEventListener('mousemove', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+      window.removeEventListener('scroll', handleInteraction);
+      clearTimeout(fallbackTimer);
+    };
   }, []);
 
   if (!shouldLoad) return <div className="fixed inset-0 bg-[#0a0f0a] -z-10" />;

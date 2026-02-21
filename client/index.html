@@ -28,7 +28,29 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <style>
+        body { background-color: #0a0f0a; margin: 0; overflow: hidden; }
+        #boot-sequence {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          width: 100vw;
+          background-color: #0a0f0a;
+          color: hsl(142.1 76.2% 36.3%);
+          font-family: monospace;
+          font-size: 1.2rem;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+        .blink { animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+      </style>
+      <div id="boot-sequence">
+        <span>&gt; INITIATING VAULT-TEC OS<span class="blink">_</span></span>
+      </div>
+    </div>
 
     <script type="module" src="/App.tsx"></script>
   </body>
