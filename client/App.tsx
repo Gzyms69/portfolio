@@ -117,23 +117,25 @@ const AppContent = () => {
 
     const boot = document.getElementById('boot-sequence');
     if (boot) {
-      // PERFORMANCE-AWARE REMOVAL (The "Grace Period" Logic)
-      // If the app loaded instantly (< 500ms), don't annoy the user with a fade-out.
-      // Just remove the loader immediately to show the UI.
-      if (performance.now() < 500) {
+      // Logic:
+      // 1. If we are here quickly (< 200ms), the CSS animation hasn't started showing the loader yet (opacity: 0).
+      //    We can just remove it instantly.
+      // 2. If we are here late (> 200ms), the loader is visible (opacity: 1).
+      //    We need to fade it out smoothly.
+      
+      const isVisible = getComputedStyle(boot).opacity !== '0';
+
+      if (!isVisible) {
         boot.style.display = 'none';
         if (boot.parentNode) boot.parentNode.removeChild(boot);
       } else {
-        // Slow load detected: Fade out smoothly to mask the hydration delay.
         requestAnimationFrame(() => {
+          boot.style.transition = 'opacity 0.6s ease-out'; // Override animation with transition
           boot.style.opacity = '0';
           boot.style.pointerEvents = 'none';
           
-          // Wait for CSS transition (600ms) then remove from DOM
           setTimeout(() => {
-             if (boot.parentNode) {
-               boot.parentNode.removeChild(boot);
-             }
+             if (boot.parentNode) boot.parentNode.removeChild(boot);
           }, 650);
         });
       }
