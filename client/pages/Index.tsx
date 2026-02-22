@@ -104,16 +104,17 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
           <div className="w-full max-w-[90rem] py-8 sm:py-16 md:py-24 lg:py-32 space-y-32">
             <SectionPowerUp>
               <div className="flex flex-col lg:flex-row gap-16 lg:gap-8">
-                    <div className="relative group w-full"> 
-                      {/* Outer Rig - Handles Shadow and Borders */}
-                      <div className="relative z-10 bg-[#0a0f0a]/90 border-2 border-primary/30 rounded-xl shadow-[0_0_20px_rgba(0,255,65,0.1)] transition-colors duration-500 hover:border-primary/60">
-                        <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-primary m-2 z-30" />
-                        <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-primary m-2 z-30" />
-                        <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-primary m-2 z-30" />
-                        <div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-primary m-2 z-30" />
+                <section className="flex flex-col gap-8 sm:gap-10 lg:w-2/3"> 
+                  <div className="relative group w-full"> 
+                    {/* Outer Rig - Handles Shadow and Borders */}
+                    <div className="relative z-10 bg-[#0a0f0a]/90 border-2 border-primary/30 rounded-xl shadow-[0_0_30px_rgba(0,255,65,0.1)] transition-colors duration-500 hover:border-primary/60">
+                      <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-primary m-2 z-30" />
+                      <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-primary m-2 z-30" />
+                      <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-primary m-2 z-30" />
+                      <div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-primary m-2 z-30" />
 
-                        {/* Inner Surface - Handles Clipping and Backdrop Blur */}
-                        <div className="relative overflow-hidden rounded-xl p-8 sm:p-10 md:p-14 backdrop-blur-sm">
+                      {/* Inner Surface - Handles Clipping and Backdrop Blur */}
+                      <div className="relative overflow-hidden rounded-xl p-8 sm:p-10 md:p-14 backdrop-blur-sm">
                         <div className="absolute inset-0 z-20 pointer-events-none">
                           <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.03)_50%)] bg-[length:100%_4px]" />
                         </div>
