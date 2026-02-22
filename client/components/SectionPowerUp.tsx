@@ -12,7 +12,7 @@ export const SectionPowerUp: React.FC<SectionPowerUpProps> = ({ children, classN
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <div ref={ref} className={`relative overflow-hidden ${className}`}>
+    <div ref={ref} className={`relative ${className}`}>
       {/* 1. The Scanning Reveal Line */}
       <motion.div
         initial={{ top: "100%", opacity: 0 }}

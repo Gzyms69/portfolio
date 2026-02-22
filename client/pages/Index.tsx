@@ -104,44 +104,47 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
           <div className="w-full max-w-[90rem] py-8 sm:py-16 md:py-24 lg:py-32 space-y-32">
             <SectionPowerUp>
               <div className="flex flex-col lg:flex-row gap-16 lg:gap-8">
-                <section className="flex flex-col gap-8 sm:gap-10 lg:w-2/3"> 
-                  <div className="relative group w-full"> 
-                    <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden rounded-xl">
-                      <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.03)_50%)] bg-[length:100%_4px]" />
-                    </div>
+                    <div className="relative group w-full"> 
+                      {/* Outer Rig - Handles Shadow and Borders */}
+                      <div className="relative z-10 bg-[#0a0f0a]/90 border-2 border-primary/30 rounded-xl shadow-[0_0_30px_rgba(0,255,65,0.15)] transition-all duration-500 hover:border-primary/60">
+                        <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-primary m-2 z-30" />
+                        <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-primary m-2 z-30" />
+                        <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-primary m-2 z-30" />
+                        <div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-primary m-2 z-30" />
 
-                    <div className="relative z-10 bg-[#0a0f0a]/90 border-2 border-primary/30 p-8 sm:p-10 md:p-14 rounded-xl shadow-[0_0_20px_rgba(0,255,65,0.1)] overflow-hidden transition-all duration-500 hover:border-primary/60 backdrop-blur-sm">
-                      <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-primary m-2" />
-                      <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-primary m-2" />
-                      <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-primary m-2" />
-                      <div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-primary m-2" />
+                        {/* Inner Surface - Handles Clipping and Backdrop Blur */}
+                        <div className="relative overflow-hidden rounded-xl p-8 sm:p-10 md:p-14 backdrop-blur-sm">
+                        <div className="absolute inset-0 z-20 pointer-events-none">
+                          <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.03)_50%)] bg-[length:100%_4px]" />
+                        </div>
 
-                      <div className="flex flex-col gap-8">
-                        <div className="flex flex-col gap-2 border-b border-primary/10 pb-6">
-                          <div className="flex items-center gap-2 text-[10px] font-mono text-primary/70 uppercase tracking-widest mb-2">
-                            <TerminalIcon className="h-3 w-3" />
-                            <span>{t('dossier_id')} DA-2137</span>
+                        <div className="flex flex-col gap-8">
+                          <div className="flex flex-col gap-2 border-b border-primary/10 pb-6">
+                            <div className="flex items-center gap-2 text-[10px] font-mono text-primary/70 uppercase tracking-widest mb-2">
+                              <TerminalIcon className="h-3 w-3" />
+                              <span>{t('dossier_id')} DA-2137</span>
+                            </div>
+                            <GlitchText
+                              text={content.name}
+                              className="text-4xl font-bold font-mono text-primary sm:text-5xl md:text-6xl lg:text-7xl leading-none uppercase tracking-tight"
+                            />
                           </div>
-                          <GlitchText
-                            text={content.name}
-                            className="text-4xl font-bold font-mono text-primary sm:text-5xl md:text-6xl lg:text-7xl leading-none uppercase tracking-tight"
-                          />
-                        </div>
 
-                        <div className="flex flex-col gap-6">
-                          <p className="font-mono text-xl sm:text-2xl text-primary/80 leading-relaxed max-w-2xl lowercase tracking-wide">
-                            {content.title}
-                          </p>
-                          <p className="font-mono text-lg text-primary/70 leading-relaxed max-w-2xl lowercase">
-                            {content.description}
-                          </p>
-                        </div>
-                        
-                        <div className="flex flex-wrap gap-3 pt-6 border-t border-primary/10">
-                          <span className="w-full text-[10px] font-mono text-primary/70 uppercase tracking-[0.3em] mb-2">{t('cv_skills')}:</span>
-                          {content.heroTechStack.map((tech, index) => (
-                            <TechTag key={index} tech={tech} />
-                          ))}
+                          <div className="flex flex-col gap-6">
+                            <p className="font-mono text-xl sm:text-2xl text-primary/80 leading-relaxed max-w-2xl lowercase tracking-wide">
+                              {content.title}
+                            </p>
+                            <p className="font-mono text-lg text-primary/70 leading-relaxed max-w-2xl lowercase">
+                              {content.description}
+                            </p>
+                          </div>
+                          
+                          <div className="flex flex-wrap gap-3 pt-6 border-t border-primary/10">
+                            <span className="w-full text-[10px] font-mono text-primary/70 uppercase tracking-[0.3em] mb-2">{t('cv_skills')}:</span>
+                            {content.heroTechStack.map((tech, index) => (
+                              <TechTag key={index} tech={tech} />
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>

@@ -114,3 +114,26 @@
 ### D. 3D Geometry Constraints
 *   **Subtlety is Professionalism:** 3D Tilt effects should never exceed +/- 5 degrees. High angles distort hit-testing and degrade readability.
 *   **Z-Space Hierarchy:** Use `translateZ` explicitly within `preserve-3d` contexts to establish a clear hierarchy of depth, ensuring interactive elements are physically "closer" to the user than decorative backgrounds.
+
+## 7. Universal Optimization & UX Lessons (Iterative Knowledge)
+
+### A. The "Scroll Killer" Hierarchy
+*   **Principle:** Never use `overflow: hidden` on the `body` or `html` tags in a production environment unless specifically building a non-scrolling kiosk app.
+*   **Mobile Specificity:** Native scroll momentum on iOS/Android is highly optimized. Smooth-scrolling libraries (like Lenis) should be disabled on touch devices (`'ontouchstart' in window`) to prevent input lag and scrolling dead-zones.
+*   **The Container Rule:** Always prefer `overflow-x-hidden` on the outermost React wrapper rather than the global `body` to allow the browser's native document-level scrolling to function.
+
+### B. The Hybrid Payload Protocol (90+ Performance)
+*   **Instant Visual Feedback:** High performance scores (90+) require painting "something" in under 200ms. 
+*   **The Placeholder Rule:** Never return `null` or a black void while waiting for heavy assets (Three.js, high-res images). Use a lightweight **CSS Grid/Gradient Placeholder** that mimics the final asset's aesthetic.
+*   **The Idle Rule:** Use `requestIdleCallback` (with a `setTimeout` fallback) to load heavy bundles. This ensures the browser prioritizes hydration and user input before fetching megabytes of 3D geometry.
+
+### C. The "Invisible Start" Hydration Pattern
+*   **Problem:** Fast connections see a "flash" of the loader; slow connections see a "stuck" loader.
+*   **Solution:** Start the loader at `opacity: 0` in static HTML with a `0.2s` animation-delay.
+*   **Logic:** 
+    *   If React hydrates in <200ms, it removes the loader while it is still invisible. 
+    *   If hydration takes >200ms, the loader fades in smoothly, creating a cinematic experience only when necessary.
+
+### D. Coordinate Animation Logic
+*   **Relative vs. Absolute:** When animating scanning lines or effects, remember that `y: "100%"` in Framer Motion is relative to the *element's* height. To animate across a *parent* container, use `top: ["100%", "0%"]` or `calc()` logic.
+*   **Brightness Overload:** Avoid extreme `brightness()` filters (e.g. > 2.0) on large components during reveal animations, as they can cause "solid block" artifacts that look like rendering bugs. Keep filters subtle (`1.1 - 1.3`) for a professional feel.

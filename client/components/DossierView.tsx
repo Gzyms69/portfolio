@@ -51,7 +51,7 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
         onMouseMove={handleMouseMove}
         onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="relative w-full max-w-6xl h-[98%] sm:h-full max-h-[98vh] sm:max-h-[90vh] bg-[#1a1a1a] border-2 sm:border-4 border-[#2a2a2a] shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-sm overflow-hidden pointer-events-auto flex flex-col"
+        className="relative w-full max-w-6xl h-[98%] sm:h-full max-h-[98vh] sm:max-h-[90vh] bg-[#1a1a1a] border-2 sm:border-4 border-[#2a2a2a] shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-sm pointer-events-auto flex flex-col"
       >
         {/* Banner */}
         <div className="h-6 w-full bg-red-600 flex items-center justify-center relative overflow-hidden shrink-0">
