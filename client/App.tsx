@@ -21,7 +21,6 @@ import Index from "./pages/Index";
 import Contact from "./pages/CommsUplink";
 import CV from "./pages/ServiceRecord";
 import NotFound from "./pages/NotFound";
-import { DossierProjects } from "./pages/DossierProjects";
 import Resume from "./pages/Resume";
 
 // Hooks
@@ -84,17 +83,15 @@ const AnimatedRoutes = () => {
 
 const DossierApp = () => {
   const { viewMode } = useBackground();
-  const [activeTab, setActiveTab] = useState('home');
+  const [activeTab, setActiveTab] = useState('cv');
 
   if (viewMode !== 'dossier') return null;
 
   const renderContent = () => {
     switch (activeTab) {
-      case 'home': return <Index isDossier />;
-      case 'projects': return <DossierProjects />;
-      case 'contact': return <Contact isDossier />;
       case 'cv': return <CV isDossier />;
-      default: return <Index isDossier />;
+      case 'contact': return <Contact isDossier />;
+      default: return <CV isDossier />;
     }
   };
 

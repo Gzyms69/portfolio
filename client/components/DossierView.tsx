@@ -36,8 +36,6 @@ export const DossierView: React.FC<DossierViewProps> = ({ activeTab, onTabChange
   };
 
   const tabs = [
-    { id: 'home', label: t('dossier_personnel'), icon: <User className="w-4 h-4" /> },
-    { id: 'projects', label: t('dossier_assignments'), icon: <Briefcase className="w-4 h-4" /> },
     { id: 'cv', label: t('dossier_service'), icon: <FileText className="w-4 h-4" /> },
     { id: 'contact', label: t('dossier_comms'), icon: <Mail className="w-4 h-4" /> },
   ];

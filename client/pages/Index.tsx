@@ -11,91 +11,20 @@ import { useLanguage } from "@/hooks/use-language";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { ContactForm } from "@/components/ContactForm";
-import { TypewriterText } from "@/components/TypewriterText";
 
-import { DossierContent, DossierItem } from "@/components/DossierContent";
-
-export default function Index({ isDossier = false }: { isDossier?: boolean }) {
+export default function Index() {
   const { language, t } = useLanguage();
   const content = portfolioConfig[language];
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (!isDossier && pathname === '/projects') {
+    if (pathname === '/projects') {
       const el = document.getElementById('projects');
       if (el) {
         setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 500);
       }
     }
-  }, [pathname, isDossier]);
-
-  if (isDossier) {
-    return (
-      <DossierContent>
-        <DossierItem>
-          <div className="flex flex-col gap-2 border-b border-primary/10 pb-6">
-            <div className="flex items-center gap-2 text-[10px] font-mono text-primary/40 uppercase tracking-widest mb-2">
-              <TerminalIcon className="h-3 w-3" />
-              <span>{t('dossier_id')} DA-2137</span>
-            </div>
-            <div className="min-h-[60px] sm:min-h-[72px]">
-              <TypewriterText
-                text={content.name}
-                className="text-5xl sm:text-6xl font-bold font-mono text-primary uppercase tracking-tight"
-                speed={50}
-              />
-            </div>
-          </div>
-        </DossierItem>
-
-        <DossierItem>
-          <div className="flex flex-col gap-6 max-w-2xl">
-            <div className="min-h-[32px]">
-              <TypewriterText 
-                text={content.title}
-                className="font-mono text-2xl text-primary/90 leading-relaxed uppercase text-shadow-sm"
-                speed={30}
-                delay={1000}
-              />
-            </div>
-            <div className="space-y-4 font-mono text-xl text-primary/60 leading-relaxed uppercase">
-              {content.description.split('\n').map((para, i) => (
-                <div key={i} className="min-h-[28px]">
-                  <TypewriterText 
-                    text={para} 
-                    speed={20} 
-                    delay={2500 + (i * 1000)}
-                    cursor={i === content.description.split('\n').length - 1}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </DossierItem>
-        
-        <DossierItem>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8 border-t border-primary/10">
-            <div>
-              <span className="block text-[10px] font-mono text-primary/30 uppercase tracking-[0.3em] mb-4">{t('cv_skills')}:</span>
-              <div className="flex flex-wrap gap-2">
-                {content.heroTechStack.map((tech, index) => (
-                  <TechTag key={index} tech={tech} />
-                ))}
-              </div>
-            </div>
-            <div className="space-y-2">
-              <span className="block text-[10px] font-mono text-primary/30 uppercase tracking-[0.3em] mb-4">{t('service_status')}</span>
-              <div className="font-mono text-primary/80">
-                <div>{t('availability')} {t('immediate')}</div>
-                <div>LOCATION: {t('location_remote')}</div>
-                <div>{t('clearance_level')} LEVEL_4</div>
-              </div>
-            </div>
-          </div>
-        </DossierItem>
-      </DossierContent>
-    );
-  }
+  }, [pathname]);
 
   return (
     <PageTransition>

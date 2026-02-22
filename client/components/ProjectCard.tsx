@@ -16,7 +16,6 @@ interface ProjectCardProps {
   variant?: "design" | "code" | "security";
   icon?: React.ReactNode;
   className?: string;
-  isDossier?: boolean;
 }
 
 export const ProjectCard = ({
@@ -28,7 +27,6 @@ export const ProjectCard = ({
   techStack,
   imageUrl,
   className = "",
-  isDossier = false,
 }: ProjectCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -64,7 +62,7 @@ export const ProjectCard = ({
   const rotateY = useTransform(springX, [0, 1], [-5, 5]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!rectRef.current || isDossier) return;
+    if (!rectRef.current) return;
     const rect = rectRef.current;
     mouseX.set((e.clientX - rect.left) / rect.width);
     mouseY.set((e.clientY - rect.top) / rect.height);
@@ -86,14 +84,14 @@ export const ProjectCard = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={() => setIsExpanded(!isExpanded)}
-      className={`relative w-full cursor-pointer group ${className} ${isDossier ? '' : 'perspective-2000'}`}
+      className={`relative w-full cursor-pointer group ${className} perspective-2000`}
     >
       {/* 2. DYNAMIC RIG: Carries the 3D rotation. No overflow-hidden here! */}
       <motion.div 
         layout="position"
         style={{ 
-          rotateX: isDossier ? 0 : rotateX, 
-          rotateY: isDossier ? 0 : rotateY, 
+          rotateX, 
+          rotateY, 
           transformStyle: "preserve-3d" 
         }}
         className="relative z-10"
@@ -101,18 +99,18 @@ export const ProjectCard = ({
         {/* 3. VISUAL SURFACE: Handles borders, background, and image clipping */}
         <div className={`relative z-10 bg-[#0a0f0a] border-2 rounded-lg overflow-hidden transition-colors duration-300 ${
           isHovered ? 'border-primary/60' : 'border-primary/20'
-        } ${isDossier ? 'p-4 sm:p-6' : 'p-6 sm:p-8'}`}>
+        } p-6 sm:p-8`}>
           
           {/* Parallax Background Layers */}
           <div className="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-primary/40 m-1 pointer-events-none" />
           <div className="absolute top-0 right-0 w-4 h-4 border-r-2 border-t-2 border-primary/40 m-1 pointer-events-none" />
           
-          <div className={`flex flex-col ${isDossier ? 'xl:flex-row' : 'lg:flex-row'} gap-4 sm:gap-8`}>
+          <div className="flex flex-col lg:flex-row gap-4 sm:gap-8">
             
             {/* Image - Pushed back slightly */}
             <motion.div 
               layout 
-              className={`${isDossier ? 'xl:w-1/4' : 'lg:w-1/3'} shrink-0`}
+              className="lg:w-1/3 shrink-0"
               style={{ transform: "translateZ(20px)" }}
             >
               <div className="relative aspect-video rounded border border-primary/10 overflow-hidden bg-black transition-colors duration-500 group-hover:border-primary/40">
@@ -142,7 +140,7 @@ export const ProjectCard = ({
               <div className="flex justify-between items-start">
                 <div className="flex flex-col gap-1">
                   <span className="text-[8px] sm:text-[10px] font-mono text-primary/30 uppercase tracking-[0.3em]">Module_Data:</span>
-                  <h3 className={`${isDossier ? 'text-xl sm:text-2xl' : 'text-2xl sm:text-3xl'} font-bold font-mono text-primary uppercase tracking-tight`}>
+                  <h3 className="text-2xl sm:text-3xl font-bold font-mono text-primary uppercase tracking-tight">
                     <GlitchText text={title} />
                   </h3>
                 </div>
@@ -177,7 +175,7 @@ export const ProjectCard = ({
                 </div>
               </div>
 
-              <div className={`${isDossier ? 'text-base sm:text-lg' : 'text-lg sm:text-xl'} text-primary/60 font-mono leading-relaxed lowercase`}>
+              <div className="text-lg sm:text-xl text-primary/60 font-mono leading-relaxed lowercase">
                 <AnimatePresence mode="wait">
                   {isExpanded ? (
                     <motion.div
@@ -187,11 +185,7 @@ export const ProjectCard = ({
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      {isDossier ? (
-                        <p>{fullDescription || description}</p>
-                      ) : (
-                        fullDescription || description
-                      )}
+                      {fullDescription || description}
                     </motion.div>
                   ) : (
                     <motion.div
@@ -201,11 +195,7 @@ export const ProjectCard = ({
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      {isDossier ? (
-                        <p>{description}</p>
-                      ) : (
-                        description
-                      )}
+                      {description}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -214,7 +204,7 @@ export const ProjectCard = ({
               <div className="mt-auto pt-4 sm:pt-6 border-t border-primary/5 flex flex-wrap gap-2 items-center justify-between">
                 <div className="flex flex-wrap gap-1 sm:gap-2">
                   {techStack.map((tech, index) => (
-                    <TechTag key={index} tech={tech} className={isDossier ? 'text-[10px] px-1.5 py-0' : ''} />
+                    <TechTag key={index} tech={tech} />
                   ))}
                 </div>
                 
