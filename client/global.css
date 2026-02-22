@@ -83,6 +83,26 @@
     overflow-x: hidden;
   }
 
+  /* Retro Grid Placeholder */
+  .grid-placeholder {
+    position: fixed;
+    inset: 0;
+    z-index: -20;
+    background-color: #0a0f0a;
+    background-image: 
+      linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: center center;
+  }
+
+  .grid-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 30%, #0a0f0a 80%);
+  }
+
   *, ::before, ::after {
     font-family: 'VT323', monospace !important;
   }

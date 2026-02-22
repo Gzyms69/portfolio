@@ -32,18 +32,33 @@ const Delayed3DBackground = () => {
   const [Component, setComponent] = useState<React.ComponentType | null>(null);
 
   useEffect(() => {
-    // Load 3D background immediately when the component mounts
-    import("@/components/InteractiveBackground").then(module => {
-      setComponent(() => module.InteractiveBackground);
-    });
+    // Phase 1: Browser is busy with React hydration. 
+    // We defer the heavy Three.js import to the next idle period.
+    const loadBackground = () => {
+      import("@/components/InteractiveBackground").then(module => {
+        setComponent(() => module.InteractiveBackground);
+      });
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(() => loadBackground(), { timeout: 2000 });
+    } else {
+      setTimeout(loadBackground, 100);
+    }
   }, []);
 
-  if (!Component) return <div className="fixed inset-0 bg-[#0a0f0a] -z-10" />;
-
   return (
-    <Suspense fallback={<div className="fixed inset-0 bg-[#0a0f0a] -z-10" />}>
-      <Component />
-    </Suspense>
+    <>
+      {/* Instant CSS Placeholder */}
+      <div className="grid-placeholder" />
+      
+      {/* 3D Background - Loaded when idle */}
+      {Component && (
+        <Suspense fallback={<div className="fixed inset-0 bg-[#0a0f0a] -z-10" />}>
+          <Component />
+        </Suspense>
+      )}
+    </>
   );
 };
 
@@ -150,7 +165,7 @@ const AppContent = () => {
 
   return (
     <div
-      className="relative w-full min-h-screen overflow-hidden bg-transparent"
+      className="relative w-full min-h-screen overflow-x-hidden bg-transparent"
       onDoubleClick={toggleBackground}
     >
       {/* 1. Global Background - Fixed to viewport */}
