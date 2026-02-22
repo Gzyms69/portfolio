@@ -46,7 +46,7 @@ const perspective: Variants = {
 
 export const PageTransition = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="bg-transparent overflow-hidden">
+    <div className="bg-transparent">
       {typeof document !== 'undefined' && createPortal(
         <motion.div 
           {...anim(slide)} 

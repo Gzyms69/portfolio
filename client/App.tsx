@@ -165,7 +165,7 @@ const AppContent = () => {
 
   return (
     <div
-      className="relative w-full min-h-screen overflow-x-hidden bg-transparent"
+      className="relative w-full min-h-[100dvh] overflow-x-hidden bg-transparent"
       onDoubleClick={toggleBackground}
     >
       {/* 1. Global Background - Fixed to viewport */}
@@ -177,7 +177,7 @@ const AppContent = () => {
       </div>
 
       {/* 3. Main Content - Pure 2D Layout (No Global Tilt) */}
-      <div className={`w-full min-h-screen opacity-100 pointer-events-auto`}>
+      <div className="w-full h-auto opacity-100 pointer-events-auto">
         <TVPowerTransition isTransitioning={isTransitioning}>
           <Toaster />
           <Sonner />

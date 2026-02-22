@@ -19,7 +19,7 @@ export const TVPowerTransition = ({ children, isTransitioning }: { children: Rea
   }, [isTransitioning]);
 
   return (
-    <div className="relative w-full min-h-screen bg-transparent overflow-hidden">
+    <div className="relative w-full min-h-screen bg-transparent">
       {/* 1. Content Layer - NO FILTERS HERE (Prevents global green bugs) */}
       <motion.div
         initial={{ opacity: 1 }}
