@@ -106,7 +106,7 @@ export default function Index({ isDossier = false }: { isDossier?: boolean }) {
               <div className="flex flex-col lg:flex-row gap-16 lg:gap-8">
                     <div className="relative group w-full"> 
                       {/* Outer Rig - Handles Shadow and Borders */}
-                      <div className="relative z-10 bg-[#0a0f0a]/90 border-2 border-primary/30 rounded-xl shadow-[0_0_30px_rgba(0,255,65,0.15)] transition-all duration-500 hover:border-primary/60">
+                      <div className="relative z-10 bg-[#0a0f0a]/90 border-2 border-primary/30 rounded-xl shadow-[0_0_20px_rgba(0,255,65,0.1)] transition-colors duration-500 hover:border-primary/60">
                         <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-primary m-2 z-30" />
                         <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-primary m-2 z-30" />
                         <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-primary m-2 z-30" />

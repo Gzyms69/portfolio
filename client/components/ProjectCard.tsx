@@ -96,7 +96,7 @@ export const ProjectCard = ({
           rotateY: isDossier ? 0 : rotateY, 
           transformStyle: "preserve-3d" 
         }}
-        className="relative z-10 transition-transform duration-300"
+        className="relative z-10"
       >
         {/* 3. VISUAL SURFACE: Handles borders, background, and image clipping */}
         <div className={`relative z-10 bg-[#0a0f0a] border-2 rounded-lg overflow-hidden transition-colors duration-300 ${
@@ -239,11 +239,10 @@ export const ProjectCard = ({
         </div>
 
         {/* 4. DYNAMIC GLOW: Sits in the Rig context but BEHIND the Surface. 
-            We use a negative inset (-inset-10) to give the blur/shadow 'room to breathe'
-            so the browser doesn't clip it at the element's original boundaries. */}
+            Reduced inset and blur to keep it professional and prevent clipping. */}
         <div 
-          className={`absolute -inset-10 -z-10 bg-primary/0 blur-2xl transition-all duration-700 pointer-events-none rounded-xl ${
-            isHovered ? 'bg-primary/[0.1] shadow-[0_0_40px_rgba(0,255,65,0.15)]' : ''
+          className={`absolute -inset-4 -z-10 bg-primary/0 blur-xl transition-all duration-700 pointer-events-none rounded-xl ${
+            isHovered ? 'bg-primary/[0.08] shadow-[0_0_30px_rgba(0,255,65,0.1)]' : ''
           }`} 
           style={{ transform: "translateZ(-20px)" }}
         />
