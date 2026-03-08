@@ -313,7 +313,7 @@ export default function Resume() {
                 </a>
               </div>
             )}
-            {portfolioConfig.socials.linkedin && (
+            {portfolioConfig.socials.linkedin && variant !== 'office' && (
               <div className="flex items-center sm:justify-end gap-1.5">
                 <Linkedin className="w-3 h-3" />
                 <a href={portfolioConfig.socials.linkedin} target="_blank" rel="noreferrer" className="hover:underline">
