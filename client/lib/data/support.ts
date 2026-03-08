@@ -95,14 +95,14 @@ export const supportConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
     title: "Technical Support Engineer | L2 Ops Specialist",
-    description: "Specjalista IT łączący techniczne umiejętności (Python, Linux, SQL) z doświadczeniem operacyjnym (FedEx). Skutecznie diagnozuję problemy (Troubleshooting) i dbam o dotrzymywanie terminów (SLA). Wykorzystuję skrypty do automatyzacji powtarzalnych zadań.",
+    description: "Inżynier łączący twarde kompetencje techniczne (Linux, SQL, Bash, Python) z rygorem operacyjnym środowisk korporacyjnych (FedEx). Posiadam praktyczne doświadczenie w zarządzaniu incydentami (Ticketing / SLA) oraz samodzielnym utrzymaniu i optymalizacji infrastruktury webowej (Vercel, Cloudflare, Cron Jobs). Biegły w automatyzacji procesów, parsowaniu logów oraz szybkiej diagnozie środowisk. Szukam roli, w której wykorzystam swój zmysł analityczny do skutecznego rozwiązywania złożonych problemów (Troubleshooting) i stabilizacji systemów.",
     email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "C++"]
   },
   en: {
     name: "Dawid Czerwiński",
     title: "Technical Support Engineer | L2 Ops Specialist",
-    description: "IT Specialist combining technical skills (Python, Linux, SQL) with operational experience (FedEx). I effectively diagnose problems (Troubleshooting) and ensure SLA compliance. I leverage scripting to automate repetitive tasks.",
+    description: "Engineer combining hard technical skills (Linux, SQL, Bash, Python) with the operational rigor of corporate environments (FedEx). I have practical experience in incident management (Ticketing / SLA) and independent maintenance and optimization of web infrastructure (Vercel, Cloudflare, Cron Jobs). Proficient in process automation, log parsing, and rapid environment diagnosis. Seeking a role where I can use my analytical mind for effective complex problem solving (Troubleshooting) and system stabilization.",
     email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "C++"]
   }
