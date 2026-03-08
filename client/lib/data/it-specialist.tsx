@@ -59,8 +59,8 @@ export const itSpecialistData: Record<string, CVData> = {
         location: "Zdalnie",
         period: "01.2024 - 06.2025",
         responsibilities: [
-          "Edukacja i Komunikacja: Prowadzenie szkoleń technicznych (Python, C++, C#). Tłumaczenie złożonych konceptów informatycznych osobom o zerowej wiedzy technicznej w sposób jasny i cierpliwy.",
-          "Troubleshooting Środowisk (Wsparcie L1): Rozwiązywanie problemów 'na żywo' ze sprzętem i oprogramowaniem kursantów (instalacja paczek, konfiguracja zmiennych środowiskowych, rozwiązywanie konfliktów w systemach Windows i konfiguracja VS Code/Unity).",
+          "Edukacja i Komunikacja: Prowadzenie szkoleń technicznych (Python, C#). Tłumaczenie złożonych konceptów informatycznych osobom o zerowej wiedzy technicznej w sposób jasny i cierpliwy.",
+          "Troubleshooting Środowisk (Wsparcie L1): Rozwiązywanie problemów 'na żywo' ze sprzętem i oprogramowaniem kursantów (instalacja paczek, konfiguracja zmiennych środowiskowych, rozwiązywanie konfliktów w systemach Windows i konfiguracja VS Code).",
           "Wsparcie Asynchroniczne: Zdalna obsługa zapytań i problemów technicznych od kursantów (via Discord), funkcjonująca na zasadach pierwszej linii wsparcia.",
           "Zarządzanie Zgłoszeniami: Współpraca z klientem (rodzicami kursantów) oraz raportowanie postępów i problemów organizacyjnych w wewnętrznym systemie CRM."
         ]
@@ -91,7 +91,7 @@ export const itSpecialistData: Record<string, CVData> = {
     skills: {
       general: ["Systemy biletowe (Enterprise Ticketing Systems)", "Incident Management", "Praca w rygorze SLA", "Obsługa klienta"],
       tools: ["Windows 10/11", "Linux (Ubuntu CLI)", "Google Workspace", "MS Office", "VS Code"],
-      programming: ["Python", "C++", "Bash", "SQL", "Docker", "Git"]
+      programming: ["Python", "Bash", "SQL"]
     },
     languages: ["Polski (Ojczysty)", "Angielski (C1/C2 - Zaawansowany Professional)"]
   },
@@ -103,8 +103,8 @@ export const itSpecialistData: Record<string, CVData> = {
         location: "Remote",
         period: "Jan 2024 - Jun 2025",
         responsibilities: [
-          "Educational Instruction: Conducting technical training (Python, C++, C#). Explaining complex computer science concepts to people with zero technical knowledge in a clear and patient manner.",
-          "Environment Troubleshooting (L1 Support): Live hardware and software troubleshooting for students (package installation, environment variable configuration, resolving Windows system conflicts, and VS Code/Unity configuration).",
+          "Educational Instruction: Conducting technical training (Python, C#). Explaining complex computer science concepts to people with zero technical knowledge in a clear and patient manner.",
+          "Environment Troubleshooting (L1 Support): Live hardware and software troubleshooting for students (package installation, environment variable configuration, resolving Windows system conflicts, and VS Code configuration).",
           "Async Support: Remote handling of technical queries and issues from students (via Discord), functioning on first-line support principles.",
           "Ticket Management: Collaboration with the client (students' parents) and reporting progress and organizational issues in an internal CRM system."
         ]
@@ -135,7 +135,7 @@ export const itSpecialistData: Record<string, CVData> = {
     skills: {
       general: ["Enterprise Ticketing Systems", "Incident Management", "SLA rigor", "Customer service"],
       tools: ["Windows 10/11", "Linux (Ubuntu CLI)", "Google Workspace", "MS Office", "VS Code"],
-      programming: ["Python", "C++", "Bash", "SQL", "Docker", "Git"]
+      programming: ["Python", "Bash", "SQL"]
     },
     languages: ["Polish (Native)", "English (C1/C2 - Advanced Professional)"]
   }
