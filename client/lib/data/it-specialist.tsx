@@ -3,18 +3,32 @@ import { supportData } from "./support";
 
 export const itSpecialistProjects: Project[] = [
   {
-    title: "Administrator Środowiska Webowego | katalog.czerwinskidawid.pl [11.2025 – Obecnie]",
+    title: "katalog.czerwinskidawid.pl – Moje prywatne środowisko IT (Homelab)",
     pl: {
-      description: "Samodzielne utrzymanie, konfiguracja i bieżąca administracja własną domeną oraz środowiskiem webowym. Konfiguracja zabezpieczeń sieciowych, zarządzanie certyfikatami SSL oraz rekordami DNS (Cloudflare). Monitorowanie dostępności usług i diagnozowanie podstawowych problemów z dostępem (Troubleshooting) oraz zapewnienie zgodności z RODO (Klaro).",
-      fullDescription: "Samodzielne utrzymanie, konfiguracja i bieżąca administracja własną domeną oraz środowiskiem webowym. Konfiguracja zabezpieczeń sieciowych, zarządzanie certyfikatami SSL oraz rekordami DNS (Cloudflare). Monitorowanie dostępności usług i diagnozowanie podstawowych problemów z dostępem (Troubleshooting) oraz zapewnienie zgodności z RODO (Klaro)."
+      description: "Aby uczyć się działania sieci w praktyce, hobbystycznie utrzymuję własną domenę internetową i serwer. Samodzielnie podpiąłem pocztę we własnej domenie, skonfigurowałem rekordy DNS, reguły Cloudflare i certyfikaty SSL. Dbam o poprawne działanie strony (Troubleshooting) oraz o zgodność z wymogami bezpieczeństwa prywatności (RODO).",
+      fullDescription: "Aby uczyć się działania sieci w praktyce, hobbystycznie utrzymuję własną domenę internetową i serwer.\n\nSamodzielnie podpiąłem pocztę we własnej domenie, skonfigurowałem rekordy DNS, reguły Cloudflare i certyfikaty SSL.\n\nDbam o poprawne działanie strony (Troubleshooting) oraz o zgodność z wymogami bezpieczeństwa prywatności (RODO)."
     },
     en: {
-      description: "Independent maintenance, configuration, and ongoing administration of a personal domain and web environment. Configuration of network security, managing SSL certificates, and DNS records (Cloudflare). Service availability monitoring and diagnosing basic access issues (Troubleshooting), as well as ensuring GDPR compliance (Klaro).",
-      fullDescription: "Independent maintenance, configuration, and ongoing administration of a personal domain and web environment. Configuration of network security, managing SSL certificates, and DNS records (Cloudflare). Service availability monitoring and diagnosing basic access issues (Troubleshooting), as well as ensuring GDPR compliance (Klaro)."
+      description: "To learn how networks work in practice, I maintain my own internet domain and server as a hobby. Independently connected email in my own domain, configured DNS records, Cloudflare rules, and SSL certificates. I ensure the correct operation of the website (Troubleshooting) and compliance with privacy security requirements (GDPR).",
+      fullDescription: "To learn how networks work in practice, I maintain my own internet domain and server as a hobby.\n\nIndependently connected email in my own domain, configured DNS records, Cloudflare rules, and SSL certificates.\n\nI ensure the correct operation of the website (Troubleshooting) and compliance with privacy security requirements (GDPR)."
     },
     githubUrl: "https://katalog.czerwinskidawid.pl",
     liveUrl: "https://katalog.czerwinskidawid.pl",
-    techStack: ["Administracja Sieci", "Cloudflare", "SSL", "DNS", "RODO"],
+    techStack: ["Administracja", "DNS", "Cloudflare", "Domeny", "RODO"],
+    variant: "code",
+  },
+  {
+    title: "Automatyzacja zadań (Python)",
+    pl: {
+      description: "Dla ułatwienia własnej pracy tworzę proste skrypty automatyzujące (m.in. przenoszenie danych do arkuszy kalkulacyjnych), co uczy mnie analitycznego myślenia i szybkiego rozwiązywania problemów.",
+      fullDescription: "Dla ułatwienia własnej pracy tworzę proste skrypty automatyzujące (m.in. przenoszenie danych do arkuszy kalkulacyjnych), co uczy mnie analitycznego myślenia i szybkiego rozwiązywania problemów."
+    },
+    en: {
+      description: "To facilitate my own work, I create simple automation scripts (e.g., transferring data to spreadsheets), which teaches me analytical thinking and fast problem-solving.",
+      fullDescription: "To facilitate my own work, I create simple automation scripts (e.g., transferring data to spreadsheets), which teaches me analytical thinking and fast problem-solving."
+    },
+    githubUrl: "https://github.com/Gzyms69",
+    techStack: ["Skrypty", "Google Sheets API"],
     variant: "code",
   }
 ];

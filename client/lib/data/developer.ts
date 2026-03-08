@@ -3,45 +3,30 @@ import { supportData } from "./support";
 
 export const devProjects: Project[] = [
   {
-    title: "Platforma Webowa | katalog.czerwinskidawid.pl [11.2025 – Obecnie]",
+    title: "LeadFinder & Katalog Ecosystem",
     pl: { 
-      description: "Zaprojektowanie i wdrożenie pełnoprawnej aplikacji front-endowej. Opracowanie autorskiego systemu 'Magic Links' (dynamiczne renderowanie szablonów z danymi klienta) zintegrowanego z narzędziem LeadFinder. Wdrożenie inteligentnych redirectów dystrybuujących parametry śledzące oraz profilowanie kodu serwerami MCP (utrzymanie wyniku 100/100 Lighthouse).", 
-      fullDescription: "Zaprojektowanie i wdrożenie pełnoprawnej aplikacji front-endowej. Opracowanie autorskiego systemu 'Magic Links' (dynamiczne renderowanie szablonów z danymi klienta) zintegrowanego z narzędziem LeadFinder. Wdrożenie inteligentnych redirectów dystrybuujących parametry śledzące oraz profilowanie kodu serwerami MCP (utrzymanie wyniku 100/100 Lighthouse)." 
+      description: "Autorski system automatyzacji sprzedaży. Zbudowałem od zera architekturę łączącą web scraping w Pythonie z frontendem w Next.js. Rozwój forka google-maps-scraper: napisanie logiki wait-and-retry w Playwright, by ominąć błędy asynchronicznego ładowania DOM i zablokować restrykcje API (Google RPC). Wdrożenie środowiska produkcyjnego na Vercel (eliminacja 'Cold Start'), integracja z Google Sheets API poprzez GCP IAM i optymalizacja frontendu pod 100/100 w audytach Lighthouse.", 
+      fullDescription: "Autorski system automatyzacji sprzedaży. Zbudowałem od zera architekturę łączącą web scraping w Pythonie z frontendem w Next.js.\n\nRozwój forka google-maps-scraper: napisanie logiki wait-and-retry w Playwright, by ominąć błędy asynchronicznego ładowania DOM i zablokować restrykcje API (Google RPC).\n\nWdrożenie środowiska produkcyjnego na Vercel (eliminacja 'Cold Start'), integracja z Google Sheets API poprzez GCP IAM i optymalizacja frontendu pod 100/100 w audytach Lighthouse." 
     },
     en: { 
-      description: "Design and implementation of a full-fledged front-end application. Development of a custom 'Magic Links' system (dynamic rendering of templates with client data) integrated with the LeadFinder tool. Implementation of intelligent redirects distributing tracking parameters and code profiling using MCP servers (maintaining a 100/100 Lighthouse score).", 
-      fullDescription: "Design and implementation of a full-fledged front-end application. Development of a custom 'Magic Links' system (dynamic rendering of templates with client data) integrated with the LeadFinder tool. Implementation of intelligent redirects distributing tracking parameters and code profiling using MCP servers (maintaining a 100/100 Lighthouse score)." 
-    },
-    githubUrl: "https://katalog.czerwinskidawid.pl",
-    liveUrl: "https://katalog.czerwinskidawid.pl",
-    techStack: ["Next.js 15", "React", "Vercel", "Google Analytics"],
-    variant: "code",
-    hideFromPortfolio: true
-  },
-  {
-    title: "LeadFinder – Backend & Web Scraping",
-    pl: { 
-      description: "Rozwój forka silnika google-maps-scraper. Zaprojektowanie i wdrożenie systemu automatycznego generowania leadów do Google Sheets poprzez API. Naprawa asynchronicznych mechanizmów ładowania DOM. Zastosowanie logiki wait-and-retry (Playwright) w celu eliminacji race conditions i blokad API (Google RPC). Parsowanie i naprawa błędów konwersji złożonych struktur danych (APP_INITIALIZATION_STATE).", 
-      fullDescription: "Rozwój forka silnika google-maps-scraper. Zaprojektowanie i wdrożenie systemu automatycznego generowania leadów do Google Sheets poprzez API. Naprawa asynchronicznych mechanizmów ładowania DOM. Zastosowanie logiki wait-and-retry (Playwright) w celu eliminacji race conditions i blokad API (Google RPC). Parsowanie i naprawa błędów konwersji złożonych struktur danych (APP_INITIALIZATION_STATE)." 
-    },
-    en: { 
-      description: "Development of a google-maps-scraper engine fork. Design and implementation of an automated lead generation system to Google Sheets via API. Fixing asynchronous DOM loading mechanisms. Application of wait-and-retry logic (Playwright) to eliminate race conditions and API blocks (Google RPC). Parsing and fixing conversion errors of complex data structures (APP_INITIALIZATION_STATE).", 
-      fullDescription: "Development of a google-maps-scraper engine fork. Design and implementation of an automated lead generation system to Google Sheets via API. Fixing asynchronous DOM loading mechanisms. Application of wait-and-retry logic (Playwright) to eliminate race conditions and API blocks (Google RPC). Parsing and fixing conversion errors of complex data structures (APP_INITIALIZATION_STATE)." 
+      description: "Custom sales automation system. Built from scratch an architecture combining web scraping in Python with a Next.js frontend. Development of a google-maps-scraper fork: wrote wait-and-retry logic in Playwright to bypass asynchronous DOM loading errors and API restrictions (Google RPC). Deployment of the production environment on Vercel (elimination of 'Cold Start'), integration with Google Sheets API via GCP IAM, and frontend optimization for 100/100 in Lighthouse audits.", 
+      fullDescription: "Custom sales automation system. Built from scratch an architecture combining web scraping in Python with a Next.js frontend.\n\nDevelopment of a google-maps-scraper fork: wrote wait-and-retry logic in Playwright to bypass asynchronous DOM loading errors and API restrictions (Google RPC).\n\nDeployment of the production environment on Vercel (elimination of 'Cold Start'), integration with Google Sheets API via GCP IAM, and frontend optimization for 100/100 in Lighthouse audits." 
     },
     githubUrl: "https://github.com/Gzyms69/LeadFinder",
-    techStack: ["Python", "Playwright", "Google Cloud IAM"],
+    liveUrl: "https://katalog.czerwinskidawid.pl",
+    techStack: ["Next.js 15", "Python", "Playwright", "FastAPI"],
     variant: "code",
     hideFromPortfolio: true
   },
   {
     title: "WikiGraph Lab",
     pl: { 
-      description: "Projektowanie architektury backendowej dla autorskiego silnika grafu wiedzy z wykorzystaniem baz SQL i Neo4j. Programowanie i optymalizacja wydajności REST API w FastAPI. Skonteneryzowanie całego środowiska przy użyciu Dockera.", 
-      fullDescription: "Projektowanie architektury backendowej dla autorskiego silnika grafu wiedzy z wykorzystaniem baz SQL i Neo4j. Programowanie i optymalizacja wydajności REST API w FastAPI. Skonteneryzowanie całego środowiska przy użyciu Dockera." 
+      description: "Silnik grafu wiedzy. Samodzielnie zaprojektowana architektura backendowa dla baz relacyjnych i grafowych, konteneryzacja w Dockerze i obsługa zapytań przez REST API.", 
+      fullDescription: "Silnik grafu wiedzy. Samodzielnie zaprojektowana architektura backendowa dla baz relacyjnych i grafowych, konteneryzacja w Dockerze i obsługa zapytań przez REST API." 
     },
     en: { 
-      description: "Designing backend architecture for a custom knowledge graph engine using SQL and Neo4j databases. Programming and performance optimization of REST API in FastAPI. Containerization of the entire environment using Docker.", 
-      fullDescription: "Designing backend architecture for a custom knowledge graph engine using SQL and Neo4j databases. Programming and performance optimization of REST API in FastAPI. Containerization of the entire environment using Docker." 
+      description: "Knowledge graph engine. Independently designed backend architecture for relational and graph databases, Docker containerization, and REST API query handling.", 
+      fullDescription: "Knowledge graph engine. Independently designed backend architecture for relational and graph databases, Docker containerization, and REST API query handling." 
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
     techStack: ["Python", "Neo4j", "Docker", "SQL", "FastAPI"],
@@ -70,7 +55,7 @@ export const devProjects: Project[] = [
     liveUrl: "https://katalog.czerwinskidawid.pl",
     techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "MS Office"],
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&q=80&fm=webp",
-    variant: "code",
+    variant: "design",
     hideFromResume: true
   },
   {
