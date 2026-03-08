@@ -3,31 +3,17 @@ import { supportData } from "./support";
 
 export const itSpecialistProjects: Project[] = [
   {
-    title: "Katalog Ecosystem | katalog.czerwinskidawid.pl",
+    title: "Administrator Środowiska Webowego | katalog.czerwinskidawid.pl [11.2025 – Obecnie]",
     pl: {
-      description: "Budowa serwisu internetowego z wykorzystaniem marketingu personalnego (magic links) i wdrożenie parametrów śledzących URL. Zapewnienie pełnej zgodności z wymogami bezpieczeństwa i RODO.",
-      fullDescription: "Tworzenie i wdrażanie własnych systemów (m.in. katalog.czerwinskidawid.pl, WikiGraph). Budowa serwisu internetowego z wykorzystaniem marketingu personalnego (magic links) i wdrożenie parametrów śledzących URL. Zapewnienie pełnej zgodności z wymogami bezpieczeństwa i RODO."
+      description: "Samodzielne utrzymanie, konfiguracja i bieżąca administracja własną domeną oraz środowiskiem webowym. Konfiguracja zabezpieczeń sieciowych, zarządzanie certyfikatami SSL oraz rekordami DNS (Cloudflare). Monitorowanie dostępności usług i diagnozowanie podstawowych problemów z dostępem (Troubleshooting) oraz zapewnienie zgodności z RODO (Klaro).",
+      fullDescription: "Samodzielne utrzymanie, konfiguracja i bieżąca administracja własną domeną oraz środowiskiem webowym. Konfiguracja zabezpieczeń sieciowych, zarządzanie certyfikatami SSL oraz rekordami DNS (Cloudflare). Monitorowanie dostępności usług i diagnozowanie podstawowych problemów z dostępem (Troubleshooting) oraz zapewnienie zgodności z RODO (Klaro)."
     },
     en: {
-      description: "Web service construction utilizing form logic (Magic Links) and URL tracking parameters. Ensuring full compliance with security and GDPR requirements.",
-      fullDescription: "Development and deployment of custom systems (incl. katalog.czerwinskidawid.pl, WikiGraph). Web service construction utilizing form logic (Magic Links) and URL tracking parameters. Ensuring full compliance with security and GDPR requirements."
+      description: "Independent maintenance, configuration, and ongoing administration of a personal domain and web environment. Configuration of network security, managing SSL certificates, and DNS records (Cloudflare). Service availability monitoring and diagnosing basic access issues (Troubleshooting), as well as ensuring GDPR compliance (Klaro).",
+      fullDescription: "Independent maintenance, configuration, and ongoing administration of a personal domain and web environment. Configuration of network security, managing SSL certificates, and DNS records (Cloudflare). Service availability monitoring and diagnosing basic access issues (Troubleshooting), as well as ensuring GDPR compliance (Klaro)."
     },
     githubUrl: "https://katalog.czerwinskidawid.pl",
-    techStack: ["Next.js", "Magic Links", "GDPR Compliance"],
-    variant: "code",
-  },
-  {
-    title: "WikiGraph Lab",
-    pl: {
-      description: "Silnik Grafu Wiedzy (Knowledge Graph) przetwarzający Wikipedię w ujednoliconą strukturę topologiczną.",
-      fullDescription: "Projekt obejmował konfigurację środowisk Linux, wdrożenia w Dockerze, zarządzanie bazami SQL oraz pisanie skryptów w Pythonie. Dowodzi umiejętności analitycznego myślenia i rozwiązywania złożonych problemów technicznych."
-    },
-    en: {
-      description: "Knowledge Graph engine processing Wikipedia into a unified topological structure.",
-      fullDescription: "Project involved Linux environment configuration, Docker deployments, SQL database management, and Python scripting. Proves analytical thinking and complex problem-solving abilities."
-    },
-    githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
-    techStack: ["Linux", "Docker", "Python", "SQL"],
+    techStack: ["Administracja Sieci", "Cloudflare", "SSL", "DNS", "RODO"],
     variant: "code",
   }
 ];

@@ -3,29 +3,29 @@ import { supportData } from "./support";
 
 export const devProjects: Project[] = [
   {
-    title: "Full-Stack Developer (Projekt Prywatny) | katalog.czerwinskidawid.pl [11.2025 – Obecnie]",
+    title: "LeadFinder & Katalog Ecosystem [11.2025 – Obecnie]",
     pl: { 
-      description: "Budowa platformy webowej z wykorzystaniem Next.js 15, React i Tailwind CSS. Wdrożenie autorskiego systemu Custom Analytics opartego na parsowaniu parametrów URL oraz autoryzacji 'Magic Links'. Implementacja złożonych bibliotek UI (Framer Motion, Three.js) przy jednoczesnym utrzymaniu najwyższych standardów wydajności (100/100 Google Lighthouse Core Web Vitals).", 
-      fullDescription: "Budowa platformy webowej z wykorzystaniem Next.js 15, React i Tailwind CSS. Wdrożenie autorskiego systemu Custom Analytics opartego na parsowaniu parametrów URL oraz autoryzacji 'Magic Links'. Implementacja złożonych bibliotek UI (Framer Motion, Three.js) przy jednoczesnym utrzymaniu najwyższych standardów wydajności (100/100 Google Lighthouse Core Web Vitals)." 
+      description: "Architektura Full-Stack: Zaprojektowanie i implementacja ekosystemu łączącego zoptymalizowaną platformę front-endową z systemem generowania leadów (Python). Implementacja systemu inteligentnych redirectów dla ruchu analitycznego. Inżynieria Backendowa & Web Scraping: Rozwój autorskiego forka silnika google-maps-scraper. Implementacja złożonej logiki wait-and-retry w Playwright/Puppeteer w celu eliminacji race conditions oraz ominięcia blokad API (Google RPC). Parsowanie struktur APP_INITIALIZATION_STATE. Optymalizacja, Analityka i Automatyzacja: Wdrożenie systemu marketingu personalizowanego ('Magic Links') dynamicznie renderującego szablony z danymi klienta. Skonfigurowanie pełnego śledzenia interakcji w Google Analytics. Profilowanie kodu (LCP/TBT) za pomocą serwerów MCP (wynik 100/100 Lighthouse). Infrastruktura i Integracje API: Wdrożenie środowiska na Vercel (Cron Jobs / Keep-Alive) i integracja przepływu danych z Google Sheets API z wykorzystaniem Google Cloud IAM.", 
+      fullDescription: "Architektura Full-Stack: Zaprojektowanie i implementacja ekosystemu łączącego zoptymalizowaną platformę front-endową z systemem generowania leadów (Python). Implementacja systemu inteligentnych redirectów dla ruchu analitycznego. Inżynieria Backendowa & Web Scraping: Rozwój autorskiego forka silnika google-maps-scraper. Implementacja złożonej logiki wait-and-retry w Playwright/Puppeteer w celu eliminacji race conditions oraz ominięcia blokad API (Google RPC). Parsowanie struktur APP_INITIALIZATION_STATE. Optymalizacja, Analityka i Automatyzacja: Wdrożenie systemu marketingu personalizowanego ('Magic Links') dynamicznie renderującego szablony z danymi klienta. Skonfigurowanie pełnego śledzenia interakcji w Google Analytics. Profilowanie kodu (LCP/TBT) za pomocą serwerów MCP (wynik 100/100 Lighthouse). Infrastruktura i Integracje API: Wdrożenie środowiska na Vercel (Cron Jobs / Keep-Alive) i integracja przepływu danych z Google Sheets API z wykorzystaniem Google Cloud IAM." 
     },
     en: { 
-      description: "Building a web platform using Next.js 15, React, and Tailwind CSS. Implementation of a custom Analytics system based on URL parameter parsing and 'Magic Links' authorization. Integration of complex UI libraries (Framer Motion, Three.js) while maintaining peak performance (100/100 Google Lighthouse Core Web Vitals).", 
-      fullDescription: "Building a web platform using Next.js 15, React, and Tailwind CSS. Implementation of a custom Analytics system based on URL parameter parsing and 'Magic Links' authorization. Integration of complex UI libraries (Framer Motion, Three.js) while maintaining peak performance (100/100 Google Lighthouse Core Web Vitals)." 
+      description: "Full-Stack Architecture: Design and implementation of an ecosystem connecting an optimized frontend platform with a lead generation system (Python). Implementation of an intelligent redirect system for analytical traffic. Backend Engineering & Web Scraping: Development of a custom fork of the google-maps-scraper engine. Implementation of complex wait-and-retry logic in Playwright/Puppeteer to eliminate race conditions and bypass API blocks (Google RPC). Parsing APP_INITIALIZATION_STATE structures. Optimization, Analytics & Automation: Implementation of a personalized marketing system ('Magic Links') dynamically rendering templates with client data. Configuration of full interaction tracking in Google Analytics. Code profiling (LCP/TBT) using MCP servers (100/100 Lighthouse score). Infrastructure & API Integrations: Deployment on Vercel (Cron Jobs / Keep-Alive) and integration of data flow with Google Sheets API using Google Cloud IAM.", 
+      fullDescription: "Full-Stack Architecture: Design and implementation of an ecosystem connecting an optimized frontend platform with a lead generation system (Python). Implementation of an intelligent redirect system for analytical traffic. Backend Engineering & Web Scraping: Development of a custom fork of the google-maps-scraper engine. Implementation of complex wait-and-retry logic in Playwright/Puppeteer to eliminate race conditions and bypass API blocks (Google RPC). Parsing APP_INITIALIZATION_STATE structures. Optimization, Analytics & Automation: Implementation of a personalized marketing system ('Magic Links') dynamically rendering templates with client data. Configuration of full interaction tracking in Google Analytics. Code profiling (LCP/TBT) using MCP servers (100/100 Lighthouse score). Infrastructure & API Integrations: Deployment on Vercel (Cron Jobs / Keep-Alive) and integration of data flow with Google Sheets API using Google Cloud IAM." 
     },
     githubUrl: "https://katalog.czerwinskidawid.pl",
-    techStack: ["Next.js 15", "React", "Tailwind CSS", "Framer Motion", "Three.js"],
+    techStack: ["Next.js 15", "React", "Python", "Playwright", "FastAPI", "Google Cloud"],
     variant: "code",
     hideFromPortfolio: true
   },
   {
     title: "WikiGraph Lab",
     pl: { 
-      description: "Silnik Grafu Wiedzy (Knowledge Graph) przetwarzający Wikipedię w ujednoliconą strukturę topologiczną.", 
-      fullDescription: "Hybrydowa architektura bazy danych zaprojektowana do analizy grafowej na dużą skalę. Wykorzystuje zunifikowany backend FastAPI, który federuje zapytania pomiędzy izolowanymi kontenerami językowymi. Używa Neo4j do analizy topologicznej (PageRank, Podobieństwo Jaccarda) oraz SQLite do wyszukiwania pełnotekstowego z czasem odpowiedzi poniżej milisekundy (FTS5). Zawiera system konfiguracji Just-In-Time (JIT) do parsowania dowolnego języka Wikipedii." 
+      description: "Rozwój Backendu: Stworzenie od zera silnika grafu wiedzy. Projektowanie architektury dla relacyjnych (SQL) i grafowych (Neo4j) baz danych. Tworzenie i optymalizacja wydajności REST API (FastAPI) do obsługi zapytań topologicznych. Skonteneryzowanie całego środowiska (Docker).", 
+      fullDescription: "Rozwój Backendu: Stworzenie od zera silnika grafu wiedzy. Projektowanie architektury dla relacyjnych (SQL) i grafowych (Neo4j) baz danych. Tworzenie i optymalizacja wydajności REST API (FastAPI) do obsługi zapytań topologicznych. Skonteneryzowanie całego środowiska (Docker)." 
     },
     en: { 
-      description: "Language-agnostic Knowledge Graph engine processing Wikipedia into a unified Neo4j + SQLite structure.", 
-      fullDescription: "A hybrid database architecture designed for large-scale graph analysis. Features a unified FastAPI backend federating queries across isolated language containers. Utilizes Neo4j for topological analysis (PageRank, Jaccard Similarity) and SQLite for sub-millisecond full-text search (FTS5). Includes a Just-In-Time (JIT) configuration system for parsing any Wikipedia language." 
+      description: "Backend Development: Creating a knowledge graph engine from scratch. Architectural design for relational (SQL) and graph (Neo4j) databases. Creation and performance optimization of REST API (FastAPI) for topological query handling. Full environment containerization (Docker).", 
+      fullDescription: "Backend Development: Creating a knowledge graph engine from scratch. Architectural design for relational (SQL) and graph (Neo4j) databases. Creation and performance optimization of REST API (FastAPI) for topological query handling. Full environment containerization (Docker)." 
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
     techStack: ["Python", "Neo4j", "Docker", "SQL", "FastAPI"],
@@ -35,12 +35,12 @@ export const devProjects: Project[] = [
   {
     title: "LeadFinder & Katalog Ecosystem",
     pl: { 
-      description: "Kompleksowy system automatyzacji sprzedaży i marketplace szablonów. Łączy scraping leadów (Python) z generowaniem stron demo (Next.js).", 
-      fullDescription: `Ekosystem dwóch systemów zaprojektowany do automatyzacji cyklu sprzedaży.
+      description: "Kompleksowy system automatyzacji sprzedaży i marketplace szablonów. Łączy scraping leadów (Python) z generowaniem stron demo (Next.js).", 
+      fullDescription: `Ekosystem dwóch systemów zaprojektowany do automatyzacji cyklu sprzedaży.
 
-1. Pipeline (Python): Autorski silnik scrapujący, który identyfikuje firmy z brakami cyfrowymi, waliduje domeny i synchronizuje leady bezpośrednio z Google Sheets. Zawiera niestandardowo spatchowany scraper Google Maps używający Playwright do naprawy logiki zliczania opinii.
+1. Pipeline (Python): Autorski silnik scrapujący, który identyfikuje firmy z brakami cyfrowymi, waliduje domeny i synchronizuje leady bezpośrednio z Google Sheets. Zawiera niestandardowo spatchowany scraper Google Maps używający Playwright do naprawy logiki zliczania opinii.
 
-2. Marketplace (Next.js 15): Wydajne Monorepo (Turborepo) z 'Dynamiczną Architekturą Sprzedaży'. Pozwala to na natychmiastowe generowanie spersonalizowanych stron demo ('Magic Links') za pomocą parametrów URL, redukując czas ręcznego przygotowania oferty o 99%.` 
+2. Marketplace (Next.js 15): Wydajne Monorepo (Turborepo) z 'Dynamiczną Architekturą Sprzedaży'. Pozwala to na natychmiastowe generowanie spersonalizowanych stron demo ('Magic Links') za pomocą parametrów URL, redukując czas ręcznego przygotowania oferty o 99%.` 
     },
     en: { 
       description: "End-to-end sales automation pipeline and template marketplace. Features automated lead scraping and dynamic 'Magic Link' demo generation.", 

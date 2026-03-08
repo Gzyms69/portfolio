@@ -2,29 +2,29 @@ import { Project, CVData, PortfolioConfig } from "@shared/types";
 
 export const supportProjects: Project[] = [
   {
-    title: "Twórca i Administrator Systemu Webowego | katalog.czerwinskidawid.pl [11.2025 – Obecnie]",
+    title: "Katalog & LeadFinder Ecosystem [11.2025 – Obecnie]",
     pl: { 
-      description: "Zaprojektowanie, wdrożenie i utrzymanie zaawansowanej platformy (Next.js 15) z wykorzystaniem marketingu personalnego (magic links) i wdrożeniem parametrów śledzących URL. Zapewnienie pełnej zgodności z wymogami bezpieczeństwa i RODO. Implementacja endpointów diagnostycznych (Keep-Alive / Cron Jobs) dla optymalizacji środowiska Serverless, eliminujących problem 'Cold Start'. Monitorowanie wydajności i optymalizacja zasobów (wynik 100/100 Lighthouse).", 
-      fullDescription: "Zaprojektowanie, wdrożenie i utrzymanie zaawansowanej platformy (Next.js 15) z wykorzystaniem marketingu personalnego (magic links) i wdrożeniem parametrów śledzących URL. Zapewnienie pełnej zgodności z wymogami bezpieczeństwa i RODO. Implementacja endpointów diagnostycznych (Keep-Alive / Cron Jobs) dla optymalizacji środowiska Serverless, eliminujących problem 'Cold Start'. Monitorowanie wydajności i optymalizacja zasobów (wynik 100/100 Lighthouse)." 
+      description: "Zarządzanie infrastrukturą i Serverless: Zaprojektowanie, wdrożenie i utrzymanie własnej platformy webowej. Zarządzanie środowiskiem produkcyjnym: Vercel, konfiguracja DNS, SSL i reguły Cloudflare. Implementacja endpointów Keep-Alive / Cron Jobs eliminujących opóźnienia 'Cold Start'. Advanced Troubleshooting: Diagnozowanie i naprawa błędów asynchronicznych (race conditions) w skryptach oraz omijanie blokad sieciowych (Google RPC) przy użyciu Playwright do egzekucji zapytań HTTP z uwierzytelnionego kontekstu przeglądarki. Web Analytics & Performance Profiling: Wdrożenie pełnego śledzenia interakcji użytkowników (Google Analytics) oraz systemu inteligentnych redirectów dystrybuujących parametry śledzące. Audyt wydajnościowy frontendu przy użyciu serwerów MCP i Puppeteer, w tym profilowanie procesu ładowania (LCP/TBT) i utrzymanie wyniku 100/100 w Lighthouse. Zgodność i Administracja: Zapewnienie technicznej zgodności środowiska z wymogami RODO (Klaro) oraz integracja z systemem marketingu personalizowanego ('Magic Links') do dynamicznego generowania szablonów z danymi klienta.", 
+      fullDescription: "Zarządzanie infrastrukturą i Serverless: Zaprojektowanie, wdrożenie i utrzymanie własnej platformy webowej. Zarządzanie środowiskiem produkcyjnym: Vercel, konfiguracja DNS, SSL i reguły Cloudflare. Implementacja endpointów Keep-Alive / Cron Jobs eliminujących opóźnienia 'Cold Start'. Advanced Troubleshooting: Diagnozowanie i naprawa błędów asynchronicznych (race conditions) w skryptach oraz omijanie blokad sieciowych (Google RPC) przy użyciu Playwright do egzekucji zapytań HTTP z uwierzytelnionego kontekstu przeglądarki. Web Analytics & Performance Profiling: Wdrożenie pełnego śledzenia interakcji użytkowników (Google Analytics) oraz systemu inteligentnych redirectów dystrybuujących parametry śledzące. Audyt wydajnościowy frontendu przy użyciu serwerów MCP i Puppeteer, w tym profilowanie procesu ładowania (LCP/TBT) i utrzymanie wyniku 100/100 w Lighthouse. Zgodność i Administracja: Zapewnienie technicznej zgodności środowiska z wymogami RODO (Klaro) oraz integracja z systemem marketingu personalizowanego ('Magic Links') do dynamicznego generowania szablonów z danymi klienta." 
     },
     en: { 
-      description: "Design, deployment, and maintenance of an advanced platform (Next.js 15) utilizing personal marketing (magic links) and URL tracking parameters. Ensuring full compliance with security and GDPR requirements. Implementation of diagnostic endpoints (Keep-Alive / Cron Jobs) for serverless environment optimization, eliminating 'Cold Start' issues. Performance monitoring and resource optimization (100/100 Lighthouse score).", 
-      fullDescription: "Design, deployment, and maintenance of an advanced platform (Next.js 15) utilizing personal marketing (magic links) and URL tracking parameters. Ensuring full compliance with security and GDPR requirements. Implementation of diagnostic endpoints (Keep-Alive / Cron Jobs) for serverless environment optimization, eliminating 'Cold Start' issues. Performance monitoring and resource optimization (100/100 Lighthouse score)." 
+      description: "Infrastructure & Serverless Management: Design, deployment, and maintenance of a custom web platform. Production environment management: Vercel, DNS configuration, SSL, and Cloudflare rules. Implementation of Keep-Alive endpoints / Cron Jobs eliminating 'Cold Start' latencies. Advanced Troubleshooting: Diagnosing and fixing asynchronous race conditions in scripts and bypassing network blocks (Google RPC) using Playwright for HTTP request execution from an authenticated browser context. Web Analytics & Performance Profiling: Implementation of full user interaction tracking (Google Analytics) and an intelligent redirect system distributing tracking parameters. Frontend performance audit using MCP servers and Puppeteer, including loading process profiling (LCP/TBT) and maintaining a 100/100 Lighthouse score. Compliance & Administration: Ensuring technical environment compliance with GDPR (Klaro) and integration with a personalized marketing system ('Magic Links') for dynamic template generation with client data.", 
+      fullDescription: "Infrastructure & Serverless Management: Design, deployment, and maintenance of a custom web platform. Production environment management: Vercel, DNS configuration, SSL, and Cloudflare rules. Implementation of Keep-Alive endpoints / Cron Jobs eliminating 'Cold Start' latencies. Advanced Troubleshooting: Diagnosing and fixing asynchronous race conditions in scripts and bypassing network blocks (Google RPC) using Playwright for HTTP request execution from an authenticated browser context. Web Analytics & Performance Profiling: Implementation of full user interaction tracking (Google Analytics) and an intelligent redirect system distributing tracking parameters. Frontend performance audit using MCP servers and Puppeteer, including loading process profiling (LCP/TBT) and maintaining a 100/100 Lighthouse score. Compliance & Administration: Ensuring technical environment compliance with GDPR (Klaro) and integration with a personalized marketing system ('Magic Links') for dynamic template generation with client data." 
     },
     githubUrl: "https://katalog.czerwinskidawid.pl",
-    techStack: ["Next.js 15", "Vercel", "SSL", "Monitoring"],
+    techStack: ["Next.js 15", "Vercel", "Cloudflare", "Playwright", "Web Analytics"],
     variant: "code",
     hideFromPortfolio: true
   },
   {
     title: "WikiGraph Lab",
     pl: { 
-      description: "Silnik Grafu Wiedzy (Knowledge Graph) przetwarzający Wikipedię w ujednoliconą strukturę topologiczną.", 
-      fullDescription: "Hybrydowa architektura bazy danych zaprojektowana do analizy grafowej na dużą skalę. Wykorzystuje zunifikowany backend FastAPI, który federuje zapytania pomiędzy izolowanymi kontenerami językowymi. Używa Neo4j do analizy topologicznej (PageRank, Podobieństwo Jaccarda) oraz SQLite do wyszukiwania pełnotekstowego z czasem odpowiedzi poniżej milisekundy (FTS5). Zawiera system konfiguracji Just-In-Time (JIT) do parsowania dowolnego języka Wikipedii." 
+      description: "Samodzielne skonteneryzowanie (Docker) środowiska dla autorskiego silnika grafu wiedzy. Administracja bazami danych (SQL, Neo4j) oraz monitorowanie stabilności i wydajności API (FastAPI) przy procesowaniu dużych wolumenów danych.", 
+      fullDescription: "Samodzielne skonteneryzowanie (Docker) środowiska dla autorskiego silnika grafu wiedzy. Administracja bazami danych (SQL, Neo4j) oraz monitorowanie stabilności i wydajności API (FastAPI) przy procesowaniu dużych wolumenów danych." 
     },
     en: { 
-      description: "Language-agnostic Knowledge Graph engine processing Wikipedia into a unified Neo4j + SQLite structure.", 
-      fullDescription: "A hybrid database architecture designed for large-scale graph analysis. Features a unified FastAPI backend federating queries across isolated language containers. Utilizes Neo4j for topological analysis (PageRank, Jaccard Similarity) and SQLite for sub-millisecond full-text search (FTS5). Includes a Just-In-Time (JIT) configuration system for parsing any Wikipedia language." 
+      description: "Independent containerization (Docker) of the environment for a custom knowledge graph engine. Database administration (SQL, Neo4j) and monitoring the stability and performance of the API (FastAPI) when processing large data volumes.", 
+      fullDescription: "Independent containerization (Docker) of the environment for a custom knowledge graph engine. Database administration (SQL, Neo4j) and monitoring the stability and performance of the API (FastAPI) when processing large data volumes." 
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
     techStack: ["Python", "Neo4j", "Docker", "SQL", "FastAPI"],
@@ -34,12 +34,12 @@ export const supportProjects: Project[] = [
   {
     title: "LeadFinder & Katalog Ecosystem",
     pl: { 
-      description: "Kompleksowy system automatyzacji sprzedaży i marketplace szablonów. Łączy scraping leadów (Python) z generowaniem stron demo (Next.js).", 
-      fullDescription: `Ekosystem dwóch systemów zaprojektowany do automatyzacji cyklu sprzedaży.
+      description: "Kompleksowy system automatyzacji sprzedaży i marketplace szablonów. Łączy scraping leadów (Python) z generowaniem stron demo (Next.js).", 
+      fullDescription: `Ekosystem dwóch systemów zaprojektowany do automatyzacji cyklu sprzedaży.
 
-1. Pipeline (Python): Autorski silnik scrapujący, który identyfikuje firmy z brakami cyfrowymi, waliduje domeny i synchronizuje leady bezpośrednio z Google Sheets. Zawiera niestandardowo spatchowany scraper Google Maps używający Playwright do naprawy logiki zliczania opinii.
+1. Pipeline (Python): Autorski silnik scrapujący, który identyfikuje firmy z brakami cyfrowymi, waliduje domeny i synchronizuje leady bezpośrednio z Google Sheets. Zawiera niestandardowo spatchowany scraper Google Maps używający Playwright do naprawy logiki zliczania opinii.
 
-2. Marketplace (Next.js 15): Wydajne Monorepo (Turborepo) z 'Dynamiczną Architekturą Sprzedaży'. Pozwala to na natychmiastowe generowanie spersonalizowanych stron demo ('Magic Links') za pomocą parametrów URL, redukując czas ręcznego przygotowania oferty o 99%.` 
+2. Marketplace (Next.js 15): Wydajne Monorepo (Turborepo) z 'Dynamiczną Architekturą Sprzedaży'. Pozwala to na natychmiastowe generowanie spersonalizowanych stron demo ('Magic Links') za pomocą parametrów URL, redukując czas ręcznego przygotowania oferty o 99%.` 
     },
     en: { 
       description: "End-to-end sales automation pipeline and template marketplace. Features automated lead scraping and dynamic 'Magic Link' demo generation.", 
@@ -58,8 +58,8 @@ export const supportProjects: Project[] = [
   {
     title: "ROMHub",
     pl: { 
-      description: "Emulator N64 działający w przeglądarce (Client-side) dzięki technologii WebAssembly.", 
-      fullDescription: "Emulator skoncentrowany na prywatności, działający całkowicie po stronie klienta dzięki WebAssembly. ROM-y są przetwarzane lokalnie i nigdy nie są przesyłane na serwer. Posiada trwały zapis stanów gry w pamięci lokalnej (Local Storage), niestandardowe mapowanie kontrolera oraz modułową architekturę zaprojektowaną pod przyszłe rozszerzenia rdzenia." 
+      description: "Emulator N64 działający w przeglądarce (Client-side) dzięki technologii WebAssembly.", 
+      fullDescription: "Emulator skoncentrowany na prywatności, działający całkowicie po stronie klienta dzięki WebAssembly. ROM-y są przetwarzane lokalnie i nigdy nie są przesyłane na serwer. Posiada trwały zapis stanów gry w pamięci lokalnej (Local Storage), niestandardowe mapowanie kontrolera oraz modułową architekturę zaprojektowaną pod przyszłe rozszerzenia rdzenia." 
     },
     en: { 
       description: "Client-side N64 emulator running entirely in the browser via WebAssembly (WASM).", 
@@ -69,14 +69,13 @@ export const supportProjects: Project[] = [
     techStack: ["JavaScript", "Emulation", "Local Storage"],
     imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=400&q=80&fm=webp",
     variant: "code",
-    // icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     hideFromResume: true
   },
   {
     title: "Portfolio Website",
     pl: { 
-      description: "Interfejs terminala w stylu retro-futurystycznym, zbudowany w oparciu o React i Three.js.", 
-      fullDescription: "Imersyjna symulacja 'systemu operacyjnego' eksplorująca glassmorphism i estetykę mechaniczną. Posiada w pełni interaktywny terminal CLI, środowisko 3D (Three.js) do przeglądania akt (dossier) oraz dedykowany generator CV zoptymalizowany do druku. Zbudowany z naciskiem na wysoką czytelność (kontrast), responsywność w trybie 'offline-first' oraz ścisłe oddzielenie danych od interfejsu użytkownika." 
+      description: "Interfejs terminala w stylu retro-futurystycznym, zbudowany w oparciu o React i Three.js.", 
+      fullDescription: "Imersyjna symulacja 'systemu operacyjnego' eksplorująca glassmorphism i estetykę mechaniczną. Posiada w pełni interaktywny terminal CLI, środowisko 3D (Three.js) do przeglądania akt (dossier) oraz dedykowany generator CV zoptymalizowany do druku. Zbudowany z naciskiem na wysoką czytelność (kontrast), responsywność w trybie 'offline-first' oraz ścisłe oddzielenie danych od interfejsu użytkownika." 
     },
     en: { 
       description: "Retro-futuristic terminal interface built with React, Three.js, and Framer Motion.", 
@@ -86,7 +85,6 @@ export const supportProjects: Project[] = [
     techStack: ["React", "Three.js", "TypeScript", "Tailwind CSS"],
     imageUrl: "/portfolio-website.png",
     variant: "design",
-    // icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     hideFromResume: true
   }
 ];
@@ -95,7 +93,7 @@ export const supportConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
     title: "Technical Support Engineer | L2 Ops Specialist",
-    description: "Inżynier łączący twarde kompetencje techniczne (Linux, SQL, Bash, Python) z rygorem operacyjnym środowisk korporacyjnych (FedEx). Posiadam praktyczne doświadczenie w zarządzaniu incydentami (Ticketing / SLA) oraz samodzielnym utrzymaniu i optymalizacji infrastruktury webowej (Vercel, Cloudflare, Cron Jobs). Biegły w automatyzacji procesów, parsowaniu logów oraz szybkiej diagnozie środowisk. Szukam roli, w której wykorzystam swój zmysł analityczny do skutecznego rozwiązywania złożonych problemów (Troubleshooting) i stabilizacji systemów.",
+    description: "Inżynier łączący twarde kompetencje techniczne (Linux, SQL, Bash, Python) z rygorem operacyjnym środowisk korporacyjnych (FedEx). Posiadam praktyczne doświadczenie w zarządzaniu incydentami (Ticketing / SLA) oraz samodzielnym utrzymaniu i optymalizacji infrastruktury webowej (Vercel, Cloudflare, Cron Jobs). Biegły w automatyzacji procesów, parsowaniu logów oraz szybkiej diagnozie środowisk. Szukam roli, w której wykorzystam swój zmysł analityczny do skutecznego rozwiązywania złożonych problemów (Troubleshooting) i stabilizacji systemów.",
     email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "C++"]
   },
@@ -117,8 +115,8 @@ export const supportData: Record<string, CVData> = {
         location: "Kielce / Zdalnie",
         period: "01.2024 - 06.2025",
         responsibilities: [
-          "Prowadzenie kursów programowania: Realizacja kompleksowych szkoleń z języków Python, C++ i C#.",
-          "Live Debugging i Wsparcie Techniczne: Bieżące diagnozowanie i naprawianie błędów w kodzie uczniów oraz rozwiązywanie problemów konfiguracyjnych środowisk (VS Code, Unity).",
+          "Prowadzenie kursów programowania: Realizacja kompleksowych szkoleń z języków Python, C++ i C#.",
+          "Live Debugging i Wsparcie Techniczne: Bieżące diagnozowanie i naprawianie błędów w kodzie uczniów oraz rozwiązywanie problemów konfiguracyjnych środowisk (VS Code, Unity).",
           "Asynchroniczna obsługa zgłoszeń (Discord): Zdalne wsparcie techniczne dla kursantów poza godzinami zajęć."
         ]
       },
@@ -128,8 +126,8 @@ export const supportData: Record<string, CVData> = {
         location: "Holandia",
         period: "02.2025 - 10.2025",
         responsibilities: [
-          "Realizacja zadań w dynamicznym środowisku produkcyjnym pod presją czasu.",
-          "Praca w międzynarodowym zespole (język angielski)."
+          "Praca w dynamicznym środowisku międzynarodowym – szybka adaptacja i praca zespołowa.",
+          "Realizacja zadań pod presją czasu z zachowaniem wysokiej dyscypliny i norm jakościowych."
         ]
       },
       {
@@ -138,15 +136,15 @@ export const supportData: Record<string, CVData> = {
         location: "Irlandia (Zdalnie, Kraków)",
         period: "03.2022 - 07.2023",
         responsibilities: [
-          "Analiza dokumentacji i zapewnienie zgodności z procesem odpraw celnych (Customs Compliance).",
-          "Zarządzanie incydentami operacyjnymi w wewnętrznym systemie zgłoszeniowym (Ticket-based workflow).",
-          "Praca w reżimie ścisłych terminów (SLA) w międzynarodowym zespole."
+          "Analiza dokumentacji i zapewnienie zgodności z procesem odpraw celnych (Customs Compliance).",
+          "Zarządzanie incydentami operacyjnymi w wewnętrznym systemie zgłoszeniowym (Ticket-based workflow).",
+          "Praca w reżimie ścisłych terminów (SLA) w międzynarodowym zespole."
         ]
       }
     ],
     education: [
       { school: "Politechnika Krakowska", degree: "Kierunek: Matematyka Stosowana", years: "2020-2022" },
-      { school: "Akademia Górniczo-Hutnicza (AGH)", degree: "Kierunek: Elektronika i Telekomunikacja", years: "2019-2020" }
+      { school: "Akademia Górniczo-Hutnicza (AGH)", degree: "Kierunek: Elektronika i Telekomunikacja", years: "2019-2020" }
     ],
     skills: {
       general: ["Linux (Ubuntu CLI)", "Enterprise Ticketing Systems (SLA)", "Incident Management", "Problem Solving"],
