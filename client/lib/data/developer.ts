@@ -5,12 +5,12 @@ export const devProjects: Project[] = [
   {
     title: "LeadFinder & Katalog Ecosystem [11.2025 – Obecnie]",
     pl: { 
-      description: "Architektura Full-Stack: Zaprojektowanie i implementacja ekosystemu łączącego zoptymalizowaną platformę front-endową z systemem generowania leadów (Python). Implementacja systemu inteligentnych redirectów dla ruchu analitycznego. Inżynieria Backendowa & Web Scraping: Rozwój autorskiego forka silnika google-maps-scraper. Implementacja złożonej logiki wait-and-retry w Playwright/Puppeteer w celu eliminacji race conditions oraz ominięcia blokad API (Google RPC). Parsowanie struktur APP_INITIALIZATION_STATE. Optymalizacja, Analityka i Automatyzacja: Wdrożenie systemu marketingu personalizowanego ('Magic Links') dynamicznie renderującego szablony z danymi klienta. Skonfigurowanie pełnego śledzenia interakcji w Google Analytics. Profilowanie kodu (LCP/TBT) za pomocą serwerów MCP (wynik 100/100 Lighthouse). Infrastruktura i Integracje API: Wdrożenie środowiska na Vercel (Cron Jobs / Keep-Alive) i integracja przepływu danych z Google Sheets API z wykorzystaniem Google Cloud IAM.", 
-      fullDescription: "Architektura Full-Stack: Zaprojektowanie i implementacja ekosystemu łączącego zoptymalizowaną platformę front-endową z systemem generowania leadów (Python). Implementacja systemu inteligentnych redirectów dla ruchu analitycznego. Inżynieria Backendowa & Web Scraping: Rozwój autorskiego forka silnika google-maps-scraper. Implementacja złożonej logiki wait-and-retry w Playwright/Puppeteer w celu eliminacji race conditions oraz ominięcia blokad API (Google RPC). Parsowanie struktur APP_INITIALIZATION_STATE. Optymalizacja, Analityka i Automatyzacja: Wdrożenie systemu marketingu personalizowanego ('Magic Links') dynamicznie renderującego szablony z danymi klienta. Skonfigurowanie pełnego śledzenia interakcji w Google Analytics. Profilowanie kodu (LCP/TBT) za pomocą serwerów MCP (wynik 100/100 Lighthouse). Infrastruktura i Integracje API: Wdrożenie środowiska na Vercel (Cron Jobs / Keep-Alive) i integracja przepływu danych z Google Sheets API z wykorzystaniem Google Cloud IAM." 
+      description: "Full-Stack & Analityka: Stworzenie ekosystemu łączącego front-end z systemem generowania leadów. Wdrożenie systemu 'Magic Links' (renderowanie szablonów), inteligentnych redirectów URL i śledzenia Google Analytics. Backend & Scraping: Rozwój forka google-maps-scraper (Python). Eliminacja race conditions i blokad API (Google RPC) logiką wait-and-retry w Playwright. Parsowanie struktur APP_INITIALIZATION_STATE. Infrastruktura & Optymalizacja: Wdrożenie na Vercel (Cron Jobs). Integracja z Google Sheets API poprzez Google Cloud IAM. Profilowanie kodu serwerami MCP (wynik 100/100 Lighthouse).", 
+      fullDescription: "Full-Stack & Analityka: Stworzenie ekosystemu łączącego front-end z systemem generowania leadów. Wdrożenie systemu 'Magic Links' (renderowanie szablonów), inteligentnych redirectów URL i śledzenia Google Analytics. Backend & Scraping: Rozwój forka google-maps-scraper (Python). Eliminacja race conditions i blokad API (Google RPC) logiką wait-and-retry w Playwright. Parsowanie struktur APP_INITIALIZATION_STATE. Infrastruktura & Optymalizacja: Wdrożenie na Vercel (Cron Jobs). Integracja z Google Sheets API poprzez Google Cloud IAM. Profilowanie kodu serwerami MCP (wynik 100/100 Lighthouse)." 
     },
     en: { 
-      description: "Full-Stack Architecture: Design and implementation of an ecosystem connecting an optimized frontend platform with a lead generation system (Python). Implementation of an intelligent redirect system for analytical traffic. Backend Engineering & Web Scraping: Development of a custom fork of the google-maps-scraper engine. Implementation of complex wait-and-retry logic in Playwright/Puppeteer to eliminate race conditions and bypass API blocks (Google RPC). Parsing APP_INITIALIZATION_STATE structures. Optimization, Analytics & Automation: Implementation of a personalized marketing system ('Magic Links') dynamically rendering templates with client data. Configuration of full interaction tracking in Google Analytics. Code profiling (LCP/TBT) using MCP servers (100/100 Lighthouse score). Infrastructure & API Integrations: Deployment on Vercel (Cron Jobs / Keep-Alive) and integration of data flow with Google Sheets API using Google Cloud IAM.", 
-      fullDescription: "Full-Stack Architecture: Design and implementation of an ecosystem connecting an optimized frontend platform with a lead generation system (Python). Implementation of an intelligent redirect system for analytical traffic. Backend Engineering & Web Scraping: Development of a custom fork of the google-maps-scraper engine. Implementation of complex wait-and-retry logic in Playwright/Puppeteer to eliminate race conditions and bypass API blocks (Google RPC). Parsing APP_INITIALIZATION_STATE structures. Optimization, Analytics & Automation: Implementation of a personalized marketing system ('Magic Links') dynamically rendering templates with client data. Configuration of full interaction tracking in Google Analytics. Code profiling (LCP/TBT) using MCP servers (100/100 Lighthouse score). Infrastructure & API Integrations: Deployment on Vercel (Cron Jobs / Keep-Alive) and integration of data flow with Google Sheets API using Google Cloud IAM." 
+      description: "Full-Stack & Analytics: Creating an ecosystem connecting front-end with a lead generation system. Implementation of 'Magic Links' (template rendering), intelligent URL redirects, and Google Analytics tracking. Backend & Scraping: Development of a google-maps-scraper fork (Python). Elimination of race conditions and API blocks (Google RPC) using wait-and-retry logic in Playwright. Parsing APP_INITIALIZATION_STATE structures. Infrastructure & Optimization: Deployment on Vercel (Cron Jobs). Integration with Google Sheets API via Google Cloud IAM. Code profiling using MCP servers (100/100 Lighthouse score).", 
+      fullDescription: "Full-Stack & Analytics: Creating an ecosystem connecting front-end with a lead generation system. Implementation of 'Magic Links' (template rendering), intelligent URL redirects, and Google Analytics tracking. Backend & Scraping: Development of a google-maps-scraper fork (Python). Elimination of race conditions and API blocks (Google RPC) using wait-and-retry logic in Playwright. Parsing APP_INITIALIZATION_STATE structures. Infrastructure & Optimization: Deployment on Vercel (Cron Jobs). Integration with Google Sheets API via Google Cloud IAM. Code profiling using MCP servers (100/100 Lighthouse score)." 
     },
     githubUrl: "https://katalog.czerwinskidawid.pl",
     techStack: ["Next.js 15", "React", "Python", "Playwright", "FastAPI", "Google Cloud"],
@@ -59,8 +59,8 @@ export const devProjects: Project[] = [
   {
     title: "ROMHub",
     pl: { 
-      description: "Emulator N64 działający w przeglądarce (Client-side) dzięki technologii WebAssembly.", 
-      fullDescription: "Emulator skoncentrowany na prywatności, działający całkowicie po stronie klienta dzięki WebAssembly. ROM-y są przetwarzane lokalnie i nigdy nie są przesyłane na serwer. Posiada trwały zapis stanów gry w pamięci lokalnej (Local Storage), niestandardowe mapowanie kontrolera oraz modułową architekturę zaprojektowaną pod przyszłe rozszerzenia rdzenia." 
+      description: "Emulator N64 działający w przeglądarce (Client-side) dzięki technologii WebAssembly.", 
+      fullDescription: "Emulator skoncentrowany na prywatności, działający całkowicie po stronie klienta dzięki WebAssembly. ROM-y są przetwarzane lokalnie i nigdy nie są przesyłane na serwer. Posiada trwały zapis stanów gry w pamięci lokalnej (Local Storage), niestandardowe mapowanie kontrolera oraz modułową architekturę zaprojektowaną pod przyszłe rozszerzenia rdzenia." 
     },
     en: { 
       description: "Client-side N64 emulator running entirely in the browser via WebAssembly (WASM).", 
@@ -70,14 +70,13 @@ export const devProjects: Project[] = [
     techStack: ["JavaScript", "Emulation", "Local Storage"],
     imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=400&q=80&fm=webp",
     variant: "code",
-    // icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     hideFromResume: true
   },
   {
     title: "Portfolio Website",
     pl: { 
-      description: "Interfejs terminala w stylu retro-futurystycznym, zbudowany w oparciu o React i Three.js.", 
-      fullDescription: "Imersyjna symulacja 'systemu operacyjnego' eksplorująca glassmorphism i estetykę mechaniczną. Posiada w pełni interaktywny terminal CLI, środowisko 3D (Three.js) do przeglądania akt (dossier) oraz dedykowany generator CV zoptymalizowany do druku. Zbudowany z naciskiem na wysoką czytelność (kontrast), responsywność w trybie 'offline-first' oraz ścisłe oddzielenie danych od interfejsu użytkownika." 
+      description: "Interfejs terminala w stylu retro-futurystycznym, zbudowany w oparciu o React i Three.js.", 
+      fullDescription: "Imersyjna symulacja 'systemu operacyjnego' eksplorująca glassmorphism i estetykę mechaniczną. Posiada w pełni interaktywny terminal CLI, środowisko 3D (Three.js) do przeglądania akt (dossier) oraz dedykowany generator CV zoptymalizowany do druku. Zbudowany z naciskiem na wysoką czytelność (kontrast), responsywność w trybie 'offline-first' oraz ścisłe oddzielenie danych od interfejsu użytkownika." 
     },
     en: { 
       description: "Retro-futuristic terminal interface built with React, Three.js, and Framer Motion.", 
@@ -87,7 +86,6 @@ export const devProjects: Project[] = [
     techStack: ["React", "Three.js", "TypeScript", "Tailwind CSS"],
     imageUrl: "/portfolio-website.png",
     variant: "design",
-    // icon: <Zap className="h-8 w-8 text-gray-600 flex-shrink-0" />,
     hideFromResume: true
   }
 ];
