@@ -3,29 +3,45 @@ import { supportData } from "./support";
 
 export const devProjects: Project[] = [
   {
-    title: "LeadFinder & Katalog Ecosystem [11.2025 – Obecnie]",
+    title: "Platforma Webowa | katalog.czerwinskidawid.pl [11.2025 – Obecnie]",
     pl: { 
-      description: "Full-Stack & Analityka: Stworzenie ekosystemu łączącego front-end z systemem generowania leadów. Wdrożenie systemu 'Magic Links' (renderowanie szablonów), inteligentnych redirectów URL i śledzenia Google Analytics. Backend & Scraping: Rozwój forka google-maps-scraper (Python). Eliminacja race conditions i blokad API (Google RPC) logiką wait-and-retry w Playwright. Parsowanie struktur APP_INITIALIZATION_STATE. Infrastruktura & Optymalizacja: Wdrożenie na Vercel (Cron Jobs). Integracja z Google Sheets API poprzez Google Cloud IAM. Profilowanie kodu serwerami MCP (wynik 100/100 Lighthouse).", 
-      fullDescription: "Full-Stack & Analityka: Stworzenie ekosystemu łączącego front-end z systemem generowania leadów. Wdrożenie systemu 'Magic Links' (renderowanie szablonów), inteligentnych redirectów URL i śledzenia Google Analytics. Backend & Scraping: Rozwój forka google-maps-scraper (Python). Eliminacja race conditions i blokad API (Google RPC) logiką wait-and-retry w Playwright. Parsowanie struktur APP_INITIALIZATION_STATE. Infrastruktura & Optymalizacja: Wdrożenie na Vercel (Cron Jobs). Integracja z Google Sheets API poprzez Google Cloud IAM. Profilowanie kodu serwerami MCP (wynik 100/100 Lighthouse)." 
+      description: "Zaprojektowanie i wdrożenie pełnoprawnej aplikacji front-endowej. Opracowanie autorskiego systemu 'Magic Links' (dynamiczne renderowanie szablonów z danymi klienta) zintegrowanego z narzędziem LeadFinder. Wdrożenie inteligentnych redirectów dystrybuujących parametry śledzące oraz profilowanie kodu serwerami MCP (utrzymanie wyniku 100/100 Lighthouse).", 
+      fullDescription: "Zaprojektowanie i wdrożenie pełnoprawnej aplikacji front-endowej. Opracowanie autorskiego systemu 'Magic Links' (dynamiczne renderowanie szablonów z danymi klienta) zintegrowanego z narzędziem LeadFinder. Wdrożenie inteligentnych redirectów dystrybuujących parametry śledzące oraz profilowanie kodu serwerami MCP (utrzymanie wyniku 100/100 Lighthouse)." 
     },
     en: { 
-      description: "Full-Stack & Analytics: Creating an ecosystem connecting front-end with a lead generation system. Implementation of 'Magic Links' (template rendering), intelligent URL redirects, and Google Analytics tracking. Backend & Scraping: Development of a google-maps-scraper fork (Python). Elimination of race conditions and API blocks (Google RPC) using wait-and-retry logic in Playwright. Parsing APP_INITIALIZATION_STATE structures. Infrastructure & Optimization: Deployment on Vercel (Cron Jobs). Integration with Google Sheets API via Google Cloud IAM. Code profiling using MCP servers (100/100 Lighthouse score).", 
-      fullDescription: "Full-Stack & Analytics: Creating an ecosystem connecting front-end with a lead generation system. Implementation of 'Magic Links' (template rendering), intelligent URL redirects, and Google Analytics tracking. Backend & Scraping: Development of a google-maps-scraper fork (Python). Elimination of race conditions and API blocks (Google RPC) using wait-and-retry logic in Playwright. Parsing APP_INITIALIZATION_STATE structures. Infrastructure & Optimization: Deployment on Vercel (Cron Jobs). Integration with Google Sheets API via Google Cloud IAM. Code profiling using MCP servers (100/100 Lighthouse score)." 
+      description: "Design and implementation of a full-fledged front-end application. Development of a custom 'Magic Links' system (dynamic rendering of templates with client data) integrated with the LeadFinder tool. Implementation of intelligent redirects distributing tracking parameters and code profiling using MCP servers (maintaining a 100/100 Lighthouse score).", 
+      fullDescription: "Design and implementation of a full-fledged front-end application. Development of a custom 'Magic Links' system (dynamic rendering of templates with client data) integrated with the LeadFinder tool. Implementation of intelligent redirects distributing tracking parameters and code profiling using MCP servers (maintaining a 100/100 Lighthouse score)." 
     },
     githubUrl: "https://katalog.czerwinskidawid.pl",
-    techStack: ["Next.js 15", "React", "Python", "Playwright", "FastAPI", "Google Cloud"],
+    liveUrl: "https://katalog.czerwinskidawid.pl",
+    techStack: ["Next.js 15", "React", "Vercel", "Google Analytics"],
+    variant: "code",
+    hideFromPortfolio: true
+  },
+  {
+    title: "LeadFinder – Backend & Web Scraping",
+    pl: { 
+      description: "Rozwój forka silnika google-maps-scraper. Zaprojektowanie i wdrożenie systemu automatycznego generowania leadów do Google Sheets poprzez API. Naprawa asynchronicznych mechanizmów ładowania DOM. Zastosowanie logiki wait-and-retry (Playwright) w celu eliminacji race conditions i blokad API (Google RPC). Parsowanie i naprawa błędów konwersji złożonych struktur danych (APP_INITIALIZATION_STATE).", 
+      fullDescription: "Rozwój forka silnika google-maps-scraper. Zaprojektowanie i wdrożenie systemu automatycznego generowania leadów do Google Sheets poprzez API. Naprawa asynchronicznych mechanizmów ładowania DOM. Zastosowanie logiki wait-and-retry (Playwright) w celu eliminacji race conditions i blokad API (Google RPC). Parsowanie i naprawa błędów konwersji złożonych struktur danych (APP_INITIALIZATION_STATE)." 
+    },
+    en: { 
+      description: "Development of a google-maps-scraper engine fork. Design and implementation of an automated lead generation system to Google Sheets via API. Fixing asynchronous DOM loading mechanisms. Application of wait-and-retry logic (Playwright) to eliminate race conditions and API blocks (Google RPC). Parsing and fixing conversion errors of complex data structures (APP_INITIALIZATION_STATE).", 
+      fullDescription: "Development of a google-maps-scraper engine fork. Design and implementation of an automated lead generation system to Google Sheets via API. Fixing asynchronous DOM loading mechanisms. Application of wait-and-retry logic (Playwright) to eliminate race conditions and API blocks (Google RPC). Parsing and fixing conversion errors of complex data structures (APP_INITIALIZATION_STATE)." 
+    },
+    githubUrl: "https://github.com/Gzyms69/LeadFinder",
+    techStack: ["Python", "Playwright", "Google Cloud IAM"],
     variant: "code",
     hideFromPortfolio: true
   },
   {
     title: "WikiGraph Lab",
     pl: { 
-      description: "Rozwój Backendu: Stworzenie od zera silnika grafu wiedzy. Projektowanie architektury dla relacyjnych (SQL) i grafowych (Neo4j) baz danych. Tworzenie i optymalizacja wydajności REST API (FastAPI) do obsługi zapytań topologicznych. Skonteneryzowanie całego środowiska (Docker).", 
-      fullDescription: "Rozwój Backendu: Stworzenie od zera silnika grafu wiedzy. Projektowanie architektury dla relacyjnych (SQL) i grafowych (Neo4j) baz danych. Tworzenie i optymalizacja wydajności REST API (FastAPI) do obsługi zapytań topologicznych. Skonteneryzowanie całego środowiska (Docker)." 
+      description: "Projektowanie architektury backendowej dla autorskiego silnika grafu wiedzy z wykorzystaniem baz SQL i Neo4j. Programowanie i optymalizacja wydajności REST API w FastAPI. Skonteneryzowanie całego środowiska przy użyciu Dockera.", 
+      fullDescription: "Projektowanie architektury backendowej dla autorskiego silnika grafu wiedzy z wykorzystaniem baz SQL i Neo4j. Programowanie i optymalizacja wydajności REST API w FastAPI. Skonteneryzowanie całego środowiska przy użyciu Dockera." 
     },
     en: { 
-      description: "Backend Development: Creating a knowledge graph engine from scratch. Architectural design for relational (SQL) and graph (Neo4j) databases. Creation and performance optimization of REST API (FastAPI) for topological query handling. Full environment containerization (Docker).", 
-      fullDescription: "Backend Development: Creating a knowledge graph engine from scratch. Architectural design for relational (SQL) and graph (Neo4j) databases. Creation and performance optimization of REST API (FastAPI) for topological query handling. Full environment containerization (Docker)." 
+      description: "Designing backend architecture for a custom knowledge graph engine using SQL and Neo4j databases. Programming and performance optimization of REST API in FastAPI. Containerization of the entire environment using Docker.", 
+      fullDescription: "Designing backend architecture for a custom knowledge graph engine using SQL and Neo4j databases. Programming and performance optimization of REST API in FastAPI. Containerization of the entire environment using Docker." 
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
     techStack: ["Python", "Neo4j", "Docker", "SQL", "FastAPI"],
@@ -55,6 +71,7 @@ export const devProjects: Project[] = [
     techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "MS Office"],
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&q=80&fm=webp",
     variant: "code",
+    hideFromResume: true
   },
   {
     title: "ROMHub",

@@ -13,6 +13,7 @@ export const itSpecialistProjects: Project[] = [
       fullDescription: "Independent maintenance, configuration, and ongoing administration of a personal domain and web environment. Configuration of network security, managing SSL certificates, and DNS records (Cloudflare). Service availability monitoring and diagnosing basic access issues (Troubleshooting), as well as ensuring GDPR compliance (Klaro)."
     },
     githubUrl: "https://katalog.czerwinskidawid.pl",
+    liveUrl: "https://katalog.czerwinskidawid.pl",
     techStack: ["Administracja Sieci", "Cloudflare", "SSL", "DNS", "RODO"],
     variant: "code",
   }

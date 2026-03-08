@@ -2,32 +2,48 @@ import { Project, CVData, PortfolioConfig } from "@shared/types";
 
 export const supportProjects: Project[] = [
   {
-    title: "Katalog & LeadFinder Ecosystem [11.2025 – Obecnie]",
+    title: "Administrator Infrastruktury Webowej | katalog.czerwinskidawid.pl [11.2025 – Obecnie]",
     pl: { 
-      description: "Infrastruktura i Serverless: Administracja środowiskiem (Vercel, DNS, Cloudflare, SSL). Eliminacja opóźnień 'Cold Start' poprzez endpointy Keep-Alive i Cron Jobs. Wdrożenie rozwiązań RODO (Klaro). Troubleshooting: Diagnoza błędów asynchronicznych (race conditions) i omijanie blokad sieciowych (Google RPC) przy użyciu Playwright do egzekucji zapytań HTTP. Analityka i Wydajność: Wdrożenie śledzenia Google Analytics z systemem inteligentnych redirectów i autoryzacją 'Magic Links'. Profilowanie ładowania (LCP/TBT) serwerami MCP i Puppeteer (wynik 100/100 Lighthouse).", 
-      fullDescription: "Infrastruktura i Serverless: Administracja środowiskiem (Vercel, DNS, Cloudflare, SSL). Eliminacja opóźnień 'Cold Start' poprzez endpointy Keep-Alive i Cron Jobs. Wdrożenie rozwiązań RODO (Klaro). Troubleshooting: Diagnoza błędów asynchronicznych (race conditions) i omijanie blokad sieciowych (Google RPC) przy użyciu Playwright do egzekucji zapytań HTTP. Analityka i Wydajność: Wdrożenie śledzenia Google Analytics z systemem inteligentnych redirectów i autoryzacją 'Magic Links'. Profilowanie ładowania (LCP/TBT) serwerami MCP i Puppeteer (wynik 100/100 Lighthouse)." 
+      description: "Samodzielne utrzymanie i optymalizacja platformy webowej. Zarządzanie środowiskiem produkcyjnym: Vercel, reguły bezpieczeństwa Cloudflare, DNS i SSL. Eliminacja problemu 'Cold Start' w środowisku Serverless poprzez wdrożenie endpointów Keep-Alive i zadań Cron. Wdrożenie pełnej analityki (Google Analytics, inteligentne redirecty URL) oraz profilowanie procesu ładowania (LCP/TBT) przy użyciu serwerów MCP (wynik 100/100 Lighthouse).", 
+      fullDescription: "Samodzielne utrzymanie i optymalizacja platformy webowej. Zarządzanie środowiskiem produkcyjnym: Vercel, reguły bezpieczeństwa Cloudflare, DNS i SSL. Eliminacja problemu 'Cold Start' w środowisku Serverless poprzez wdrożenie endpointów Keep-Alive i zadań Cron. Wdrożenie pełnej analityki (Google Analytics, inteligentne redirecty URL) oraz profilowanie procesu ładowania (LCP/TBT) przy użyciu serwerów MCP (wynik 100/100 Lighthouse)." 
     },
     en: { 
-      description: "Infrastructure & Serverless: Environment administration (Vercel, DNS, Cloudflare, SSL). Eliminating 'Cold Start' delays via Keep-Alive endpoints and Cron Jobs. GDPR implementation (Klaro). Troubleshooting: Diagnosing asynchronous race conditions and bypassing network blocks (Google RPC) using Playwright for HTTP request execution. Analytics & Performance: Implementation of Google Analytics tracking with intelligent redirects and 'Magic Links' authorization. Loading profiling (LCP/TBT) using MCP servers and Puppeteer (100/100 Lighthouse score).", 
-      fullDescription: "Infrastructure & Serverless: Environment administration (Vercel, DNS, Cloudflare, SSL). Eliminating 'Cold Start' delays via Keep-Alive endpoints and Cron Jobs. GDPR implementation (Klaro). Troubleshooting: Diagnosing asynchronous race conditions and bypassing network blocks (Google RPC) using Playwright for HTTP request execution. Analytics & Performance: Implementation of Google Analytics tracking with intelligent redirects and 'Magic Links' authorization. Loading profiling (LCP/TBT) using MCP servers and Puppeteer (100/100 Lighthouse score)." 
+      description: "Independent maintenance and optimization of a web platform. Production environment management: Vercel, Cloudflare security rules, DNS, and SSL. Elimination of 'Cold Start' issues in Serverless environments by implementing Keep-Alive endpoints and Cron jobs. Implementation of full analytics (Google Analytics, intelligent URL redirects) and load process profiling (LCP/TBT) using MCP servers (100/100 Lighthouse score).", 
+      fullDescription: "Independent maintenance and optimization of a web platform. Production environment management: Vercel, Cloudflare security rules, DNS, and SSL. Elimination of 'Cold Start' issues in Serverless environments by implementing Keep-Alive endpoints and Cron jobs. Implementation of full analytics (Google Analytics, intelligent URL redirects) and load process profiling (LCP/TBT) using MCP servers (100/100 Lighthouse score)." 
     },
     githubUrl: "https://katalog.czerwinskidawid.pl",
-    techStack: ["Next.js 15", "Vercel", "Cloudflare", "Playwright", "Web Analytics"],
+    liveUrl: "https://katalog.czerwinskidawid.pl",
+    techStack: ["Vercel", "Cloudflare", "Web Analytics", "DNS"],
+    variant: "code",
+    hideFromPortfolio: true
+  },
+  {
+    title: "LeadFinder Engine – Troubleshooting & Automatyzacja",
+    pl: { 
+      description: "Rozwój i utrzymanie narzędzia (fork google-maps-scraper) zasilającego platformę Katalog w dane. Advanced Debugging: Diagnoza błędów asynchronicznych (race conditions) i naprawa gubionego drzewa DOM. Ominięcie rygorystycznych blokad sieciowych (Google RPC) poprzez wdrożenie logiki wait-and-retry i egzekucję zapytań HTTP bezpośrednio z uwierzytelnionego kontekstu przeglądarki (Playwright).", 
+      fullDescription: "Rozwój i utrzymanie narzędzia (fork google-maps-scraper) zasilającego platformę Katalog w dane. Advanced Debugging: Diagnoza błędów asynchronicznych (race conditions) i naprawa gubionego drzewa DOM. Ominięcie rygorystycznych blokad sieciowych (Google RPC) poprzez wdrożenie logiki wait-and-retry i egzekucję zapytań HTTP bezpośrednio z uwierzytelnionego kontekstu przeglądarki (Playwright)." 
+    },
+    en: { 
+      description: "Development and maintenance of a tool (google-maps-scraper fork) feeding data to the Katalog platform. Advanced Debugging: Diagnosis of asynchronous errors (race conditions) and fixing lost DOM trees. Bypassing strict network blocks (Google RPC) by implementing wait-and-retry logic and executing HTTP requests directly from an authenticated browser context (Playwright).", 
+      fullDescription: "Development and maintenance of a tool (google-maps-scraper fork) feeding data to the Katalog platform. Advanced Debugging: Diagnosis of asynchronous errors (race conditions) and fixing lost DOM trees. Bypassing strict network blocks (Google RPC) by implementing wait-and-retry logic and executing HTTP requests directly from an authenticated browser context (Playwright)." 
+    },
+    githubUrl: "https://github.com/Gzyms69/LeadFinder",
+    techStack: ["Python", "Playwright", "Puppeteer", "Google Workspace API"],
     variant: "code",
     hideFromPortfolio: true
   },
   {
     title: "WikiGraph Lab",
     pl: { 
-      description: "Samodzielne skonteneryzowanie (Docker) środowiska dla autorskiego silnika grafu wiedzy. Administracja bazami danych (SQL, Neo4j) oraz monitorowanie stabilności i wydajności API (FastAPI) przy procesowaniu dużych wolumenów danych.", 
-      fullDescription: "Samodzielne skonteneryzowanie (Docker) środowiska dla autorskiego silnika grafu wiedzy. Administracja bazami danych (SQL, Neo4j) oraz monitorowanie stabilności i wydajności API (FastAPI) przy procesowaniu dużych wolumenów danych." 
+      description: "Skonteneryzowanie środowiska (Docker) dla relacyjnych (SQL) i grafowych (Neo4j) baz danych. Monitorowanie stabilności interfejsu API (FastAPI) obsługującego duże wolumeny danych.", 
+      fullDescription: "Skonteneryzowanie środowiska (Docker) dla relacyjnych (SQL) i grafowych (Neo4j) baz danych. Monitorowanie stabilności interfejsu API (FastAPI) obsługującego duże wolumeny danych." 
     },
     en: { 
-      description: "Independent containerization (Docker) of the environment for a custom knowledge graph engine. Database administration (SQL, Neo4j) and monitoring the stability and performance of the API (FastAPI) when processing large data volumes.", 
-      fullDescription: "Independent containerization (Docker) of the environment for a custom knowledge graph engine. Database administration (SQL, Neo4j) and monitoring the stability and performance of the API (FastAPI) when processing large data volumes." 
+      description: "Environment containerization (Docker) for relational (SQL) and graph (Neo4j) databases. Monitoring the stability of the API interface (FastAPI) handling large data volumes.", 
+      fullDescription: "Environment containerization (Docker) for relational (SQL) and graph (Neo4j) databases. Monitoring the stability of the API interface (FastAPI) handling large data volumes." 
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
-    techStack: ["Python", "Neo4j", "Docker", "SQL", "FastAPI"],
+    techStack: ["Docker", "Neo4j", "SQL", "FastAPI"],
     imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&h=400&q=80&fm=webp",
     variant: "code",
   },
@@ -54,6 +70,7 @@ export const supportProjects: Project[] = [
     techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "MS Office"],
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&q=80&fm=webp",
     variant: "design",
+    hideFromResume: true
   },
   {
     title: "ROMHub",
