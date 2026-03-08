@@ -60,8 +60,8 @@ export const officeData: Record<string, CVData> = {
     ],
     education: supportData.pl.education,
     skills: {
-      general: ["Doskonała organizacja pracy własnej i zarządzanie czasem", "Wysoka kultura osobista i komunikatywność", "Umiejętność pracy z poufnymi danymi (RODO/Data Privacy)"],
-      tools: ["MS Excel: Tabele przestawne, wyszukiwanie danych (VLOOKUP), filtrowanie, formatowanie warunkowe.", "Obsługa biura: Outlook (zarządzanie kalendarzem), Word (redagowanie pism), PowerPoint.", "Systemy: Doświadczenie w pracy z systemami CRM / ERP oraz Google Workspace."],
+      general: ["Organizacja własnej pracy", "Zapewnianie zgodności z dokumentacją i wymogami prawnymi", "Wysoka komunikatywność w dwóch językach"],
+      tools: ["MS Excel: Tabele przestawne, wyszukiwanie danych (VLOOKUP), filtrowanie, formatowanie warunkowe", "Obsługa biura: Outlook (zarządzanie kalendarzem), Word (redagowanie pism), PowerPoint", "Systemy: Doświadczenie w pracy z systemami CRM / ERP oraz Google Workspace"],
       programming: [] 
     },
     languages: supportData.pl.languages

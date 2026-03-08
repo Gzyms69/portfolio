@@ -343,31 +343,62 @@ export default function Resume() {
           <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">
             {lang === 'pl' ? 'Umiejętności' : 'Technical Skills'}
           </h2>
-          <div className="grid grid-cols-[140px_1fr] gap-y-0.5 gap-x-2 text-xs">
-            {skills.programming.length > 0 && (
-              <>
-                <span className="font-bold text-gray-800">
-                  {lang === 'pl' ? 'Języki Programowania' : 'Programming Languages'}
+          {variant === 'developer' ? (
+            <div className="flex flex-col gap-1 text-xs text-gray-700">
+              {skills.programming.length > 0 && (
+                <div className="flex items-start gap-1">
+                  <span className="font-bold text-gray-800 min-w-[140px]">
+                    {lang === 'pl' ? 'Języki Programowania:' : 'Programming Languages:'}
+                  </span>
+                  <span>{skills.programming.join(", ")}</span>
+                </div>
+              )}
+              <div className="flex items-start gap-1">
+                <span className="font-bold text-gray-800 min-w-[140px]">
+                  {lang === 'pl' ? 'Narzędzia i Systemy:' : 'Tools & Systems:'}
                 </span>
-                <span className="text-gray-700">{skills.programming.join(", ")}</span>
-              </>
-            )}
-            
-            <span className="font-bold text-gray-800">
-              {lang === 'pl' ? 'Narzędzia i Systemy' : 'Tools & Systems'}
-            </span>
-            <span className="text-gray-700">{skills.tools.join(", ")}</span>
-            
-            <span className="font-bold text-gray-800">
-              {lang === 'pl' ? 'Kompetencje' : 'Skills'}
-            </span>
-            <span className="text-gray-700">{skills.general.join(", ")}</span>
+                <span>{skills.tools.join(", ")}</span>
+              </div>
+              <div className="flex items-start gap-1">
+                <span className="font-bold text-gray-800 min-w-[140px]">
+                  {lang === 'pl' ? 'Kompetencje:' : 'Skills:'}
+                </span>
+                <span>{skills.general.join(", ")}</span>
+              </div>
+              <div className="flex items-start gap-1">
+                <span className="font-bold text-gray-800 min-w-[140px]">
+                  {lang === 'pl' ? 'Języki Obce:' : 'Languages:'}
+                </span>
+                <span>{languages.join(" • ")}</span>
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-[140px_1fr] gap-y-0.5 gap-x-2 text-xs">
+              {skills.programming.length > 0 && (
+                <>
+                  <span className="font-bold text-gray-800">
+                    {lang === 'pl' ? 'Języki Programowania' : 'Programming Languages'}
+                  </span>
+                  <span className="text-gray-700">{skills.programming.join(", ")}</span>
+                </>
+              )}
+              
+              <span className="font-bold text-gray-800">
+                {lang === 'pl' ? 'Narzędzia i Systemy' : 'Tools & Systems'}
+              </span>
+              <span className="text-gray-700">{skills.tools.join(", ")}</span>
+              
+              <span className="font-bold text-gray-800">
+                {lang === 'pl' ? 'Kompetencje' : 'Skills'}
+              </span>
+              <span className="text-gray-700">{skills.general.join(", ")}</span>
 
-            <span className="font-bold text-gray-800">
-              {lang === 'pl' ? 'Języki Obce' : 'Languages'}
-            </span>
-            <span className="text-gray-700">{languages.join(" • ")}</span>
-          </div>
+              <span className="font-bold text-gray-800">
+                {lang === 'pl' ? 'Języki Obce' : 'Languages'}
+              </span>
+              <span className="text-gray-700">{languages.join(" • ")}</span>
+            </div>
+          )}
         </section>
 
         {/* Key Projects */}
@@ -387,7 +418,7 @@ export default function Resume() {
                       </span>
                     </div>
                     <a href={proj.githubUrl} target="_blank" rel="noreferrer" className="text-[10px] text-gray-400 hover:underline">
-                      source code
+                      {proj.githubUrl.replace('https://', '')}
                     </a>
                   </div>
                   <p className="text-xs text-gray-700 mt-0.5 leading-snug">
@@ -437,7 +468,7 @@ export default function Resume() {
                 <div>
                   <span className="font-bold text-gray-900">{edu.school}</span>
                   <span className="text-gray-600 mx-1">-</span>
-                  <span className="text-gray-700">{edu.degree} ({edu.field})</span>
+                  <span className="text-gray-700">{edu.degree}{edu.field ? ` (${edu.field})` : ''}</span>
                 </div>
                 <span className="text-gray-500">{edu.years}</span>
               </div>

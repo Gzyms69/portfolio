@@ -101,7 +101,7 @@ export default function Index() {
               </div>
 
               <div className="flex flex-col gap-20 sm:gap-32">
-                {projects.map((project, index) => (
+                {projects.filter(p => !p.hideFromPortfolio).map((project, index) => (
                   <div 
                     key={index} 
                     className="sticky top-40 sm:top-48 md:top-56"
@@ -114,6 +114,7 @@ export default function Index() {
                           description={project[language].description}
                           fullDescription={project[language].fullDescription}
                           githubUrl={project.githubUrl}
+                          liveUrl={project.liveUrl}
                           techStack={project.techStack}
                           variant={project.variant}
                           icon={project.icon}

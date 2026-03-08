@@ -1,4 +1,4 @@
-import { Github, ExternalLink, Terminal, ChevronDown, ChevronUp } from "lucide-react";
+import { Github, Code, Terminal, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "./ui/button";
 import { TechTag } from "./ui/TechTag";
 import { GlitchText } from "./GlitchText";
@@ -169,7 +169,7 @@ export const ProjectCard = ({
                       onClick={(e) => { e.stopPropagation(); window.open(liveUrl, "_blank"); }}
                       className="text-primary/40 hover:text-primary hover:bg-primary/10 h-8 w-8 sm:h-10 sm:w-10 transition-transform hover:scale-110 active:scale-95"
                     >
-                      <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5" />
+                      <Code className="h-4 w-4 sm:h-5 sm:w-5" />
                     </Button>
                   )}
                 </div>

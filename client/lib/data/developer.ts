@@ -3,6 +3,21 @@ import { supportData } from "./support";
 
 export const devProjects: Project[] = [
   {
+    title: "Full-Stack Developer (Projekt Prywatny) | katalog.czerwinskidawid.pl [11.2025 – Obecnie]",
+    pl: { 
+      description: "Budowa platformy webowej z wykorzystaniem Next.js 15, React i Tailwind CSS. Wdrożenie autorskiego systemu Custom Analytics opartego na parsowaniu parametrów URL oraz autoryzacji 'Magic Links'. Implementacja złożonych bibliotek UI (Framer Motion, Three.js) przy jednoczesnym utrzymaniu najwyższych standardów wydajności (100/100 Google Lighthouse Core Web Vitals).", 
+      fullDescription: "Budowa platformy webowej z wykorzystaniem Next.js 15, React i Tailwind CSS. Wdrożenie autorskiego systemu Custom Analytics opartego na parsowaniu parametrów URL oraz autoryzacji 'Magic Links'. Implementacja złożonych bibliotek UI (Framer Motion, Three.js) przy jednoczesnym utrzymaniu najwyższych standardów wydajności (100/100 Google Lighthouse Core Web Vitals)." 
+    },
+    en: { 
+      description: "Building a web platform using Next.js 15, React, and Tailwind CSS. Implementation of a custom Analytics system based on URL parameter parsing and 'Magic Links' authorization. Integration of complex UI libraries (Framer Motion, Three.js) while maintaining peak performance (100/100 Google Lighthouse Core Web Vitals).", 
+      fullDescription: "Building a web platform using Next.js 15, React, and Tailwind CSS. Implementation of a custom Analytics system based on URL parameter parsing and 'Magic Links' authorization. Integration of complex UI libraries (Framer Motion, Three.js) while maintaining peak performance (100/100 Google Lighthouse Core Web Vitals)." 
+    },
+    githubUrl: "https://katalog.czerwinskidawid.pl",
+    techStack: ["Next.js 15", "React", "Tailwind CSS", "Framer Motion", "Three.js"],
+    variant: "code",
+    hideFromPortfolio: true
+  },
+  {
     title: "WikiGraph Lab",
     pl: { 
       description: "Silnik Grafu Wiedzy (Knowledge Graph) przetwarzający Wikipedię w ujednoliconą strukturę topologiczną.", 
@@ -16,7 +31,6 @@ export const devProjects: Project[] = [
     techStack: ["Python", "Neo4j", "Docker", "SQL", "FastAPI"],
     imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&h=400&q=80&fm=webp",
     variant: "code",
-    // icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
   {
     title: "LeadFinder & Katalog Ecosystem",
@@ -37,10 +51,10 @@ export const devProjects: Project[] = [
 2. Marketplace (Next.js 15): A high-performance Monorepo (Turborepo) featuring a 'Dynamic Sales Architecture'. This allows for the instant generation of personalized demo websites ('Magic Links') via URL parameters, reducing manual sales preparation time by 99%.` 
     },
     githubUrl: "https://github.com/Gzyms69/LeadFinder",
+    liveUrl: "https://katalog.czerwinskidawid.pl",
     techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "MS Office"],
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&q=80&fm=webp",
     variant: "code",
-    // icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
   {
     title: "ROMHub",
@@ -82,15 +96,15 @@ export const devConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
     title: "Junior Software Engineer | Python & C++ Developer",
-    description: "Ambitny programista z solidnym zapleczem akademickim (AGH/PK) i biegłością w Pythonie. Twórca architektury 'WikiGraph' (Graph ETL). Specjalizuję się w backendzie (FastAPI), algorytmice i optymalizacji zapytań. Szukam wyzwań inżynierskich.",
-    email: "dawidczerwinskibiznes@gmail.com",
+    description: "Full-Stack Developer z solidnym zapleczem akademickim (AGH/PK), łączący tworzenie nowoczesnych interfejsów (Next.js, React) z wydajną architekturą backendową (Python, FastAPI). Twórca kompleksowych systemów webowych, w tym platformy Katalog.CzerwinskiDawid.pl (100/100 Lighthouse) oraz ekosystemu LeadFinder automatyzującego procesy sprzedażowe. Specjalizuję się w optymalizacji wydajności, integracji API oraz projektowaniu zapytań (SQL/Neo4j). Szukam wyzwań inżynierskich, w których wykorzystam swoje umiejętności od analizy wymagań po finalne wdrożenie (CI/CD).",
+    email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Python", "C++", "SQL", "Docker", "Linux", "Neo4j"]
   },
   en: {
     name: "Dawid Czerwiński",
     title: "Junior Software Engineer | Python & C++ Developer",
-    description: "Ambitious programmer with a solid academic background (AGH/PK) and proficiency in Python. Creator of 'WikiGraph' architecture (Graph ETL). Specializing in backend (FastAPI), algorithms, and query optimization. Seeking engineering challenges.",
-    email: "dawidczerwinskibiznes@gmail.com",
+    description: "Full-Stack Developer with a solid academic background (AGH/PK), combining modern interface development (Next.js, React) with efficient backend architecture (Python, FastAPI). Creator of comprehensive web systems, including the Katalog.CzerwinskiDawid.pl platform (100/100 Lighthouse) and the LeadFinder ecosystem automating sales processes. Specialized in performance optimization, API integration, and query design (SQL/Neo4j). Seeking engineering challenges where I can leverage my skills from requirements analysis to final deployment (CI/CD).",
+    email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Python", "C++", "SQL", "Docker", "Linux", "Neo4j"]
   }
 };
@@ -134,8 +148,8 @@ export const devData: Record<string, CVData> = {
     education: supportData.pl.education,
     skills: {
       general: ["Grafowe Bazy Danych (Neo4j)", "Architektura Backend", "Algorytmy i Struktury Danych", "Docker"],
-      tools: ["Git (CI/CD GitHub Actions)", "Linux Environment", "VS Code"],
-      programming: ["Python (FastAPI, Pandas)", "C++ (STL/Pointers)", "REST API Design", "SQL (PostgreSQL)"]
+      tools: ["Git (CI/CD / GitHub Actions)", "Linux Environment", "VS Code"],
+      programming: ["Python (FastAPI, Pandas)", "C++", "REST API Design", "SQL"]
     },
     languages: supportData.pl.languages
   },
@@ -178,7 +192,7 @@ export const devData: Record<string, CVData> = {
     skills: {
       general: ["Graph Databases (Neo4j)", "Backend Architecture", "Algorithms & Data Structures", "Docker"],
       tools: ["Git (CI/CD GitHub Actions)", "Linux Environment", "VS Code"],
-      programming: ["Python (FastAPI, Pandas)", "C++ (STL/Pointers)", "REST API Design", "SQL (PostgreSQL)"]
+      programming: ["Python (FastAPI, Pandas)", "C++", "REST API Design", "SQL"]
     },
     languages: supportData.en.languages
   }

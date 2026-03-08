@@ -3,16 +3,30 @@ import { supportData } from "./support";
 
 export const itSpecialistProjects: Project[] = [
   {
-    title: "Prywatne Projekty IT",
+    title: "Katalog Ecosystem | katalog.czerwinskidawid.pl",
     pl: {
-      description: "Tworzenie i wdrażanie własnych systemów (m.in. WikiGraph, LeadFinder).",
-      fullDescription: "Projekty te obejmowały konfigurację środowisk Linux, wdrożenia w Dockerze, zarządzanie bazami SQL oraz pisanie skryptów w Pythonie. Samodzielna realizacja tych narzędzi dowodzi mojej umiejętności analitycznego myślenia, szybkiego wyszukiwania informacji oraz rozwiązywania złożonych problemów technicznych (Problem Solving)."
+      description: "Budowa serwisu internetowego z wykorzystaniem marketingu personalnego (magic links) i wdrożenie parametrów śledzących URL. Zapewnienie pełnej zgodności z wymogami bezpieczeństwa i RODO.",
+      fullDescription: "Tworzenie i wdrażanie własnych systemów (m.in. katalog.czerwinskidawid.pl, WikiGraph). Budowa serwisu internetowego z wykorzystaniem marketingu personalnego (magic links) i wdrożenie parametrów śledzących URL. Zapewnienie pełnej zgodności z wymogami bezpieczeństwa i RODO."
     },
     en: {
-      description: "Creating and deploying custom systems (incl. WikiGraph, LeadFinder).",
-      fullDescription: "These projects involved Linux environment configuration, Docker deployments, SQL database management, and Python scripting. The independent realization of these tools proves my analytical thinking skills, quick information retrieval, and complex problem-solving abilities."
+      description: "Web service construction utilizing form logic (Magic Links) and URL tracking parameters. Ensuring full compliance with security and GDPR requirements.",
+      fullDescription: "Development and deployment of custom systems (incl. katalog.czerwinskidawid.pl, WikiGraph). Web service construction utilizing form logic (Magic Links) and URL tracking parameters. Ensuring full compliance with security and GDPR requirements."
     },
-    githubUrl: "https://github.com/Gzyms69",
+    githubUrl: "https://katalog.czerwinskidawid.pl",
+    techStack: ["Next.js", "Magic Links", "GDPR Compliance"],
+    variant: "code",
+  },
+  {
+    title: "WikiGraph Lab",
+    pl: {
+      description: "Silnik Grafu Wiedzy (Knowledge Graph) przetwarzający Wikipedię w ujednoliconą strukturę topologiczną.",
+      fullDescription: "Projekt obejmował konfigurację środowisk Linux, wdrożenia w Dockerze, zarządzanie bazami SQL oraz pisanie skryptów w Pythonie. Dowodzi umiejętności analitycznego myślenia i rozwiązywania złożonych problemów technicznych."
+    },
+    en: {
+      description: "Knowledge Graph engine processing Wikipedia into a unified topological structure.",
+      fullDescription: "Project involved Linux environment configuration, Docker deployments, SQL database management, and Python scripting. Proves analytical thinking and complex problem-solving abilities."
+    },
+    githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
     techStack: ["Linux", "Docker", "Python", "SQL"],
     variant: "code",
   }
@@ -23,14 +37,14 @@ export const itSpecialistConfig: Record<string, PortfolioConfig> = {
     name: "Dawid Czerwiński",
     title: "IT Support Specialist / Helpdesk L1",
     description: "Specjalista IT łączący doświadczenie w operacjach międzynarodowych (FedEx) z praktyką w edukacji technicznej (Giganci Programowania). Jako Mentor IT wyrobiłem wysoką cierpliwość i umiejętność tłumaczenia technicznych zagadnień laikom, regularnie diagnozując i rozwiązując problemy konfiguracyjne na komputerach kursantów. Dodatkowo, dzięki pracy w środowisku korporacyjnym, doskonale rozumiem rygor pracy z dokumentacją, SLA i systemami biletowymi. Szukam możliwości rozwoju na pierwszej linii wsparcia (L1 Support / Helpdesk), gdzie wykorzystam swoje umiejętności komunikacyjne i zmysł techniczny.",
-    email: "dawidczerwinskibiznes@gmail.com",
+    email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Windows 10/11", "Troubleshooting", "Active Directory", "Linux", "Python"]
   },
   en: {
     name: "Dawid Czerwiński",
     title: "IT Support Specialist / Helpdesk L1",
     description: "IT Specialist combining experience in international operations (FedEx) with technical education practice (Giganci Programowania). As an IT Mentor, I developed high patience and the ability to explain technical issues to laypeople, regularly diagnosing and resolving configuration problems on students' computers. Additionally, thanks to working in a corporate environment, I perfectly understand the rigor of working with documentation, SLA, and ticketing systems. I am looking for development opportunities on the first line of support (L1 Support / Helpdesk), where I will utilize my communication skills and technical acumen.",
-    email: "dawidczerwinskibiznes@gmail.com",
+    email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Windows 10/11", "Troubleshooting", "Active Directory", "Linux", "Python"]
   }
 };
@@ -75,8 +89,8 @@ export const itSpecialistData: Record<string, CVData> = {
     education: supportData.pl.education,
     skills: {
       general: ["Systemy biletowe (Enterprise Ticketing Systems)", "Incident Management", "Praca w rygorze SLA", "Obsługa klienta"],
-      tools: ["Windows 10/11", "Linux (Ubuntu CLI)", "Google Workspace", "MS Office", "VS Code / Unity"],
-      programming: ["Python", "Bash", "Podstawy SQL", "Docker", "Git"]
+      tools: ["Windows 10/11", "Linux (Ubuntu CLI)", "Google Workspace", "MS Office", "VS Code"],
+      programming: ["Python", "C++", "Bash", "SQL", "Docker", "Git"]
     },
     languages: ["Polski (Ojczysty)", "Angielski (C1/C2 - Zaawansowany Professional)"]
   },
@@ -119,8 +133,8 @@ export const itSpecialistData: Record<string, CVData> = {
     education: supportData.en.education,
     skills: {
       general: ["Enterprise Ticketing Systems", "Incident Management", "SLA rigor", "Customer service"],
-      tools: ["Windows 10/11", "Linux (Ubuntu CLI)", "Google Workspace", "MS Office", "VS Code / Unity"],
-      programming: ["Python", "Bash", "SQL basics", "Docker", "Git"]
+      tools: ["Windows 10/11", "Linux (Ubuntu CLI)", "Google Workspace", "MS Office", "VS Code"],
+      programming: ["Python", "C++", "Bash", "SQL", "Docker", "Git"]
     },
     languages: ["Polish (Native)", "English (C1/C2 - Advanced Professional)"]
   }

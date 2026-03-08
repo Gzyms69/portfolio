@@ -10,12 +10,14 @@ export interface Project {
   pl: ProjectContent;
   en: ProjectContent;
   githubUrl: string;
+  liveUrl?: string;
   techStack: string[];
   variant: 'design' | 'code' | 'security';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon?: any;
   imageUrl?: string;
   hideFromResume?: boolean;
+  hideFromPortfolio?: boolean;
 }
 
 export interface Experience {
@@ -29,7 +31,7 @@ export interface Experience {
 export interface Education {
   school: string;
   degree: string;
-  field: string;
+  field?: string;
   years: string;
 }
 

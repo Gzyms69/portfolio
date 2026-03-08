@@ -2,6 +2,21 @@ import { Project, CVData, PortfolioConfig } from "@shared/types";
 
 export const supportProjects: Project[] = [
   {
+    title: "Twórca i Administrator Systemu Webowego | katalog.czerwinskidawid.pl [11.2025 – Obecnie]",
+    pl: { 
+      description: "Zaprojektowanie, wdrożenie i utrzymanie zaawansowanej platformy (Next.js 15) z wykorzystaniem marketingu personalnego (magic links) i wdrożeniem parametrów śledzących URL. Zapewnienie pełnej zgodności z wymogami bezpieczeństwa i RODO. Implementacja endpointów diagnostycznych (Keep-Alive / Cron Jobs) dla optymalizacji środowiska Serverless, eliminujących problem 'Cold Start'. Monitorowanie wydajności i optymalizacja zasobów (wynik 100/100 Lighthouse).", 
+      fullDescription: "Zaprojektowanie, wdrożenie i utrzymanie zaawansowanej platformy (Next.js 15) z wykorzystaniem marketingu personalnego (magic links) i wdrożeniem parametrów śledzących URL. Zapewnienie pełnej zgodności z wymogami bezpieczeństwa i RODO. Implementacja endpointów diagnostycznych (Keep-Alive / Cron Jobs) dla optymalizacji środowiska Serverless, eliminujących problem 'Cold Start'. Monitorowanie wydajności i optymalizacja zasobów (wynik 100/100 Lighthouse)." 
+    },
+    en: { 
+      description: "Design, deployment, and maintenance of an advanced platform (Next.js 15) utilizing personal marketing (magic links) and URL tracking parameters. Ensuring full compliance with security and GDPR requirements. Implementation of diagnostic endpoints (Keep-Alive / Cron Jobs) for serverless environment optimization, eliminating 'Cold Start' issues. Performance monitoring and resource optimization (100/100 Lighthouse score).", 
+      fullDescription: "Design, deployment, and maintenance of an advanced platform (Next.js 15) utilizing personal marketing (magic links) and URL tracking parameters. Ensuring full compliance with security and GDPR requirements. Implementation of diagnostic endpoints (Keep-Alive / Cron Jobs) for serverless environment optimization, eliminating 'Cold Start' issues. Performance monitoring and resource optimization (100/100 Lighthouse score)." 
+    },
+    githubUrl: "https://katalog.czerwinskidawid.pl",
+    techStack: ["Next.js 15", "Vercel", "SSL", "Monitoring"],
+    variant: "code",
+    hideFromPortfolio: true
+  },
+  {
     title: "WikiGraph Lab",
     pl: { 
       description: "Silnik Grafu Wiedzy (Knowledge Graph) przetwarzający Wikipedię w ujednoliconą strukturę topologiczną.", 
@@ -15,7 +30,6 @@ export const supportProjects: Project[] = [
     techStack: ["Python", "Neo4j", "Docker", "SQL", "FastAPI"],
     imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&h=400&q=80&fm=webp",
     variant: "code",
-    // icon: <Share2 className="h-8 w-8 text-gray-600 flex-shrink-0" /> // Icons causing issues in data files? We'll see.
   },
   {
     title: "LeadFinder & Katalog Ecosystem",
@@ -36,10 +50,10 @@ export const supportProjects: Project[] = [
 2. Marketplace (Next.js 15): A high-performance Monorepo (Turborepo) featuring a 'Dynamic Sales Architecture'. This allows for the instant generation of personalized demo websites ('Magic Links') via URL parameters, reducing manual sales preparation time by 99%.` 
     },
     githubUrl: "https://github.com/Gzyms69/LeadFinder",
+    liveUrl: "https://katalog.czerwinskidawid.pl",
     techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "MS Office"],
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&q=80&fm=webp",
     variant: "design",
-    // icon: <Wrench className="h-8 w-8 text-gray-600 flex-shrink-0" />
   },
   {
     title: "ROMHub",
@@ -82,14 +96,14 @@ export const supportConfig: Record<string, PortfolioConfig> = {
     name: "Dawid Czerwiński",
     title: "Technical Support Engineer | L2 Ops Specialist",
     description: "Specjalista IT łączący techniczne umiejętności (Python, Linux, SQL) z doświadczeniem operacyjnym (FedEx). Skutecznie diagnozuję problemy (Troubleshooting) i dbam o dotrzymywanie terminów (SLA). Wykorzystuję skrypty do automatyzacji powtarzalnych zadań.",
-    email: "dawidczerwinskibiznes@gmail.com",
+    email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "C++"]
   },
   en: {
     name: "Dawid Czerwiński",
     title: "Technical Support Engineer | L2 Ops Specialist",
     description: "IT Specialist combining technical skills (Python, Linux, SQL) with operational experience (FedEx). I effectively diagnose problems (Troubleshooting) and ensure SLA compliance. I leverage scripting to automate repetitive tasks.",
-    email: "dawidczerwinskibiznes@gmail.com",
+    email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "C++"]
   }
 };
@@ -131,13 +145,13 @@ export const supportData: Record<string, CVData> = {
       }
     ],
     education: [
-      { school: "Politechnika Krakowska", degree: "Kierunek: Matematyka Stosowana", field: "Matematyka Stosowana", years: "2020-2022" },
-      { school: "Akademia Górniczo-Hutnicza (AGH)", degree: "Kierunek: Elektronika i Telekomunikacja", field: "Elektronika i Telekomunikacja", years: "2019-2020" }
+      { school: "Politechnika Krakowska", degree: "Kierunek: Matematyka Stosowana", years: "2020-2022" },
+      { school: "Akademia Górniczo-Hutnicza (AGH)", degree: "Kierunek: Elektronika i Telekomunikacja", years: "2019-2020" }
     ],
     skills: {
       general: ["Linux (Ubuntu CLI)", "Enterprise Ticketing Systems (SLA)", "Incident Management", "Problem Solving"],
-      tools: ["Python (Scripting)", "Google Workspace API", "MS Office", "Git (CI/CD GitHub Actions)", "VS Code"],
-      programming: ["Bash Automation", "SQL (Podstawy)", "Sieci (TCP/IP / DNS)"]
+      tools: ["Python (Scripting)", "Google Workspace API", "MS Office", "Git (CI/CD GitHub Actions)", "VS Code", "Sieci (TCP/IP / DNS)"],
+      programming: ["Python", "C++", "Bash Automation", "SQL"]
     },
     languages: ["Polski (Ojczysty)", "Angielski (C1/C2 - Zaawansowany Professional)"]
   },
@@ -177,13 +191,13 @@ export const supportData: Record<string, CVData> = {
       }
     ],
     education: [
-      { school: "Cracow University of Technology", degree: "Field: Applied Mathematics", field: "Applied Mathematics", years: "2020-2022" },
-      { school: "AGH University of Science and Technology", degree: "Field: Electronics and Telecommunications", field: "Electronics and Telecommunications", years: "2019-2020" }
+      { school: "Cracow University of Technology", degree: "Field: Applied Mathematics", years: "2020-2022" },
+      { school: "AGH University of Science and Technology", degree: "Field: Electronics and Telecommunications", years: "2019-2020" }
     ],
     skills: {
       general: ["Linux (Ubuntu CLI)", "Enterprise Ticketing Systems (SLA)", "Incident Management", "Problem Solving"],
-      tools: ["Python (Scripting)", "Google Workspace API", "MS Office", "Git (CI/CD GitHub Actions)", "VS Code"],
-      programming: ["Bash Automation", "SQL (Basics)", "Networking (TCP/IP / DNS)"]
+      tools: ["Python (Scripting)", "Google Workspace API", "MS Office", "Git (CI/CD GitHub Actions)", "VS Code", "Networking (TCP/IP / DNS)"],
+      programming: ["Python", "C++", "Bash Automation", "SQL"]
     },
     languages: ["Polish (Native)", "English (C1/C2 - Advanced Professional)"]
   }
