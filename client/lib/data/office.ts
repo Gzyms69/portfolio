@@ -7,14 +7,14 @@ export const officeConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
     title: "Operations Specialist / Data Administration",
-    description: "Skrupulatny specjalista z doświadczeniem w operacjach międzynarodowych (FedEx) oraz edukacji IT (Giganci Programowania). Biegły w języku angielskim (C1/C2) i obsłudze pakietu MS Office (Excel - raportowanie, analiza danych). Łączę umiejętność weryfikacji dokumentacji (Compliance) i pracy w rygorze SLA z doświadczeniem w prowadzeniu prezentacji i szkoleniu użytkowników. Szukam stabilnej pracy w administracji, back-office lub operacjach.",
+    description: "Specjalista z 1,5-rocznym doświadczeniem w operacjach międzynarodowych (FedEx) oraz roczną praktyką w prowadzeniu szkoleń i raportowaniu (Giganci Programowania). Posiadam udokumentowaną praktykę w weryfikacji dokumentacji, pracy w ścisłym rygorze SLA oraz codziennej komunikacji w języku angielskim (C1/C2). Biegły w obsłudze komputera, pakietu MS Office, analizie danych oraz w nowych technologiach. Szukam stabilnej roli administracyjnej, wymagającej rzetelności, terminowości i sprawnej obsługi systemów wewnętrznych.",
     email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["English C1/C2", "MS Office", "Data Entry", "Administration"]
   },
   en: {
     name: "Dawid Czerwiński",
     title: "Operations Specialist / Data Administration",
-    description: "Meticulous specialist with experience in international operations (FedEx) and IT education (Giganci Programowania). Fluent in English (C1/C2) and proficient in MS Office (Excel - reporting, data analysis). I combine the ability to verify documentation (Compliance) and work under SLA rigor with experience in delivering presentations and training users. Seeking stable work in administration, back-office, or operations.",
+    description: "Specialist with 1.5 years of experience in international operations (FedEx) and one year of practice in delivering training and reporting (Giganci Programowania). I have documented experience in document verification, working under strict SLA rigor, and daily communication in English (C1/C2). Proficient in computer operation, MS Office suite, data analysis, and new technologies. Seeking a stable administrative role that requires reliability, timeliness, and efficient handling of internal systems.",
     email: "dawidczerwinskibiznes@gmail.com",
     heroTechStack: ["English C1/C2", "MS Office", "Data Entry", "Administration"]
   }

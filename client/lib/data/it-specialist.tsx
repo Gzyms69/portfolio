@@ -24,14 +24,14 @@ export const itSpecialistConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
     title: "IT Support Specialist / Helpdesk L1",
-    description: "Specjalista IT łączący doświadczenie w operacjach międzynarodowych (FedEx) z praktyką w edukacji technicznej (Giganci Programowania). Jako Mentor IT wyrobiłem wysoką cierpliwość i umiejętność tłumaczenia technicznych zagadnień laikom, regularnie diagnozując i rozwiązując problemy konfiguracyjne na komputerach kursantów. Dodatkowo, dzięki pracy w środowisku korporacyjnym, doskonale rozumiem rygor pracy z dokumentacją, SLA i systemami biletowymi. Szukam możliwości rozwoju na pierwszej linii wsparcia (L1 Support / Helpdesk), gdzie wykorzystam swoje umiejętności komunikacyjne i zmysł techniczny.",
+    description: "Kandydat na pierwszą linię wsparcia IT. Moje 1,5-roczne doświadczenie operacyjne (FedEx), polegające na procesowaniu ponad 100 zgłoszeń dziennie przy skuteczności SLA 98%, udowadnia odporność na stres w pracy z systemami biletowymi. Dodatkowo, ponad roczna praca jako nauczyciel programowania (Giganci Programowania) nauczyła mnie cierpliwości i jasnego tłumaczenia zagadnień technicznych laikom, co z powodzeniem wykorzystywałem przy okazjonalnym wsparciu sprzętowym kursantów na Discordzie. Szukam roli L1 Helpdesk, gdzie kluczowa jest komunikatywność i sprawne działanie pod presją.",
     email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Windows 10/11", "Troubleshooting", "Active Directory", "Linux", "Python"]
   },
   en: {
     name: "Dawid Czerwiński",
     title: "IT Support Specialist / Helpdesk L1",
-    description: "IT Specialist combining experience in international operations (FedEx) with technical education practice (Giganci Programowania). As an IT Mentor, I developed high patience and the ability to explain technical issues to laypeople, regularly diagnosing and resolving configuration problems on students' computers. Additionally, thanks to working in a corporate environment, I perfectly understand the rigor of working with documentation, SLA, and ticketing systems. I am looking for development opportunities on the first line of support (L1 Support / Helpdesk), where I will utilize my communication skills and technical acumen.",
+    description: "Candidate for the first line of IT support. My 1.5 years of operational experience (FedEx), consisting of processing over 100 requests per day with 98% SLA effectiveness, proves stress resilience in working with ticketing systems. Additionally, over a year of work as a programming teacher (Giganci Programowania) has taught me patience and the ability to clearly explain technical issues to laypeople, which I successfully utilized in providing occasional hardware support to students on Discord. I am looking for an L1 Helpdesk role where communication skills and efficient action under pressure are key.",
     email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Windows 10/11", "Troubleshooting", "Active Directory", "Linux", "Python"]
   }

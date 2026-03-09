@@ -96,14 +96,14 @@ export const supportConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
     title: "Technical Support Engineer | L2 Ops Specialist",
-    description: "Inżynier łączący twarde kompetencje techniczne (Linux, SQL, Bash, Python) z rygorem operacyjnym środowisk korporacyjnych (FedEx). Posiadam praktyczne doświadczenie w zarządzaniu incydentami (Ticketing / SLA) oraz samodzielnym utrzymaniu i optymalizacji infrastruktury webowej (Vercel, Cloudflare, Cron Jobs). Biegły w automatyzacji procesów, parsowaniu logów oraz szybkiej diagnozie środowisk. Szukam roli, w której wykorzystam swój zmysł analityczny do skutecznego rozwiązywania złożonych problemów (Troubleshooting) i stabilizacji systemów. W wolnym czasie projektuję własne aplikacje Full-Stack (Next.js, Python), ponieważ głębokie zrozumienie kodu i architektury pozwala mi skuteczniej namierzać błędy i wspierać zespoły R&D na drugiej i trzeciej linii wsparcia.",
+    description: "Specjalista IT z 1,5-rocznym komercyjnym doświadczeniem w operacjach na dużych wolumenach zgłoszeń (FedEx, 100+ ticketów dziennie, SLA 98%) oraz ponad roczną praktyką jako nauczyciel programowania (Python, C++). Posiadam znajomość systemów Linux, zapytań SQL oraz skryptowania (Bash, Python), zdobytą podczas budowy i utrzymania własnego ekosystemu webowego (Vercel, Cloudflare). Szukam roli L2 Ops / App Support, gdzie wykorzystam rygor analityczny z operacji korporacyjnych oraz znajomość kodu do naprawy środowiska, analizy logów i weryfikacji błędów.",
     email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "C++"]
   },
   en: {
     name: "Dawid Czerwiński",
     title: "Technical Support Engineer | L2 Ops Specialist",
-    description: "Engineer combining hard technical skills (Linux, SQL, Bash, Python) with the operational rigor of corporate environments (FedEx). I have practical experience in incident management (Ticketing / SLA) and independent maintenance and optimization of web infrastructure (Vercel, Cloudflare, Cron Jobs). Proficient in process automation, log parsing, and rapid environment diagnosis. Seeking a role where I can use my analytical mind for effective complex problem solving (Troubleshooting) and system stabilization. In my free time, I design my own Full-Stack applications (Next.js, Python), because a deep understanding of code and architecture allows me to more effectively track down bugs and support R&D teams on the second and third lines of support.",
+    description: "IT Specialist with 1.5 years of commercial experience in high-volume operations (FedEx, 100+ tickets daily, 98% SLA) and over a year of practice as a programming teacher (Python, C++). I have knowledge of Linux systems, SQL queries, and scripting (Bash, Python) gained during the construction and maintenance of my own web ecosystem (Vercel, Cloudflare). I am looking for an L2 Ops / App Support role where I can utilize my analytical rigor from corporate operations and my knowledge of code for environment repair, log analysis, and error verification.",
     email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "C++"]
   }

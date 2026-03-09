@@ -358,9 +358,7 @@ export default function Resume() {
               {skills.programming.length > 0 && (
                 <div className="flex items-start gap-1">
                   <span className="font-bold text-gray-800 min-w-[140px]">
-                    {variant === 'it-specialist' 
-                      ? (lang === 'pl' ? 'Podstawy skryptowania i automatyzacji:' : 'Scripting & Automation Basics:')
-                      : (lang === 'pl' ? 'Języki Programowania:' : 'Programming Languages:')}
+                    {lang === 'pl' ? 'Języki Programowania:' : 'Programming Languages:'}
                   </span>
                   <span>{skills.programming.join(", ")}</span>
                 </div>
