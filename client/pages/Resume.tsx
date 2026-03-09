@@ -417,9 +417,19 @@ export default function Resume() {
                         [{proj.techStack.join(", ")}]
                       </span>
                     </div>
-                    <a href={proj.githubUrl} target="_blank" rel="noreferrer" className="text-[10px] text-gray-400 hover:underline">
-                      {proj.githubUrl.replace('https://', '')}
-                    </a>
+                    <div className="flex items-center gap-2 text-[10px] text-gray-400">
+                      {proj.liveUrl && (
+                        <a href={proj.liveUrl} target="_blank" rel="noreferrer" className="hover:underline">
+                          {proj.liveUrl.replace('https://', '')}
+                        </a>
+                      )}
+                      {proj.liveUrl && proj.githubUrl && <span>|</span>}
+                      {proj.githubUrl && (
+                        <a href={proj.githubUrl} target="_blank" rel="noreferrer" className="hover:underline">
+                          {proj.githubUrl.replace('https://', '')}
+                        </a>
+                      )}
+                    </div>
                   </div>
                   <p className="text-xs text-gray-700 mt-0.5 leading-snug">
                     {proj[lang].description}
