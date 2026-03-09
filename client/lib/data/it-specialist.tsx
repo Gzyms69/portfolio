@@ -69,7 +69,8 @@ export const itSpecialistData: Record<string, CVData> = {
         period: "03.2022 - 07.2023",
         responsibilities: [
           "Obsługa incydentów w systemie biletowym (średnio ponad 100 ticketów dziennie) z zachowaniem skuteczności SLA na poziomie 98%.",
-          "Obsługa Klienta: Diagnozowanie błędów w dokumentacji oraz bezpośredni kontakt telefoniczny z klientami w sytuacjach nagłych i krytycznych."
+          "Obsługa Klienta: Diagnozowanie błędów w dokumentacji oraz bezpośredni kontakt telefoniczny z klientami w sytuacjach nagłych i krytycznych.",
+          "Diagnoza i rozwiązywanie problemów (Troubleshooting): Weryfikacja dokumentacji celnej/przewozowej, wyłapywanie błędów i niezgodności (Compliance)."
         ]
       }
     ],

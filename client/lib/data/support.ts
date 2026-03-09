@@ -140,7 +140,7 @@ export const supportData: Record<string, CVData> = {
         period: "03.2022 - 07.2023",
         responsibilities: [
           "Procesowanie i weryfikacja średnio ponad 100 zgłoszeń (ticketów) dziennie w rygorze ścisłych terminów (SLA), osiągając skuteczność operacyjną na poziomie 98%.",
-          "Triage i Eskalacje: Samodzielne diagnozowanie problemów z dokumentacją, kontakt z klientem w sytuacjach krytycznych oraz precyzyjny routing nietrywialnych incydentów do zespołów L2/L3."
+          "Triage i Eskalacje: Samodzielne diagnozowanie problemów z dokumentacją, kontakt z klientem w sytuacjach krytycznych oraz przekazywanie nietypowych incydentów do zespołów L2/L3."
         ]
       }
     ],
@@ -185,7 +185,7 @@ export const supportData: Record<string, CVData> = {
         period: "Mar 2022 - Jul 2023",
         responsibilities: [
           "Processing and verifying an average of over 100 requests (tickets) per day under strict deadlines (SLA), achieving an operational efficiency of 98%.",
-          "Triage & Escalations: Independent diagnosis of documentation issues, client contact in critical situations, and precise routing of non-trivial incidents to L2/L3 teams."
+          "Triage & Escalations: Independent diagnosis of documentation issues, client contact in critical situations, and precise routing of non-standard incidents to L2/L3 teams."
         ]
       }
     ],
