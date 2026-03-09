@@ -7,6 +7,7 @@ export interface ProjectContent {
 
 export interface Project {
   title: string;
+  period?: string;
   pl: ProjectContent;
   en: ProjectContent;
   githubUrl: string;

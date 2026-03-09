@@ -134,6 +134,16 @@ export default function Resume() {
   const { experiences, education, skills, languages } = profile.data[lang];
   const projects = profile.projects;
 
+  const renderFormattedText = (text: string) => {
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, i) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={i} className="font-bold text-gray-900">{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+  };
+
   return (
     <div className="resume-page min-h-screen bg-white text-black font-sans selection:bg-gray-200 selection:text-black print:p-0 p-8 flex justify-center" onClick={() => { setShowConfigMenu(false); setShowDownloadMenu(false); }}>
       <div className="max-w-[210mm] w-full bg-white relative px-10 print:px-10" onClick={(e) => e.stopPropagation()}>
@@ -417,6 +427,9 @@ export default function Resume() {
                         [{proj.techStack.join(", ")}]
                       </span>
                     </div>
+                    {proj.period && (
+                      <span className="text-xs text-gray-500 font-medium whitespace-nowrap">{proj.period}</span>
+                    )}
                   </div>
                   {(proj.liveUrl || proj.githubUrl) && (
                     <div className="flex items-center gap-2 text-[10px] text-gray-400 mb-0.5">
@@ -434,7 +447,7 @@ export default function Resume() {
                     </div>
                   )}
                   <p className="text-xs text-gray-700 leading-snug">
-                    {proj[lang].description}
+                    {renderFormattedText(proj[lang].description)}
                   </p>
                 </div>
               ))}

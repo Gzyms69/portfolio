@@ -38,7 +38,7 @@ export const officeData: Record<string, CVData> = {
       {
         title: "Nauczyciel Programowania / Mentor IT",
         company: "Giganci Programowania",
-        location: "Zdalnie",
+        location: "(Zdalnie / Część etatu)",
         period: "01.2024 - 06.2025",
         responsibilities: [
           "Prowadzenie zajęć edukacyjnych: Samodzielne przygotowywanie i realizacja szkoleń z podstaw IT dla grup. Umiejętność jasnego przekazywania złożonych informacji.",
@@ -83,7 +83,7 @@ export const officeData: Record<string, CVData> = {
       {
         title: "Programming Teacher / IT Mentor",
         company: "Giganci Programowania",
-        location: "Remote",
+        location: "(Remote / Part-time)",
         period: "Jan 2024 - Jun 2025",
         responsibilities: [
           "Educational Instruction: Independent preparation and delivery of basic IT training for groups. Ability to clearly convey complex information.",

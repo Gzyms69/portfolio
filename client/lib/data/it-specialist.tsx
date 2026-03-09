@@ -3,18 +3,19 @@ import { supportData } from "./support";
 
 export const itSpecialistProjects: Project[] = [
   {
-    title: "Ekosystem Katalog & Portfolio",
+    title: "Prywatne Środowisko IT & Portfolio",
+    period: "11.2025 – Obecnie",
     pl: {
-      description: "Zbudowanie i samodzielne administrowanie prywatnym środowiskiem sieciowym (czerwinskidawid.pl). Zarządzanie domenami, przekierowaniami sieciowymi i bezpieczeństwem formularzy za pomocą usług Cloudflare. Konfiguracja środowisk hostingowych na platformie Vercel oraz analityka ruchu i interakcji użytkowników przy pomocy Google Analytics.",
-      fullDescription: "Zbudowanie i samodzielne administrowanie prywatnym środowiskiem sieciowym (czerwinskidawid.pl).\n\nZarządzanie domenami, przekierowaniami sieciowymi i bezpieczeństwem formularzy za pomocą usług Cloudflare.\n\nKonfiguracja środowisk hostingowych na platformie Vercel oraz analityka ruchu i interakcji użytkowników przy pomocy Google Analytics."
+      description: "**Administracja Sieciowa:** Samodzielne zarządzanie domeną `czerwinskidawid.pl`. Podstawowa konfiguracja i zabezpieczenie ruchu sieciowego (rekordy DNS, przekierowania, ochrona formularzy) w panelu Cloudflare. **Wsparcie Techniczne:** Diagnozowanie problemów ze stronami, testowanie wydajności wizytówek oraz wdrażanie drobnych poprawek w celu zapewnienia ciągłości działania usług. **Monitoring:** Bieżące sprawdzanie dostępności i stabilności środowiska domowego oraz weryfikacja statystyk w oparciu o narzędzia analityczne.",
+      fullDescription: "Aby uczyć się działania sieci w praktyce, hobbystycznie utrzymuję własną domenę internetową i serwer.\n\nSamodzielnie podpiąłem pocztę we własnej domenie, skonfigurowałem rekordy DNS, reguły Cloudflare i certyfikaty SSL.\n\nDbam o poprawne działanie strony (Troubleshooting) oraz o zgodność z wymogami bezpieczeństwa prywatności (RODO)."
     },
     en: {
-      description: "Building and self-administering a private network environment (czerwinskidawid.pl). Management of domains, network redirects, and form security using Cloudflare services. Configuration of hosting environments on the Vercel platform and traffic and user interaction analytics using Google Analytics.",
-      fullDescription: "Building and self-administering a private network environment (czerwinskidawid.pl).\n\nManagement of domains, network redirects, and form security using Cloudflare services.\n\nConfiguration of hosting environments on the Vercel platform and traffic and user interaction analytics using Google Analytics."
+      description: "**Network Administration:** Independent management of the `czerwinskidawid.pl` domain. Basic configuration and security of network traffic (DNS records, redirects, form protection) in the Cloudflare panel. **Technical Support:** Diagnosing website issues, testing business card performance, and implementing minor fixes to ensure service continuity. **Monitoring:** Ongoing monitoring of the availability and stability of the home environment and verification of statistics based on analytical tools.",
+      fullDescription: "To learn how networks work in practice, I maintain my own internet domain and server as a hobby.\n\nIndependently connected email in my own domain, configured DNS records, Cloudflare rules, and SSL certificates.\n\nI ensure the correct operation of the website (Troubleshooting) and compliance with privacy security requirements (GDPR)."
     },
-    githubUrl: "",
+    githubUrl: "https://katalog.czerwinskidawid.pl",
     liveUrl: "https://katalog.czerwinskidawid.pl",
-    techStack: ["Cloudflare", "Vercel", "Google Analytics"],
+    techStack: ["Administracja Web", "DNS", "Analytics"],
     variant: "code",
   }
 ];
@@ -42,7 +43,7 @@ export const itSpecialistData: Record<string, CVData> = {
       {
         title: "Nauczyciel Programowania / Mentor IT",
         company: "Giganci Programowania",
-        location: "Zdalnie",
+        location: "(Zdalnie / Część etatu)",
         period: "01.2024 - 06.2025",
         responsibilities: [
           "Edukacja i Komunikacja: Prowadzenie szkoleń technicznych (Python, C#). Tłumaczenie złożonych konceptów informatycznych osobom o zerowej wiedzy technicznej w sposób jasny i cierpliwy.",
@@ -85,7 +86,7 @@ export const itSpecialistData: Record<string, CVData> = {
       {
         title: "Programming Teacher / IT Mentor",
         company: "Giganci Programowania",
-        location: "Remote",
+        location: "(Remote / Part-time)",
         period: "Jan 2024 - Jun 2025",
         responsibilities: [
           "Educational Instruction: Conducting technical training (Python, C#). Explaining complex computer science concepts to people with zero technical knowledge in a clear and patient manner.",

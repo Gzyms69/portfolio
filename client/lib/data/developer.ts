@@ -4,29 +4,30 @@ import { supportData } from "./support";
 export const devProjects: Project[] = [
   {
     title: "LeadFinder & Katalog Ecosystem",
+    period: "11.2025 – Obecnie",
     pl: { 
-      description: "Rozbudowany ekosystem (100/100 Lighthouse) zarządzany jako monorepo w Turborepo, łączący logikę backendową z nowoczesnym frontendem (React). Zgodność z RODO (Klaro). Backend & Marketing: Wdrożenie systemu dynamicznej personalizacji szablonów z wykorzystaniem routingu Node.js oraz optymalizacja SEO (eliminacja duplikacji w robots.txt). Rozdzielenie środowisk na 3 niezależne projekty Vercel z zaawansowaną konfiguracją przekierowań. DevOps & Testing: Zabezpieczenie domeny i formularzy przez Cloudflare. Inżynieryjna optymalizacja środowiska hostingowego poprzez autorski endpoint dla zadań Cron. Automatyzacja testów i debugowania za pomocą Puppeteera oraz serwerów MCP (Gemini).", 
-      fullDescription: "Rozbudowany ekosystem (100/100 Lighthouse) zarządzany jako monorepo w Turborepo, łączący logikę backendową z nowoczesnym frontendem (React). Zgodność z RODO (Klaro).\n\nBackend & Marketing: Wdrożenie systemu dynamicznej personalizacji szablonów z wykorzystaniem routingu Node.js oraz optymalizacja SEO (eliminacja duplikacji w robots.txt). Rozdzielenie środowisk na 3 niezależne projekty Vercel z zaawansowaną konfiguracją przekierowań.\n\nDevOps & Testing: Zabezpieczenie domeny i formularzy przez Cloudflare. Inżynieryjna optymalizacja środowiska hostingowego poprzez autorski endpoint dla zadań Cron. Automatyzacja testów i debugowania za pomocą Puppeteera oraz serwerów MCP (Gemini)." 
+      description: "**Architektura & UI:** Ekosystem monorepo (**Turborepo**) z własną biblioteką komponentów (Framer Motion, Tailwind). Nowoczesny frontend (**Next.js App Router**, 100/100 Lighthouse) i zautomatyzowane SEO (OpenGraph API). **Symulacja Backend & Stan:** Wdrożenie bezstanowego środowiska demo e-commerce (panel admina, sklep, profil klienta) opartego całkowicie na zarządzaniu sesją i ciasteczkami (cookies), pozwalającego na bezpieczne testowanie platformy. **Open Source & DevOps:** Fork repozytorium `google-maps-scraper` (**Playwright**) – analiza i merge patchy społeczności (Pull Requests). Wdrożenie endpointów telemetrycznych zapobiegających 'cold start' oraz ochrona domeny (**Cloudflare**).", 
+      fullDescription: "Autorski system automatyzacji sprzedaży. Zbudowałem od zera architekturę łączącą web scraping w Pythonie z frontendem w Next.js.\n\nRozwój forka google-maps-scraper: napisanie logiki wait-and-retry in Playwright, by ominąć błędy asynchronicznego ładowania DOM i zablokować restrykcje API.\n\nWdrożenie środowiska produkcyjnego na Vercel (eliminacja 'Cold Start'), integracja z Google Sheets API poprzez GCP IAM i optymalizacja frontendu pod 100/100 w audytach Lighthouse." 
     },
     en: { 
-      description: "Extensive ecosystem (100/100 Lighthouse) managed as a Turborepo monorepo, combining backend logic with a modern frontend (React). GDPR compliance (Klaro). Backend & Marketing: Implementation of a dynamic template personalization system using Node.js routing and SEO optimization (robots.txt duplication removal). Environment separation into 3 independent Vercel projects with advanced redirect configuration. DevOps & Testing: Domain and form security via Cloudflare. Engineering optimization of the hosting environment through a custom endpoint for Cron jobs. Test and debug automation using Puppeteer and MCP servers (Gemini).", 
-      fullDescription: "Extensive ecosystem (100/100 Lighthouse) managed as a Turborepo monorepo, combining backend logic with a modern frontend (React). GDPR compliance (Klaro).\n\nBackend & Marketing: Implementation of a dynamic template personalization system using Node.js routing and SEO optimization (robots.txt duplication removal). Environment separation into 3 independent Vercel projects with advanced redirect configuration.\n\nDevOps & Testing: Domain and form security via Cloudflare. Engineering optimization of the hosting environment through a custom endpoint for Cron jobs. Test and debug automation using Puppeteer and MCP servers (Gemini)." 
+      description: "**Architecture & UI:** Monorepo ecosystem (**Turborepo**) with a custom component library (Framer Motion, Tailwind). Modern frontend (**Next.js App Router**, 100/100 Lighthouse) and automated SEO (OpenGraph API). **Backend Simulation & State:** Implementation of a stateless e-commerce demo environment (admin panel, store, customer profile) based entirely on session and cookie management, allowing for safe platform testing. **Open Source & DevOps:** Fork of the `google-maps-scraper` repository (**Playwright**) – analysis and merging of community patches (Pull Requests). Implementation of telemetry endpoints preventing 'cold start' and domain protection (**Cloudflare**).", 
+      fullDescription: "Custom sales automation system. Built from scratch an architecture combining web scraping in Python with a Next.js frontend.\n\nDevelopment of a google-maps-scraper fork: wrote wait-and-retry logic in Playwright to bypass asynchronous DOM loading errors and API restrictions.\n\nDeployment of the production environment on Vercel (elimination of 'Cold Start'), integration with Google Sheets API via GCP IAM, and frontend optimization for 100/100 in Lighthouse audits." 
     },
     githubUrl: "https://github.com/Gzyms69/LeadFinder",
     liveUrl: "https://katalog.czerwinskidawid.pl",
-    techStack: ["Next.js 15", "React", "Node.js", "Turborepo", "Resend", "Cloudflare"],
+    techStack: ["Next.js 15", "Turborepo", "Playwright", "Tailwind", "Cloudflare", "Stateless Sessions"],
     variant: "code",
     hideFromPortfolio: true
   },
   {
     title: "WikiGraph Lab",
     pl: { 
-      description: "Projektowanie architektury backendowej dla autorskiego silnika grafu wiedzy z wykorzystaniem baz SQL i Neo4j. Programowanie i optymalizacja wydajności REST API w FastAPI. Skonteneryzowanie całego środowiska przy użyciu Dockera.", 
-      fullDescription: "Projektowanie architektury backendowej dla autorskiego silnika grafu wiedzy z wykorzystaniem baz SQL i Neo4j. Programowanie i optymalizacja wydajności REST API w FastAPI. Skonteneryzowanie całego środowiska przy użyciu Dockera." 
+      description: "Silnik grafu wiedzy. Samodzielnie zaprojektowana architektura backendowa dla baz relacyjnych i grafowych, konteneryzacja w Dockerze i obsługa zapytań przez REST API.", 
+      fullDescription: "Silnik grafu wiedzy. Samodzielnie zaprojektowana architektura backendowa dla baz relacyjnych i grafowych, konteneryzacja w Dockerze i obsługa zapytań przez REST API." 
     },
     en: { 
-      description: "Designing backend architecture for a custom knowledge graph engine using SQL and Neo4j databases. Programming and performance optimization of REST API in FastAPI. Containerization of the entire environment using Docker.", 
-      fullDescription: "Designing backend architecture for a custom knowledge graph engine using SQL and Neo4j databases. Programming and performance optimization of REST API in FastAPI. Containerization of the entire environment using Docker." 
+      description: "Knowledge graph engine. Independently designed backend architecture for relational and graph databases, Docker containerization, and REST API query handling.", 
+      fullDescription: "Knowledge graph engine. Independently designed backend architecture for relational and graph databases, Docker containerization, and REST API query handling." 
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
     techStack: ["Python", "Neo4j", "Docker", "SQL", "FastAPI"],
@@ -96,14 +97,14 @@ export const devConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
     title: "Junior Software Engineer | Python & C++ Developer",
-    description: "Full-Stack Developer z solidnym zapleczem akademickim (AGH/PK), łączący tworzenie nowoczesnych interfejsów (Next.js, React) z wydajną architekturą backendową (Python, FastAPI). Twórca kompleksowych systemów webowych, w tym platformy Katalog.CzerwinskiDawid.pl (100/100 Lighthouse) oraz ekosystemu LeadFinder automatyzującego procesy sprzedażowe. Specjalizuję się w optymalizacji wydajności, integracji API oraz projektowaniu zapytań (SQL/Neo4j). Szukam wyzwań inżynierskich, w których wykorzystam swoje umiejętności od analizy wymagań po finalne wdrożenie (CI/CD).",
+    description: "Ambitny inżynier oprogramowania (Junior Full-Stack) z solidnym zapleczem akademickim (AGH/PK), łączący tworzenie nowoczesnych interfejsów (Next.js, React) z wydajną architekturą backendową (Python, FastAPI). Twórca kompleksowych systemów webowych, w tym platformy Katalog.CzerwinskiDawid.pl (100/100 Lighthouse) oraz ekosystemu LeadFinder automatyzującego procesy sprzedażowe. Specjalizuję się w optymalizacji wydajności, integracji API oraz projektowaniu zapytań (SQL/Neo4j). Szukam wyzwań inżynierskich, w których wykorzystam swoje umiejętności od analizy wymagań po finalne wdrożenie (CI/CD).",
     email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Python", "C++", "SQL", "Docker", "Linux", "Neo4j"]
   },
   en: {
     name: "Dawid Czerwiński",
     title: "Junior Software Engineer | Python & C++ Developer",
-    description: "Full-Stack Developer with a solid academic background (AGH/PK), combining modern interface development (Next.js, React) with efficient backend architecture (Python, FastAPI). Creator of comprehensive web systems, including the Katalog.CzerwinskiDawid.pl platform (100/100 Lighthouse) and the LeadFinder ecosystem automating sales processes. Specialized in performance optimization, API integration, and query design (SQL/Neo4j). Seeking engineering challenges where I can leverage my skills from requirements analysis to final deployment (CI/CD).",
+    description: "Ambitious Software Engineer (Junior Full-Stack) with a solid academic background (AGH/PK), combining modern interface development (Next.js, React) with efficient backend architecture (Python, FastAPI). Creator of comprehensive web systems, including the Katalog.CzerwinskiDawid.pl platform (100/100 Lighthouse) and the LeadFinder ecosystem automating sales processes. Specialized in performance optimization, API integration, and query design (SQL/Neo4j). Seeking engineering challenges where I can leverage my skills from requirements analysis to final deployment (CI/CD).",
     email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Python", "C++", "SQL", "Docker", "Linux", "Neo4j"]
   }
@@ -115,7 +116,7 @@ export const devData: Record<string, CVData> = {
       {
         title: "C++ & Python Technical Mentor",
         company: "Giganci Programowania",
-        location: "Zdalnie",
+        location: "(Zdalnie / Część etatu)",
         period: "01.2024 - 06.2025",
         responsibilities: [
           "Analiza i debugowanie kodu 50+ uczniów tygodniowo (Code Review).",
@@ -156,7 +157,7 @@ export const devData: Record<string, CVData> = {
       {
         title: "C++ & Python Technical Mentor",
         company: "Giganci Programowania",
-        location: "Remote",
+        location: "(Remote / Part-time)",
         period: "Jan 2024 - Jun 2025",
         responsibilities: [
           "Analysis and debugging of code for 50+ students weekly (Code Review).",
