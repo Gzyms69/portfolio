@@ -353,64 +353,36 @@ export default function Resume() {
           <h2 className="text-sm font-bold uppercase border-b border-gray-300 pb-0.5 mb-1.5 text-gray-800">
             {lang === 'pl' ? 'Umiejętności' : 'Technical Skills'}
           </h2>
-          {variant === 'developer' ? (
-            <div className="flex flex-col gap-1 text-xs text-gray-700">
-              {skills.programming.length > 0 && (
-                <div className="flex items-start gap-1">
-                  <span className="font-bold text-gray-800 min-w-[140px]">
-                    {lang === 'pl' ? 'Języki Programowania:' : 'Programming Languages:'}
-                  </span>
-                  <span>{skills.programming.join(", ")}</span>
-                </div>
-              )}
+          <div className="flex flex-col gap-1 text-xs text-gray-700">
+            {skills.programming.length > 0 && (
               <div className="flex items-start gap-1">
                 <span className="font-bold text-gray-800 min-w-[140px]">
-                  {lang === 'pl' ? 'Narzędzia i Systemy:' : 'Tools & Systems:'}
+                  {variant === 'it-specialist' 
+                    ? (lang === 'pl' ? 'Podstawy skryptowania i automatyzacji:' : 'Scripting & Automation Basics:')
+                    : (lang === 'pl' ? 'Języki Programowania:' : 'Programming Languages:')}
                 </span>
-                <span>{skills.tools.join(", ")}</span>
+                <span>{skills.programming.join(", ")}</span>
               </div>
-              <div className="flex items-start gap-1">
-                <span className="font-bold text-gray-800 min-w-[140px]">
-                  {lang === 'pl' ? 'Kompetencje:' : 'Skills:'}
-                </span>
-                <span>{skills.general.join(", ")}</span>
-              </div>
-              <div className="flex items-start gap-1">
-                <span className="font-bold text-gray-800 min-w-[140px]">
-                  {lang === 'pl' ? 'Języki Obce:' : 'Languages:'}
-                </span>
-                <span>{languages.join(" • ")}</span>
-              </div>
+            )}
+            <div className="flex items-start gap-1">
+              <span className="font-bold text-gray-800 min-w-[140px]">
+                {lang === 'pl' ? 'Narzędzia i Systemy:' : 'Tools & Systems:'}
+              </span>
+              <span>{skills.tools.join(", ")}</span>
             </div>
-          ) : (
-            <div className="grid grid-cols-[140px_1fr] gap-y-0.5 gap-x-2 text-xs">
-              {skills.programming.length > 0 && (
-                <>
-                  <span className="font-bold text-gray-800">
-                    {variant === 'it-specialist' 
-                      ? (lang === 'pl' ? 'Podstawy skryptowania i automatyzacji' : 'Scripting & Automation Basics')
-                      : (lang === 'pl' ? 'Języki Programowania' : 'Programming Languages')}
-                  </span>
-                  <span className="text-gray-700">{skills.programming.join(", ")}</span>
-                </>
-              )}
-              
-              <span className="font-bold text-gray-800">
-                {lang === 'pl' ? 'Narzędzia i Systemy' : 'Tools & Systems'}
+            <div className="flex items-start gap-1">
+              <span className="font-bold text-gray-800 min-w-[140px]">
+                {lang === 'pl' ? 'Kompetencje:' : 'Skills:'}
               </span>
-              <span className="text-gray-700">{skills.tools.join(", ")}</span>
-              
-              <span className="font-bold text-gray-800">
-                {lang === 'pl' ? 'Kompetencje' : 'Skills'}
-              </span>
-              <span className="text-gray-700">{skills.general.join(", ")}</span>
-
-              <span className="font-bold text-gray-800">
-                {lang === 'pl' ? 'Języki Obce' : 'Languages'}
-              </span>
-              <span className="text-gray-700">{languages.join(" • ")}</span>
+              <span>{skills.general.join(", ")}</span>
             </div>
-          )}
+            <div className="flex items-start gap-1">
+              <span className="font-bold text-gray-800 min-w-[140px]">
+                {lang === 'pl' ? 'Języki Obce:' : 'Languages:'}
+              </span>
+              <span>{languages.join(" • ")}</span>
+            </div>
+          </div>
         </section>
 
         {/* Key Projects */}
