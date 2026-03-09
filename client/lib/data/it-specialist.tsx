@@ -6,14 +6,14 @@ export const itSpecialistProjects: Project[] = [
     title: "Prywatne Środowisko IT & Portfolio",
     period: "11.2025 – Obecnie",
     pl: {
-      description: "**Administracja Sieciowa:** Samodzielne zarządzanie domeną `czerwinskidawid.pl`. Podstawowa konfiguracja i zabezpieczenie ruchu sieciowego (rekordy DNS, przekierowania, ochrona formularzy) w panelu Cloudflare. **Wsparcie Techniczne:** Diagnozowanie problemów ze stronami, testowanie wydajności wizytówek oraz wdrażanie drobnych poprawek w celu zapewnienia ciągłości działania usług. **Monitoring:** Bieżące sprawdzanie dostępności i stabilności środowiska domowego oraz weryfikacja statystyk w oparciu o narzędzia analityczne.",
+      description: "**Administracja Sieciowa:** Samodzielne zarządzanie domeną `czerwinskidawid.pl`. Podstawowa konfiguracja i zabezpieczenie ruchu sieciowego (rekordy DNS, przekierowania, ochrona formularzy) w panelu Cloudflare. **Troubleshooting:** Diagnozowanie problemów ze stronami, testowanie wydajności wizytówek oraz wdrażanie drobnych poprawek w celu zapewnienia ciągłości działania usług. **Monitoring:** Bieżące sprawdzanie dostępności i stabilności środowiska domowego oraz weryfikacja statystyk w oparciu o narzędzia analityczne.",
       fullDescription: "Aby uczyć się działania sieci w praktyce, hobbystycznie utrzymuję własną domenę internetową i serwer.\n\nSamodzielnie podpiąłem pocztę we własnej domenie, skonfigurowałem rekordy DNS, reguły Cloudflare i certyfikaty SSL.\n\nDbam o poprawne działanie strony (Troubleshooting) oraz o zgodność z wymogami bezpieczeństwa prywatności (RODO)."
     },
     en: {
-      description: "**Network Administration:** Independent management of the `czerwinskidawid.pl` domain. Basic configuration and security of network traffic (DNS records, redirects, form protection) in the Cloudflare panel. **Technical Support:** Diagnosing website issues, testing business card performance, and implementing minor fixes to ensure service continuity. **Monitoring:** Ongoing monitoring of the availability and stability of the home environment and verification of statistics based on analytical tools.",
+      description: "**Network Administration:** Independent management of the `czerwinskidawid.pl` domain. Basic configuration and security of network traffic (DNS records, redirects, form protection) in the Cloudflare panel. **Troubleshooting:** Diagnosing website issues, testing business card performance, and implementing minor fixes to ensure service continuity. **Monitoring:** Ongoing monitoring of the availability and stability of the home environment and verification of statistics based on analytical tools.",
       fullDescription: "To learn how networks work in practice, I maintain my own internet domain and server as a hobby.\n\nIndependently connected email in my own domain, configured DNS records, Cloudflare rules, and SSL certificates.\n\nI ensure the correct operation of the website (Troubleshooting) and compliance with privacy security requirements (GDPR)."
     },
-    githubUrl: "https://katalog.czerwinskidawid.pl",
+    githubUrl: "",
     liveUrl: "https://katalog.czerwinskidawid.pl",
     techStack: ["Administracja Web", "DNS", "Analytics"],
     variant: "code",
