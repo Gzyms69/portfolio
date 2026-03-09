@@ -97,14 +97,14 @@ export const devConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
     title: "Junior Software Engineer | Python & C++ Developer",
-    description: "Junior Software Engineer (Next.js 15 / Python) z ponad rocznym komercyjnym doświadczeniem jako Mentor IT (nauczanie m.in. C++ i Pythona). Twórca autorskiego, bezstanowego ekosystemu webowego (Next.js, React, Framer Motion) hostowanego na platformie Vercel i zoptymalizowanego do wyniku 98+/100 w Google PageSpeed. Do zarządzania domeną i ochroną przed botami wykorzystuję Cloudflare. Szukam pierwszej roli deweloperskiej, w której wykorzystam praktyczną umiejętność pisania kodu, wspartą wcześniejszym doświadczeniem w pracy operacyjnej i analitycznej.",
+    description: "Ambitny inżynier oprogramowania (Junior Full-Stack) z solidnym zapleczem akademickim (AGH/PK), łączący tworzenie nowoczesnych interfejsów (Next.js, React) z wydajną architekturą backendową (Python, FastAPI). Twórca kompleksowych systemów webowych, w tym platformy Katalog.CzerwinskiDawid.pl (100/100 Lighthouse) oraz ekosystemu LeadFinder automatyzującego procesy sprzedażowe. Specjalizuję się w optymalizacji wydajności, integracji API oraz projektowaniu zapytań (SQL/Neo4j). Szukam wyzwań inżynierskich, w których wykorzystam swoje umiejętności od analizy wymagań po finalne wdrożenie (CI/CD).",
     email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Python", "C++", "SQL", "Docker", "Linux", "Neo4j"]
   },
   en: {
     name: "Dawid Czerwiński",
     title: "Junior Software Engineer | Python & C++ Developer",
-    description: "Junior Software Engineer (Next.js 15 / Python) with over a year of commercial experience as an IT Mentor (teaching C++ and Python, among others). Creator of an original, stateless web ecosystem (Next.js, React, Framer Motion) hosted on the Vercel platform and optimized for a 98+/100 score in Google PageSpeed. I use Cloudflare for domain management and bot protection. I am looking for my first developer role where I can utilize my practical coding skills, supported by previous experience in operational and analytical work.",
+    description: "Ambitious Software Engineer (Junior Full-Stack) with a solid academic background (AGH/PK), combining modern interface development (Next.js, React) with efficient backend architecture (Python, FastAPI). Creator of comprehensive web systems, including the Katalog.CzerwinskiDawid.pl platform (100/100 Lighthouse) and the LeadFinder ecosystem automating sales processes. Specialized in performance optimization, API integration, and query design (SQL/Neo4j). Seeking engineering challenges where I can leverage my skills from requirements analysis to final deployment (CI/CD).",
     email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Python", "C++", "SQL", "Docker", "Linux", "Neo4j"]
   }
@@ -119,9 +119,9 @@ export const devData: Record<string, CVData> = {
         location: "(Zdalnie / Część etatu)",
         period: "01.2024 - 06.2025",
         responsibilities: [
-          "Analiza i debugowanie kodu 50+ uczniów tygodniowo (Code Review).",
-          "Tłumaczenie zaawansowanych konceptów: wskaźniki, referencje, rekurencja, programowanie obiektowe.",
-          "Weryfikacja projektów pod kątem optymalizacji pamięci i złożoności obliczeniowej."
+          "Analiza kodu i Code Review: Analiza i debugowanie rozwiązań 50+ uczniów tygodniowo.",
+          "Algorytmika i Struktury Danych: Tłumaczenie kluczowych zagadnień wymaganych na maturze z informatyki: algorytmy, operacje na tablicach oraz przetwarzanie plików wejścia/wyjścia.",
+          "Podstawy OOP i Logiki: Wprowadzanie początkujących w klasy i dziedziczenie oraz praktyczne zastosowanie fundamentów języków C++ i Python."
         ]
       },
       {
@@ -160,9 +160,9 @@ export const devData: Record<string, CVData> = {
         location: "(Remote / Part-time)",
         period: "Jan 2024 - Jun 2025",
         responsibilities: [
-          "Analysis and debugging of code for 50+ students weekly (Code Review).",
-          "Teaching advanced concepts: pointers, references, recursion, OOP.",
-          "Verifying projects for memory optimization and computational complexity."
+          "Code Analysis & Code Review: Analyzing and debugging solutions for 50+ students per week.",
+          "Algorithms & Data Structures: Explaining key topics required for the Matura exam in computer science: algorithms, array operations, and I/O file processing.",
+          "OOP & Logic Foundations: Introducing beginners to classes and inheritance, along with the practical application of C++ and Python fundamentals."
         ]
       },
       {
