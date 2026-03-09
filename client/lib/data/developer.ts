@@ -5,17 +5,18 @@ export const devProjects: Project[] = [
   {
     title: "LeadFinder & Katalog Ecosystem",
     pl: { 
-      description: "Rozbudowany ekosystem (100/100 Lighthouse) zarządzany jako monorepo w Turborepo, łączący logikę backendową z nowoczesnym frontendem (React). Zgodność z RODO (Klaro). Architektura & Auth: Implementacja autoryzacji 'Magic Links' przez API Resend. Rozdzielenie środowisk na 3 niezależne projekty Vercel z zaawansowaną konfiguracją przekierowań. DevOps & Testing: Zabezpieczenie domeny i formularzy przez Cloudflare. Inżynieryjna optymalizacja środowiska hostingowego poprzez autorski endpoint dla zadań Cron. Automatyzacja testów i debugowania za pomocą Puppeteera oraz serwerów MCP (Gemini).", 
-      fullDescription: "Rozbudowany ekosystem (100/100 Lighthouse) zarządzany jako monorepo w Turborepo, łączący logikę backendową z nowoczesnym frontendem (React). Zgodność z RODO (Klaro).\n\nArchitektura & Auth: Implementacja autoryzacji 'Magic Links' przez API Resend. Rozdzielenie środowisk na 3 niezależne projekty Vercel z zaawansowaną konfiguracją przekierowań.\n\nDevOps & Testing: Zabezpieczenie domeny i formularzy przez Cloudflare. Inżynieryjna optymalizacja środowiska hostingowego poprzez autorski endpoint dla zadań Cron. Automatyzacja testów i debugowania za pomocą Puppeteera oraz serwerów MCP (Gemini)." 
+      description: "Rozbudowany ekosystem (100/100 Lighthouse) zarządzany jako monorepo w Turborepo, łączący logikę backendową z nowoczesnym frontendem (React). Zgodność z RODO (Klaro). Backend & Marketing: Wdrożenie systemu dynamicznej personalizacji szablonów z wykorzystaniem routingu Node.js oraz optymalizacja SEO (eliminacja duplikacji w robots.txt). Rozdzielenie środowisk na 3 niezależne projekty Vercel z zaawansowaną konfiguracją przekierowań. DevOps & Testing: Zabezpieczenie domeny i formularzy przez Cloudflare. Inżynieryjna optymalizacja środowiska hostingowego poprzez autorski endpoint dla zadań Cron. Automatyzacja testów i debugowania za pomocą Puppeteera oraz serwerów MCP (Gemini).", 
+      fullDescription: "Rozbudowany ekosystem (100/100 Lighthouse) zarządzany jako monorepo w Turborepo, łączący logikę backendową z nowoczesnym frontendem (React). Zgodność z RODO (Klaro).\n\nBackend & Marketing: Wdrożenie systemu dynamicznej personalizacji szablonów z wykorzystaniem routingu Node.js oraz optymalizacja SEO (eliminacja duplikacji w robots.txt). Rozdzielenie środowisk na 3 niezależne projekty Vercel z zaawansowaną konfiguracją przekierowań.\n\nDevOps & Testing: Zabezpieczenie domeny i formularzy przez Cloudflare. Inżynieryjna optymalizacja środowiska hostingowego poprzez autorski endpoint dla zadań Cron. Automatyzacja testów i debugowania za pomocą Puppeteera oraz serwerów MCP (Gemini)." 
     },
     en: { 
-      description: "Extensive ecosystem (100/100 Lighthouse) managed as a Turborepo monorepo, combining backend logic with a modern frontend (React). GDPR compliance (Klaro). Architecture & Auth: Implementation of 'Magic Links' authorization via Resend API. Environment separation into 3 independent Vercel projects with advanced redirect configuration. DevOps & Testing: Domain and form security via Cloudflare. Engineering optimization of the hosting environment through a custom endpoint for Cron jobs. Test and debug automation using Puppeteer and MCP servers (Gemini).", 
-      fullDescription: "Extensive ecosystem (100/100 Lighthouse) managed as a Turborepo monorepo, combining backend logic with a modern frontend (React). GDPR compliance (Klaro).\n\nArchitecture & Auth: Implementation of 'Magic Links' authorization via Resend API. Environment separation into 3 independent Vercel projects with advanced redirect configuration.\n\nDevOps & Testing: Domain and form security via Cloudflare. Engineering optimization of the hosting environment through a custom endpoint for Cron jobs. Test and debug automation using Puppeteer and MCP servers (Gemini)." 
+      description: "Extensive ecosystem (100/100 Lighthouse) managed as a Turborepo monorepo, combining backend logic with a modern frontend (React). GDPR compliance (Klaro). Backend & Marketing: Implementation of a dynamic template personalization system using Node.js routing and SEO optimization (robots.txt duplication removal). Environment separation into 3 independent Vercel projects with advanced redirect configuration. DevOps & Testing: Domain and form security via Cloudflare. Engineering optimization of the hosting environment through a custom endpoint for Cron jobs. Test and debug automation using Puppeteer and MCP servers (Gemini).", 
+      fullDescription: "Extensive ecosystem (100/100 Lighthouse) managed as a Turborepo monorepo, combining backend logic with a modern frontend (React). GDPR compliance (Klaro).\n\nBackend & Marketing: Implementation of a dynamic template personalization system using Node.js routing and SEO optimization (robots.txt duplication removal). Environment separation into 3 independent Vercel projects with advanced redirect configuration.\n\nDevOps & Testing: Domain and form security via Cloudflare. Engineering optimization of the hosting environment through a custom endpoint for Cron jobs. Test and debug automation using Puppeteer and MCP servers (Gemini)." 
     },
     githubUrl: "https://github.com/Gzyms69/LeadFinder",
     liveUrl: "https://katalog.czerwinskidawid.pl",
     techStack: ["Next.js 15", "React", "Node.js", "Turborepo", "Resend", "Cloudflare"],
     variant: "code",
+    hideFromPortfolio: true
   },
   {
     title: "WikiGraph Lab",
@@ -31,6 +32,31 @@ export const devProjects: Project[] = [
     techStack: ["Python", "Neo4j", "Docker", "SQL", "FastAPI"],
     imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&h=400&q=80&fm=webp",
     variant: "code",
+  },
+  {
+    title: "LeadFinder & Katalog Ecosystem",
+    pl: { 
+      description: "Kompleksowy system automatyzacji sprzedaży i marketplace szablonów. Łączy scraping leadów (Python) z generowaniem stron demo (Next.js).", 
+      fullDescription: `Ekosystem dwóch systemów zaprojektowany do automatyzacji cyklu sprzedaży.
+
+1. Pipeline (Python): Autorski silnik scrapujący, który identyfikuje firmy z brakami cyfrowymi, waliduje domeny i synchronizuje leady bezpośrednio z Google Sheets. Zawiera niestandardowo spatchowany scraper Google Maps używający Playwright do naprawy logiki zliczania opinii.
+
+2. Marketplace (Next.js 15): Wydajne Monorepo (Turborepo) z 'Dynamiczną Architekturą Sprzedaży'. Pozwala to na natychmiastowe generowanie spersonalizowanych stron demo ('Magic Links') za pomocą parametrów URL, redukując czas ręcznego przygotowania oferty o 99%.` 
+    },
+    en: { 
+      description: "End-to-end sales automation pipeline and template marketplace. Features automated lead scraping and dynamic 'Magic Link' demo generation.", 
+      fullDescription: `A dual-system ecosystem designed to automate the sales lifecycle.
+
+1. Pipeline (Python): A custom scraping engine that identifies businesses with digital gaps, validates domains, and syncs leads directly to Google Sheets. Includes a custom-patched Google Maps scraper using Playwright to fix review counting logic.
+
+2. Marketplace (Next.js 15): A high-performance Monorepo (Turborepo) featuring a 'Dynamic Sales Architecture'. This allows for the instant generation of personalized demo websites ('Magic Links') via URL parameters, reducing manual sales preparation time by 99%.` 
+    },
+    githubUrl: "https://github.com/Gzyms69/LeadFinder",
+    liveUrl: "https://katalog.czerwinskidawid.pl",
+    techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "MS Office"],
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&q=80&fm=webp",
+    variant: "code",
+    hideFromResume: true
   },
   {
     title: "ROMHub",
