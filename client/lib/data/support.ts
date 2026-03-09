@@ -145,8 +145,8 @@ export const supportData: Record<string, CVData> = {
       }
     ],
     education: [
-      { school: "Politechnika Krakowska", degree: "Kierunek: Matematyka Stosowana", years: "2020-2022" },
-      { school: "Akademia Górniczo-Hutnicza (AGH)", degree: "Kierunek: Elektronika i Telekomunikacja", years: "2019-2020" }
+      { school: "Politechnika Krakowska", degree: "Kierunek: Matematyka Stosowana", years: "2020 – 2022 (Studia nieukończone)" },
+      { school: "Akademia Górniczo-Hutnicza (AGH)", degree: "Kierunek: Elektronika i Telekomunikacja", years: "2019 – 2020 (Studia nieukończone)" }
     ],
     skills: {
       general: ["Linux (Ubuntu CLI)", "Enterprise Ticketing Systems (SLA)", "Incident Management", "Problem Solving"],
@@ -190,8 +190,8 @@ export const supportData: Record<string, CVData> = {
       }
     ],
     education: [
-      { school: "Cracow University of Technology", degree: "Field: Applied Mathematics", years: "2020-2022" },
-      { school: "AGH University of Science and Technology", degree: "Field: Electronics and Telecommunications", years: "2019-2020" }
+      { school: "Cracow University of Technology", degree: "Field: Applied Mathematics", years: "2020 – 2022 (Incomplete)" },
+      { school: "AGH University of Science and Technology", degree: "Field: Electronics and Telecommunications", years: "2019 – 2020 (Incomplete)" }
     ],
     skills: {
       general: ["Linux (Ubuntu CLI)", "Enterprise Ticketing Systems (SLA)", "Incident Management", "Problem Solving"],
