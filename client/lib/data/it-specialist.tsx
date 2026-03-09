@@ -3,32 +3,18 @@ import { supportData } from "./support";
 
 export const itSpecialistProjects: Project[] = [
   {
-    title: "katalog.czerwinskidawid.pl – Moje prywatne środowisko IT (Homelab)",
+    title: "Ekosystem Katalog & Portfolio",
     pl: {
-      description: "Aby uczyć się działania sieci w praktyce, hobbystycznie utrzymuję własną domenę internetową i serwer. Samodzielnie podpiąłem pocztę we własnej domenie, skonfigurowałem rekordy DNS, reguły Cloudflare i certyfikaty SSL. Dbam o poprawne działanie strony (Troubleshooting) oraz o zgodność z wymogami bezpieczeństwa prywatności (RODO).",
-      fullDescription: "Aby uczyć się działania sieci w praktyce, hobbystycznie utrzymuję własną domenę internetową i serwer.\n\nSamodzielnie podpiąłem pocztę we własnej domenie, skonfigurowałem rekordy DNS, reguły Cloudflare i certyfikaty SSL.\n\nDbam o poprawne działanie strony (Troubleshooting) oraz o zgodność z wymogami bezpieczeństwa prywatności (RODO)."
+      description: "Zbudowanie i samodzielne administrowanie prywatnym środowiskiem sieciowym (czerwinskidawid.pl). Zarządzanie domenami, przekierowaniami sieciowymi i bezpieczeństwem formularzy za pomocą usług Cloudflare. Konfiguracja środowisk hostingowych na platformie Vercel oraz analityka ruchu i interakcji użytkowników przy pomocy Google Analytics.",
+      fullDescription: "Zbudowanie i samodzielne administrowanie prywatnym środowiskiem sieciowym (czerwinskidawid.pl).\n\nZarządzanie domenami, przekierowaniami sieciowymi i bezpieczeństwem formularzy za pomocą usług Cloudflare.\n\nKonfiguracja środowisk hostingowych na platformie Vercel oraz analityka ruchu i interakcji użytkowników przy pomocy Google Analytics."
     },
     en: {
-      description: "To learn how networks work in practice, I maintain my own internet domain and server as a hobby. Independently connected email in my own domain, configured DNS records, Cloudflare rules, and SSL certificates. I ensure the correct operation of the website (Troubleshooting) and compliance with privacy security requirements (GDPR).",
-      fullDescription: "To learn how networks work in practice, I maintain my own internet domain and server as a hobby.\n\nIndependently connected email in my own domain, configured DNS records, Cloudflare rules, and SSL certificates.\n\nI ensure the correct operation of the website (Troubleshooting) and compliance with privacy security requirements (GDPR)."
+      description: "Building and self-administering a private network environment (czerwinskidawid.pl). Management of domains, network redirects, and form security using Cloudflare services. Configuration of hosting environments on the Vercel platform and traffic and user interaction analytics using Google Analytics.",
+      fullDescription: "Building and self-administering a private network environment (czerwinskidawid.pl).\n\nManagement of domains, network redirects, and form security using Cloudflare services.\n\nConfiguration of hosting environments on the Vercel platform and traffic and user interaction analytics using Google Analytics."
     },
     githubUrl: "https://katalog.czerwinskidawid.pl",
     liveUrl: "https://katalog.czerwinskidawid.pl",
-    techStack: ["Administracja", "DNS", "Cloudflare", "Domeny", "RODO"],
-    variant: "code",
-  },
-  {
-    title: "Automatyzacja zadań (Python)",
-    pl: {
-      description: "Dla ułatwienia własnej pracy tworzę proste skrypty automatyzujące (m.in. przenoszenie danych do arkuszy kalkulacyjnych), co uczy mnie analitycznego myślenia i szybkiego rozwiązywania problemów.",
-      fullDescription: "Dla ułatwienia własnej pracy tworzę proste skrypty automatyzujące (m.in. przenoszenie danych do arkuszy kalkulacyjnych), co uczy mnie analitycznego myślenia i szybkiego rozwiązywania problemów."
-    },
-    en: {
-      description: "To facilitate my own work, I create simple automation scripts (e.g., transferring data to spreadsheets), which teaches me analytical thinking and fast problem-solving.",
-      fullDescription: "To facilitate my own work, I create simple automation scripts (e.g., transferring data to spreadsheets), which teaches me analytical thinking and fast problem-solving."
-    },
-    githubUrl: "https://github.com/Gzyms69",
-    techStack: ["Skrypty", "Google Sheets API"],
+    techStack: ["Cloudflare", "Vercel", "Google Analytics"],
     variant: "code",
   }
 ];
@@ -66,13 +52,13 @@ export const itSpecialistData: Record<string, CVData> = {
         ]
       },
       {
-        title: "Pracownik Projektowy",
+        title: "Pracownik Operacyjny",
         company: "AB Midden Nederland",
         location: "Holandia",
         period: "02.2025 - 10.2025",
         responsibilities: [
-          "Realizacja zadań w dynamicznym środowisku produkcyjnym pod presją czasu.",
-          "Praca w międzynarodowym zespole (język angielski)."
+          "Szybka adaptacja do międzynarodowego środowiska, przestrzeganie przepisów BHP i procedur operacyjnych.",
+          "Swobodna komunikacja w języku angielskim, nauka obsługi maszyn produkcyjnych."
         ]
       },
       {
@@ -81,9 +67,8 @@ export const itSpecialistData: Record<string, CVData> = {
         location: "Irlandia (Zdalnie, Kraków)",
         period: "03.2022 - 07.2023",
         responsibilities: [
-          "Analiza dokumentacji i zapewnienie zgodności z procesem odpraw celnych (Customs Compliance).",
-          "Zarządzanie incydentami operacyjnymi w wewnętrznym systemie zgłoszeniowym (Ticket-based workflow).",
-          "Praca w reżimie ścisłych terminów (SLA) w międzynarodowym zespole."
+          "Obsługa incydentów w systemie biletowym (średnio ponad 100 ticketów dziennie) z zachowaniem skuteczności SLA na poziomie 98%.",
+          "Obsługa Klienta: Diagnozowanie błędów w dokumentacji oraz bezpośredni kontakt telefoniczny z klientami w sytuacjach nagłych i krytycznych."
         ]
       }
     ],
@@ -110,13 +95,13 @@ export const itSpecialistData: Record<string, CVData> = {
         ]
       },
       {
-        title: "Project Worker",
+        title: "Operational Staff",
         company: "AB Midden Nederland",
         location: "Netherlands",
         period: "Feb 2025 - Oct 2025",
         responsibilities: [
-          "Executed time-sensitive tasks in a fast-paced production environment.",
-          "Collaborated in an international, English-speaking team."
+          "Fast adaptation to international environments, compliance with health and safety regulations and operational procedures.",
+          "Fluent communication in English, learning to operate production machinery."
         ]
       },
       {
@@ -125,9 +110,8 @@ export const itSpecialistData: Record<string, CVData> = {
         location: "Ireland (Remote, Krakow)",
         period: "Mar 2022 - Jul 2023",
         responsibilities: [
-          "Documentation analysis and ensuring compliance with customs clearance processes (Customs Compliance).",
-          "Operational incident management within an internal ticketing system (Ticket-based workflow).",
-          "Worked under strict deadlines (SLA) in an international team."
+          "Handling incidents in a ticketing system (average over 100 tickets per day) while maintaining SLA efficiency at 98%.",
+          "Customer Service: Diagnosing documentation errors and direct telephone contact with customers in sudden and critical situations."
         ]
       }
     ],

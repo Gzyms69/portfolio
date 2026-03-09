@@ -4,50 +4,32 @@ export const supportProjects: Project[] = [
   {
     title: "LeadFinder & Katalog Ecosystem",
     pl: { 
-      description: "Zintegrowane środowisko webowe i skrypty automatyzujące. Główny nacisk położyłem na niezawodność infrastruktury (Cloudflare, Vercel, DNS, SSL) oraz utrzymanie analityki i metryk wydajnościowych (LCP/TBT). Troubleshooting: Modyfikacja skryptów w Python/Playwright do omijania rygorystycznych blokad sieciowych (Google RPC) i diagnozowania błędów race conditions przy asynchronicznym ładowaniu danych.", 
-      fullDescription: "Zintegrowane środowisko webowe i skrypty automatyzujące. Główny nacisk położyłem na niezawodność infrastruktury (Cloudflare, Vercel, DNS, SSL) oraz utrzymanie analityki i metryk wydajnościowych (LCP/TBT).\n\nTroubleshooting: Modyfikacja skryptów w Python/Playwright do omijania rygorystycznych blokad sieciowych (Google RPC) i diagnozowania błędów race conditions przy asynchronicznym ładowaniu danych." 
+      description: "Autorski ekosystem webowy zarządzany w architekturze monorepo (Turborepo). Zarządzanie Infrastrukturą: Administracja domeną i zabezpieczenie formularzy przez Cloudflare. Konfiguracja deploymentów i przekierowań dla 3 niezależnych projektów hostowanych na Vercel (m.in. katalog.czerwinskidawid.pl). Utrzymanie i Monitoring: Pełne śledzenie ruchu i interakcji (Google Analytics). Optymalizacja darmowego planu środowiska Vercel poprzez dedykowany endpoint do obsługi automatycznych zadań (Cron Jobs). Troubleshooting: Testowanie wydajności i zaawansowane debugowanie środowiska przy użyciu Puppeteera oraz serwerów MCP zintegrowanych z modelami LLM (Gemini).", 
+      fullDescription: "Autorski ekosystem webowy zarządzany w architekturze monorepo (Turborepo).\n\nZarządzanie Infrastrukturą: Administracja domeną i zabezpieczenie formularzy przez Cloudflare. Konfiguracja deploymentów i przekierowań dla 3 niezależnych projektów hostowanych na Vercel (m.in. katalog.czerwinskidawid.pl).\n\nUtrzymanie i Monitoring: Pełne śledzenie ruchu i interakcji (Google Analytics). Optymalizacja darmowego planu środowiska Vercel poprzez dedykowany endpoint do obsługi automatycznych zadań (Cron Jobs).\n\nTroubleshooting: Testowanie wydajności i zaawansowane debugowanie środowiska przy użyciu Puppeteera oraz serwerów MCP zintegrowanych z modelami LLM (Gemini)." 
     },
     en: { 
-      description: "Integrated web environment and automation scripts. The main focus was on infrastructure reliability (Cloudflare, Vercel, DNS, SSL) and maintaining analytics and performance metrics (LCP/TBT). Troubleshooting: Modification of Python/Playwright scripts to bypass strict network blocks (Google RPC) and diagnose race conditions in asynchronous data loading.", 
-      fullDescription: "Integrated web environment and automation scripts. The main focus was on infrastructure reliability (Cloudflare, Vercel, DNS, SSL) and maintaining analytics and performance metrics (LCP/TBT).\n\nTroubleshooting: Modification of Python/Playwright scripts to bypass strict network blocks (Google RPC) and diagnose race conditions in asynchronous data loading." 
+      description: "Custom web ecosystem managed in a monorepo architecture (Turborepo). Infrastructure Management: Domain administration and form security via Cloudflare. Configuration of deployments and redirects for 3 independent projects hosted on Vercel (incl. katalog.czerwinskidawid.pl). Maintenance & Monitoring: Full traffic and interaction tracking (Google Analytics). Optimization of free Vercel tier via a dedicated endpoint for automated tasks (Cron Jobs). Troubleshooting: Performance testing and advanced environment debugging using Puppeteer and MCP servers integrated with LLMs (Gemini).", 
+      fullDescription: "Custom web ecosystem managed in a monorepo architecture (Turborepo).\n\nInfrastructure Management: Domain administration and form security via Cloudflare. Configuration of deployments and redirects for 3 independent projects hosted on Vercel (incl. katalog.czerwinskidawid.pl).\n\nMaintenance & Monitoring: Full traffic and interaction tracking (Google Analytics). Optimization of free Vercel tier via a dedicated endpoint for automated tasks (Cron Jobs).\n\nTroubleshooting: Performance testing and advanced environment debugging using Puppeteer and MCP servers integrated with LLMs (Gemini)." 
     },
     githubUrl: "https://github.com/Gzyms69/LeadFinder",
     liveUrl: "https://katalog.czerwinskidawid.pl",
-    techStack: ["Python", "Next.js", "Playwright", "Cloudflare"],
+    techStack: ["Cloudflare", "Vercel", "Node.js", "Puppeteer", "Google Analytics"],
     variant: "code",
-    hideFromPortfolio: true
   },
   {
     title: "WikiGraph Lab",
     pl: { 
-      description: "Praktyczne zastosowanie konteneryzacji (Docker) i utrzymania stabilności środowisk dla relacyjnych oraz grafowych baz danych.", 
-      fullDescription: "Praktyczne zastosowanie konteneryzacji (Docker) i utrzymania stabilności środowisk dla relacyjnych oraz grafowych baz danych." 
+      description: "Skonteneryzowanie (Docker) autorskiego środowiska dla relacyjnych (SQL) i grafowych (Neo4j) baz danych. Administracja i monitorowanie stabilności endpointów API (FastAPI).", 
+      fullDescription: "Skonteneryzowanie (Docker) autorskiego środowiska dla relacyjnych (SQL) i grafowych (Neo4j) baz danych. Administracja i monitorowanie stabilności endpointów API (FastAPI)." 
     },
     en: { 
-      description: "Practical application of containerization (Docker) and maintaining the stability of environments for relational and graph databases.", 
-      fullDescription: "Practical application of containerization (Docker) and maintaining the stability of environments for relational and graph databases." 
+      description: "Containerization (Docker) of a custom environment for relational (SQL) and graph (Neo4j) databases. Administration and stability monitoring of API endpoints (FastAPI).", 
+      fullDescription: "Containerization (Docker) of a custom environment for relational (SQL) and graph (Neo4j) databases. Administration and stability monitoring of API endpoints (FastAPI)." 
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
-    techStack: ["Docker", "SQL", "Python", "FastAPI"],
+    techStack: ["Docker", "Neo4j", "SQL", "Python", "FastAPI"],
     imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&h=400&q=80&fm=webp",
     variant: "code",
-  },
-  {
-    title: "LeadFinder & Katalog Ecosystem",
-    pl: { 
-      description: "Kompleksowy system automatyzacji sprzedaży i marketplace szablonów. Łączy scraping leadów (Python) z generowaniem stron demo (Next.js).", 
-      fullDescription: `Ekosystem dwóch systemów zaprojektowany do automatyzacji cyklu sprzedaży.\n\n1. Pipeline (Python): Autorski silnik scrapujący, który identyfikuje firmy z brakami cyfrowymi, waliduje domeny i synchronizuje leady bezpośrednio z Google Sheets. Zawiera niestandardowo spatchowany scraper Google Maps używający Playwright do naprawy logiki zliczania opinii.\n\n2. Marketplace (Next.js 15): Wydajne Monorepo (Turborepo) z 'Dynamiczną Architekturą Sprzedaży'. Pozwala to na natychmiastowe generowanie spersonalizowanych stron demo ('Magic Links') za pomocą parametrów URL, redukując czas ręcznego przygotowania oferty o 99%.` 
-    },
-    en: { 
-      description: "End-to-end sales automation pipeline and template marketplace. Features automated lead scraping and dynamic 'Magic Link' demo generation.", 
-      fullDescription: `A dual-system ecosystem designed to automate the sales lifecycle.\n\n1. Pipeline (Python): A custom scraping engine that identifies businesses with digital gaps, validates domains, and syncs leads directly to Google Sheets. Includes a custom-patched Google Maps scraper using Playwright to fix review counting logic.\n\n2. Marketplace (Next.js 15): A high-performance Monorepo (Turborepo) featuring a 'Dynamic Sales Architecture'. This allows for the instant generation of personalized demo websites ('Magic Links') via URL parameters, reducing manual sales preparation time by 99%.` 
-    },
-    githubUrl: "https://github.com/Gzyms69/LeadFinder",
-    liveUrl: "https://katalog.czerwinskidawid.pl",
-    techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "MS Office"],
-    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&q=80&fm=webp",
-    variant: "design",
-    hideFromResume: true
   },
   {
     title: "ROMHub",
@@ -87,7 +69,7 @@ export const supportConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
     title: "Technical Support Engineer | L2 Ops Specialist",
-    description: "Inżynier łączący twarde kompetencje techniczne (Linux, SQL, Bash, Python) z rygorem operacyjnym środowisk korporacyjnych (FedEx). Posiadam praktyczne doświadczenie w zarządzaniu incydentami (Ticketing / SLA) oraz samodzielnym utrzymaniu i optymalizacji infrastruktury webowej (Vercel, Cloudflare, Cron Jobs). Biegły w automatyzacji procesów, parsowaniu logów oraz szybkiej diagnozie środowisk. Szukam roli, w której wykorzystam swój zmysł analityczny do skutecznego rozwiązywania złożonych problemów (Troubleshooting) i stabilizacji systemów. W wolnym czasie projektuję własne aplikacje Full-Stack (Next.js, Python), ponieważ głębokie zrozumienie kodu i architektury pozwala mi skuteczniej namierzać błędy i wspierać zespoły R&D na drugiej i trzeciej linii wsparcia.",
+    description: "Inżynier łączący twarde kompetencje techniczne (Linux, SQL, Bash, Python) z rygorem operacyjnym środowisk korporacyjnych (FedEx). Posiadam praktyczne doświadczenie w zarządzaniu incydentami (Ticketing / SLA) oraz samodzielnym utrzymaniu i optymalizacji infrastruktury webowej (Vercel, Cloudflare, Cron Jobs). Biegły w automatyzacji procesów, parsowaniu logów oraz szybkiej diagnozie środowisk. Szukam roli, w której wykorzystam swój zmysł analityczny do skutecznego rozwiązywania złożonych problemów (Troubleshooting) i stabilizacji systemów. W wolnym czasie projektuję własne aplikacje Full-Stack (Next.js, Python), ponieważ głębokie zrozumienie kodu i architektury pozwala mi skuteczniej namierzać błędy i wspierać zespoły R&D na drugiej i trzeciej linii wsparcia.",
     email: "kontakt@czerwinskidawid.pl",
     heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "C++"]
   },
@@ -109,19 +91,19 @@ export const supportData: Record<string, CVData> = {
         location: "Kielce / Zdalnie",
         period: "01.2024 - 06.2025",
         responsibilities: [
-          "Prowadzenie kursów programowania: Realizacja kompleksowych szkoleń z języków Python, C++ i C#.",
-          "Live Debugging i Wsparcie Techniczne: Bieżące diagnozowanie i naprawianie błędów w kodzie uczniów oraz rozwiązywanie problemów konfiguracyjnych środowisk (VS Code, Unity).",
+          "Prowadzenie kursów programowania: Realizacja kompleksowych szkoleń z języków Python, C++ i C#.",
+          "Live Debugging i Wsparcie Techniczne: Bieżące diagnozowanie i naprawianie błędów w kodzie uczniów oraz rozwiązywanie problemów konfiguracyjnych środowisk (VS Code, Unity).",
           "Asynchroniczna obsługa zgłoszeń (Discord): Zdalne wsparcie techniczne dla kursantów poza godzinami zajęć."
         ]
       },
       {
-        title: "Pracownik Projektowy",
+        title: "Pracownik Operacyjny",
         company: "AB Midden Nederland",
         location: "Holandia",
         period: "02.2025 - 10.2025",
         responsibilities: [
-          "Praca w dynamicznym środowisku międzynarodowym – szybka adaptacja i praca zespołowa.",
-          "Realizacja zadań pod presją czasu z zachowaniem wysokiej dyscypliny i norm jakościowych."
+          "Szybka adaptacja do międzynarodowego środowiska, przestrzeganie przepisów BHP i procedur operacyjnych.",
+          "Swobodna komunikacja w języku angielskim, nauka obsługi maszyn produkcyjnych."
         ]
       },
       {
@@ -130,15 +112,14 @@ export const supportData: Record<string, CVData> = {
         location: "Irlandia (Zdalnie, Kraków)",
         period: "03.2022 - 07.2023",
         responsibilities: [
-          "Analiza dokumentacji i zapewnienie zgodności z procesem odpraw celnych (Customs Compliance).",
-          "Zarządzanie incydentami operacyjnymi w wewnętrznym systemie zgłoszeniowym (Ticket-based workflow).",
-          "Praca w reżimie ścisłych terminów (SLA) w międzynarodowym zespole."
+          "Procesowanie i weryfikacja średnio ponad 100 zgłoszeń (ticketów) dziennie w rygorze ścisłych terminów (SLA), osiągając skuteczność operacyjną na poziomie 98%.",
+          "Triage i Eskalacje: Samodzielne diagnozowanie problemów z dokumentacją, kontakt z klientem w sytuacjach krytycznych oraz precyzyjny routing nietrywialnych incydentów do zespołów L2/L3."
         ]
       }
     ],
     education: [
       { school: "Politechnika Krakowska", degree: "Kierunek: Matematyka Stosowana", years: "2020-2022" },
-      { school: "Akademia Górniczo-Hutnicza (AGH)", degree: "Kierunek: Elektronika i Telekomunikacja", years: "2019-2020" }
+      { school: "Akademia Górniczo-Hutnicza (AGH)", degree: "Kierunek: Elektronika i Telekomunikacja", years: "2019-2020" }
     ],
     skills: {
       general: ["Linux (Ubuntu CLI)", "Enterprise Ticketing Systems (SLA)", "Incident Management", "Problem Solving"],
@@ -161,13 +142,13 @@ export const supportData: Record<string, CVData> = {
         ]
       },
       {
-        title: "Project Worker",
+        title: "Operational Staff",
         company: "AB Midden Nederland",
         location: "Netherlands",
         period: "Feb 2025 - Oct 2025",
         responsibilities: [
-          "Executed time-sensitive tasks in a fast-paced production environment.",
-          "Collaborated in an international, English-speaking team."
+          "Fast adaptation to international environments, compliance with health and safety regulations and operational procedures.",
+          "Fluent communication in English, learning to operate production machinery."
         ]
       },
       {
@@ -176,9 +157,8 @@ export const supportData: Record<string, CVData> = {
         location: "Ireland (Remote, Krakow)",
         period: "Mar 2022 - Jul 2023",
         responsibilities: [
-          "Documentation analysis and ensuring compliance with customs clearance processes (Customs Compliance).",
-          "Operational incident management within an internal ticketing system (Ticket-based workflow).",
-          "Worked under strict deadlines (SLA) in an international team."
+          "Processing and verifying an average of over 100 requests (tickets) per day under strict deadlines (SLA), achieving an operational efficiency of 98%.",
+          "Triage & Escalations: Independent diagnosis of documentation issues, client contact in critical situations, and precise routing of non-trivial incidents to L2/L3 teams."
         ]
       }
     ],

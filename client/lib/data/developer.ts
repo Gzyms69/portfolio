@@ -5,58 +5,32 @@ export const devProjects: Project[] = [
   {
     title: "LeadFinder & Katalog Ecosystem",
     pl: { 
-      description: "Autorski system automatyzacji sprzedaży. Zbudowałem od zera architekturę łączącą web scraping w Pythonie z frontendem w Next.js. Rozwój forka google-maps-scraper: napisanie logiki wait-and-retry w Playwright, by ominąć błędy asynchronicznego ładowania DOM i zablokować restrykcje API (Google RPC). Wdrożenie środowiska produkcyjnego na Vercel (eliminacja 'Cold Start'), integracja z Google Sheets API poprzez GCP IAM i optymalizacja frontendu pod 100/100 w audytach Lighthouse.", 
-      fullDescription: "Autorski system automatyzacji sprzedaży. Zbudowałem od zera architekturę łączącą web scraping w Pythonie z frontendem w Next.js.\n\nRozwój forka google-maps-scraper: napisanie logiki wait-and-retry w Playwright, by ominąć błędy asynchronicznego ładowania DOM i zablokować restrykcje API (Google RPC).\n\nWdrożenie środowiska produkcyjnego na Vercel (eliminacja 'Cold Start'), integracja z Google Sheets API poprzez GCP IAM i optymalizacja frontendu pod 100/100 w audytach Lighthouse." 
+      description: "Rozbudowany ekosystem (100/100 Lighthouse) zarządzany jako monorepo w Turborepo, łączący logikę backendową z nowoczesnym frontendem (React). Zgodność z RODO (Klaro). Architektura & Auth: Implementacja autoryzacji 'Magic Links' przez API Resend. Rozdzielenie środowisk na 3 niezależne projekty Vercel z zaawansowaną konfiguracją przekierowań. DevOps & Testing: Zabezpieczenie domeny i formularzy przez Cloudflare. Inżynieryjna optymalizacja środowiska hostingowego poprzez autorski endpoint dla zadań Cron. Automatyzacja testów i debugowania za pomocą Puppeteera oraz serwerów MCP (Gemini).", 
+      fullDescription: "Rozbudowany ekosystem (100/100 Lighthouse) zarządzany jako monorepo w Turborepo, łączący logikę backendową z nowoczesnym frontendem (React). Zgodność z RODO (Klaro).\n\nArchitektura & Auth: Implementacja autoryzacji 'Magic Links' przez API Resend. Rozdzielenie środowisk na 3 niezależne projekty Vercel z zaawansowaną konfiguracją przekierowań.\n\nDevOps & Testing: Zabezpieczenie domeny i formularzy przez Cloudflare. Inżynieryjna optymalizacja środowiska hostingowego poprzez autorski endpoint dla zadań Cron. Automatyzacja testów i debugowania za pomocą Puppeteera oraz serwerów MCP (Gemini)." 
     },
     en: { 
-      description: "Custom sales automation system. Built from scratch an architecture combining web scraping in Python with a Next.js frontend. Development of a google-maps-scraper fork: wrote wait-and-retry logic in Playwright to bypass asynchronous DOM loading errors and API restrictions (Google RPC). Deployment of the production environment on Vercel (elimination of 'Cold Start'), integration with Google Sheets API via GCP IAM, and frontend optimization for 100/100 in Lighthouse audits.", 
-      fullDescription: "Custom sales automation system. Built from scratch an architecture combining web scraping in Python with a Next.js frontend.\n\nDevelopment of a google-maps-scraper fork: wrote wait-and-retry logic in Playwright to bypass asynchronous DOM loading errors and API restrictions (Google RPC).\n\nDeployment of the production environment on Vercel (elimination of 'Cold Start'), integration with Google Sheets API via GCP IAM, and frontend optimization for 100/100 in Lighthouse audits." 
+      description: "Extensive ecosystem (100/100 Lighthouse) managed as a Turborepo monorepo, combining backend logic with a modern frontend (React). GDPR compliance (Klaro). Architecture & Auth: Implementation of 'Magic Links' authorization via Resend API. Environment separation into 3 independent Vercel projects with advanced redirect configuration. DevOps & Testing: Domain and form security via Cloudflare. Engineering optimization of the hosting environment through a custom endpoint for Cron jobs. Test and debug automation using Puppeteer and MCP servers (Gemini).", 
+      fullDescription: "Extensive ecosystem (100/100 Lighthouse) managed as a Turborepo monorepo, combining backend logic with a modern frontend (React). GDPR compliance (Klaro).\n\nArchitecture & Auth: Implementation of 'Magic Links' authorization via Resend API. Environment separation into 3 independent Vercel projects with advanced redirect configuration.\n\nDevOps & Testing: Domain and form security via Cloudflare. Engineering optimization of the hosting environment through a custom endpoint for Cron jobs. Test and debug automation using Puppeteer and MCP servers (Gemini)." 
     },
     githubUrl: "https://github.com/Gzyms69/LeadFinder",
     liveUrl: "https://katalog.czerwinskidawid.pl",
-    techStack: ["Next.js 15", "Python", "Playwright", "FastAPI"],
+    techStack: ["Next.js 15", "React", "Node.js", "Turborepo", "Resend", "Cloudflare"],
     variant: "code",
-    hideFromPortfolio: true
   },
   {
     title: "WikiGraph Lab",
     pl: { 
-      description: "Silnik grafu wiedzy. Samodzielnie zaprojektowana architektura backendowa dla baz relacyjnych i grafowych, konteneryzacja w Dockerze i obsługa zapytań przez REST API.", 
-      fullDescription: "Silnik grafu wiedzy. Samodzielnie zaprojektowana architektura backendowa dla baz relacyjnych i grafowych, konteneryzacja w Dockerze i obsługa zapytań przez REST API." 
+      description: "Projektowanie architektury backendowej dla autorskiego silnika grafu wiedzy z wykorzystaniem baz SQL i Neo4j. Programowanie i optymalizacja wydajności REST API w FastAPI. Skonteneryzowanie całego środowiska przy użyciu Dockera.", 
+      fullDescription: "Projektowanie architektury backendowej dla autorskiego silnika grafu wiedzy z wykorzystaniem baz SQL i Neo4j. Programowanie i optymalizacja wydajności REST API w FastAPI. Skonteneryzowanie całego środowiska przy użyciu Dockera." 
     },
     en: { 
-      description: "Knowledge graph engine. Independently designed backend architecture for relational and graph databases, Docker containerization, and REST API query handling.", 
-      fullDescription: "Knowledge graph engine. Independently designed backend architecture for relational and graph databases, Docker containerization, and REST API query handling." 
+      description: "Designing backend architecture for a custom knowledge graph engine using SQL and Neo4j databases. Programming and performance optimization of REST API in FastAPI. Containerization of the entire environment using Docker.", 
+      fullDescription: "Designing backend architecture for a custom knowledge graph engine using SQL and Neo4j databases. Programming and performance optimization of REST API in FastAPI. Containerization of the entire environment using Docker." 
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
     techStack: ["Python", "Neo4j", "Docker", "SQL", "FastAPI"],
     imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&h=400&q=80&fm=webp",
     variant: "code",
-  },
-  {
-    title: "LeadFinder & Katalog Ecosystem",
-    pl: { 
-      description: "Kompleksowy system automatyzacji sprzedaży i marketplace szablonów. Łączy scraping leadów (Python) z generowaniem stron demo (Next.js).", 
-      fullDescription: `Ekosystem dwóch systemów zaprojektowany do automatyzacji cyklu sprzedaży.
-
-1. Pipeline (Python): Autorski silnik scrapujący, który identyfikuje firmy z brakami cyfrowymi, waliduje domeny i synchronizuje leady bezpośrednio z Google Sheets. Zawiera niestandardowo spatchowany scraper Google Maps używający Playwright do naprawy logiki zliczania opinii.
-
-2. Marketplace (Next.js 15): Wydajne Monorepo (Turborepo) z 'Dynamiczną Architekturą Sprzedaży'. Pozwala to na natychmiastowe generowanie spersonalizowanych stron demo ('Magic Links') za pomocą parametrów URL, redukując czas ręcznego przygotowania oferty o 99%.` 
-    },
-    en: { 
-      description: "End-to-end sales automation pipeline and template marketplace. Features automated lead scraping and dynamic 'Magic Link' demo generation.", 
-      fullDescription: `A dual-system ecosystem designed to automate the sales lifecycle.
-
-1. Pipeline (Python): A custom scraping engine that identifies businesses with digital gaps, validates domains, and syncs leads directly to Google Sheets. Includes a custom-patched Google Maps scraper using Playwright to fix review counting logic.
-
-2. Marketplace (Next.js 15): A high-performance Monorepo (Turborepo) featuring a 'Dynamic Sales Architecture'. This allows for the instant generation of personalized demo websites ('Magic Links') via URL parameters, reducing manual sales preparation time by 99%.` 
-    },
-    githubUrl: "https://github.com/Gzyms69/LeadFinder",
-    liveUrl: "https://katalog.czerwinskidawid.pl",
-    techStack: ["Python", "Next.js", "React", "Node.js", "Playwright", "MS Office"],
-    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&q=80&fm=webp",
-    variant: "design",
-    hideFromResume: true
   },
   {
     title: "ROMHub",
@@ -129,8 +103,7 @@ export const devData: Record<string, CVData> = {
         location: "Holandia",
         period: "02.2025 - 10.2025",
         responsibilities: [
-          "Praca w dynamicznym środowisku międzynarodowym – szybka adaptacja i praca zespołowa.",
-          "Realizacja zadań pod presją czasu z zachowaniem wysokiej dyscypliny i norm jakościowych."
+          "Szybka adaptacja do międzynarodowego środowiska, przestrzeganie procedur operacyjnych i BHP, swobodna komunikacja w języku angielskim."
         ]
       },
       {
@@ -139,9 +112,8 @@ export const devData: Record<string, CVData> = {
         location: "Kraków",
         period: "03.2022 - 07.2023",
         responsibilities: [
-          "Praca w rygorze SLA (Service Level Agreement) i Compliance – dbałość o procedury i terminowość.",
-          "Codzienna komunikacja w języku angielskim (C1/C2) w zespole międzynarodowym.",
-          "Obsługa zgłoszeń i analiza danych w systemach klasy Enterprise (Ticket-based workflow)."
+          "Obsługa systemów klasy Enterprise w rygorze ścisłych SLA. Procesowanie średnio ponad 100 zgłoszeń dziennie przy zachowaniu 98% skuteczności.",
+          "Zarządzanie eskalacjami i codzienny kontakt (j. angielski C1/C2) z międzynarodowymi zespołami operacyjnymi."
         ]
       }
     ],
@@ -172,8 +144,7 @@ export const devData: Record<string, CVData> = {
         location: "Netherlands",
         period: "Feb 2025 - Oct 2025",
         responsibilities: [
-          "Working in a dynamic international environment – fast adaptation and teamwork.",
-          "Execution of tasks under time pressure while maintaining high discipline and quality standards."
+          "Fast adaptation to international environments, compliance with operational and health and safety procedures, fluent communication in English."
         ]
       },
       {
@@ -182,9 +153,8 @@ export const devData: Record<string, CVData> = {
         location: "Krakow",
         period: "Mar 2022 - Jul 2023",
         responsibilities: [
-          "Working under SLA (Service Level Agreement) and Compliance rigor – attention to procedures and deadlines.",
-          "Daily communication in English (C1/C2) within an international team.",
-          "Ticket handling and data analysis in Enterprise-class systems (Ticket-based workflow)."
+          "Enterprise system operations under strict SLA rigor. Processing an average of over 100 requests per day with 98% efficiency.",
+          "Escalation management and daily contact (English C1/C2) with international operational teams."
         ]
       }
     ],
