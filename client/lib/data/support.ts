@@ -21,11 +21,11 @@ export const supportProjects: Project[] = [
   {
     title: "WikiGraph Lab",
     pl: { 
-      description: "**Praktyczne zastosowanie** konteneryzacji (Docker) i utrzymania stabilności środowisk dla relacyjnych oraz grafowych baz danych.", 
+      description: "Praktyczne zastosowanie konteneryzacji (**Docker**) i utrzymania stabilności środowisk dla relacyjnych (**SQL**) oraz grafowych baz danych (**Neo4j**).", 
       fullDescription: "Skonteneryzowanie (Docker) autorskiego środowiska dla relacyjnych (SQL) i grafowych (Neo4j) baz danych. Administracja i monitorowanie stabilności endpointów API (FastAPI)." 
     },
     en: { 
-      description: "**Practical application** of containerization (Docker) and maintaining environment stability for relational and graph databases.", 
+      description: "Practical application of containerization (**Docker**) and maintaining environment stability for relational (**SQL**) and graph databases (**Neo4j**).", 
       fullDescription: "Containerization (Docker) of a custom environment for relational (SQL) and graph (Neo4j) databases. Administration and stability monitoring of API endpoints (FastAPI)." 
     },
     githubUrl: "https://github.com/Gzyms69/WIKIGRAPH",
