@@ -410,14 +410,16 @@ export default function Resume() {
             <div className="space-y-2">
               {projects.filter((p: Project) => !p.hideFromResume).map((proj: Project, idx: number) => (
                 <div key={idx}>
-                  <div className="flex justify-between items-baseline">
+                  <div className="flex justify-between items-baseline mb-0.5">
                     <div className="flex items-center gap-2">
                       <h3 className="font-bold text-sm text-gray-900">{proj.title}</h3>
                       <span className="text-[10px] text-gray-500 font-mono">
                         [{proj.techStack.join(", ")}]
                       </span>
                     </div>
-                    <div className="flex items-center gap-2 text-[10px] text-gray-400">
+                  </div>
+                  {(proj.liveUrl || proj.githubUrl) && (
+                    <div className="flex items-center gap-2 text-[10px] text-gray-400 mb-0.5">
                       {proj.liveUrl && (
                         <a href={proj.liveUrl} target="_blank" rel="noreferrer" className="hover:underline">
                           {proj.liveUrl.replace('https://', '')}
@@ -430,8 +432,8 @@ export default function Resume() {
                         </a>
                       )}
                     </div>
-                  </div>
-                  <p className="text-xs text-gray-700 mt-0.5 leading-snug">
+                  )}
+                  <p className="text-xs text-gray-700 leading-snug">
                     {proj[lang].description}
                   </p>
                 </div>

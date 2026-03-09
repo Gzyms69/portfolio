@@ -12,7 +12,7 @@ export const itSpecialistProjects: Project[] = [
       description: "Building and self-administering a private network environment (czerwinskidawid.pl). Management of domains, network redirects, and form security using Cloudflare services. Configuration of hosting environments on the Vercel platform and traffic and user interaction analytics using Google Analytics.",
       fullDescription: "Building and self-administering a private network environment (czerwinskidawid.pl).\n\nManagement of domains, network redirects, and form security using Cloudflare services.\n\nConfiguration of hosting environments on the Vercel platform and traffic and user interaction analytics using Google Analytics."
     },
-    githubUrl: "https://katalog.czerwinskidawid.pl",
+    githubUrl: "",
     liveUrl: "https://katalog.czerwinskidawid.pl",
     techStack: ["Cloudflare", "Vercel", "Google Analytics"],
     variant: "code",
