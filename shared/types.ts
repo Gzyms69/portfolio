@@ -54,6 +54,7 @@ export interface PortfolioConfig {
   title: string;
   description: string;
   email: string;
+  phone?: string;
   heroTechStack: string[];
 }
 

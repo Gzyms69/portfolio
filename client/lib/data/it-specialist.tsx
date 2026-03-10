@@ -26,6 +26,7 @@ export const itSpecialistConfig: Record<string, PortfolioConfig> = {
     title: "IT Support Specialist / Helpdesk L1",
     description: "Młodszy specjalista z 1,5-rocznym doświadczeniem operacyjnym (FedEx) w pracy na dużych wolumenach zgłoszeń (100+ ticketów dziennie, SLA 98%). Posiadam ponad roczną praktykę w wprowadzeniu kursów i rozwiązywaniu problemów środowiskowych (Giganci Programowania). Biegły w języku angielskim (C1/C2), doświadczenie w kontakcie z klientem anglojęzycznym. Szukam roli L1 Support / Helpdesk, gdzie wykorzystam rygor operacyjny, odporność na stres i umiejętność jasnej komunikacji z klientem.",
     email: "kontakt@czerwinskidawid.pl",
+    phone: "+48 725 721 328",
     heroTechStack: ["Windows 10/11", "Troubleshooting", "Active Directory", "Linux", "Python"]
   },
   en: {
@@ -33,6 +34,7 @@ export const itSpecialistConfig: Record<string, PortfolioConfig> = {
     title: "IT Support Specialist / Helpdesk L1",
     description: "Junior specialist with 1.5 years of operational experience (FedEx) working with high ticket volumes (100+ per day, 98% SLA). I have over a year of practice in delivering courses and solving environmental problems (Giganci Programowania). Fluent in English (C1/C2) with experience in English-speaking customer contact. Seeking an L1 Support / Helpdesk role where I can utilize operational rigor, stress resilience, and clear communication skills.",
     email: "kontakt@czerwinskidawid.pl",
+    phone: "+48 725 721 328",
     heroTechStack: ["Windows 10/11", "Troubleshooting", "Active Directory", "Linux", "Python"]
   }
 };

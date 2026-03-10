@@ -97,8 +97,9 @@ export const devConfig: Record<string, PortfolioConfig> = {
   pl: {
     name: "Dawid Czerwiński",
     title: "Junior Software Engineer | Python & C++ Developer",
-    description: "Ambitny inżynier oprogramowania (Junior Full-Stack) z solidnym zapleczem akademickim (AGH/PK), łączący tworzenie nowoczesnych interfejsów (Next.js, React) z wydajną architekturą backendową (Python, FastAPI). Twórca kompleksowych systemów webowych, w tym platformy Katalog.CzerwinskiDawid.pl (100/100 Lighthouse) oraz ekosystemu LeadFinder automatyzującego procesy sprzedażowe. Specjalizuję się w optymalizacji wydajności, integracji API oraz projektowaniu zapytań (SQL/Neo4j). Szukam wyzwań inżynierskich, w których wykorzystam swoje umiejętności od analizy wymagań po finalne wdrożenie (CI/CD).",
+    description: "Junior Software Engineer (Next.js 15 / Python) z ponad rocznym komercyjnym doświadczeniem jako Mentor IT (nauczanie m.in. C++ i Pythona). Twórca autorskiego, bezstanowego ekosystemu webowego (Next.js, React, Framer Motion) hostowanego na platformie Vercel i zoptymalizowanego do wyniku 98+/100 w Google PageSpeed. Do zarządzania domeną i ochroną przed botami wykorzystuję Cloudflare. Szukam pierwszej roli deweloperskiej, w której wykorzystam praktyczną umiejętność pisania kodu, wspartą wcześniejszym doświadczeniem w pracy operacyjnej i analitycznej.",
     email: "kontakt@czerwinskidawid.pl",
+    phone: "+48 725 721 328",
     heroTechStack: ["Python", "C++", "SQL", "Docker", "Linux", "Neo4j"]
   },
   en: {
@@ -106,6 +107,7 @@ export const devConfig: Record<string, PortfolioConfig> = {
     title: "Junior Software Engineer | Python & C++ Developer",
     description: "Ambitious Software Engineer (Junior Full-Stack) with a solid academic background (AGH/PK), combining modern interface development (Next.js, React) with efficient backend architecture (Python, FastAPI). Creator of comprehensive web systems, including the Katalog.CzerwinskiDawid.pl platform (100/100 Lighthouse) and the LeadFinder ecosystem automating sales processes. Specialized in performance optimization, API integration, and query design (SQL/Neo4j). Seeking engineering challenges where I can leverage my skills from requirements analysis to final deployment (CI/CD).",
     email: "kontakt@czerwinskidawid.pl",
+    phone: "+48 725 721 328",
     heroTechStack: ["Python", "C++", "SQL", "Docker", "Linux", "Neo4j"]
   }
 };

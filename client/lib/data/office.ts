@@ -9,6 +9,7 @@ export const officeConfig: Record<string, PortfolioConfig> = {
     title: "Operations Specialist / Data Administration",
     description: "Specjalista z 1,5-rocznym doświadczeniem w operacjach międzynarodowych (FedEx) oraz roczną praktyką w prowadzeniu szkoleń i raportowaniu (Giganci Programowania). Posiadam udokumentowaną praktykę w weryfikacji dokumentacji, pracy w ścisłym rygorze SLA oraz codziennej komunikacji w języku angielskim (C1/C2). Biegły w obsłudze komputera, pakietu MS Office, analizie danych oraz w nowych technologiach. Szukam stabilnej roli administracyjnej, wymagającej rzetelności, terminowości i sprawnej obsługi systemów wewnętrznych.",
     email: "dawidczerwinskibiznes@gmail.com",
+    phone: "+48 725 721 328",
     heroTechStack: ["English C1/C2", "MS Office", "Data Entry", "Administration"]
   },
   en: {
@@ -16,6 +17,7 @@ export const officeConfig: Record<string, PortfolioConfig> = {
     title: "Operations Specialist / Data Administration",
     description: "Specialist with 1.5 years of experience in international operations (FedEx) and one year of practice in delivering training and reporting (Giganci Programowania). I have documented experience in document verification, working under strict SLA rigor, and daily communication in English (C1/C2). Proficient in computer operation, MS Office suite, data analysis, and new technologies. Seeking a stable administrative role that requires reliability, timeliness, and efficient handling of internal systems.",
     email: "dawidczerwinskibiznes@gmail.com",
+    phone: "+48 725 721 328",
     heroTechStack: ["English C1/C2", "MS Office", "Data Entry", "Administration"]
   }
 };

@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { portfolioConfig } from "@/lib/terminal-db"; // Still need config for header/socials defaults
 import { useLanguage } from "@/hooks/use-language";
 import { Button } from "@/components/ui/button";
-import { Download, Mail, Github, Linkedin, MapPin, Settings, Check, ChevronUp, FileDown, Globe, Briefcase, Loader2 } from "lucide-react";
+import { Download, Mail, Phone, Github, Linkedin, MapPin, Settings, Check, ChevronUp, FileDown, Globe, Briefcase, Loader2 } from "lucide-react";
 import { ResumeVariant, Project, Experience, Education, ResumeProfile } from "@shared/types";
 import { motion, AnimatePresence } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
@@ -306,9 +306,17 @@ export default function Resume() {
           </div>
           
           <div className="flex flex-col gap-0.5 text-xs text-gray-600 sm:text-right mt-2 sm:mt-0">
-            <div className="flex items-center sm:justify-end gap-1.5">
-              <Mail className="w-3 h-3" />
-              <a href={`mailto:${content.email}`} className="hover:underline">{content.email}</a>
+            <div className="flex flex-col gap-0.5">
+              <div className="flex items-center sm:justify-end gap-1.5">
+                <Mail className="w-3 h-3" />
+                <a href={`mailto:${content.email}`} className="hover:underline">{content.email}</a>
+              </div>
+              {content.phone && (
+                <div className="flex items-center sm:justify-end gap-1.5">
+                  <Phone className="w-3 h-3" />
+                  <a href={`tel:${content.phone.replace(/\s+/g, '')}`} className="hover:underline">{content.phone}</a>
+                </div>
+              )}
             </div>
             {variant !== 'office' && (
               <div className="flex items-center sm:justify-end gap-1.5">

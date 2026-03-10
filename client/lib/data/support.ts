@@ -98,6 +98,7 @@ export const supportConfig: Record<string, PortfolioConfig> = {
     title: "Technical Support Engineer | L2 Ops Specialist",
     description: "Specjalista IT z 1,5-rocznym komercyjnym doświadczeniem w operacjach na dużych wolumenach zgłoszeń (FedEx, 100+ ticketów dziennie, SLA 98%) oraz ponad roczną praktyką jako nauczyciel programowania (Python, C++). Posiadam znajomość systemów Linux, zapytań SQL oraz skryptowania (Bash, Python), zdobytą podczas budowy i utrzymania własnego ekosystemu webowego (Vercel, Cloudflare). Szukam roli L2 Ops / App Support, gdzie wykorzystam rygor analityczny z operacji korporacyjnych oraz znajomość kodu do naprawy środowiska, analizy logów i weryfikacji błędów.",
     email: "kontakt@czerwinskidawid.pl",
+    phone: "+48 725 721 328",
     heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "C++"]
   },
   en: {
@@ -105,6 +106,7 @@ export const supportConfig: Record<string, PortfolioConfig> = {
     title: "Technical Support Engineer | L2 Ops Specialist",
     description: "IT Specialist with 1.5 years of commercial experience in high-volume operations (FedEx, 100+ tickets daily, 98% SLA) and over a year of practice as a programming teacher (Python, C++). I have knowledge of Linux systems, SQL queries, and scripting (Bash, Python) gained during the construction and maintenance of my own web ecosystem (Vercel, Cloudflare). I am looking for an L2 Ops / App Support role where I can utilize my analytical rigor from corporate operations and my knowledge of code for environment repair, log analysis, and error verification.",
     email: "kontakt@czerwinskidawid.pl",
+    phone: "+48 725 721 328",
     heroTechStack: ["Linux", "SQL", "Python", "Bash", "Docker", "Git", "C++"]
   }
 };
