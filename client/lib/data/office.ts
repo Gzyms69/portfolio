@@ -52,9 +52,9 @@ export const officeData: Record<string, CVData> = {
         location: "Holandia",
         period: "02.2025 - 10.2025",
         responsibilities: [
-          "Wsparcie procesów logistycznych: Realizacja zadań operacyjnych w międzynarodowym środowisku pracy.",
-          "Współpraca w języku angielskim: Codzienna komunikacja w zespole wielokulturowym, wymagająca elastyczności i umiejętności adaptacji.",
-          "Dbałość o normy jakościowe: Praca wymagająca wysokiej dyscypliny, punktualności i przestrzegania procedur BHP."
+          "Wsparcie procesów logistycznych: Realizacja zadań operacyjnych w międzynarodowym środowisku pracy fizycznej.",
+          "Współpraca w języku angielskim: Codzienna komunikacja w zespole wielokulturowym, wymagająca elastyczności i umiejętności adaptacji.",
+          "Dbałość o normy jakościowe: Praca wymagająca wysokiej dyscypliny, obsługi maszyn, punktualności i przestrzegania procedur BHP."
         ]
       }
     ],
@@ -97,9 +97,9 @@ export const officeData: Record<string, CVData> = {
         location: "Netherlands",
         period: "Feb 2025 - Oct 2025",
         responsibilities: [
-          "Logistics process support: Execution of operational tasks in an international work environment.",
+          "Logistics process support: Execution of operational tasks in an international manual labor environment.",
           "Collaboration in English: Daily communication in a multicultural team, requiring flexibility and adaptability.",
-          "Attention to quality standards: Work requiring high discipline, punctuality, and compliance with health and safety procedures."
+          "Attention to quality standards: Work requiring high discipline, machinery operation, punctuality, and compliance with health and safety procedures."
         ]
       }
     ],

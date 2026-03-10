@@ -59,7 +59,7 @@ export const itSpecialistData: Record<string, CVData> = {
         period: "02.2025 - 10.2025",
         responsibilities: [
           "Szybka adaptacja do międzynarodowego środowiska, przestrzeganie przepisów BHP i procedur operacyjnych.",
-          "Swobodna komunikacja w języku angielskim, nauka obsługi maszyn produkcyjnych."
+          "Swobodna komunikacja w języku angielskim, praca fizyczna w logistyce i na produkcji, nauka obsługi maszyn produkcyjnych."
         ]
       },
       {
@@ -103,7 +103,7 @@ export const itSpecialistData: Record<string, CVData> = {
         period: "Feb 2025 - Oct 2025",
         responsibilities: [
           "Fast adaptation to international environments, compliance with health and safety regulations and operational procedures.",
-          "Fluent communication in English, learning to operate production machinery."
+          "Fluent communication in English, manual labor in logistics and production, learning to operate production machinery."
         ]
       },
       {
