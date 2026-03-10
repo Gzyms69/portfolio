@@ -43,9 +43,10 @@ export const officeData: Record<string, CVData> = {
         location: "(Zdalnie / Część etatu)",
         period: "01.2024 - 06.2025",
         responsibilities: [
-          "Prowadzenie zajęć edukacyjnych: Samodzielne przygotowywanie i realizacja szkoleń z podstaw IT dla grup. Umiejętność jasnego przekazywania złożonych informacji.",
-          "Administracja i raportowanie: Prowadzenie ewidencji obecności, zarządzanie harmonogramem zajęć i uzupełnianie danych w systemie CRM.",
-          "Obsługa klienta: Bieżąca komunikacja z klientami (rodzicami kursantów), rozwiązywanie problemów organizacyjnych i technicznych."
+          "Sprzedaż i prezentacja oferty (B2C): Prowadzenie bezpłatnych lekcji pokazowych i konsultacji dla potencjalnych klientów (uczniów i rodziców).",
+          "Prowadzenie zajęć edukacyjnych: Samodzielne przygotowywanie i realizacja szkoleń z podstaw IT dla grup. Umiejętność jasnego przekazywania złożonych informacji.",
+          "Administracja i raportowanie: Prowadzenie ewidencji obecności, zarządzanie harmonogramem zajęć i uzupełnianie danych w systemie CRM.",
+          "Obsługa klienta: Bieżąca komunikacja z klientami (rodzicami kursantów), rozwiązywanie problemów organizacyjnych i technicznych."
         ]
       },
       {
@@ -88,6 +89,7 @@ export const officeData: Record<string, CVData> = {
         location: "(Remote / Part-time)",
         period: "Jan 2024 - Jun 2025",
         responsibilities: [
+          "Sales & Offer Presentation (B2C): Conducting free demo lessons and consultations for potential clients (students and parents).",
           "Educational Instruction: Independent preparation and delivery of basic IT training for groups. Ability to clearly convey complex information.",
           "Administration & Reporting: Maintaining attendance records, managing class schedules, and data entry in the CRM system.",
           "Customer Service: Ongoing communication with clients (students' parents), resolving organizational and technical issues."
